@@ -1,0 +1,199 @@
+//These changes also need to be reflected in hexagons.js
+$hero-hex-radius: 95px;
+$hero-mobile-hex-radius: 95px;
+
+$hero-hex-count: 4;
+$hero-mobile-hex-count: 4;
+
+$hero-size: 1.5 * $hero-hex-count * $hero-hex-radius;
+$hero-size-mobile: 1.5 * $hero-mobile-hex-count * $hero-mobile-hex-radius;
+
+$hero-background: #313131;
+$empty-hex-colour: lighten($hero-background, 10);
+
+@keyframes hexagonFade {
+  0% { fill-opacity: 0; }
+  40% { fill-opacity: 0.8; }
+  60% { fill-opacity: 0.8; }
+  100% { fill-opacity: 0; }
+}
+
+.hero {
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  width: 100%;
+  height: $hero-size-mobile;
+  top: 0;
+
+  @media #{$medium-up} {
+    height: $hero-size;
+  }
+
+  &__background-mesh {
+    position: absolute;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+  }
+
+  &__hexagon {
+    fill: $body-background;
+    pointer-events: all;
+
+    &--animating {
+      animation-name: hexagonFade;
+      animation-duration: 5s;
+      transform: translateZ(0);
+    }
+
+    path {
+      -webkit-transition: fill 250ms linear;
+      transition: fill 250ms linear;
+      stroke: $hero-background;
+      stroke-width: 2px;
+      -webkit-touch-callout: none;
+
+      &:after {
+        background-color: #444;
+        content: "";
+        width: 100%;
+      }
+    }
+
+    &--bg {
+      fill: $body-background;
+
+      &-filled {
+        fill: $primary-color;
+      }
+    }
+
+    &--featured {
+      fill: url(/#logo) !important;
+    }
+
+    &--empty {
+      fill: url(/#empty);
+
+      &-colour {
+        fill: $empty-hex-colour;
+      }
+    }
+
+    &--empty:hover:not(&--filled) {
+      fill: url(/#hover);
+    }
+
+    &--hover-colour {
+      fill: lighten($hero-background, 30);
+    }
+
+    &--filled {
+      fill: url(/#filled);
+
+      &-colour {
+        fill: darken($primary-color, 20%);
+      }
+    }
+
+    &--stroke {
+      fill: $hero-background;
+    }
+
+    &--border {
+      fill: url(/#border);
+
+      &-colour {
+        fill: $hero-background;
+      }
+    }
+  }
+
+  &__content {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    // height: 175px;
+    padding-bottom: 100px;
+    pointer-events: none;
+
+    @media #{$medium-up} {
+      height: 325px;
+    }
+
+    &--date {
+      @media #{$small-only} {
+        font-size: 28px;
+      }
+
+      color: $white;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-shadow:
+        0 -1px 5px rgba(0, 0, 0, 0.7),
+        0 5px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    &--place {
+      @media #{$small-only} {
+        font-size: 24px;
+        padding-bottom: 5%;
+      }
+
+      color: $warning-color;
+      text-shadow:
+        0 -1px 3px rgba(0, 0, 0, 0.7),
+        0 2px 7px rgba(0, 0, 0, 0.5);
+    }
+
+    &--live {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    &--live-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ff0000;
+      display: inline-block;
+      animation: live-header__blink 1.5s infinite;
+    }
+
+    &--map {
+      background: $dark-gray;
+    }
+
+    &--helpq {
+      background: $dark-gray;
+    }
+
+    a {
+      pointer-events: auto;
+      line-height: 10px;
+      text-transform: uppercase;
+      font-weight: bold;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+
+      @media #{$medium-up} {
+        &:not(.hero__content--wide) {
+          width: 200px;
+        }
+      }
+
+      &:first-of-type {
+        margin-right: 15px;
+      }
+
+      &:nth-of-type(2) {
+        margin-right: 15px;
+      }
+
+      &:nth-of-type(3) {
+        background-color: #4e9b4e;
+      }
+    }
+  }
+}

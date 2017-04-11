@@ -1,0 +1,29 @@
+//- Restricted zone (Manage User Checkins)
+
+extends ../../layout
+
+block content
+  include ../../mixins/modals/users-checkin-accept
+
+  .user-checkin__background
+  .user-checkin__container
+    .user-checkin__logo
+    .user-checkin__form
+      h3.user-checkin__header Email/Name
+      .user-checkin__input.row.column
+        input.user-checkin__email.js-user-checkin__email(type="text")
+      .user-checkin__suggestion(style="display: none")
+        ul.user-checkin__emails
+          for user in users
+            li.user-checkin__emails--suggestion.row
+              .small-12.large-8.column.user-checkin__emails--info
+                .user-checkin__emails--name #{user.firstName} #{user.lastName}
+                .user-checkin__emails--email #{user.email}
+                .user-checkin__emails--university #{user.university}
+                .user-checkin__emails--birthday #{moment(user.birthdate).format("YYYY/MM/DD")}
+
+              .small-12.large-4.column
+                if !user.checkedIn
+                  input.user-checkin__emails--button.js-user-checkin.button(type="button", value="Check In", data-email=user.email, data-name="#{user.firstName} #{user.lastName}")
+                else
+                  .user-checkin__emails--checked-in Checked In!

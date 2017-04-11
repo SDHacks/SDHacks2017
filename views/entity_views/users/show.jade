@@ -1,0 +1,169 @@
+//- Show one User
+
+extends ../../layout
+
+block content
+  .row.user-show__container
+    .small-12.show-for-small-only.columns.user-show__disclaimer.text-center
+      p Tap to edit any of the information
+    .small-12.large-3.columns
+      a(href="/")
+        img.user-show__logo(src="/assets/img/logo.png", alt="SD Hacks 2016")
+      span.user-show__name.user-show__editable#firstName #{user.firstName}
+      | 
+      span.user-show__name.user-show__editable#lastName #{user.lastName}
+      ul.user-show__details
+        li.user-show__details--item
+          i.fa.fa-university
+          span.user-show__editable#university #{user.university}
+        li.user-show__details--item
+          i.fa.fa-graduation-cap
+          span.user-show__editable#major #{user.majors ? user.majors[0] : "None"}
+        li.user-show__details--item
+          i.fa.fa-envelope
+          span.not-editable#email #{user.email}
+        li.user-show__details--item
+          i.fa.fa-github
+          span.user-show__editable#github #{user.github ? user.github : "None"}
+        li.user-show__details--item
+          i.fa.fa-globe
+          span.user-show__editable#website #{user.website ? user.website : "None"}
+
+    .small-12.large-9.columns
+      if user.status
+        .row.user-show__questions--section
+          .small-12.large-12.columns
+            h3.user-show__questions--header Your Application
+        .row.user-show__questions
+          .small-12.large-4.columns
+            .user-show__question Status
+          .small-12.large-8.columns.user-show__answer--column.user-show__answer--short.user-show__answer--no-bg
+            if user.status == "Confirmed"
+              .user-show__answer.user-show__answer--not-editable#status You have accepted your application to SD Hacks 2016. 
+                |  We look forward to seeing you at the event!
+              if user.bussing
+                .user-show__answer.user-show__answer--not-editable#bussing You will be taking the 
+                  span.user-show__answer--highlight #{user.availableBus} 
+                  | bus to get to the event.
+              else if user.busAvailable
+                .user-show__answer.user-show__answer--not-editable#bussing
+                  | You are eligible to take the #{user.availableBus} bus.
+                  br
+                  input.button#js-user-take-bus.user-show__button--top-pad(type="button", value="Take Bus")
+            if user.status == "Rejected"
+              .user-show__answer.user-show__answer--not-editable#status We're sorry, but due to limited space, we could not invite you to SD Hacks 2016. 
+                |  We hope to see you next year!
+            if user.status == "Unconfirmed"
+              .user-show__answer.user-show__answer--not-editable#status Congratulations, you've been accepted to SD Hacks 2016!
+            if user.status == "Declined"
+              .user-show__answer.user-show__answer--not-editable#status You indicated that you will not be able to accept your invitation. We hope to see you next year!
+            if user.status == "Waitlisted"
+              .user-show__answer.user-show__answer--not-editable#status You are currently on the wait list for SD Hacks 2016. 
+                |  We will let you know if a spot opens up. Thanks for your patience!
+            if user.status == "Late"
+              .user-show__answer.user-show__answer--not-editable#status We did not hear back from you about your acceptance in time so you will not be attending SD Hacks. We hope to see you next year!   
+
+          if user.status == "Unconfirmed"
+            .small-12.large-4.columns
+              .user-show__question
+            .small-12.large-8.columns.user-show__answer--column.user-show__answer--no-bg
+              button.button.user-show__button--pad(type="button", data-open="user-show-accept-modal") Accept
+              button.button.alert(type="button", data-open="user-show-decline-modal") Decline
+
+      .row.user-show__questions--padded
+        .small-12.large-4.columns
+          h3.user-show__questions--header Your Details
+        .small-8.hide-for-small-only.columns.user-show__questions--edit
+          | Click field to edit
+      .row.user-show__questions
+        .small-12.large-4.columns
+          .user-show__question Gender
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer#gender #{user.gender}
+
+        .small-12.large-4.columns
+          .user-show__question Birthdate
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer#birthdate #{moment(user.birthdate).format('YYYY-MM-DD')}
+
+        .small-12.large-4.columns
+          .user-show__question Phone Number
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer.user-show__answer--phone#phone #{user.phone}
+
+        .small-12.large-4.columns
+          .user-show__question Graduation Year
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer#year #{user.year}
+
+        .small-12.large-4.columns
+          .user-show__question Resume
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer.user-show__answer--file.user-show__answer--not-editable
+            if user.resume.url
+              a#resume(href=user.resume.url) Download
+            form#upload-form(enctype="multipart/form-data", method="POST", action="/api/upload")
+              input(type="file", placeholder="Resume", name="resume", data-validation="mime size", data-validation-max-size="5M", data-validation-allowing="docx, pdf, odt, pages, md, txt, vnd.openxmlformats-officedocument.wordprocessingml")
+              input(type="hidden", name="user_id", value=user._id)
+              input(type="submit", placeholder="Submit", class="button primary", value="Upload")
+              .spinner(style="display: none")
+                .rect1
+                .rect2
+                .rect3
+                .rect4
+                .rect5
+              span#upload-form-error
+
+      .row.user-show__questions--padded
+        .small-12.large-4.columns
+          h3.user-show__questions--header SD Hacks Details
+        .small-8.hide-for-small-only.columns.user-show__questions--edit
+          | Click field to edit
+      .row.user-show__questions
+        .small-12.large-4.columns
+          .user-show__question Preferred Foods
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer#food #{user.food}
+          
+        .small-12.large-4.columns
+          .user-show__question Dietary Restrictions
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer#diet #{user.diet ? user.diet : "None"}
+
+        .small-12.large-4.columns
+          .user-show__question City
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer#travel #{user.travel.outOfState ? user.travel.city : "San Diego"}
+
+        .small-12.large-4.columns
+          .user-show__question T-Shirt Size
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer#shirtSize #{user.shirtSize}
+
+        .small-12.large-4.columns
+          .user-show__question First Hackathon?
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer#firstHackathon #{user.firstHackathon}
+
+        .small-12.large-4.columns
+          .user-show__question Outcome
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer#outcomeStmt #{user.outcomeStmt}
+
+        .small-12.large-4.columns
+          .user-show__question Desired Teammates
+        .small-12.large-8.columns.user-show__answer--column
+          .user-show__answer.user-show__answer--not-editable
+            .row
+              - var n = 0
+              while n < 3
+                .small-12.columns.user-show__editable(id="teammate-#{n}")
+                  | #{user.teammates[n] ? user.teammates[n] : "Desired Teammate #" + (n+1)}
+                - n++
+
+  if user.status == "Unconfirmed"
+    include ../../mixins/modals/users-show-accept
+    include ../../mixins/modals/users-show-decline
+
+  script(type='text/javascript').
+    var user_id = '#{user._id}';

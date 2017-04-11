@@ -1,0 +1,43 @@
+.live-content {
+  &__main {
+    color: $white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 
+    0 -1px 5px rgba(0, 0, 0, 0.7),
+    0 5px 10px rgba(0, 0, 0, 0.5);
+
+    @media #{$small-only} {
+      font-size: 28px;
+    }
+  }
+
+  &__sub {
+    @media #{$small-only} {
+      font-size: 24px;
+      padding-bottom: 5%;
+    }
+    color: $warning-color;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 
+    0 -1px 3px rgba(0, 0, 0, 0.7), 
+    0 2px 7px rgba(0, 0, 0, 0.5);
+  }
+
+  &__header {
+    background: linear-gradient(rgba(61, 163, 163, 0.4), rgba(10, 10, 115, 0.4)), url("/assets/img/live-background.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 80px;
+
+    @media #{$small-only} {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+  }
+}
