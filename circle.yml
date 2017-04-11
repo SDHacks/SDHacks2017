@@ -16,7 +16,7 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: sdhacks2017
+      appname: sdhacks2017-development
   production:
     branch: release
     heroku:
