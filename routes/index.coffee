@@ -1,8 +1,9 @@
 # App Routes
 module.exports = (app, config) ->
-  User = require('../entities/users/model')
+  User = require '../entities/users/model'
 
-  auth = require('express-jwt') {secret: config.USER_SECRET, userProperty: 'payload'}
+  auth = require('express-jwt') { secret: config.USER_SECRET, \
+    userProperty: 'payload' }
 
   # Basic
   app.get '/', (req, res) ->
@@ -15,10 +16,10 @@ module.exports = (app, config) ->
   # Email confirm
   app.get '/confirm/:id', (req, res) ->
     # Confirm the email
-    User.update({'_id': req.params.id}, {confirmed: true}, (err, user) ->
+    User.update({ '_id': req.params.id }, { confirmed: true }, (err, user) ->
       if err
         res.status 500
-        return res.render 'error.jade', {error: 'User does not exist'}
+        return res.render 'error.jade', { error: 'User does not exist' }
 
       # Redirect to the profile
       res.redirect('/users/' + req.params.id)
@@ -59,7 +60,8 @@ module.exports = (app, config) ->
         'target': '_blank'
       }
     }
-    res.render 'live/' + req.params.page + '.jade', {page: req.params.page, menu: menu}
+    res.render 'live/' + req.params.page + '.jade', \
+      { page: req.params.page, menu: menu }
 
   # Live site (index)
   app.get '/live', (req, res) ->

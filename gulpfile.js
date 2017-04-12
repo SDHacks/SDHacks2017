@@ -100,6 +100,7 @@ gulp.task('nodemon', function() {
   nodemon({
     script: 'server.js',
     ext: 'js coffee',
-    env: { 'NODE_ENV': 'development' }
+    env: { 'NODE_ENV': 'development' },
+    nodeArgs: ["--debug-brk=5858", "--nolazy"],
   });
 });

@@ -3,7 +3,7 @@ mongoose.Promise = require('q').Promise
 timestamps = require('mongoose-timestamp')
 softDelete = require('mongoose-softdelete')
 
-require('dotenv').config();
+require('dotenv').config()
 Schema = mongoose.Schema
 db = mongoose.createConnection(process.env.MONGODB_URI)
 

@@ -6,7 +6,7 @@ S3 = require('mongoose-crate-s3')
 jwt = require('jsonwebtoken')
 softDelete = require('mongoose-softdelete')
 
-require('dotenv').config();
+require('dotenv').config()
 Schema = mongoose.Schema
 db = mongoose.createConnection(process.env.MONGODB_URI)
 
@@ -35,7 +35,8 @@ UsersSchema = new Schema({
     trim: true,
     lowercase: true,
     unique: true,
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "You must use a valid email"]
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, \
+    "You must use a valid email"]
   },
   phone: {
     type: Number,
@@ -99,15 +100,17 @@ UsersSchema = new Schema({
   },
   firstHackathon: Boolean,
   outcomeStmt: String, #What they hope their outcome of the hackathon will be
-  teammates: [{type: String, match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "You must use a valid email"]}],
+  teammates: [{ type: String, match: \
+    [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, \
+    "You must use a valid email"] }],
   confirmed: {
-    type: Boolean, 
+    type: Boolean,
     default: false
   },
   #Rejected, Unconfirmed, Confirmed, Declined, Late, and Waitlisted
   status: {
-    type: String, 
-    trim: true, 
+    type: String,
+    trim: true,
   },
   checkedIn: {
     type: Boolean,
@@ -135,8 +138,8 @@ UsersSchema.plugin(crate, {
 })
 
 UsersSchema.methods.generateJwt = () ->
-  expiry = new Date();
-  expiry.setDate(expiry.getDate() + 7);
+  expiry = new Date()
+  expiry.setDate expiry.getDate() + 7
 
   return jwt.sign({
     _id: this._id,
@@ -160,6 +163,6 @@ UsersSchema.methods.generateJwt = () ->
     outcomeStmt: this.outcomeStmt,
     teammates: this.teammates,
     exp: parseInt(expiry.getTime() / 1000),
-  }, process.env.USER_SECRET);
+  }, process.env.USER_SECRET)
 
 module.exports = db.model('User', UsersSchema)

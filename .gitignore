@@ -21,3 +21,4 @@ build/config.gypi
 public/
 acceptances/
 *.csv
+.vscode/
