@@ -63,6 +63,7 @@
     "node-uuid": "^1.4.7",
     "nodemailer": "^2.5.0",
     "nodemon": "1.9.2",
+    "passport": "^0.3.2",
     "password-generator": "^2.0.2",
     "q": "^1.4.1",
     "replace": "0.3.0",

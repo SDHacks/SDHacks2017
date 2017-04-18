@@ -20,6 +20,7 @@
   var device = require('express-device');
   var mailer = require('nodemailer');
   var sslRedirect = require('heroku-ssl-redirect');
+  var passport = require('passport');
 
   require('dotenv').config({silent: process.env.NODE_ENV !== 'development'});
 
@@ -27,6 +28,7 @@
 
   //Create workers on all the threads
   if (process.env.NODE_ENV === 'development') {
+    // Don't multithread for debugging ease
     start();
   } else {
     throng({
