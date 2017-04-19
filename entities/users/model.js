@@ -1,16 +1,16 @@
-mongoose = require('mongoose')
-findOrCreate = require('mongoose-findorcreate')
-timestamps = require('mongoose-timestamp')
-crate = require('mongoose-crate')
-S3 = require('mongoose-crate-s3')
-jwt = require('jsonwebtoken')
-softDelete = require('mongoose-softdelete')
+import mongoose from 'mongoose';
+import findOrCreate from 'mongoose-findorcreate';
+import timestamps from 'mongoose-timestamp';
+import crate from 'mongoose-crate';
+import S3 from 'mongoose-crate-s3';
+import jwt from 'jsonwebtoken';
+import softDelete from 'mongoose-softdelete';
 
-require('dotenv').config()
-Schema = mongoose.Schema
-db = mongoose.createConnection(process.env.MONGODB_URI)
+require('dotenv').config();
+let { Schema } = mongoose;
+let db = mongoose.createConnection(process.env.MONGODB_URI);
 
-UsersSchema = new Schema({
+let UsersSchema = new Schema({
   firstName: {
     type: String,
     trim: true,
@@ -35,7 +35,7 @@ UsersSchema = new Schema({
     trim: true,
     lowercase: true,
     unique: true,
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, \
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 
     "You must use a valid email"]
   },
   phone: {
@@ -99,15 +99,15 @@ UsersSchema = new Schema({
     default: false
   },
   firstHackathon: Boolean,
-  outcomeStmt: String, #What they hope their outcome of the hackathon will be
-  teammates: [{ type: String, match: \
-    [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, \
+  outcomeStmt: String, //What they hope their outcome of the hackathon will be
+  teammates: [{ type: String, match: 
+    [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 
     "You must use a valid email"] }],
   confirmed: {
     type: Boolean,
     default: false
   },
-  #Rejected, Unconfirmed, Confirmed, Declined, Late, and Waitlisted
+  //Rejected, Unconfirmed, Confirmed, Declined, Late, and Waitlisted
   status: {
     type: String,
     trim: true,
@@ -116,12 +116,12 @@ UsersSchema = new Schema({
     type: Boolean,
     default: false
   }
-})
+});
 
-UsersSchema.plugin(require('mongoose-sanitizer'))
-UsersSchema.plugin(findOrCreate)
-UsersSchema.plugin(timestamps)
-UsersSchema.plugin(softDelete)
+UsersSchema.plugin(require('mongoose-sanitizer'));
+UsersSchema.plugin(findOrCreate);
+UsersSchema.plugin(timestamps);
+UsersSchema.plugin(softDelete);
 UsersSchema.plugin(crate, {
   storage: new S3({
     key: process.env.S3_KEY,
@@ -129,17 +129,18 @@ UsersSchema.plugin(crate, {
     bucket: process.env.S3_BUCKET,
     acl: 'public-read',
     region: 'us-west-1',
-    path: (attachment) ->
-      'resumes/' + attachment.name
+    path(attachment) {
+      return `resumes/${attachment.name}`;
+    }
   }),
   fields: {
     resume: {}
   }
-})
+});
 
-UsersSchema.methods.generateJwt = () ->
-  expiry = new Date()
-  expiry.setDate expiry.getDate() + 7
+UsersSchema.methods.generateJwt = function() {
+  let expiry = new Date();
+  expiry.setDate(expiry.getDate() + 7);
 
   return jwt.sign({
     _id: this._id,
@@ -163,6 +164,7 @@ UsersSchema.methods.generateJwt = () ->
     outcomeStmt: this.outcomeStmt,
     teammates: this.teammates,
     exp: parseInt(expiry.getTime() / 1000),
-  }, process.env.USER_SECRET)
+  }, process.env.USER_SECRET);
+};
 
-module.exports = db.model('User', UsersSchema)
+export default db.model('User', UsersSchema);

@@ -1,13 +1,13 @@
-mongoose = require('mongoose')
-mongoose.Promise = require('q').Promise
-timestamps = require('mongoose-timestamp')
-softDelete = require('mongoose-softdelete')
+import mongoose from 'mongoose';
+mongoose.Promise = require('q').Promise;
+import timestamps from 'mongoose-timestamp';
+import softDelete from 'mongoose-softdelete';
 
-require('dotenv').config()
-Schema = mongoose.Schema
-db = mongoose.createConnection(process.env.MONGODB_URI)
+require('dotenv').config();
+let { Schema } = mongoose;
+let db = mongoose.createConnection(process.env.MONGODB_URI);
 
-SponsorsSchema = new Schema({
+let SponsorsSchema = new Schema({
   companyName: {
     type: String,
     trim: true,
@@ -43,10 +43,10 @@ SponsorsSchema = new Schema({
       required: false
     }
   }]
-})
+});
 
-SponsorsSchema.plugin(require('mongoose-sanitizer'))
-SponsorsSchema.plugin(timestamps)
-SponsorsSchema.plugin(softDelete)
+SponsorsSchema.plugin(require('mongoose-sanitizer'));
+SponsorsSchema.plugin(timestamps);
+SponsorsSchema.plugin(softDelete);
 
-module.exports = db.model('Sponsor', SponsorsSchema)
+export default db.model('Sponsor', SponsorsSchema);
