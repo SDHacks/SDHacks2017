@@ -4,14 +4,14 @@ import timestamps from 'mongoose-timestamp';
 import softDelete from 'mongoose-softdelete';
 
 require('dotenv').config();
-let { Schema } = mongoose;
+let {Schema} = mongoose;
 let db = mongoose.createConnection(process.env.MONGODB_URI);
 
 let SponsorsSchema = new Schema({
   companyName: {
     type: String,
     trim: true,
-    required: [true, "You must have a company name"]
+    required: [true, 'You must have a company name']
   },
   login: {
     username: {
@@ -19,19 +19,19 @@ let SponsorsSchema = new Schema({
       trim: true,
       unique: true,
       lowercase: true,
-      required: [true, "You must have a username"]
+      required: [true, 'You must have a username']
     },
     password: {
       type: String,
       trim: true,
-      required: [true, "You must have a password"]
+      required: [true, 'You must have a password']
     }
   },
   downloads: [{
     download_id: {
       type: String,
       trim: true,
-      required: [true, "You must have an associated ID"]
+      required: [true, 'You must have an associated ID']
     },
     url: {
       type: String,

@@ -5,12 +5,11 @@ var gulp   = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     gutil = require('gulp-util'),
-    coffee = require('gulp-coffee'),
     sass = require('gulp-sass'),
     nodemon = require('gulp-nodemon'),
     plumber = require('gulp-plumber'),
     path = require('path');
-    
+
 gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
 gulp.task('test', ['sass', 'jshint', 'package-js']);
 gulp.task('prod', ['sass', 'jshint', 'package-js']);
@@ -39,21 +38,21 @@ var bowerComponents = [
 function handleError(err) {
   gutil.log(err);
   this.emit('end');
-  if(gutil.env.production) {
+  if (gutil.env.production) {
     process.exit(1);
   }
 }
 
 var plumberOptions = {
   errorHandler: handleError
-}
+};
 
 // SaSS Builder
 gulp.task('sass', function () {
   gulp.src('static/assets/scss/sdhacks.scss')
     .pipe(plumber(plumberOptions))
     .pipe(sass({outputStyle: 'compressed'}))
-    .pipe(rename({ suffix: '.min' }))
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('static/assets/css'));
 });
 
@@ -71,7 +70,7 @@ gulp.task('build-js', function() {
     .pipe(plumber(plumberOptions))
     .pipe(gutil.env.production ? gutil.noop() : sourcemaps.init())
       .pipe(uglify())
-      .pipe(rename({ suffix: '.min' }))
+      .pipe(rename({suffix: '.min'}))
     .pipe(concat('app.js'))
     .pipe(gutil.env.production ? gutil.noop() : sourcemaps.write())
     .pipe(gulp.dest('static/assets/js/dist'));
@@ -92,7 +91,8 @@ gulp.task('package-bower', function() {
 gulp.task('watch', function() {
   gulp.watch('static/assets/scss/**/*.scss', ['sass']);
   gulp.watch('static/assets/js/*.js', ['jshint']);
-  gulp.watch(['static/assets/js/*.js', 'static/assets/js/vendor/*.js'], ['package-js']);
+  gulp.watch(['static/assets/js/*.js', 'static/assets/js/vendor/*.js'],
+    ['package-js']);
 });
 
 // Nodemon
@@ -100,7 +100,7 @@ gulp.task('nodemon', function() {
   nodemon({
     script: 'server.js',
     ext: 'js coffee',
-    env: { 'NODE_ENV': 'development' },
-    nodeArgs: ["--debug-brk=5858", "--nolazy"],
+    env: {'NODE_ENV': 'development'},
+    nodeArgs: ['--debug-brk=5858', '--nolazy'],
   });
 });

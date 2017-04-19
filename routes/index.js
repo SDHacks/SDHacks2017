@@ -2,8 +2,8 @@
 export default function(app, config) {
   let User = require('../entities/users/model');
 
-  let auth = require('express-jwt')({ secret: config.USER_SECRET, 
-    userProperty: 'payload' });
+  require('express-jwt')({secret: config.USER_SECRET,
+    userProperty: 'payload'});
 
   // Basic
   app.get('/', (req, res) => res.render('home.jade'));
@@ -14,10 +14,10 @@ export default function(app, config) {
   // Email confirm
   app.get('/confirm/:id', (req, res) =>
     // Confirm the email
-    User.update({ '_id': req.params.id }, { confirmed: true }, function(err, user) {
+    User.update({'_id': req.params.id}, {confirmed: true}, function(err) {
       if (err) {
         res.status(500);
-        return res.render('error.jade', { error: 'User does not exist' });
+        return res.render('error.jade', {error: 'User does not exist'});
       }
 
       // Redirect to the profile
@@ -60,8 +60,8 @@ export default function(app, config) {
         'target': '_blank'
       }
     };
-    return res.render(`live/${req.params.page}.jade`, 
-      { page: req.params.page, menu });
+    return res.render(`live/${req.params.page}.jade`,
+      {page: req.params.page, menu});
   };
 
   // Live site (index)

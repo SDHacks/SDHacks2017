@@ -2,24 +2,25 @@
 import multer from 'multer';
 import crypto from 'crypto';
 import mime from 'mime';
-import { EmailTemplate } from 'email-templates';
+import {EmailTemplate} from 'email-templates';
 
 let storage = multer.diskStorage({
   dest: 'public/uploads/',
   filename(req, file, cb) {
-    return crypto.pseudoRandomBytes(16, (err, raw) => cb(null, raw.toString('hex') + '.' + mime.extension(file.mimetype)));
+    return crypto.pseudoRandomBytes(16, (err, raw) =>
+      cb(null, raw.toString('hex') + '.' + mime.extension(file.mimetype)));
   }
 });
 let upload = multer({
   storage,
   //5MB file size
-  limits: { fileSize: 5 * 1024 * 1024 }
+  limits: {fileSize: 5 * 1024 * 1024}
 });
 
 export default function(app, config, transporter) {
   let User = require('../entities/users/model');
 
-  let confirmSender = transporter.templateSender( 
+  let confirmSender = transporter.templateSender(
     new EmailTemplate('./views/emails/confirmation'),
     {
       from: {
@@ -41,7 +42,7 @@ export default function(app, config, transporter) {
     // Queue up the referall emails
     Array.from(user.teammates).map((referral) =>
       (referral =>
-        User.count({ email: referral }, function(err, c) {
+        User.count({email: referral}, function(err, c) {
           if ((err === null) && (c < 1)) {
             return referSender({
               to: referral,
@@ -58,7 +59,7 @@ export default function(app, config, transporter) {
   app.post('/api/upload', upload.single('resume'), function(req, res) {
     let userError = function() {
       res.status(400);
-      return res.json({ 'error': true });
+      return res.json({'error': true});
     };
 
     if (!req.body.user_id || !req.file) {
@@ -70,7 +71,7 @@ export default function(app, config, transporter) {
         return userError();
       }
 
-      return user.attach('resume', { path: req.file.path }, function(error) {
+      return user.attach('resume', {path: req.file.path}, function(error) {
         if (error) {
           console.error(error);
           console.error('Failed to upload new user resume');
@@ -78,7 +79,7 @@ export default function(app, config, transporter) {
         }
 
         user.save();
-        return res.json({ 'url': user.resume.url });
+        return res.json({'url': user.resume.url});
     });
   });
 });
@@ -91,20 +92,20 @@ export default function(app, config, transporter) {
     req.body.phone = req.body.phone.replace(/\D/g, '');
     if (req.body.phone.length !== 10) {
       res.status(400);
-      return res.json({ 'error': 'Your phone number must be exactly 10 digits' });
+      return res.json({'error': 'Your phone number must be exactly 10 digits'});
     }
 
-    return User.count({ email: req.body.email }, function(err, count) {
+    return User.count({email: req.body.email}, function(err, count) {
       if (count > 0) {
         res.status(400);
-        return res.json({ 'error': 'This email has already been used' });
+        return res.json({'error': 'This email has already been used'});
       }
 
       user.firstName = req.body.firstName;
       user.lastName = req.body.lastName;
-      user.birthdate = req.body.birthdate_year + "-" + 
-        req.body.birthdate_month + "-" + req.body.birthdate_day 
-        + "T00:00:00.000Z"; // Timezone agnostic
+      user.birthdate = req.body.birthdate_year + '-' +
+        req.body.birthdate_month + '-' + req.body.birthdate_day
+        + 'T00:00:00.000Z'; // Timezone agnostic
       user.gender = req.body.gender;
       user.email = req.body.email;
       user.phone = req.body.phone;
@@ -124,15 +125,23 @@ export default function(app, config, transporter) {
       user.firstHackathon = req.body.firstHackathon;
       user.outcomeStmt = req.body.outcomeStmt;
       user.teammates = [];
-      
-      if (req.body.team1) { user.teammates.push(req.body.team1.toLowerCase()); }
-      if (req.body.team2) { user.teammates.push(req.body.team2.toLowerCase()); }
-      if (req.body.team3) { user.teammates.push(req.body.team3.toLowerCase()); }
+
+      if (req.body.team1) {
+        user.teammates.push(req.body.team1.toLowerCase());
+      }
+      if (req.body.team2) {
+        user.teammates.push(req.body.team2.toLowerCase());
+      }
+      if (req.body.team3) {
+        user.teammates.push(req.body.team3.toLowerCase());
+      }
 
       let userError = function(errorMessage, code) {
-        if (code == null) { code = 500; }
+        if (code == null) {
+          code = 500;
+        }
         res.status(code);
-        return res.json({ 'error': errorMessage });
+        return res.json({'error': errorMessage});
       };
 
       let saveUser = function(error) {
@@ -142,7 +151,7 @@ export default function(app, config, transporter) {
           console.log(error);
           return userError('Failed to upload resume');
         }
-        
+
         return user.save(function(err) {
           if (err) {
             if (err.name === 'ValidationError') {
@@ -158,16 +167,16 @@ export default function(app, config, transporter) {
             subject: 'Thank you for your application!'
           }, {
             'user': user,
-            'confirmUrl': req.protocol + '://' + req.get('host') + 
+            'confirmUrl': req.protocol + '://' + req.get('host') +
               '/confirm/' + user._id
           },
-          function(err, info) {
+          function(err) {
             if (err) {
               return userError('Failed to send email confirmation');
             }
 
             res.status(200);
-            res.json({ 'email': user.email });
+            res.json({'email': user.email});
 
             return referTeammates(user, req);
           });
@@ -175,7 +184,7 @@ export default function(app, config, transporter) {
       };
 
       if (req.file) {
-        return user.attach('resume', { path: req.file.path }, saveUser);
+        return user.attach('resume', {path: req.file.path}, saveUser);
       } else {
         return saveUser(null);
       }

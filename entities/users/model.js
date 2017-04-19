@@ -7,53 +7,53 @@ import jwt from 'jsonwebtoken';
 import softDelete from 'mongoose-softdelete';
 
 require('dotenv').config();
-let { Schema } = mongoose;
+let {Schema} = mongoose;
 let db = mongoose.createConnection(process.env.MONGODB_URI);
 
 let UsersSchema = new Schema({
   firstName: {
     type: String,
     trim: true,
-    required: [true, "You must have a first name"]
+    required: [true, 'You must have a first name']
   },
   lastName: {
     type: String,
     trim: true,
-    required: [true, "You must have a last name"]
+    required: [true, 'You must have a last name']
   },
   birthdate: {
     type: Date,
-    required: [true, "You must have a birthdate"]
+    required: [true, 'You must have a birthdate']
   },
   gender: {
     type: String,
-    required: [true, "You must have a gender"]
+    required: [true, 'You must have a gender']
   },
   email: {
     type: String,
-    required: [true, "You must have an email"],
+    required: [true, 'You must have an email'],
     trim: true,
     lowercase: true,
     unique: true,
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 
-    "You must use a valid email"]
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+    'You must use a valid email']
   },
   phone: {
     type: Number,
-    required: [true, "You must have a phone number"]
+    required: [true, 'You must have a phone number']
   },
   university: {
     type: String,
     trim: true,
-    required: [true, "You must have a university"]
+    required: [true, 'You must have a university']
   },
-  majors: [{ type: String, trim: true }],
-  categories: [{ type: String, trim: true }],
+  majors: [{type: String, trim: true}],
+  categories: [{type: String, trim: true}],
   year: {
     type: Number,
-    required: [true, "You must have a graduation year"],
-    min: [2016, "You would have already graduated"],
-    max: [2030, "You are graduating too late"]
+    required: [true, 'You must have a graduation year'],
+    min: [2016, 'You would have already graduated'],
+    max: [2030, 'You are graduating too late']
   },
   github: {
     type: String,
@@ -79,7 +79,7 @@ let UsersSchema = new Schema({
   },
   shirtSize: {
     type: String,
-    required: [true, "You must have a shirt size"]
+    required: [true, 'You must have a shirt size']
   },
   travel: {
     outOfState: {
@@ -100,9 +100,9 @@ let UsersSchema = new Schema({
   },
   firstHackathon: Boolean,
   outcomeStmt: String, //What they hope their outcome of the hackathon will be
-  teammates: [{ type: String, match: 
-    [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 
-    "You must use a valid email"] }],
+  teammates: [{type: String, match:
+    [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+    'You must use a valid email']}],
   confirmed: {
     type: Boolean,
     default: false
