@@ -1,16 +1,16 @@
-import mongoose from 'mongoose';
-import findOrCreate from 'mongoose-findorcreate';
-import timestamps from 'mongoose-timestamp';
-import crate from 'mongoose-crate';
-import S3 from 'mongoose-crate-s3';
-import jwt from 'jsonwebtoken';
-import softDelete from 'mongoose-softdelete';
+var mongoose = require('mongoose');
+var findOrCreate = require('mongoose-findorcreate');
+var timestamps = require('mongoose-timestamp');
+var crate = require('mongoose-crate');
+var S3 = require('mongoose-crate-s3');
+var jwt = require('jsonwebtoken');
+var softDelete = require('mongoose-softdelete');
 
 require('dotenv').config();
-let {Schema} = mongoose;
-let db = mongoose.createConnection(process.env.MONGODB_URI);
+var Schema = mongoose.Schema;
+var db = mongoose.createConnection(process.env.MONGODB_URI);
 
-let UsersSchema = new Schema({
+var UsersSchema = new Schema({
   firstName: {
     type: String,
     trim: true,
@@ -139,7 +139,7 @@ UsersSchema.plugin(crate, {
 });
 
 UsersSchema.methods.generateJwt = function() {
-  let expiry = new Date();
+  var expiry = new Date();
   expiry.setDate(expiry.getDate() + 7);
 
   return jwt.sign({
@@ -167,4 +167,4 @@ UsersSchema.methods.generateJwt = function() {
   }, process.env.USER_SECRET);
 };
 
-export default db.model('User', UsersSchema);
+module.exports = db.model('User', UsersSchema);

@@ -1,15 +1,15 @@
 // App Routes
-export default function(app, config) {
-  let User = require('../entities/users/model');
+module.exports = function(app, config) {
+  var User = require('../entities/users/model');
 
   require('express-jwt')({secret: config.USER_SECRET,
     userProperty: 'payload'});
 
   // Basic
-  app.get('/', (req, res) => res.render('home.jade'));
+  app.get('/', (req, res) => res.render('home.pug'));
 
   // Actual confirmation (link for people who just got selected)
-  app.get('/accepted', (req, res) => res.render('accepted.jade'));
+  app.get('/accepted', (req, res) => res.render('accepted.pug'));
 
   // Email confirm
   app.get('/confirm/:id', (req, res) =>
@@ -17,7 +17,7 @@ export default function(app, config) {
     User.update({'_id': req.params.id}, {confirmed: true}, function(err) {
       if (err) {
         res.status(500);
-        return res.render('error.jade', {error: 'User does not exist'});
+        return res.render('error.pug', {error: 'User does not exist'});
       }
 
       // Redirect to the profile
@@ -25,8 +25,8 @@ export default function(app, config) {
     })
   );
 
-  let loadLivePage = function(req, res) {
-    let menu = {
+  var loadLivePage = function(req, res) {
+    var menu = {
       'updates': {
         'name': 'Updates',
         'url': '/live'
@@ -60,7 +60,7 @@ export default function(app, config) {
         'target': '_blank'
       }
     };
-    return res.render(`live/${req.params.page}.jade`,
+    return res.render(`live/${req.params.page}.pug`,
       {page: req.params.page, menu});
   };
 
@@ -71,5 +71,5 @@ export default function(app, config) {
   });
 
   // Live site (other pages)
-  return app.get('/live/:page', loadLivePage);
+  app.get('/live/:page', loadLivePage);
 };

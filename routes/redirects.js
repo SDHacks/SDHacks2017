@@ -1,16 +1,16 @@
 // Redirect Routes
-export default function(app) {
-  let mentorRedirect = (req, res) =>
+module.exports = function(app) {
+  var mentorRedirect = (req, res) =>
     res.redirect('http://bit.ly/SDHacks2016Volunteer');
 
-  let expoRedirect = (req, res) =>
+  var expoRedirect = (req, res) =>
     res.redirect('http://expo.sdhacks.io');
 
-  let tablesRedirect = (req, res) =>
+  var tablesRedirect = (req, res) =>
     res.redirect('http://expo.sdhacks.io');
 
   app.get('/volunteer', mentorRedirect);
   app.get('/mentor', mentorRedirect);
   app.get('/expo', expoRedirect);
-  return app.get('/tables', tablesRedirect);
+  app.get('/tables', tablesRedirect);
 };

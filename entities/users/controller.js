@@ -1,15 +1,15 @@
-export default function(app, config, referTeammates) {
+module.exports = function(app, config, referTeammates) {
 
   // Model and Config
-  let User = require('./model');
+  var User = require('./model');
 
-  let auth = function(req, res, next) {
-    let unauthorized = function(res) {
+  var auth = function(req, res, next) {
+    var unauthorized = function(res) {
       res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
       return res.sendStatus(401);
     };
 
-    let user = require('basic-auth')(req);
+    var user = require('basic-auth')(req);
 
     if (!user || !user.name || !user.pass) {
       return unauthorized(res);
@@ -21,13 +21,13 @@ export default function(app, config, referTeammates) {
     return unauthorized(res);
   };
 
-  let checkinAuth = function(req, res, next) {
-    let unauthorized = function(res) {
+  var checkinAuth = function(req, res, next) {
+    var unauthorized = function(res) {
       res.set('WWW-Authenticate', 'Basic realm=Checkin Authorization Required');
       return res.sendStatus(401);
     };
 
-    let user = require('basic-auth')(req);
+    var user = require('basic-auth')(req);
 
     if (!user || !user.name || !user.pass) {
       return unauthorized(res);
@@ -43,15 +43,15 @@ export default function(app, config, referTeammates) {
   app.get('/users/admin', auth, (req, res) =>
     User.find({deleted: {$ne: true}}).sort({createdAt: -1})
     .exec(function(err, users) {
-      let statuses = {};
-      for (let user of Array.from(users)) {
+      var statuses = {};
+      for (var user of Array.from(users)) {
         if (statuses[user.status]) {
           statuses[user.status]++;
         } else {
           statuses[user.status] = 1;
         }
       }
-      return res.render('entity_views/users/admin.jade',
+      return res.render('entity_views/users/admin.pug',
         {users, statusCounts: statuses});
     })
   );
@@ -59,12 +59,12 @@ export default function(app, config, referTeammates) {
   app.get('/users/admin/waitlist', auth, (req, res) =>
     User.find({deleted: {$ne: true}, status: 'Waitlisted'})
     .sort({createdAt: 1}).exec((err, users) =>
-      res.render('entity_views/users/waitlist.jade', {users}))
+      res.render('entity_views/users/waitlist.pug', {users}))
   );
 
   app.get('/users/admin/checkin', checkinAuth, (req, res) =>
     User.find({deleted: {$ne: true}, status: 'Confirmed'})
-    .exec((err, users) => res.render('entity_views/users/checkin.jade',
+    .exec((err, users) => res.render('entity_views/users/checkin.pug',
       {users}))
   );
 
@@ -119,7 +119,7 @@ export default function(app, config, referTeammates) {
 
   // Edit
   app.post('/users/:id/edit', function(req, res) {
-    let trackEdit = (user, field, from, to) =>
+    var trackEdit = (user, field, from, to) =>
       console.log(`/users/edit: User '${user.firstName} ${user.lastName} 
         changed field ${field} from ${from} to ${to}`);
     ;
@@ -134,12 +134,12 @@ export default function(app, config, referTeammates) {
       }
 
       // Make rules for certain fields
-      let originalValue = req.body.value;
-      let sendReferral = false;
+      var originalValue = req.body.value;
+      var sendReferral = false;
 
       // Teammates
       if (req.body.id.indexOf('teammate') === 0) {
-        let teammateId = req.body.id.slice(-1);
+        var teammateId = req.body.id.slice(-1);
         trackEdit(user, req.body.id, user.teammates[teammateId],
           req.body.value);
         // Ensure they're not adding a new email

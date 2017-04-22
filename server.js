@@ -1,26 +1,22 @@
 (function() {
   'use strict';
-  // Module Dependencies
-  require('coffee-script');
-  require('coffee-script/register');
-
-  var express = require('express');
-  var http = require('http');
-  var path = require('path');
-  var favicon = require('serve-favicon');
-  var logger = require('morgan');
   var bodyParser = require('body-parser');
-  var methodOverride = require('method-override');
-  var staticDir = require('serve-static');
-  var errorHandler = require('errorhandler');
-  var helmet = require('helmet');
-  var throng = require('throng');
   var cookieParser = require('cookie-parser');
-  var flash = require('connect-flash');
   var device = require('express-device');
+  var errorHandler = require('errorhandler');
+  var express = require('express');
+  var favicon = require('serve-favicon');
+  var flash = require('connect-flash');
+  var helmet = require('helmet');
+  var http = require('http');
+  var logger = require('morgan');
   var mailer = require('nodemailer');
-  var sslRedirect = require('heroku-ssl-redirect');
+  var methodOverride = require('method-override');
+  var path = require('path');
   var passport = require('passport');
+  var sslRedirect = require('heroku-ssl-redirect');
+  var staticDir = require('serve-static');
+  var throng = require('throng');
 
   require('dotenv').config({silent: process.env.NODE_ENV !== 'development'});
 
@@ -64,7 +60,7 @@
 
     // all environments
     app.set('views', path.join(__dirname, 'views'));
-    app.set('view engine', 'jade');
+    app.set('view engine', 'pug');
     app.use(favicon(path.join(__dirname, 'static/assets/img/favicon.png')));
     if (process.env.NODE_ENV === 'development') {
       app.use(logger('dev'));

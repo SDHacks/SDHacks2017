@@ -1,13 +1,13 @@
-export default function(app, config) {
-  let generatePassword = require('password-generator');
-  let bcrypt = require('bcrypt');
-  let moment = require('moment');
-  let uuid = require('node-uuid');
-  let S3Archiver = require('s3-archiver');
-  let fs = require('fs');
-  let csv = require('fast-csv');
+module.exports = function(app, config) {
+  var generatePassword = require('password-generator');
+  var bcrypt = require('bcrypt');
+  var moment = require('moment');
+  var uuid = require('node-uuid');
+  var S3Archiver = require('s3-archiver');
+  var fs = require('fs');
+  var csv = require('fast-csv');
 
-  let zipper = new S3Archiver({
+  var zipper = new S3Archiver({
     accessKeyId: config.S3_KEY,
     secretAccessKey: config.S3_SECRET,
     region: 'us-west-1',
@@ -18,21 +18,21 @@ export default function(app, config) {
   });
 
   // Model and Config
-  let Sponsor = require('./model');
-  let User = require('../users/model');
+  var Sponsor = require('./model');
+  var User = require('../users/model');
 
-  let passwordLength = 16;
-  let saltRounds = 10;
+  var passwordLength = 16;
+  var saltRounds = 10;
 
-  let exportApplicantInfo = function(users, archive, finalize) {
-    let csvStream = csv.format({headers: true});
+  var exportApplicantInfo = function(users, archive, finalize) {
+    var csvStream = csv.format({headers: true});
 
-    let fileName = __dirname + '/' + process.hrtime()[1] + '.csv';
+    var fileName = __dirname + '/' + process.hrtime()[1] + '.csv';
     //Create a new CSV with the timestamp to store the user information
-    let writableStream = fs.createWriteStream(fileName);
+    var writableStream = fs.createWriteStream(fileName);
     csvStream.pipe(writableStream);
 
-    for (let user of Array.from(users)) {
+    for (var user of Array.from(users)) {
       csvStream.write({
         firstName: user.firstName,
         lastName: user.lastName,
@@ -62,13 +62,13 @@ export default function(app, config) {
     return csvStream.end();
   };
 
-  let auth = function(req, res, next) {
-    let unauthorized = function(res) {
+  var auth = function(req, res, next) {
+    var unauthorized = function(res) {
       res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
       return res.sendStatus(401);
     };
 
-    let user = require('basic-auth')(req);
+    var user = require('basic-auth')(req);
 
     if (!user || !user.name || !user.pass) {
       return unauthorized(res);
@@ -80,14 +80,14 @@ export default function(app, config) {
     return unauthorized(res);
   };
 
-  let sponsorAuth = function(req, res, next) {
-    let unauthorized = function(res) {
+  var sponsorAuth = function(req, res, next) {
+    var unauthorized = function(res) {
       res.set('WWW-Authenticate',
         'Basic realm=Sponsor Authentication Required');
       return res.sendStatus(401);
     };
 
-    let user = require('basic-auth')(req);
+    var user = require('basic-auth')(req);
 
     if (!user || !user.name || !user.pass) {
       return unauthorized(res);
@@ -118,15 +118,16 @@ export default function(app, config) {
           return res.redirect('/');
         }
 
-        return res.render('entity_views/sponsors/show.jade', {sponsor});
+        return res.render('entity_views/sponsors/show.pug', {sponsor});
     })
 );
 
   // Admin
   app.get('/sponsors/admin', auth, function(req, res) {
     Sponsor.find({deleted: {$ne: true}}).sort({createdAt: -1})
-      .exec(function(err, sponsors) {});
-    return res.render('entity_views/sponsors/admin.jade', {sponsors});
+      .exec(function(err, sponsors) {
+        return res.render('entity_views/sponsors/admin.pug', {sponsors});
+      });
 });
 
   // Create
@@ -136,8 +137,8 @@ export default function(app, config) {
       return res.json({'error': true});
     }
 
-    let newSponsor = new Sponsor({companyName: req.body.companyName});
-    let generatedPw = generatePassword(passwordLength, false);
+    var newSponsor = new Sponsor({companyName: req.body.companyName});
+    var generatedPw = generatePassword(passwordLength, false);
 
     return bcrypt.hash(generatedPw, saltRounds, function(err, hash) {
       if (err || (hash == null)) {
@@ -145,7 +146,7 @@ export default function(app, config) {
         return res.json({'error': true});
       }
 
-      let username = req.body.login.toLowerCase().replace(/\s+/g, '');
+      var username = req.body.login.toLowerCase().replace(/\s+/g, '');
       newSponsor.login = {
         username,
         password: hash
@@ -164,7 +165,7 @@ export default function(app, config) {
 
   app.get('/sponsors/applicants', sponsorAuth, function(req, res) {
     // Get the most recent date for sanitized users
-    let sanitizedDate = config.RESUME_SANITIZED;
+    var sanitizedDate = config.RESUME_SANITIZED;
     // Select the fields necessary for sorting and searching
     return User.find(
       {
@@ -194,18 +195,18 @@ export default function(app, config) {
       }
 
       // Create a list of file names to filter by
-      let fileNames = users.filter(user =>
+      var fileNames = users.filter(user =>
         // Ensure a resume has been uploaded
         (user.resume != null) && (user.resume.name != null)).map(user =>
         // Map the names of the resumes
         `resumes/${user.resume.name}`
       );
 
-      let fileName = req.params.username + '-' +
+      var fileName = req.params.username + '-' +
         moment().format('YYYYMMDDHHmmss') + '-' +
         generatePassword(12, false, /[\dA-F]/) + '.zip';
 
-      let downloadId = uuid.v1();
+      var downloadId = uuid.v1();
       res.json({'zipping': downloadId});
       console.log('Zipping started for ', fileNames.length, 'files');
 
@@ -215,7 +216,7 @@ export default function(app, config) {
       return zipper.zipFiles(fileNames, `downloads/${fileName}`, {
         ACL: 'public-read'
       }, function(err, result) {
-        let download = {download_id: downloadId};
+        var download = {download_id: downloadId};
         if (err) {
           console.error(err);
           download.error = true;
@@ -229,7 +230,7 @@ export default function(app, config) {
   );
 
   app.get('/sponsors/download/:id', sponsorAuth, function(req, res) {
-    let download = req.sponsor.downloads.filter(download =>
+    var download = req.sponsor.downloads.filter(download =>
       download.download_id === req.params.id).pop();
     if (download === undefined) {
       return res.json({'error': true});

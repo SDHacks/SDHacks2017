@@ -11,28 +11,33 @@ var gulp   = require('gulp'),
     path = require('path');
 
 gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
+gulp.task('debug', ['package-js', 'sass', 'watch', 'nodemon-debug']);
 gulp.task('test', ['sass', 'jshint', 'package-js']);
 gulp.task('prod', ['sass', 'jshint', 'package-js']);
 
 var bowerComponentPath = 'static/assets/bower/bower_components/';
-var bowerComponents = [
-  path.join(bowerComponentPath, 'jquery/dist/jquery.min.js'),
-  path.join(bowerComponentPath, 'foundation-sites/dist/foundation.min.js'),
-  path.join(bowerComponentPath, 'foundation-sites/dist/plugins/foundation.reveal.js'),
-  path.join(bowerComponentPath, 'foundation-sites/dist/plugins/foundation.dropdownMenu.js'),
-  path.join(bowerComponentPath, 'foundation-sites/dist/plugins/foundation.util.box.js'),
-  path.join(bowerComponentPath, 'foundation-sites/dist/plugins/foundation.util.keyboard.js'),
-  path.join(bowerComponentPath, 'foundation-sites/dist/plugins/foundation.util.motion.js'),
-  path.join(bowerComponentPath, 'foundation-sites/dist/plugins/foundation.util.nest.js'),
-  path.join(bowerComponentPath, 'd3/d3.min.js'),
-  path.join(bowerComponentPath, 'topojson/topojson.min.js'),
-  path.join(bowerComponentPath, 'jquery-throttle-debounce/jquery.ba-throttle-debounce.min.js'),
-  path.join(bowerComponentPath, 'jquery-form-validator/form-validator/jquery.form-validator.min.js'),
-  path.join(bowerComponentPath, 'jquery-form-validator/form-validator/file.js'),
-  path.join(bowerComponentPath, 'jquery-ui/jquery-ui.min.js'),
-  path.join(bowerComponentPath, 'slick-carousel/slick/slick.min.js'),
-  path.join(bowerComponentPath, 'underscore/underscore-min.js')
+var bowerComponents = [];
+var components = [
+  'jquery/dist/jquery.min.js',
+  'foundation-sites/dist/foundation.min.js',
+  'foundation-sites/dist/plugins/foundation.reveal.js',
+  'foundation-sites/dist/plugins/foundation.dropdownMenu.js',
+  'foundation-sites/dist/plugins/foundation.util.box.js',
+  'foundation-sites/dist/plugins/foundation.util.keyboard.js',
+  'foundation-sites/dist/plugins/foundation.util.motion.js',
+  'foundation-sites/dist/plugins/foundation.util.nest.js',
+  'd3/d3.min.js',
+  'topojson/topojson.min.js',
+  'jquery-throttle-debounce/jquery.ba-throttle-debounce.min.js',
+  'jquery-form-validator/form-validator/jquery.form-validator.min.js',
+  'jquery-form-validator/form-validator/file.js',
+  'jquery-ui/jquery-ui.min.js',
+  'slick-carousel/slick/slick.min.js',
+  'underscore/underscore-min.js'
 ];
+bowerComponents = components.map(function(value) {
+  return path.join(bowerComponentPath, value);
+});
 
 // Handle Errors
 function handleError(err) {
@@ -101,6 +106,15 @@ gulp.task('nodemon', function() {
     script: 'server.js',
     ext: 'js coffee',
     env: {'NODE_ENV': 'development'},
-    nodeArgs: ['--debug-brk=5858', '--nolazy'],
+    nodeArgs: ['--harmony_modules']
+  });
+});
+
+gulp.task('nodemon-debug', function() {
+  nodemon({
+    script: 'server.js',
+    ext: 'js coffee',
+    env: {'NODE_ENV': 'development'},
+    nodeArgs: ['--harmony_modules', '--debug-brk=5858', '--nolazy']
   });
 });

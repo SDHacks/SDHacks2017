@@ -1,26 +1,26 @@
 //Api Routes
-import multer from 'multer';
-import crypto from 'crypto';
-import mime from 'mime';
-import {EmailTemplate} from 'email-templates';
+var multer = require('multer');
+var crypto = require('crypto');
+var mime = require('mime');
+var EmailTemplate = require('email-templates').EmailTemplate;
 
-let storage = multer.diskStorage({
+var storage = multer.diskStorage({
   dest: 'public/uploads/',
   filename(req, file, cb) {
     return crypto.pseudoRandomBytes(16, (err, raw) =>
       cb(null, raw.toString('hex') + '.' + mime.extension(file.mimetype)));
   }
 });
-let upload = multer({
+var upload = multer({
   storage,
   //5MB file size
   limits: {fileSize: 5 * 1024 * 1024}
 });
 
-export default function(app, config, transporter) {
-  let User = require('../entities/users/model');
+module.exports = function(app, config, transporter) {
+  var User = require('../entities/users/model');
 
-  let confirmSender = transporter.templateSender(
+  var confirmSender = transporter.templateSender(
     new EmailTemplate('./views/emails/confirmation'),
     {
       from: {
@@ -29,7 +29,7 @@ export default function(app, config, transporter) {
       }
     });
 
-  let referSender = transporter.templateSender(
+  var referSender = transporter.templateSender(
     new EmailTemplate('./views/emails/refer'),
     {
       from: {
@@ -38,7 +38,7 @@ export default function(app, config, transporter) {
       }
     });
 
-  let referTeammates = (user, req) =>
+  var referTeammates = (user, req) =>
     // Queue up the referall emails
     Array.from(user.teammates).map((referral) =>
       (referral =>
@@ -57,7 +57,7 @@ export default function(app, config, transporter) {
   ;
 
   app.post('/api/upload', upload.single('resume'), function(req, res) {
-    let userError = function() {
+    var userError = function() {
       res.status(400);
       return res.json({'error': true});
     };
@@ -85,7 +85,7 @@ export default function(app, config, transporter) {
 });
 
   app.post('/api/register', upload.single('resume'), function(req, res) {
-    let user = new User;
+    var user = new User;
 
     //Form validation
 
@@ -136,7 +136,7 @@ export default function(app, config, transporter) {
         user.teammates.push(req.body.team3.toLowerCase());
       }
 
-      let userError = function(errorMessage, code) {
+      var userError = function(errorMessage, code) {
         if (code == null) {
           code = 500;
         }
@@ -144,7 +144,7 @@ export default function(app, config, transporter) {
         return res.json({'error': errorMessage});
       };
 
-      let saveUser = function(error) {
+      var saveUser = function(error) {
         if (error) {
           //Throw an error
           console.error('Failed to upload resume');
@@ -155,7 +155,7 @@ export default function(app, config, transporter) {
         return user.save(function(err) {
           if (err) {
             if (err.name === 'ValidationError') {
-              for (let field in err.errors) {
+              for (var field in err.errors) {
                 return userError(err.errors[field].message, 400);
               }
             }
@@ -193,5 +193,5 @@ export default function(app, config, transporter) {
 
   // Imports
   require('../entities/users/controller')(app, config, referTeammates);
-  return require('../entities/sponsors/controller')(app, config);
+  require('../entities/sponsors/controller')(app, config);
 };
