@@ -85,10 +85,7 @@
     // Routing
     require('./routes/index')(app, process.env);
     require('./routes/api')(app, process.env, transporter);
-    app.get('*', function(req, res){
-      res.status(404);
-      res.render('error', {'error': 'Page not found'});
-    });
+    require('./routes/admin')(app);
 
     // Error Handling
     // Development only

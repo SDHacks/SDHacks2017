@@ -1,14 +1,14 @@
-var gulp   = require('gulp'),
-    jshint = require('gulp-jshint'),
-    sourcemaps = require('gulp-sourcemaps'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    rename = require('gulp-rename'),
-    gutil = require('gulp-util'),
-    sass = require('gulp-sass'),
-    nodemon = require('gulp-nodemon'),
-    plumber = require('gulp-plumber'),
-    path = require('path');
+var gulp= require('gulp');
+var jshint = require('gulp-jshint');
+var sourcemaps = require('gulp-sourcemaps');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+var gutil = require('gulp-util');
+var sass = require('gulp-sass');
+var nodemon = require('gulp-nodemon');
+var plumber = require('gulp-plumber');
+var path = require('path');
 
 gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
 gulp.task('debug', ['package-js', 'sass', 'watch', 'nodemon-debug']);
@@ -105,8 +105,7 @@ gulp.task('nodemon', function() {
   nodemon({
     script: 'server.js',
     ext: 'js coffee',
-    env: {'NODE_ENV': 'development'},
-    nodeArgs: ['--harmony_modules']
+    env: {'NODE_ENV': 'development'}
   });
 });
 
@@ -115,6 +114,6 @@ gulp.task('nodemon-debug', function() {
     script: 'server.js',
     ext: 'js coffee',
     env: {'NODE_ENV': 'development'},
-    nodeArgs: ['--harmony_modules', '--debug-brk=5858', '--nolazy']
+    nodeArgs: ['--debug=5858', '--nolazy']
   });
 });
