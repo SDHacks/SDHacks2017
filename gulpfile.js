@@ -105,6 +105,9 @@ gulp.task('nodemon', function() {
   nodemon({
     script: 'server.js',
     ext: 'js coffee',
+    ignore: [
+      'static/app/*.*'
+    ],
     env: {'NODE_ENV': 'development'}
   });
 });
@@ -113,6 +116,9 @@ gulp.task('nodemon-debug', function() {
   nodemon({
     script: 'server.js',
     ext: 'js coffee',
+    ignore: [
+      'static/app/*.*'
+    ],
     env: {'NODE_ENV': 'development'},
     nodeArgs: ['--debug=5858', '--nolazy']
   });

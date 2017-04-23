@@ -9,16 +9,18 @@ npm-debug.log
 # Commonly ignored folders
 node_modules
 static/assets/bower/bower_components
-
-sdhacks2016.sublime-project
-sdhacks2016.sublime-workspace
-.env
+public/
+.vscode/
 .DS_Store
 entities/.DS_Store
+
+# Ignore sensitive data
+*.csv
+.env
+acceptances/
+
+# Ignore compiled files
 static/assets/js/dist/
 sdhacks.min.css
 build/config.gypi
-public/
-acceptances/
-*.csv
-.vscode/
+static/assets/dist/
