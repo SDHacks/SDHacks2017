@@ -85,7 +85,7 @@
     // Routing
     require('./routes/index')(app, process.env);
     require('./routes/api')(app, process.env, transporter);
-    require('./routes/admin')(app);
+    require('./routes/admin')(app, process.env);
 
     // Error Handling
     // Development only

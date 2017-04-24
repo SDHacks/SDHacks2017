@@ -89,7 +89,6 @@ module.exports = function(app, config, referTeammates) {
   );
 
   // Destroy
-
   app.get('/users/:id/delete', auth, (req, res) =>
     User.findById(req.params.id, function(e, user) {
       if (e) {
@@ -178,7 +177,7 @@ module.exports = function(app, config, referTeammates) {
     });
   });
 
-  return app.get('/users/:id/accept', (req, res) =>
+  app.get('/users/:id/accept', (req, res) =>
     User.findById(req.params.id, function(e, user) {
       if (e || (user === null)) {
         return res.redirect('/');

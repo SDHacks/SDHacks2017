@@ -8,7 +8,8 @@ var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var nodemon = require('gulp-nodemon');
 var plumber = require('gulp-plumber');
-var webpack = require('gulp-webpack');
+var webpackStream = require('webpack-stream');
+var webpack = require('webpack');
 var path = require('path');
 
 gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
@@ -56,7 +57,7 @@ var plumberOptions = {
 // Webpack Builder
 gulp.task('webpack', function() {
   gulp.src('static/app/main.js')
-    .pipe(webpack(require('./webpack.config.prod.js')))
+    .pipe(webpackStream(require('./webpack.config.prod.js'), webpack))
     .pipe(gulp.dest('static/assets/dist/'));
 });
 

@@ -6,9 +6,11 @@
   "plugins": [
     "react"
   ],
+  "parser": "babel-eslint",
   "parserOptions": {
-      "ecmaVersion": 6,
+      "ecmaVersion": 7,
       "ecmaFeatures": {
+        "classes": true,
         "jsx": true
       },
       "sourceType": "module"

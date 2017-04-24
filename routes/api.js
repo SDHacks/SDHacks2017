@@ -80,9 +80,9 @@ module.exports = function(app, config, transporter) {
 
         user.save();
         return res.json({'url': user.resume.url});
+      });
     });
   });
-});
 
   app.post('/api/register', upload.single('resume'), function(req, res) {
     var user = new User;

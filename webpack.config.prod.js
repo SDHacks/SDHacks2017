@@ -22,15 +22,16 @@ module.exports = {
       debug: false
     }),
     new webpack.optimize.UglifyJsPlugin({
-      beautify: false,
       mangle: {
           screw_ie8: true,
           keep_fnames: true
       },
       compress: {
-          screw_ie8: true
+          screw_ie8: true,
+          warnings: false
       },
-      comments: false
+      comments: false,
+      minimize: true
     })
   ],
   module: {
@@ -42,7 +43,7 @@ module.exports = {
       }, {
         loader: 'babel-loader',
         options: {
-          'presets': ['react', 'es2015', 'stage-0', 'react-hmre']
+          'presets': ['react', 'es2015', 'stage-0']
         }
       }]
     }, {
