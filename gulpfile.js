@@ -1,5 +1,5 @@
 var gulp= require('gulp');
-var jshint = require('gulp-jshint');
+var eslint = require('gulp-eslint');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -8,12 +8,13 @@ var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var nodemon = require('gulp-nodemon');
 var plumber = require('gulp-plumber');
+var webpack = require('gulp-webpack');
 var path = require('path');
 
 gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
 gulp.task('debug', ['package-js', 'sass', 'watch', 'nodemon-debug']);
-gulp.task('test', ['sass', 'jshint', 'package-js']);
-gulp.task('prod', ['sass', 'jshint', 'package-js']);
+gulp.task('test', ['webpack', 'sass', 'eslint', 'package-js']);
+gulp.task('prod', ['webpack', 'sass', 'eslint', 'package-js']);
 
 var bowerComponentPath = 'static/assets/bower/bower_components/';
 var bowerComponents = [];
@@ -52,6 +53,13 @@ var plumberOptions = {
   errorHandler: handleError
 };
 
+// Webpack Builder
+gulp.task('webpack', function() {
+  gulp.src('static/app/main.js')
+    .pipe(webpack(require('./webpack.config.prod.js')))
+    .pipe(gulp.dest('static/assets/dist/'));
+});
+
 // SaSS Builder
 gulp.task('sass', function () {
   gulp.src('static/assets/scss/sdhacks.scss')
@@ -62,11 +70,11 @@ gulp.task('sass', function () {
 });
 
 // JS Linter
-gulp.task('jshint', function() {
+gulp.task('eslint', function() {
   gulp.src(['static/app/**/*.js', 'static/assets/js/*.js'])
     .pipe(plumber(plumberOptions))
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(eslint())
+    .pipe(eslint.format());
 });
 
 // JS Builder
