@@ -21,9 +21,8 @@ module.exports = function(app) {
     app.use(require('webpack-hot-middleware')(compiler, {
       publicPath: '/',
     }));
-  } else {
-    app.use('/assets/dist', express.static(__dirname + '/static/assets/dist'));
   }
+
   app.get('/admin', function response(req, res) {
     return res.render('admin/home');
   });

@@ -51,7 +51,7 @@ module.exports = function(app, config) {
       },
       'devpost': {
         'name': 'Devpost',
-        'url': '//sdhacks2016.devpost.com',
+        'url': '//sdhacks2017.devpost.com',
         'target': '_blank'
       },
       'discord': {

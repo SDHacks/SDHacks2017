@@ -46,7 +46,7 @@ module.exports = function(app, config, transporter) {
           if ((err === null) && (c < 1)) {
             return referSender({
               to: referral,
-              subject: user.firstName + '\'s invitation to SD Hacks 2016'
+              subject: user.firstName + '\'s invitation to SD Hacks 2017'
             }, {
               'user': user,
               'referUrl': req.protocol + '://' + req.get('host')

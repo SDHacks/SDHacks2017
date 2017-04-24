@@ -52,7 +52,7 @@ var UsersSchema = new Schema({
   year: {
     type: Number,
     required: [true, 'You must have a graduation year'],
-    min: [2016, 'You would have already graduated'],
+    min: [2017, 'You would have already graduated'],
     max: [2030, 'You are graduating too late']
   },
   github: {
