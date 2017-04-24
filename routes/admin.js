@@ -50,7 +50,7 @@ module.exports = function(app, config) {
   app.get('/admin/users', auth, (req, res) =>
     User.find({deleted: {$ne: true}}).sort({createdAt: -1})
     .exec(function(err, users) {
-      return res.json({users});
+      return res.json(users);
     })
   );
 };

@@ -1,30 +1,40 @@
 import React from 'react';
 import User from './User.js';
-import {DeliveryService, Store} from 'react-at-rest';
+import nocache from 'superagent-no-cache';
+import request from 'superagent';
+import pref from 'superagent-prefix';
 
-Store.API_PATH_PREFIX = 'admin';
+var prefix = pref('/admin');
 
-export default class App extends DeliveryService {
+
+export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.UserStore = new Store('users');
+    this.state = {loaded: false};
   }
-  bindResources() {
-    this.subscribeAll(this.UserStore);
+  componentWillMount() {
+    request
+      .get('/users')
+      .use(prefix)
+      .use(nocache)
+      .end((err, res) => {
+        this.state.users = res.body;
+        this.state.loaded = true;
+      });
   }
   renderUser(user) {
-    return <div key={user.firstName}>{user.firstName}</div>;
+    return <div key={user._id}>{user.firstName}</div>;
   }
   render() {
-    if (!this.state.loaded) {
+    if (!this.state) {
       return <div>Loading...</div>;
     }
 
+    let users = this.state.users.map(this.renderUser);
+
     return (
       <div>
-        {this.state.users.map(function(user) {
-          return this.renderUser(user);
-        }, this)}
+        {users}
       </div>
     );
   }
