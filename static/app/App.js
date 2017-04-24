@@ -10,7 +10,11 @@ var prefix = pref('/admin');
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {loaded: false};
+  }
+  getInitialState() {
+    return {
+      loaded: false
+    };
   }
   componentWillMount() {
     request
@@ -18,19 +22,19 @@ export default class App extends React.Component {
       .use(prefix)
       .use(nocache)
       .end((err, res) => {
-        this.state.users = res.body;
-        this.state.loaded = true;
+        this.users = res.body;
+        this.setState({loaded: true});
       });
   }
   renderUser(user) {
     return <div key={user._id}>{user.firstName}</div>;
   }
   render() {
-    if (!this.state) {
+    if (!this.state || !this.state.loaded) {
       return <div>Loading...</div>;
     }
 
-    let users = this.state.users.map(this.renderUser);
+    let users = this.users.map(this.renderUser);
 
     return (
       <div>
