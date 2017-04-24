@@ -13,7 +13,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/static/assets/dist'),
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: '/assets/dist/',
     hotUpdateChunkFilename: 'hot/hot-update.js',
     hotUpdateMainFilename: 'hot/hot-update.json'
   },
