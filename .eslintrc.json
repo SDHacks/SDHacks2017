@@ -1,9 +1,16 @@
 {
   "env": {
-    "node": true
+    "node": true,
+    "browser": true
   },
+  "plugins": [
+    "react"
+  ],
   "parserOptions": {
       "ecmaVersion": 6,
+      "ecmaFeatures": {
+        "jsx": true
+      },
       "sourceType": "module"
   },
   "rules": {

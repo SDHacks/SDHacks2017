@@ -3,16 +3,19 @@
 var path = require('path');
 var webpack = require('webpack');
 
+
 module.exports = {
   devtool: 'eval-source-map',
   entry: [
-    'webpack/hot/dev-server',
-    path.join(__dirname, 'static/app/main.js')
+    'webpack-hot-middleware/client?timeout=2000&path=/__webpack_hmr',
+    path.join(__dirname, 'static/app/main.js'),
   ],
   output: {
     path: path.join(__dirname, '/static/assets/dist'),
     filename: '[name].js',
-    publicPath: '/'
+    publicPath: '/assets/dist/',
+    hotUpdateChunkFilename: 'hot/hot-update.js',
+    hotUpdateMainFilename: 'hot/hot-update.json'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -26,10 +29,14 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        'presets': ['react', 'es2015', 'stage-0', 'react-hmre']
-      }
+      use: [{
+        loader: 'react-hot-loader'
+      }, {
+        loader: 'babel-loader',
+        options: {
+          'presets': ['react', 'es2015', 'stage-0', 'react-hmre']
+        }
+      }]
     }, {
       test: /\.json?$/,
       loader: 'json'

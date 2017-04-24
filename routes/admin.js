@@ -1,15 +1,13 @@
 // Webpack Serving
 module.exports = function(app) {
-  const webpack = require('webpack');
-  const webpackMiddleware = require('webpack-dev-middleware');
-  const webpackHotMiddleware = require('webpack-hot-middleware');
-  const config = require('../webpack.config.js');
-
   if (process.env.NODE_ENV === 'development') {
+    const webpack = require('webpack');
+    const config = require('../webpack.config.js');
+
     const compiler = webpack(config);
-    const middleware = webpackMiddleware(compiler, {
+    app.use(require('webpack-dev-middleware')(compiler, {
+      hot: false,
       publicPath: config.output.publicPath,
-      contentBase: 'src',
       stats: {
         colors: true,
         hash: false,
@@ -18,13 +16,13 @@ module.exports = function(app) {
         chunkModules: false,
         modules: false
       }
-    });
+    }));
 
-    app.use(middleware);
-    //app.use(webpackHotMiddleware(compiler));
-  } else {
-    app.use(express.static(__dirname + '/static/assets/dist'));
+    app.use(require('webpack-hot-middleware')(compiler, {
+      publicPath: '/',
+    }));
   }
+
   app.get('/admin', function response(req, res) {
     return res.render('admin/home');
   });
