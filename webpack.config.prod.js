@@ -51,7 +51,7 @@ module.exports = {
       loader: 'json-loader'
     }, {
       test: /\.css$/,
-      loader: 'style-loader!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
+      loader: 'style-loader!css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]'
     }, {
       include: /\.pug/,
       loader: ['raw-loader', 'pug-html-loader']
