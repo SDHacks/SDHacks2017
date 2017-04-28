@@ -1,8 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import User from './User.js';
 import nocache from 'superagent-no-cache';
 import request from 'superagent';
 import pref from 'superagent-prefix';
+import ReactTable from 'react-table';
+
+import 'react-table/react-table.css';
 
 var prefix = pref('/admin');
 
@@ -10,9 +14,7 @@ var prefix = pref('/admin');
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-  }
-  getInitialState() {
-    return {
+    this.state = {
       loaded: false
     };
   }
@@ -26,20 +28,20 @@ export default class App extends React.Component {
         this.setState({loaded: true});
       });
   }
-  renderUser(user) {
-    return <div key={user._id}>{user.firstName}</div>;
+  getColumns() {
+    return [{
+      header: 'First Name',
+      accessor: 'firstName'
+    }];
   }
   render() {
     if (!this.state || !this.state.loaded) {
       return <div>Loading...</div>;
     }
 
-    let users = this.users.map(this.renderUser);
-
-    return (
-      <div>
-        {users}
-      </div>
-    );
+    return (<ReactTable
+      data={this.users}
+      columns={this.getColumns()}>
+    </ReactTable>);
   }
 }
