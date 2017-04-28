@@ -2,6 +2,8 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var combineLoaders = require('webpack-combine-loaders');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -32,6 +34,10 @@ module.exports = {
       },
       comments: false,
       minimize: true
+    }),
+    new ExtractTextPlugin({
+      filename: 'styles.css',
+      allChunks: true
     })
   ],
   module: {
@@ -39,8 +45,6 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: /node_modules/,
       use: [{
-        loader: 'react-hot-loader'
-      }, {
         loader: 'babel-loader',
         options: {
           'presets': ['react', 'es2015', 'stage-0']
@@ -51,7 +55,12 @@ module.exports = {
       loader: 'json-loader'
     }, {
       test: /\.css$/,
-      loader: 'style-loader!css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]'
+      loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: combineLoaders([{
+          loader: 'css-loader'
+        }])
+      })
     }, {
       include: /\.pug/,
       loader: ['raw-loader', 'pug-html-loader']
