@@ -1,5 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App.js';
+import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {loadAllUsers} from './data/Users';
+import {addUsers} from './actions';
+import reducer from './reducers';
+import App from './components/App.js';
+
+let store = createStore(reducer);
+
+loadAllUsers().end((err, res) => {
+  var users = res.body;
+  store.dispatch(addUsers(users));
+});
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
