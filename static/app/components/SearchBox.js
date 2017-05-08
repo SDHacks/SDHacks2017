@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 
 class SearchBox extends React.Component {
   render() {
-    return (<div>
-      Search:&nbsp;
-      <input
-      onChange={(e) => this.props.updateFilter(e.target.value)}
-      type="text"
-      value={this.props.filter}>
-      </input>
+    return (
+    <div className="row">
+      <div className="small-1 columns">
+        <label className="text-right middle">Search</label>
+      </div>
+      <div className="small-3 columns end">
+        <input
+        onChange={(e) => this.props.updateFilter(e.target.value)}
+        type="text"
+        value={this.props.filter}>
+        </input>
+      </div>
     </div>);
   }
 }

@@ -5,9 +5,11 @@ import VisibleUserList from '../containers/VisibleUserList';
 export default class App extends React.Component {
   render() {
 		return (
-		<div>
+    <div className="container">
       <VisibleSearchBox />
-      <VisibleUserList />
-		</div>);
+      <div className="row">
+        <VisibleUserList />
+      </div>
+    </div>);
   }
 }
