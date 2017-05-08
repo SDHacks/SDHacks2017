@@ -1,14 +1,15 @@
+const initialState = [];
+
 const user = (state, action) => {
   switch (action.type) {
     case 'ADD_USERS':
-    console.log("Adding users reduced");
       return action.users;
     default:
       return state;
   }
 };
 
-const users = (state = [], action) => {
+const users = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_USERS':
       return [
