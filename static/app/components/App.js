@@ -4,12 +4,12 @@ import VisibleUserList from '../containers/VisibleUserList';
 
 export default class App extends React.Component {
   render() {
-		return (
-    <div className="container">
-      <VisibleSearchBox />
-      <div className="row">
-        <VisibleUserList />
-      </div>
-    </div>);
+    return (
+      <div className="container">
+        <VisibleSearchBox />
+        <div className="row">
+          <VisibleUserList />
+        </div>
+      </div>);
   }
 }

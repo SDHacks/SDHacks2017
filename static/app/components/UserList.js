@@ -12,8 +12,8 @@ const UserList =({users}) => (
       </tr>
       {users.map(user =>
         <User
-        key={user._id}
-        {...user}
+          key={user._id}
+          {...user}
         />
       )}
     </tbody>
