@@ -3,15 +3,21 @@ import PropTypes from 'prop-types';
 import User from './User';
 
 const UserList =({users}) => (
-  <ul>
-    <li><b>FirstName LastName - ID</b></li>
-    {users.map(user =>
-      <User
-      key={user._id}
-      {...user}
-      />
-    )}
-  </ul>
+  <table>
+    <tbody>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+      {users.map(user =>
+        <User
+        key={user._id}
+        {...user}
+        />
+      )}
+    </tbody>
+  </table>
 );
 
 UserList.propTypes = {

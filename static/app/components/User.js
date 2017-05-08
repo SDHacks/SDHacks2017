@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const User = ({_id, firstName, lastName}) => (
-  <li>
-    {firstName} {lastName} - {_id}
-  </li>
+  <tr>
+    <td>{_id}</td>
+    <td>{firstName}</td>
+    <td>{lastName}</td>
+  </tr>
 );
 
 User.propTypes = {
