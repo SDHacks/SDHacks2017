@@ -1,0 +1,64 @@
+footer {
+  border-image: url(/assets/img/hexagon_border-dark-grey.svg) 250 0 215 repeat;
+  border-style: solid;
+  border-bottom-width: 0px !important;
+  background-clip: padding-box;
+  background-color: #313131;
+  text-align: center;
+  color: $white;
+  padding-bottom: 20px;
+  bottom: 0;
+  position: relative;
+
+  p {
+    font-size: 1.2em;
+    margin-bottom: 0;
+  }
+
+  a {
+    line-height: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  @media #{$large-up} {
+    height: 230px;
+  }
+
+  @media #{$medium-up} {
+    img {
+      margin-top: 4px;
+    }
+
+    p {
+      line-height: 50px;
+    }
+  }
+
+  .aligned {
+    margin-top: 37px;
+  }
+
+  .tesc {
+    max-width: 150px;
+  }
+
+  .social-media {
+    font-size: 18pt;
+    @media #{$medium-up} {
+      font-size: 28pt;
+    }
+
+    a:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    a i {
+      color: white;
+
+      &:hover {
+        color: #19A3C5;
+      }
+    }
+  }
+}

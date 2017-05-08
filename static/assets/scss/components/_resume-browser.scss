@@ -1,0 +1,23 @@
+.resume-browser {
+  a.button, input.button {
+    margin-right: 10px;
+
+    &.inactive {
+      background-color: #e6e6e6;
+      color: #666
+    }
+  }
+  &--top {
+    border-bottom: 2px solid #e6e6e6
+  }
+  &--content {
+    padding-top: 35px;
+  }
+  #graduation-wrapper {
+    margin-bottom: 20px;
+  }
+  &--top .error {
+    background-color: #d34a32 !important;
+    color: white !important;
+  }
+}

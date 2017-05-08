@@ -1,0 +1,13 @@
+//Include fonts
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300,200';
+
+h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  color: $primary-color;
+}
+
+p {
+  font-size: 1.1em;
+}

@@ -1,0 +1,31 @@
+.ui-autocomplete {
+  border-radius: $global-radius;
+
+  .ui-menu-item {
+    background-color: #fdfdfd;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $light-gray;
+    }
+
+    &:first-child {
+      border-radius: $global-radius $global-radius 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 $global-radius $global-radius;
+    }
+
+    &:hover {
+      background-color: $white;
+    }
+
+    @media screen and (max-width: 640px) {
+      margin-right: 1.5rem;
+    }
+  }
+}
+
+.ui-helper-hidden-accessible{display:none}
