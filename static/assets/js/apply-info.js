@@ -24,7 +24,7 @@ $(document).ready(function() {
     //CSS fix for Foundation
     $('.ui-autocomplete').addClass('dropdown menu').attr("data-dropdown-menu", "");
 
-    new Foundation.DropdownMenu($('.ui-autocomplete'), {});
+    //new Foundation.DropdownMenu($('.ui-autocomplete'), {});
   });
 
   $.getJSON("/assets/majors.json").done(function(data) {
@@ -35,7 +35,7 @@ $(document).ready(function() {
     //CSS fix for Foundation
     $('.ui-autocomplete').addClass('dropdown menu').attr("data-dropdown-menu", "");
 
-    new Foundation.DropdownMenu($('.ui-autocomplete'), {});
+    //new Foundation.DropdownMenu($('.ui-autocomplete'), {});
   });
 
   $(".js-apply-form__open").click(function(e) {

@@ -1,6 +1,6 @@
 .live-index {
   &__row {
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       padding-top: 50px;
     }
   }

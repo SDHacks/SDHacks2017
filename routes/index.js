@@ -6,10 +6,10 @@ module.exports = function(app, config) {
     userProperty: 'payload'});
 
   // Basic
-  app.get('/', (req, res) => res.render('home.pug'));
+  app.get('/', (req, res) => res.render('pages/home.pug'));
 
   // Actual confirmation (link for people who just got selected)
-  app.get('/accepted', (req, res) => res.render('accepted.pug'));
+  app.get('/accepted', (req, res) => res.render('pages/accepted.pug'));
 
   // Email confirm
   app.get('/confirm/:id', (req, res) =>
@@ -60,7 +60,7 @@ module.exports = function(app, config) {
         'target': '_blank'
       }
     };
-    return res.render(`live/${req.params.page}.pug`,
+    return res.render(`pages/live/${req.params.page}.pug`,
       {page: req.params.page, menu});
   };
 

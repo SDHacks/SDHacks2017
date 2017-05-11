@@ -1,6 +1,6 @@
 .user-admin {
   &__container {
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       padding-top: 1.5em;
     }
   }
@@ -14,7 +14,7 @@
     max-width: 125px;
     padding-right: 15px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       padding-right: 0;
       max-width: 200px;
     }

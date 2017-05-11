@@ -7,13 +7,13 @@
     0 -1px 5px rgba(0, 0, 0, 0.7),
     0 5px 10px rgba(0, 0, 0, 0.5);
 
-    @media #{$small-only} {
+    @include media-breakpoint-only(sm) {
       font-size: 28px;
     }
   }
 
   &__sub {
-    @media #{$small-only} {
+    @include media-breakpoint-only(sm) {
       font-size: 24px;
       padding-bottom: 5%;
     }
@@ -35,7 +35,7 @@
     padding-top: 120px;
     padding-bottom: 80px;
 
-    @media #{$small-only} {
+    @include media-breakpoint-only(sm) {
       padding-top: 60px;
       padding-bottom: 40px;
     }

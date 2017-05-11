@@ -122,7 +122,7 @@ $border-radius: 3px;
     }
 
     &--button {
-      @media #{$medium-up} {
+      @include media-breakpoint-up(md) {
         margin: 15px 0;
       }
       width: 100%;

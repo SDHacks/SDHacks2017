@@ -12,7 +12,8 @@ const getFilteredUsers = (users, filter) => {
 };
 
 const mapStateToProps = (state) => ({
-  users: getFilteredUsers(state.users, state.filter)
+  users: getFilteredUsers(state.users, state.filter),
+  columns: state.columns
 });
 
 const VisibleUserList = connect(

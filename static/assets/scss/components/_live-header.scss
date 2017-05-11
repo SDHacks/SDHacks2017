@@ -31,7 +31,7 @@ $background-color: #106F87;
     padding: 0 0.4em;
     vertical-align: middle;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       padding: 0 0.9em;
     }
 

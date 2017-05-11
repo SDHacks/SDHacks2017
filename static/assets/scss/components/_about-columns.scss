@@ -11,7 +11,7 @@
 
     margin-bottom: 20px;
 
-    @media #{$medium_up} {
+    @include media-breakpoint-up(md) {
       &:nth-child(1) {
         padding-right: 6%;
       }
@@ -30,11 +30,11 @@
       max-width: 200px;
       margin-bottom: 25px;
 
-      @media #{$medium_up} {
+      @include media-breakpoint-up(md) {
         max-width: 250px;
       }
 
-      @media #{$large_up} {
+      @include media-breakpoint-up(lg) {
         max-width: 100%;
       }
     }

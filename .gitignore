@@ -8,7 +8,7 @@ npm-debug.log
 
 # Commonly ignored folders
 node_modules
-static/assets/bower/bower_components
+static/assets/bower
 public/
 .vscode/
 .DS_Store

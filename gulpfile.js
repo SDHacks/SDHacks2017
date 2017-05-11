@@ -8,6 +8,8 @@ var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var nodemon = require('gulp-nodemon');
 var plumber = require('gulp-plumber');
+var autoprefixer = require('gulp-autoprefixer');
+var sourcemaps = require('gulp-sourcemaps');
 var webpackStream = require('webpack-stream');
 var webpack = require('webpack');
 var path = require('path');
@@ -17,23 +19,15 @@ gulp.task('debug', ['package-js', 'sass', 'watch', 'nodemon-debug']);
 gulp.task('test', ['webpack', 'sass', 'eslint', 'package-js']);
 gulp.task('prod', ['webpack', 'sass', 'eslint', 'package-js']);
 
-var bowerComponentPath = 'static/assets/bower/bower_components/';
+var bowerComponentPath = 'static/assets/bower/';
 var bowerComponents = [];
 var components = [
   'jquery/dist/jquery.min.js',
-  'foundation-sites/dist/foundation.min.js',
-  'foundation-sites/dist/plugins/foundation.reveal.js',
-  'foundation-sites/dist/plugins/foundation.dropdownMenu.js',
-  'foundation-sites/dist/plugins/foundation.util.box.js',
-  'foundation-sites/dist/plugins/foundation.util.keyboard.js',
-  'foundation-sites/dist/plugins/foundation.util.motion.js',
-  'foundation-sites/dist/plugins/foundation.util.nest.js',
-  'd3/d3.min.js',
-  'topojson/topojson.min.js',
+  'bootstrap/dist/js/bootstrap.min.js',
+  'jquery-ui/jquery-ui.min.js',
   'jquery-throttle-debounce/jquery.ba-throttle-debounce.min.js',
   'jquery-form-validator/form-validator/jquery.form-validator.min.js',
   'jquery-form-validator/form-validator/file.js',
-  'jquery-ui/jquery-ui.min.js',
   'slick-carousel/slick/slick.min.js',
   'underscore/underscore-min.js'
 ];
@@ -65,8 +59,11 @@ gulp.task('webpack', function() {
 gulp.task('sass', function () {
   gulp.src('static/assets/scss/sdhacks.scss')
     .pipe(plumber(plumberOptions))
-    .pipe(sass({outputStyle: 'compressed'}))
-    .pipe(rename({suffix: '.min'}))
+    .pipe(sourcemaps.init())
+      .pipe(sass({outputStyle: 'compressed'}))
+      .pipe(rename({suffix: '.min'}))
+      .pipe(autoprefixer())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('static/assets/css'));
 });
 
@@ -104,7 +101,6 @@ gulp.task('package-bower', function() {
 // Watcher
 gulp.task('watch', function() {
   gulp.watch('static/assets/scss/**/*.scss', ['sass']);
-  gulp.watch('static/assets/js/*.js', ['jshint']);
   gulp.watch(['static/assets/js/*.js', 'static/assets/js/vendor/*.js'],
     ['package-js']);
 });

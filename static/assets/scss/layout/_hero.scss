@@ -26,7 +26,7 @@ $empty-hex-colour: lighten($hero-background, 10);
   height: $hero-size-mobile;
   top: 0;
 
-  @media #{$medium-up} {
+  @include media-breakpoint-up(md) {
     height: $hero-size;
   }
 
@@ -119,12 +119,12 @@ $empty-hex-colour: lighten($hero-background, 10);
     padding-bottom: 100px;
     pointer-events: none;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 325px;
     }
 
     &--date {
-      @media #{$small-only} {
+      @include media-breakpoint-only(sm) {
         font-size: 28px;
       }
 
@@ -137,7 +137,7 @@ $empty-hex-colour: lighten($hero-background, 10);
     }
 
     &--place {
-      @media #{$small-only} {
+      @include media-breakpoint-only(sm) {
         font-size: 24px;
         padding-bottom: 5%;
       }
@@ -177,7 +177,7 @@ $empty-hex-colour: lighten($hero-background, 10);
       font-weight: bold;
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
 
-      @media #{$medium-up} {
+      @include media-breakpoint-up(md) {
         &:not(.hero__content--wide) {
           width: 200px;
         }

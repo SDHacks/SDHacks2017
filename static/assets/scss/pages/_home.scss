@@ -64,7 +64,7 @@ hr {
     }
   }
 
-  @media #{$medium-up} {
+  @include media-breakpoint-up(md) {
     .faq-left {
       padding-right: 20px;
     }
@@ -136,7 +136,7 @@ hr {
     margin-right: 20px;
     margin-bottom: 20px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 95px;
     }
 
@@ -149,21 +149,21 @@ hr {
     margin-left:15px;
     margin-right: 15px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 80px;
     }
   }
   .silver img {
     height: 45px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 50px;
     }
   }
   .bronze img {
     height: 28px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 32px;
     }
   }
@@ -176,7 +176,7 @@ hr {
    img {
      height: 42px;
 
-     @media #{$medium-up} {
+     @include media-breakpoint-up(md) {
        height: 45px;
      }
    }
@@ -184,14 +184,14 @@ hr {
   a#logo-1517 img {
     height: 40px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 50px;
     }
   }
   a#logo-a16z img {
     height: 34px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 40px;
     }
   }
@@ -199,35 +199,35 @@ hr {
   a#logo-oic img {
     height: 50px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 60px;
     }
   }
   a#logo-perkinscoie img {
     height: 60px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 75px;
     }
   }
   a#logo-edc img {
     height: 58px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 78px;
     }
   }
   a#logo-gigabyte img {
     height: 70px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 80px;
     }
   }
   a#logo-spawar img {
     height: 120px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 200px;
 
       padding-bottom: 40px;
@@ -237,14 +237,14 @@ hr {
   a#logo-ga img {
     height: 42px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 48px;
     }
   }
   a#logo-pickupstix img {
     height: 42px;
 
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       height: 46px;
     }
   }
@@ -259,7 +259,7 @@ hr {
       padding-right: 15px;
       height: 60px;
 
-      @media #{$medium-up} {
+      @include media-breakpoint-up(md) {
         height: 70px;
       }
     }

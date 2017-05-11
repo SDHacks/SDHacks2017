@@ -21,11 +21,11 @@ footer {
     font-weight: bold;
   }
 
-  @media #{$large-up} {
+  @include media-breakpoint-up(lg) {
     height: 230px;
   }
 
-  @media #{$medium-up} {
+  @include media-breakpoint-up(md) {
     img {
       margin-top: 4px;
     }
@@ -45,7 +45,7 @@ footer {
 
   .social-media {
     font-size: 18pt;
-    @media #{$medium-up} {
+    @include media-breakpoint-up(md) {
       font-size: 28pt;
     }
 
