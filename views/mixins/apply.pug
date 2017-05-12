@@ -2,7 +2,7 @@ mixin apply
   form#apply.apply-form.orbit.js-bordered(role="region", aria-label="Hacker Application", data-infinite-wrap="false", data-auto-play="false", enctype="multipart/form-data", method="POST", action="/api/register")
     .row.column
       .small-12.large-8.large-offset-2.columns
-        h1.apply-form__header Apply for SD Hacks 2016
+        h1.apply-form__header Apply for SD Hacks 2017
           button.apply-form__header--close.js-apply-form__close(data-close="", aria-label="Close reveal", type="button")
             span(aria-hidden="true") &times; 
               span.apply-form__header--close-text Close
@@ -61,7 +61,7 @@ mixin apply-1
         select#select-year(data-validation="number", name="birthdate_year", data-validation-error-msg="Please select a birth year", data-validation-allowing="range[1980;1998]", data-validation-error-msg-number="You must be 18+ or a UC student", data-validation-error-msg-container="#age-error-message")
           option(value="", disabled="", selected="") Year
           - var n = 1980
-          while n <= 2016
+          while n <= 2017
             option(value=n)= n++
         span#age-error-message
 
@@ -92,7 +92,7 @@ mixin apply-1
     span#major-error-message
   .large-6.small-12.columns
     label.apply-form__required Graduation Year
-    input(type="number", value="2016", name="year", data-validation="number", data-validation-allowing="range[2016;2030]", data-validation-error-msg-number="Must be a current student or have graduated in 2016")
+    input(type="number", value="2017", name="year", data-validation="number", data-validation-allowing="range[2017;2030]", data-validation-error-msg-number="Must be a current student or have graduated in 2017")
 
   .large-6.small-12.columns
     label Github Username
