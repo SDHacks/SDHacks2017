@@ -1,0 +1,8 @@
+body {
+  background-color: $body-background;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}

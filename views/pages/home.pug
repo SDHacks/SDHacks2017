@@ -4,7 +4,11 @@ extends ../layouts/home
 //- Any mixins
 
 block content
-  .container
-    .row
-      .col
-        p Hello World!
+  .hexagon-hero
+    .container.text-center
+      img.hexagon-hero__logo(src='/assets/img/vectors/logo.svg')
+      .hexagon-hero__title RIMAC Arena, UCSD
+      .hexagon-hero__subtitle September 29-30, 2017
+      .hexagon-hero__nav
+        input.hexagon-hero__nav-button.btn.rounded-button(type="button", value="Apply")
+        input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type="button", value="Volunteer")

@@ -1,7 +1,11 @@
 //Include fonts
-@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300,200';
+@import 'https://fonts.googleapis.com/css?family=Varela+Round:400,500,600,700,300,200';
 
-$body-font-family: 'Source Sans Pro', 'Opens Sans', Helvetica, Roboto, Arial, sans-serif !default;
+$body-font-family: 'Varela Round', Helvetica, Roboto, Arial, sans-serif !default;
+
+* {
+  color: $global-text-color;
+}
 
 h2 {
   text-transform: uppercase;

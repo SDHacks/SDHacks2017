@@ -1,0 +1,26 @@
+.rounded-button {
+  width: 100%;
+  max-width: 9em;
+  border-radius: $global-radius;
+  background-color: $primary-color;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  color: $white;
+  padding: 0.6rem 0;
+
+  @include media-breakpoint-down(sm) {
+    max-width: none;
+  }
+
+  &:hover {
+    background-color: darken($primary-color, 3%);
+  }
+
+  &--secondary {
+    background-color: $accent-purple;
+
+    &:hover {
+      background-color: darken($accent-purple, 3%);
+    }
+  }
+}

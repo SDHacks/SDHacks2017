@@ -1,4 +1,10 @@
-$primary-color: #19A3C5;
+$accent-blue: #7BC6DC;
+$accent-purple: #A88FC7;
+$accent-yellow: #FBD27A;
+$accent-red: #F87373;
+$accent-green: #6ACDBD;
+
+$primary-color: #19A3C5; //SDHacks Blue
 $secondary-color: #00B4CC;
 $success-color: #3adb76;
 $warning-color: #F7B733;
@@ -11,10 +17,9 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #EEEEEE;
-$body-background: #FDFDFD;
+
+$body-background: #FFF;
 $body-font-color: #4B4B4B;
 
-$faq_bgcolor: #026F88;
-$faq_color: lighten(#F8C773, 18);
-
 $global-radius: 8px;
+$global-text-color: #656565;

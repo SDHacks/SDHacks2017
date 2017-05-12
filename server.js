@@ -94,12 +94,12 @@
     } else {
       // 404
       app.use(function(req, res) {
-       res.sendStatus(404);
+        res.sendStatus(404);
       });
 
       // 500
       app.use(function(err, req, res) {
-       res.sendStatus(500);
+        res.sendStatus(500);
       });
     }
 
