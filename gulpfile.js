@@ -60,7 +60,7 @@ gulp.task('sass', function () {
   gulp.src('static/assets/scss/sdhacks.scss')
     .pipe(plumber(plumberOptions))
     .pipe(sourcemaps.init())
-      .pipe(sass({outputStyle: 'compressed'}))
+      .pipe(sass())
       .pipe(rename({suffix: '.min'}))
       .pipe(autoprefixer())
     .pipe(sourcemaps.write())
