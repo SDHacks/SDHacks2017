@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "4.4.5",
-    "npm": "2.15.5"
+    "node": "5.11.1",
+    "npm": "4.5.0"
   },
   "scripts": {
     "start": "nodemon -e js,coffee server.js",
