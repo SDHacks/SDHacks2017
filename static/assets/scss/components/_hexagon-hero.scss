@@ -15,21 +15,23 @@
   }
 
   &__title {
+    font-family: 'Josefin Sans', sans-serif;
     margin-top: 2rem;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 9vw;
 
     @include media-breakpoint-up(sm) {
-      font-size: 2.5rem;
+      font-size: 2.7rem;
     }
   }
 
   &__subtitle {
-    line-height: 2.2rem;
+    font-family: 'Nunito', sans-serif;
+    line-height: 2.4rem;
     font-size: 8vw;
 
     @include media-breakpoint-up(sm) {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
   }
 
