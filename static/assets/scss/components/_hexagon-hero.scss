@@ -6,11 +6,6 @@
   height: 100vh;
   user-select: none;
 
-  padding-top: 5rem;
-  @include media-breakpoint-up(sm) {
-    padding-top: 10rem;
-  }
-
   &__logo {
     height: 12rem;
 
@@ -22,7 +17,7 @@
   &__title {
     margin-top: 2rem;
     font-weight: 500;
-    font-size: 2.2em;
+    font-size: 9vw;
 
     @include media-breakpoint-up(sm) {
       font-size: 2.5rem;
@@ -31,7 +26,7 @@
 
   &__subtitle {
     line-height: 2.2rem;
-    font-size: 1.8em;
+    font-size: 8vw;
 
     @include media-breakpoint-up(sm) {
       font-size: 2rem;
@@ -46,7 +41,7 @@
         margin-bottom: 1rem;
       }
 
-      @include media-breakpoint-up(sm) {
+      @include media-breakpoint-up(md) {
         &:first-child {
           margin-bottom: 0;
           margin-right: 1.5rem;
