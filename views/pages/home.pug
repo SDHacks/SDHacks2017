@@ -5,10 +5,19 @@ extends ../layouts/home
 
 block content
   .hexagon-hero.d-flex
-    .container.text-center.justify-content-center.align-self-center
-      img.hexagon-hero__logo(src='/assets/img/vectors/logo.svg')
-      .hexagon-hero__title RIMAC Arena, UCSD
-      .hexagon-hero__subtitle September 29-30, 2017
-      .hexagon-hero__nav
-        input.hexagon-hero__nav-button.btn.rounded-button(type="button", value="Apply")
-        input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type="button", value="Volunteer")
+    .hexagon-hero__container.container.text-center.justify-content-center.align-self-center
+      .hidden-xs-down
+        img.hexagon-hero__logo(src='/assets/img/vectors/logo.svg')
+        .hexagon-hero__title RIMAC Arena, UCSD
+        .hexagon-hero__subtitle September 29-30, 2017
+        .hexagon-hero__nav
+          input.hexagon-hero__nav-button.btn.rounded-button(type="button", value="Apply")
+          input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type="button", value="Volunteer")
+
+      .hidden-sm-up.d-flex.flex-column.h-100
+        img.hexagon-hero__logo.hexagon-hero__logo--mobile(src='/assets/img/vectors/logo.svg')
+        .hexagon-hero__title.hexagon-hero__title--mobile RIMAC Arena, UCSD
+        .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile September 29-30, 2017
+        .hexagon-hero__nav.hexagon-hero__nav--mobile
+          input.hexagon-hero__nav-button.btn.rounded-button(type="button", value="Apply")
+          input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type="button", value="Volunteer")

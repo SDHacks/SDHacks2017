@@ -6,11 +6,25 @@
   height: 100vh;
   user-select: none;
 
+  &__container {
+    height: 100%;
+    padding: 2rem 0rem;
+
+    @include media-breakpoint-up(sm) {
+      height: auto;
+      padding: inherit;
+    }
+  }
+
   &__logo {
-    height: 12rem;
+    height: 10rem;
 
     @include media-breakpoint-up(sm) {
       height: 15rem;
+    }
+
+    &--mobile {
+      flex-grow: 2;
     }
   }
 
@@ -23,6 +37,10 @@
     @include media-breakpoint-up(sm) {
       font-size: 2.7rem;
     }
+
+    &--mobile {
+      flex: 1;
+    }
   }
 
   &__subtitle {
@@ -33,10 +51,19 @@
     @include media-breakpoint-up(sm) {
       font-size: 1.8rem;
     }
+
+    &--mobile {
+      flex: 1;
+    }
   }
 
   &__nav {
     margin-top: 3rem;
+
+    &--mobile {
+      flex: 1;
+      margin-top: 1rem;
+    }
 
     &-button {
       &:first-child {
