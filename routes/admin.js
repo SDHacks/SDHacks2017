@@ -44,7 +44,7 @@ module.exports = function(app, config) {
   var User = require('../entities/users/model');
 
   app.get('/admin', auth, function response(req, res) {
-    return res.render('admin/home');
+    return res.render('pages/admin/home');
   });
 
   app.get('/admin/users', auth, (req, res) =>
