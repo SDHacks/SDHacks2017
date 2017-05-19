@@ -1,8 +1,8 @@
-const URL_PREFIX = '/admin';
+const URL_PREFIX = '/admin/api';
 
 import nocache from 'superagent-no-cache';
-import request from 'superagent';
 import pref from 'superagent-prefix';
+import request from 'superagent';
 
 const prefix = pref(URL_PREFIX);
 

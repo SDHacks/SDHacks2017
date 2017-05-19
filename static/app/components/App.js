@@ -1,15 +1,19 @@
 import React from 'react';
-import VisibleSearchBox from '../containers/VisibleSearchBox';
-import VisibleUserList from '../containers/VisibleUserList';
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
-      <div className="container">
-        <VisibleSearchBox />
-        <div className="row">
-          <VisibleUserList />
+      <div>
+        <p>Header here</p>
+
+        <div className="container">
+          {this.props.children}
         </div>
-      </div>);
+
+        <p>Footer here</p>
+      </div>
+    );
   }
 }
+
+export default App;

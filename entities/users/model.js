@@ -10,7 +10,19 @@ require('dotenv').config();
 var Schema = mongoose.Schema;
 var db = mongoose.createConnection(process.env.MONGODB_URI);
 
-var UsersSchema = new Schema({
+var UserSchema = new Schema({
+  username: {
+    type: String,
+    trim: true,
+    unique: true,
+    lowercase: true,
+    required: [true, 'You must have a username']
+  },
+  password: {
+    type: String,
+    trim: true,
+    required: [true, 'You must have a password']
+  },
   firstName: {
     type: String,
     trim: true,
@@ -36,7 +48,7 @@ var UsersSchema = new Schema({
     lowercase: true,
     unique: true,
     match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-    'You must use a valid email']
+      'You must use a valid email']
   },
   phone: {
     type: Number,
@@ -118,11 +130,45 @@ var UsersSchema = new Schema({
   }
 });
 
-UsersSchema.plugin(require('mongoose-sanitizer'));
-UsersSchema.plugin(findOrCreate);
-UsersSchema.plugin(timestamps);
-UsersSchema.plugin(softDelete);
-UsersSchema.plugin(crate, {
+UserSchema.pre('save', function(next) {
+  const user = this;
+  const SALT_FACTOR = 5;
+
+  if (!user.isModified('password')) {
+    return next();
+  }
+
+  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
+    if (err) {
+      return next(err);
+    }
+
+    bcrypt.hash(user.password, salt, null,
+    function(err, hash) {
+      if (err) {
+        return next(err);
+      }
+      user.password = hash;
+      next();
+    });
+  });
+});
+
+UserSchema.methods.comparePassword = function(candidatePassword, cb) {
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    if (err) {
+      return cb(err);
+    }
+
+    cb(null, isMatch);
+  });
+};
+
+UserSchema.plugin(require('mongoose-sanitizer'));
+UserSchema.plugin(findOrCreate);
+UserSchema.plugin(timestamps);
+UserSchema.plugin(softDelete);
+UserSchema.plugin(crate, {
   storage: new S3({
     key: process.env.S3_KEY,
     secret: process.env.S3_SECRET,
@@ -138,33 +184,4 @@ UsersSchema.plugin(crate, {
   }
 });
 
-UsersSchema.methods.generateJwt = function() {
-  var expiry = new Date();
-  expiry.setDate(expiry.getDate() + 7);
-
-  return jwt.sign({
-    _id: this._id,
-    firstName: this.firstName,
-    lastName: this.lastName,
-    birthdate: this.birthdate,
-    gender: this.gender,
-    email: this.email,
-    phone: this.phone,
-    university: this.university,
-    major: this.major,
-    year: this.year,
-    github: this.github,
-    website: this.website,
-    shareResume: this.shareResume,
-    food: this.food,
-    diet: this.diet,
-    shirtSize: this.shirtSize,
-    travel: this.travel,
-    hackathons: this.hackathons,
-    outcomeStmt: this.outcomeStmt,
-    teammates: this.teammates,
-    exp: parseInt(expiry.getTime() / 1000),
-  }, process.env.USER_SECRET);
-};
-
-module.exports = db.model('User', UsersSchema);
+module.exports = db.model('User', UserSchema);

@@ -1,38 +1,27 @@
 //- Restricted zone (Manage Users)
 
-extends ../../layouts/simple
-
-block left-content
-  h2.user-admin__header Users
-  p Total Users: #{users.length}
-  p Statuses
-  each count, status in statusCounts
-    | Total #{status}: #{count}
-    br
-
-block right-content
-  table
+table
+  tr
+    th Delete
+    th Registered
+    th Name
+    th Email
+    th Github
+    th University
+    th Status
+  for user in users
     tr
-      th Delete
-      th Registered
-      th Name
-      th Email
-      th Github
-      th University
-      th Status
-    for user in users
-      tr
-        td.text-center
-          a.js-delete-user(data-user="#{user._id}")
-            i.fa.fa-trash
-        td #{moment(user.createdAt).fromNow()}
-        td 
-          a(href="/users/#{user._id}") #{user.firstName} #{user.lastName}
-        td #{user.email}
-        td 
-          if user.github
-            a(href="//github.com/#{user.github}", target="_tab") @#{user.github}
-          else
-            | None
-        td #{user.university}
-        td #{user.status ? user.status : ""}
+      td.text-center
+        a.js-delete-user(data-user="#{user._id}")
+          i.fa.fa-trash
+      td #{moment(user.createdAt).fromNow()}
+      td 
+        a(href="/users/#{user._id}") #{user.firstName} #{user.lastName}
+      td #{user.email}
+      td 
+        if user.github
+          a(href="//github.com/#{user.github}", target="_tab") @#{user.github}
+        else
+          | None
+      td #{user.university}
+      td #{user.status ? user.status : ""}

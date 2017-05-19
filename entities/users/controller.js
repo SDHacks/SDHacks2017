@@ -1,7 +1,15 @@
-module.exports = function(app, config, referTeammates) {
+const express = require('express');
+
+module.exports = function(app, config) {
 
   // Model and Config
   var User = require('./model');
+
+  const userRoutes = express.Router();
+  const adminRoutes = express.Router();
+
+  app.use('/users', userRoutes);
+  userRoutes.use('/admin', adminRoutes);
 
   var auth = function(req, res, next) {
     var unauthorized = function(res) {
@@ -40,7 +48,7 @@ module.exports = function(app, config, referTeammates) {
   };
 
   // Admin
-  app.get('/users/admin', auth, (req, res) =>
+  adminRoutes.get('/', auth, (req, res) =>
     User.find({deleted: {$ne: true}}).sort({createdAt: -1})
     .exec(function(err, users) {
       var statuses = {};
@@ -56,19 +64,19 @@ module.exports = function(app, config, referTeammates) {
     })
   );
 
-  app.get('/users/admin/waitlist', auth, (req, res) =>
+  adminRoutes.get('/waitlist', auth, (req, res) =>
     User.find({deleted: {$ne: true}, status: 'Waitlisted'})
     .sort({createdAt: 1}).exec((err, users) =>
       res.render('entity_views/users/waitlist.pug', {users}))
   );
 
-  app.get('/users/admin/checkin', checkinAuth, (req, res) =>
+  adminRoutes.get('/checkin', checkinAuth, (req, res) =>
     User.find({deleted: {$ne: true}, status: 'Confirmed'})
     .exec((err, users) => res.render('entity_views/users/checkin.pug',
       {users}))
   );
 
-  app.post('/users/admin/checkin', checkinAuth, (req, res) =>
+  adminRoutes.post('/checkin', checkinAuth, (req, res) =>
     User.update({email: req.body.email}, {$set: {'checkedIn': true}})
     .exec(function(err) {
       if (err) {
@@ -79,7 +87,7 @@ module.exports = function(app, config, referTeammates) {
   );
 
   // Show
-  app.get('/users/:id', (req, res) =>
+  userRoutes.get('/:id', (req, res) =>
     User.findById(req.params.id, function(e, user) {
       if (e || (user === null)) {
         res.redirect('/');
@@ -89,7 +97,7 @@ module.exports = function(app, config, referTeammates) {
   );
 
   // Destroy
-  app.get('/users/:id/delete', auth, (req, res) =>
+  userRoutes.get('/:id/delete', auth, (req, res) =>
     User.findById(req.params.id, function(e, user) {
       if (e) {
         res.status(400);
@@ -102,7 +110,7 @@ module.exports = function(app, config, referTeammates) {
     })
   );
 
-  app.get('/users/:id/unwaitlist', auth, (req, res) =>
+  userRoutes.get('/:id/unwaitlist', auth, (req, res) =>
     User.findById(req.params.id, function(e, user) {
       if (e) {
         res.status(400);
@@ -117,7 +125,7 @@ module.exports = function(app, config, referTeammates) {
   );
 
   // Edit
-  app.post('/users/:id/edit', function(req, res) {
+  userRoutes.post('/:id/edit', function(req, res) {
     var trackEdit = (user, field, from, to) =>
       console.log(`/users/edit: User '${user.firstName} ${user.lastName} 
         changed field ${field} from ${from} to ${to}`);
@@ -170,14 +178,15 @@ module.exports = function(app, config, referTeammates) {
         }
 
         if (sendReferral) {
-          referTeammates(user, req);
+          // TODO: Outsource referral system
+          // referTeammates(user, req);
         }
         return res.send(originalValue);
       });
     });
   });
 
-  app.get('/users/:id/accept', (req, res) =>
+  userRoutes.get('/:id/accept', (req, res) =>
     User.findById(req.params.id, function(e, user) {
       if (e || (user === null)) {
         return res.redirect('/');

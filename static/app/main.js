@@ -1,23 +1,37 @@
-import React from 'react';
-import {render} from 'react-dom';
+import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
+import {applyMiddleware, createStore} from 'redux';
+
+import {AUTH_USER} from './actions/types';
+import Cookies from 'universal-cookie';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-
-import {loadAllUsers} from './data/Users';
-import {addUsers} from './actions';
+import React from 'react';
+import createHistory from 'history/createBrowserHistory';
+import {enableBatching} from 'redux-batched-actions';
 import reducer from './reducers';
-import App from './components/App.js';
+import reduxThunk from 'redux-thunk';
+import {render} from 'react-dom';
+import routes from './routes';
 
-let store = createStore(reducer);
-
-loadAllUsers().end((err, res) => {
-  var users = res.body;
-  store.dispatch(addUsers(users));
+// Create Routing with React-Router-Redux
+const history = createHistory({
+  basename: '/admin'
 });
+const routingMiddleware = routerMiddleware(history);
+
+let store = createStore(enableBatching(reducer), applyMiddleware(reduxThunk),
+  applyMiddleware(routingMiddleware));
+
+// Check initial authentication
+const cookies = new Cookies();
+if (cookies.get('token')) {
+  store.dispatch({type: AUTH_USER});
+}
 
 render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      {routes}
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );

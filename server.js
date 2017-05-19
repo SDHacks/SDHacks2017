@@ -72,12 +72,16 @@
       }));
     }
     app.use(cookieParser());
-    app.use(bodyParser.json({type: 'application/vnd.api+json', limit: '50mb'}));
+    app.use(bodyParser.json({type: 'application/json', limit: '50mb'}));
     app.use(device.capture());
-    app.use(bodyParser.urlencoded({extended: true,
-      limit: '50mb', parameterLimit: 3000}));
+    app.use(bodyParser.urlencoded({
+      extended: true,
+      limit: '50mb',
+      parameterLimit: 3000
+    }));
 
     app.use(passport.initialize());
+    require('./config/passport');
     app.use(flash());
     app.use(methodOverride('X-HTTP-Method-Override'));
     app.use(staticDir(path.join(__dirname, 'static')));
@@ -85,7 +89,7 @@
     // Routing
     require('./routes/index')(app, process.env);
     require('./routes/api')(app, process.env, transporter);
-    require('./routes/admin')(app, process.env);
+    require('./routes/models')(app, process.env);
 
     // Error Handling
     // Development only

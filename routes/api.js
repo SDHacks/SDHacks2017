@@ -52,7 +52,7 @@ module.exports = function(app, config, transporter) {
               'referUrl': req.protocol + '://' + req.get('host')
             });
           }
-      })
+        })
       )(referral))
   ;
 
@@ -190,8 +190,4 @@ module.exports = function(app, config, transporter) {
       }
     });
   });
-
-  // Imports
-  require('../entities/users/controller')(app, config, referTeammates);
-  require('../entities/sponsors/controller')(app, config);
 };

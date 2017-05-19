@@ -7,7 +7,7 @@ require('dotenv').config();
 var Schema = mongoose.Schema;
 var db = mongoose.createConnection(process.env.MONGODB_URI);
 
-var SponsorsSchema = new Schema({
+var SponsorSchema = new Schema({
   companyName: {
     type: String,
     trim: true,
@@ -45,8 +45,8 @@ var SponsorsSchema = new Schema({
   }]
 });
 
-SponsorsSchema.plugin(require('mongoose-sanitizer'));
-SponsorsSchema.plugin(timestamps);
-SponsorsSchema.plugin(softDelete);
+SponsorSchema.plugin(require('mongoose-sanitizer'));
+SponsorSchema.plugin(timestamps);
+SponsorSchema.plugin(softDelete);
 
-module.exports = db.model('Sponsor', SponsorsSchema);
+module.exports = db.model('Sponsor', SponsorSchema);

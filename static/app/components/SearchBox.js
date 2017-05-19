@@ -1,5 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import {connect} from 'react-redux';
+import {setFilter} from '../actions';
 
 class SearchBox extends React.Component {
   render() {
@@ -24,4 +26,19 @@ SearchBox.propTypes = {
   updateFilter: PropTypes.func.isRequired
 };
 
-export default SearchBox;
+const mapStateToProps = (state) => ({
+  filter: state.filter
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateFilter: (filter) => {
+      dispatch(setFilter(filter));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchBox);

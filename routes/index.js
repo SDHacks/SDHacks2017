@@ -72,4 +72,28 @@ module.exports = function(app, config) {
 
   // Live site (other pages)
   app.get('/live/:page', loadLivePage);
+
+  // Development Hot-Middleware
+  if (config.NODE_ENV === 'development') {
+    const webpack = require('webpack');
+    const webpackConfig = require('../webpack.config.js');
+
+    const compiler = webpack(webpackConfig);
+    app.use(require('webpack-dev-middleware')(compiler, {
+      hot: false,
+      publicPath: webpackConfig.output.publicPath,
+      stats: {
+        colors: true,
+        hash: false,
+        timings: true,
+        chunks: false,
+        chunkModules: false,
+        modules: false
+      }
+    }));
+
+    app.use(require('webpack-hot-middleware')(compiler, {
+      publicPath: '/',
+    }));
+  }
 };

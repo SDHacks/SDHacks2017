@@ -1,30 +1,105 @@
-// Users
-export const ADD_USERS = 'ADD_USERS';
+import * as Auth from '../data/Auth';
+import * as Types from './types';
 
+import Cookies from 'universal-cookie';
+import Q from 'q';
+import {push} from 'react-router-redux';
+
+const cookies = new Cookies();
+
+export function errorHandler(dispatch, error, type) {
+  let errorMessage = '';
+
+  if (error.data.error) {
+    errorMessage = error.data.error;
+  } else if (error.data) {
+    errorMessage = error.data;
+  } else {
+    errorMessage = error;
+  }
+
+  if (error.status === 401) {
+    dispatch({
+      type: type,
+      payload: 'You are not authorized to do this. Please login and try again.'
+    });
+    logoutUser();
+  } else {
+    dispatch({
+      type: type,
+      payload: errorMessage
+    });
+  }
+}
+
+// Auth
+export function registerUser({username, password}) {
+  return function(dispatch) {
+    var deferred = Q.defer();
+
+    Auth.register(username, password)
+    .end((err, res) => {
+      if (err) {
+        deferred.reject(res.body.message);
+        return errorHandler(dispatch, res.body.message, Types.AUTH_ERROR);
+      }
+
+      cookies.set('token', res.body.token, {path: '/'});
+      dispatch({
+        type: Types.AUTH_USER,
+        username: res.body.user.username
+      });
+      deferred.resolve();
+    });
+
+    return deferred.promise;
+  };
+};
+
+export function loginUser({username, password}) {
+  return function(dispatch) {
+    // Make the event return a promise
+    var deferred = Q.defer();
+
+    Auth.login(username, password)
+    .end((err, res) => {
+      if (err) {
+        deferred.reject(res.body.message);
+        return errorHandler(dispatch, res.body.message, Types.AUTH_ERROR);
+      }
+
+      cookies.set('token', res.body.token, {path: '/'});
+      dispatch({
+        type: Types.AUTH_USER,
+        username: res.body.user.username
+      });
+      deferred.resolve();
+    });
+
+    return deferred.promise;
+  };
+};
+
+// Users
 export const addUsers = (users) => ({
-  type: ADD_USERS,
+  type: Types.ADD_USERS,
   users
 });
 
 // Filters
-export const SET_FILTER = 'SET_FILTER';
-
 export const setFilter = (filter) => ({
-  type: SET_FILTER,
+  type: Types.SET_FILTER,
   filter
 });
 
 //Columns
-export const ADD_COLUMN = 'ADD_COLUMN';
-export const REMOVE_COLUMN = 'REMOVE_COLUMN';
-
 export const addColumn = (columnName, column) => ({
-  type: ADD_COLUMN,
+  type: Types.ADD_COLUMN,
   columnName,
   column
 });
 
 export const removeColumn = (columnName) => ({
-  type: REMOVE_COLUMN,
+  type: Types.REMOVE_COLUMN,
   columnName
 });
