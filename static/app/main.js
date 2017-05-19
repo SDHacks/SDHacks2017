@@ -6,7 +6,6 @@ import Cookies from 'universal-cookie';
 import {Provider} from 'react-redux';
 import React from 'react';
 import createHistory from 'history/createBrowserHistory';
-import {enableBatching} from 'redux-batched-actions';
 import reducer from './reducers';
 import reduxThunk from 'redux-thunk';
 import {render} from 'react-dom';
@@ -18,7 +17,7 @@ const history = createHistory({
 });
 const routingMiddleware = routerMiddleware(history);
 
-let store = createStore(enableBatching(reducer), applyMiddleware(reduxThunk),
+let store = createStore(reducer, applyMiddleware(reduxThunk),
   applyMiddleware(routingMiddleware));
 
 // Check initial authentication
