@@ -11,11 +11,11 @@ const form = reduxForm({
   validate
 });
 
-const renderField = ({input, label, type, meta: {touched, error}}) => (
+const renderField = ({input, label, type, meta}) => (
   <div>
     <input className="form-control" type={type} {...input}/>
-    {touched && error &&
-      <div className="error">{error}</div>}
+    {meta && meta.touched && meta.error &&
+      <div className="error">{meta.error}</div>}
   </div>
 );
 
