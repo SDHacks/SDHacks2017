@@ -11,6 +11,6 @@ export default combineReducers({
   columns,
   filter,
   users,
-  router: routerReducer,
+  routing: routerReducer,
   form: formReducer
 });

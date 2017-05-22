@@ -4,6 +4,11 @@ import {connect} from 'react-redux';
 import {setFilter} from '../actions';
 
 class SearchBox extends React.Component {
+  static propTypes = {
+    filter: PropTypes.string.isRequired,
+    updateFilter: PropTypes.func.isRequired
+  };
+
   render() {
     return (
       <div className="row">
@@ -20,11 +25,6 @@ class SearchBox extends React.Component {
       </div>);
   }
 }
-
-SearchBox.propTypes = {
-  filter: PropTypes.string.isRequired,
-  updateFilter: PropTypes.func.isRequired
-};
 
 const mapStateToProps = (state) => ({
   filter: state.filter

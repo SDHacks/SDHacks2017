@@ -1,4 +1,4 @@
-import {Field, reduxForm, SubmissionError} from 'redux-form';
+import {Field, SubmissionError, reduxForm} from 'redux-form';
 
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -34,6 +34,13 @@ function validate(formProps) {
 }
 
 class Register extends React.Component {
+  static propTypes = {
+    registerUser: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    errorMessage: PropTypes.string
+  };
+
   handleFormSubmit(formProps) {
     this.props.registerUser(formProps)
     .then(() => {
@@ -81,13 +88,6 @@ class Register extends React.Component {
     );
   }
 }
-
-Register.propTypes = {
-  registerUser: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  errorMessage: PropTypes.string
-};
 
 function mapStateToProps(state) {
   return {

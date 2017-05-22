@@ -11,11 +11,18 @@ const form = reduxForm({
 });
 
 class Login extends React.Component {
+  static propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    errorMessage: PropTypes.string,
+  };
+
   handleFormSubmit(formProps) {
-    this.props.loginUser(formProps)
+    return this.props.loginUser(formProps)
     .then(() => {
       console.log('Logged in');
-      this.props.dispatch(push('/dashboard'));
+      return this.props.dispatch(push('/dashboard'));
     })
     .catch((e) => {
       console.log('Could not log in', e);
@@ -55,13 +62,6 @@ class Login extends React.Component {
     );
   }
 }
-
-Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  errorMessage: PropTypes.string,
-};
 
 function mapStateToProps(state) {
   return {

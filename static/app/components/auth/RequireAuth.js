@@ -1,4 +1,7 @@
-import PropTypes from 'prop-types';
+import {Cookies, withCookies} from 'react-cookie';
+import PropTypes, {instanceOf} from 'prop-types';
+
+import Q from 'q';
 import React from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
@@ -9,15 +12,25 @@ export default function(ComposedComponent) {
       router: PropTypes.object
     }
 
-    componentWillMount() {
+    static propTypes = {
+      cookies: instanceOf(Cookies).isRequired,
+      authenticated: PropTypes.bool.isRequired,
+      dispatch: PropTypes.func.isRequired
+    }
+
+    goToLogin() {
+      return this.props.dispatch(push('/login'));
+    }
+
+    componentDidMount() {
       if (!this.props.authenticated) {
-        this.props.redirectToLogin();
+        return this.goToLogin();
       }
     }
 
-    componentWillUpdate(nextProps) {
+    componentDidUpdate(nextProps) {
       if (!nextProps.authenticated) {
-        this.props.redirectToLogin();
+        return this.goToLogin();
       }
     }
 
@@ -30,16 +43,6 @@ export default function(ComposedComponent) {
     return {authenticated: state.auth.authenticated};
   }
 
-  const mapDispatchToProps = (dispatch) => ({
-    redirectToLogin: () => {
-      dispatch(push('/login'));
-    }
-  });
-
-  Authentication.propTypes = {
-    authenticated: PropTypes.bool.isRequired,
-    redirectToLogin: PropTypes.func.isRequired
-  };
-
-  return connect(mapStateToProps, mapDispatchToProps)(Authentication);
+  return connect(mapStateToProps)
+    (withCookies(Authentication));
 };

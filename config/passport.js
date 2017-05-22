@@ -69,7 +69,7 @@ function(username, password, done) {
 });
 
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
-  User.findById(payload._id, function(err, user) {
+  Admin.findById(payload._id, function(err, user) {
     if (err) {
       return done(err, false);
     }

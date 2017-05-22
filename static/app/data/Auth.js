@@ -31,3 +31,11 @@ export const register = (username, password) => {
       .use(nocache);
 };
 
+export const getAuth = (token) => {
+  return request
+      .post('/info')
+      .set('Content-Type', 'application/json')
+      .set('Authorization', token)
+      .use(prefix)
+      .use(nocache);
+};

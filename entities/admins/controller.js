@@ -80,6 +80,10 @@ module.exports = function(app, config) {
     });
   });
 
+  authRoutes.post('/info', requireAuth, function(req, res) {
+    return res.status(201).json({role: req.user.role});
+  });
+
   // Data
   apiRoutes.get('/users', (req, res) =>
     User.find({deleted: {$ne: true}}).sort({createdAt: -1})

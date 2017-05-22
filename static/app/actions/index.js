@@ -8,7 +8,7 @@ const cookies = new Cookies();
 
 function storeLogin(res) {
   cookies.set('token', res.body.token, {path: '/'});
-  cookies.set('username', res.body.user.username, {path: '/'});
+  cookies.set('user', res.body.user, {path: '/'});
 }
 
 export function errorHandler(dispatch, error, type) {
@@ -50,8 +50,7 @@ export function registerUser({username, password}) {
 
       storeLogin(res);
       dispatch({
-        type: Types.AUTH_USER,
-        username: res.body.user.username
+        type: Types.AUTH_USER
       });
       deferred.resolve();
     });
@@ -74,8 +73,7 @@ export function loginUser({username, password}) {
 
       storeLogin(res);
       dispatch({
-        type: Types.AUTH_USER,
-        username: res.body.user.username
+        type: Types.AUTH_USER
       });
       deferred.resolve();
     });
