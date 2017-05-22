@@ -6,7 +6,7 @@ import {push} from 'react-router-redux';
 export default function(ComposedComponent) {
   class Authentication extends React.Component {
     static contextTypes = {
-      router: React.PropTypes.object
+      router: PropTypes.object
     }
 
     componentWillMount() {

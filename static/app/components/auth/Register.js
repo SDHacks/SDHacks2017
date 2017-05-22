@@ -1,4 +1,4 @@
-import {Field, reduxForm} from 'redux-form';
+import {Field, reduxForm, SubmissionError} from 'redux-form';
 
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -11,10 +11,11 @@ const form = reduxForm({
   validate
 });
 
-const renderField = field => (
+const renderField = ({input, label, type, meta: {touched, error}}) => (
   <div>
-    <input className="form-control" {...field.input}/>
-    {field.touched && field.error && <div className="error">{field.error}</div>}
+    <input className="form-control" type={type} {...input}/>
+    {touched && error &&
+      <div className="error">{error}</div>}
   </div>
 );
 
@@ -40,7 +41,7 @@ class Register extends React.Component {
       this.props.dispatch(push('/dashboard'));
     })
     .catch((e) => {
-      console.log('Could not register', e);
+      throw new SubmissionError({_error: 'Registration failed'});
     });
   }
 
@@ -64,15 +65,15 @@ class Register extends React.Component {
         <div className="row">
           <div className="col-md-12">
             <label>Username</label>
-            <Field name="username" className="form-control"
-              component={renderField} type="text" />
+            <Field name="username" className="form-control" type="text"
+              component={renderField} />
           </div>
         </div>
         <div className="row">
           <div className="col-md-12">
             <label>Password</label>
-            <Field name="password" className="form-control"
-              component={renderField} type="password" />
+            <Field name="password" className="form-control" type="password"
+              component={renderField} />
           </div>
         </div>
         <button type="submit" className="btn btn-primary">Register</button>

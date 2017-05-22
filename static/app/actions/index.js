@@ -3,7 +3,6 @@ import * as Types from './types';
 
 import Cookies from 'universal-cookie';
 import Q from 'q';
-import {push} from 'react-router-redux';
 
 const cookies = new Cookies();
 
