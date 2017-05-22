@@ -60,9 +60,9 @@ gulp.task('sass', function () {
   gulp.src('static/assets/scss/sdhacks.scss')
     .pipe(plumber(plumberOptions))
     .pipe(sourcemaps.init())
-      .pipe(sass())
+      .pipe(sass({style:'extended'}))
       .pipe(rename({suffix: '.min'}))
-      .pipe(autoprefixer())
+      .pipe(autoprefixer('last 2 version'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('static/assets/css'));
 });
