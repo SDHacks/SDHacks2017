@@ -6,6 +6,11 @@ import Q from 'q';
 
 const cookies = new Cookies();
 
+function storeLogin(res) {
+  cookies.set('token', res.body.token, {path: '/'});
+  cookies.set('username', res.body.user.username, {path: '/'});
+}
+
 export function errorHandler(dispatch, error, type) {
   let errorMessage = '';
 
@@ -43,7 +48,7 @@ export function registerUser({username, password}) {
         return errorHandler(dispatch, res.body.message, Types.AUTH_ERROR);
       }
 
-      cookies.set('token', res.body.token, {path: '/'});
+      storeLogin(res);
       dispatch({
         type: Types.AUTH_USER,
         username: res.body.user.username
@@ -67,7 +72,7 @@ export function loginUser({username, password}) {
         return errorHandler(dispatch, res.body.message, Types.AUTH_ERROR);
       }
 
-      cookies.set('token', res.body.token, {path: '/'});
+      storeLogin(res);
       dispatch({
         type: Types.AUTH_USER,
         username: res.body.user.username

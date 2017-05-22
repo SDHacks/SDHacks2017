@@ -23,7 +23,8 @@ let store = createStore(reducer, applyMiddleware(reduxThunk),
 // Check initial authentication
 const cookies = new Cookies();
 if (cookies.get('token')) {
-  store.dispatch({type: AUTH_USER});
+  let username = cookies.get('username');
+  store.dispatch({type: AUTH_USER, username: username});
 }
 
 render(
