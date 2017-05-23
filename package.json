@@ -105,6 +105,7 @@
     "superagent-prefix": "0.0.2",
     "throng": "^4.0.0",
     "underscore": "^1.8.3",
+    "universal-cookie": "^2.0.7",
     "webpack": "^2.4.1",
     "webpack-combine-loaders": "^2.0.3",
     "webpack-stream": "^3.2.0"

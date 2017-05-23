@@ -3,7 +3,6 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
 const setUserInfo = require('./helper').setUserInfo;
-const roleAuth = require('./helper').roleAuth;
 
 module.exports = function(app, config) {
 
@@ -20,7 +19,6 @@ module.exports = function(app, config) {
   adminRoutes.use('/api', apiRoutes);
 
   // Middleware to require login/auth
-  const requireAuth = passport.authenticate('jwt', {session: false});
   const requireLogin = passport.authenticate('admin', {session: false});
 
   function generateToken(user) {
@@ -80,17 +78,8 @@ module.exports = function(app, config) {
     });
   });
 
-  authRoutes.post('/info', requireAuth, function(req, res) {
-    return res.status(201).json({role: req.user.role});
-  });
-
   // Data
-  apiRoutes.get('/users', (req, res) =>
-    User.find({deleted: {$ne: true}}).sort({createdAt: -1})
-    .exec(function(err, users) {
-      return res.json(users);
-    })
-  );
+  require('./api')(apiRoutes);
 
   // Index
   adminRoutes.get('/*', function response(req, res) {

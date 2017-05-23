@@ -5,10 +5,8 @@ const roles = {
   ROLE_MEMBER: 'Member'
 };
 
-exports.roles = roles;
-
 // Authentication Helper
-exports.setUserInfo = function(request) {
+function setUserInfo(request) {
   return {
     _id: request._id,
     username: request.username,
@@ -16,28 +14,7 @@ exports.setUserInfo = function(request) {
   };
 };
 
-exports.roleAuth = function(req, res, next) {
-  const user = req.user;
-
-  Admin.findById(user._id, function(err, foundAdmin) {
-    if (err) {
-      res.status(422).json({error: 'No user was found.'});
-      return next(err);
-    }
-
-    // If admin is found, check role.
-    if (foundAdmin.role === role) {
-      return next();
-    }
-
-    res.status(401).json({
-      error: 'You are not authorized to view this content.'
-    });
-    return next('Unauthorized');
-  });
-};
-
-exports.getRole = function getRole(checkRole) {
+function getRole(checkRole) {
   var role;
 
   switch (checkRole) {
@@ -49,4 +26,36 @@ exports.getRole = function getRole(checkRole) {
   }
 
   return role;
+};
+
+function roleAuth(role) {
+  const Admin = require('./model');
+
+  return function(req, res, next) {
+    const user = req.user;
+
+    Admin.findById(user._id, function(err, foundAdmin) {
+      if (err) {
+        res.status(422).json({error: 'No user was found.'});
+        return next(err);
+      }
+
+      // If admin is found, check role.
+      if (getRole(foundAdmin.role) >= getRole(role)) {
+        return next();
+      }
+
+      res.status(401).json({
+        error: 'You are not authorized to view this content.'
+      });
+      return next('Unauthorized');
+    });
+  };
+};
+
+module.exports = {
+  roles,
+  setUserInfo,
+  getRole,
+  roleAuth
 };
