@@ -95,9 +95,8 @@ export const setFilter = (filter) => ({
 });
 
 //Columns
-export const addColumn = (columnName, column) => ({
+export const addColumn = (column) => ({
   type: Types.ADD_COLUMN,
-  columnName,
   column
 });
 

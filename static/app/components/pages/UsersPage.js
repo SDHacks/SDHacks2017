@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import SearchBox from '../SearchBox';
 import UserList from '../UserList';
 import {User as UserPropType} from '../../proptypes';
 import {addUsers} from '../../actions';
@@ -20,7 +21,10 @@ class UsersPage extends React.Component {
 
   render() {
     return (
-      <UserList></UserList>
+      <div>
+        <SearchBox></SearchBox>
+        <UserList></UserList>
+      </div>
     );
   }
 }

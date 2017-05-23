@@ -1,8 +1,9 @@
-import * as ActionTypes from '../actions';
+import * as ActionTypes from '../actions/types';
 
 /*
 Each state can be an object that defines:
 {
+  name: The text to show on the page, required
   default: The default value, if no value is provided,
   prefix: To prefix any values,
   link: Converts the element into a link
@@ -13,34 +14,46 @@ Each state can be an object that defines:
 }
 */
 
-const initialState = {
-  'firstName': {},
-  'lastName': {},
-  'github': {
+const initialState = [
+  {
+    data: 'firstName',
+    name: 'First Name'
+  },
+  {
+    data: 'lastName',
+    name: 'Last Name'
+  },
+  {
+    data: 'github',
+    name: 'Github',
     prefix: '@',
     link: 'https://github.com/'
   },
-  'email': {},
-  'university': {},
-  'status': {
+  {
+    data: 'email',
+    name: 'Email'
+  },
+  {
+    data: 'university',
+    name: 'University'
+  },
+  {
+    data: 'status',
+    name: 'Status',
     default: 'No Status'
   }
-};
+];
 
 const filter = (state = initialState, action) => {
   switch (action.type) {
   case (ActionTypes.ADD_COLUMN):
-    return {
+    return [
       ...state,
-      [action.columnName]: action.column
-    };
+      action.column
+    ];
   case (ActionTypes.REMOVE_COLUMN):
-    return Object.keys(state)
-      .filter(key => key !== action.columnName)
-      .reduce((result, current) => {
-        result[current] = myObj[current];
-        return result;
-      }, {});
+    return Object.values(state)
+      .filter(key => key.data !== action.columnName);
   }
   return state;
 };

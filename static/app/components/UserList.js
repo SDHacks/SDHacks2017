@@ -6,18 +6,29 @@ import User from './User';
 import {connect} from 'react-redux';
 
 class UserList extends React.Component {
+  static propTypes = {
+    users: PropTypes.arrayOf(PropTypes.shape(
+      UserPropTypes
+    ).isRequired).isRequired,
+    columns: PropTypes.arrayOf(PropTypes.shape(
+      ColumnPropTypes
+    ).isRequired).isRequired
+  };
+
   render() {
     return (
-      <table>
-        <tbody>
+      <table className="table table-sm">
+        <thead className="thead-default">
           <tr>
-            {Object.keys(this.props.columns).map(column =>
+            {Object.values(this.props.columns).map(column =>
               <th
-                key={column}>
-                {column}
+                key={column.name}>
+                {column.name}
               </th>
             )}
           </tr>
+        </thead>
+        <tbody>
           {this.props.users.map(user =>
             <User
               key={user._id}
@@ -30,13 +41,6 @@ class UserList extends React.Component {
     );
   }
 }
-
-UserList.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.shape(
-    UserPropTypes
-  ).isRequired).isRequired,
-  columns: PropTypes.shape(ColumnPropTypes).isRequired
-};
 
 const getFilteredUsers = (users, filter) => {
   if (filter !== '') {

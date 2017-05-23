@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 export const Column = {
+  name: PropTypes.string.isRequired,
   default: PropTypes.string,
   prefix: PropTypes.string,
   link: PropTypes.string

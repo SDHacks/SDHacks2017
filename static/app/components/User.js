@@ -1,8 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {Column as ColumnPropTypes, User as UserPropTypes} from '../proptypes';
 
+import PropTypes from 'prop-types';
+import React from 'react';
+
 class User extends React.Component {
+  static propTypes = {
+    columns: PropTypes.arrayOf(PropTypes.shape(
+      ColumnPropTypes
+    ).isRequired).isRequired,
+    ...UserPropTypes
+  };
+
   createColumn(columnName, column) {
     return (
       <span
@@ -22,12 +30,12 @@ class User extends React.Component {
   }
   render() {
     const columns =
-      Object.entries(this.props.columns).map(([columnName, column]) =>
+      this.props.columns.map((column) =>
         <td
-          key={columnName}>
+          key={column.data}>
           {column.link ?
-            this.linkWrapped(columnName, column) :
-            this.createColumn(columnName, column)}
+            this.linkWrapped(column.data, column) :
+            this.createColumn(column.data, column)}
         </td>
       );
     return (
@@ -37,10 +45,5 @@ class User extends React.Component {
     );
   }
 }
-
-User.propTypes = {
-  columns: PropTypes.shape(ColumnPropTypes).isRequired,
-  ...UserPropTypes
-};
 
 export default User;
