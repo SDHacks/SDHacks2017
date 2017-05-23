@@ -1,6 +1,5 @@
-import {applyMiddleware, createStore} from 'redux';
+import {applyMiddleware, compose, createStore} from 'redux';
 
-import {AUTH_USER} from './actions/types';
 import App from './components/App';
 import {CookiesProvider} from 'react-cookie';
 import {Provider} from 'react-redux';
@@ -18,9 +17,11 @@ const history = createHistory({
   basename: '/admin'
 });
 const routingMiddleware = routerMiddleware(history);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
+  compose;
 
-let store = createStore(reducer, applyMiddleware(reduxThunk),
-  applyMiddleware(routingMiddleware));
+let store = createStore(reducer, composeEnhancers(
+  applyMiddleware(reduxThunk, routingMiddleware)));
 
 render(
   <CookiesProvider>
