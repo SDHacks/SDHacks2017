@@ -2,10 +2,10 @@ import {Cookies, withCookies} from 'react-cookie';
 import PropTypes, {instanceOf} from 'prop-types';
 
 import React from 'react';
-import {Roles} from '../static/Roles';
+import {Roles} from '~/static/Roles';
 import {connect} from 'react-redux';
 
-class Dashboard extends React.Component {
+class DashboardPage extends React.Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     cookies: instanceOf(Cookies).isRequired
@@ -40,4 +40,4 @@ function mapStateToProps(state) {
   return {auth: state.auth};
 }
 
-export default connect(mapStateToProps)(withCookies(Dashboard));
+export default connect(mapStateToProps)(withCookies(DashboardPage));

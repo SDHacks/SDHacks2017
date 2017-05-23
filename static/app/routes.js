@@ -1,7 +1,7 @@
 import {Route, Switch} from 'react-router-dom';
 
 import ConsolePage from './components/pages/ConsolePage';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/pages/DashboardPage';
 import HomePage from './components/pages/HomePage';
 import Login from './components/auth/Login';
 import NotFoundPage from './components/pages/NotFound';

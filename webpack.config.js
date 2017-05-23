@@ -25,6 +25,11 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development')
     })
   ],
+  resolve: {
+    alias: {
+      '~': path.join(__dirname, '/static/app')
+    }
+  },
   module: {
     loaders: [{
       test: /\.jsx?$/,

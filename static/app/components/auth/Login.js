@@ -3,7 +3,7 @@ import {Field, reduxForm} from 'redux-form';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {loginUser} from '../../actions';
+import {loginUser} from '~/actions';
 import {push} from 'react-router-redux';
 
 const form = reduxForm({

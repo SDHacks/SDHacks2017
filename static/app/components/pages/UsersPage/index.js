@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import SearchBox from '../SearchBox';
-import UserList from '../UserList';
-import {User as UserPropType} from '../../proptypes';
-import {addUsers} from '../../actions';
+import SearchBox from './components/SearchBox';
+import UserList from './components/UserList';
+import {User as UserPropType} from '~/proptypes';
+import {addUsers} from '~/actions';
 import {connect} from 'react-redux';
-import {loadAllUsers} from '../../data/Users';
+import {loadAllUsers} from '~/data/Users';
 
 class UsersPage extends React.Component {
   static propTypes = {

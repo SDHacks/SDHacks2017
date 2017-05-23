@@ -40,6 +40,11 @@ module.exports = {
       allChunks: true
     })
   ],
+  resolve: {
+    alias: {
+      '~': path.join(__dirname, '/static/app')
+    }
+  },
   module: {
     loaders: [{
       test: /\.jsx?$/,

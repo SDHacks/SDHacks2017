@@ -1,4 +1,4 @@
-import * as Auth from '../data/Auth';
+import * as Auth from '~/data/Auth';
 import * as Types from './types';
 
 import Cookies from 'universal-cookie';

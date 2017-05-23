@@ -1,4 +1,4 @@
-import {Column as ColumnPropTypes, User as UserPropTypes} from '../proptypes';
+import {Column as ColumnPropTypes, User as UserPropTypes} from '~/proptypes';
 
 import PropTypes from 'prop-types';
 import React from 'react';

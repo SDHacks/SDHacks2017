@@ -3,7 +3,7 @@ import {Field, reduxForm} from 'redux-form';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {setFilter} from '../actions';
+import {setFilter} from '~/actions';
 
 const form = reduxForm({
   form: 'search'
