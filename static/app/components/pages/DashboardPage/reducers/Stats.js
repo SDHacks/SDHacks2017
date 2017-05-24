@@ -1,14 +1,16 @@
 import * as ActionTypes from '../actions/types';
 
-const initialState = {};
+const initialState = {
+  users: {
+    total: 0,
+    confirmed: 0
+  }
+};
 
 const stats = (state = initialState, action) => {
   switch (action.type) {
-  case ActionTypes.ADD_USERS:
-    return [
-      ...state,
-      ...user(undefined, action)
-    ];
+  case ActionTypes.CHANGE_USER_STATS:
+    return {...state, users: action.newStats};
   default:
     return state;
   }

@@ -18,6 +18,6 @@ module.exports = function(routes) {
 
   routes.get('/stats', requireAuth, (req, res) => {
     User.count({deleted: {$ne: true}})
-    .exec((err, count) => res.json({totalUsers: count}));
+    .exec((err, count) => res.json({total: count}));
   });
 };

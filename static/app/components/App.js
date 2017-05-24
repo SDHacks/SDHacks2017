@@ -1,10 +1,9 @@
 import {Cookies, withCookies} from 'react-cookie';
 import PropTypes, {instanceOf} from 'prop-types';
-
-import {AUTH_USER} from './auth/actions/types';
-
 import React from 'react';
 import {connect} from 'react-redux';
+
+import {AUTH_USER} from './auth/actions/types';
 
 class App extends React.Component {
   static propTypes = {

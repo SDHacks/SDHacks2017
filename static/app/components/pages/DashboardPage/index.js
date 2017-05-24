@@ -2,32 +2,41 @@ import {Cookies, withCookies} from 'react-cookie';
 import PropTypes, {instanceOf} from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
-import {addUsers} from './actions';
+import {changeUserStats} from './actions';
 
 import {loadStats} from '~/data/Api';
+
+import {getRole, Roles} from '~/static/Roles';
 
 class DashboardPage extends React.Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     cookies: instanceOf(Cookies).isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    stats: PropTypes.object.isRequired
   };
 
   constructor(props) {
     super(props);
+
     this.cookies = props.cookies;
   }
 
   componentWillMount() {
+    this.state = {
+      role: this.props.cookies.get('user').role
+    };
+
     loadStats()
     .then((res) => {
-      this.props.dispatch();
+      this.props.dispatch(changeUserStats(res));
     });
   }
 
   isRole(role, render) {
-    const userRole = this.cookies.load('user').role;
+    let userRole = this.state.role;
 
     if (userRole === role) {
       return render;
@@ -39,15 +48,37 @@ class DashboardPage extends React.Component {
   render() {
     let user = this.cookies.get('user');
     return (
-      <div>
-        <p>Dashboard for {user.username}</p>
+      <div className="row">
+        <div className="col-sm-12">
+          <h1>Dashboard</h1>
+          <h2 className="text-left">
+            {user.username}
+            <small> ({this.state.role})</small>
+          </h2>
+        </div>
+        <div className="col-sm-12 col-md-3">
+          <div className="card">
+            <div className="card-block">
+              <h3 className="card-title">Total Users</h3>
+              <p className="card-text">
+                {this.props.stats.users.total.toLocaleString()}
+              </p>
+              {getRole(this.state.role) >= getRole(Roles.ROLE_ADMIN) &&
+                <Link to="/users" className="btn btn-primary">See Users</Link>
+              }
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return {auth: state.auth};
+  return {
+    auth: state.auth,
+    stats: state.dashboardStats
+  };
 }
 
 export default connect(mapStateToProps)(withCookies(DashboardPage));
