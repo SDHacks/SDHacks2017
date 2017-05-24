@@ -1,4 +1,5 @@
 const passport = require('passport');
+
 const roleAuth = require('./helper').roleAuth;
 const roles = require('./helper').roles;
 
@@ -14,4 +15,9 @@ module.exports = function(routes) {
       return res.json(users);
     })
   );
+
+  routes.get('/stats', requireAuth, (req, res) => {
+    User.count({deleted: {$ne: true}})
+    .exec((err, count) => res.json({totalUsers: count}));
+  });
 };

@@ -1,10 +1,10 @@
 import {Field, reduxForm} from 'redux-form';
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {loginUser} from '~/actions';
 import {push} from 'react-router-redux';
+
+import {loginUser} from './actions';
 
 const form = reduxForm({
   form: 'login'

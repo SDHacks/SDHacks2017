@@ -1,9 +1,9 @@
-const URL_PREFIX = '/admin/auth';
-
 import Cookies from 'universal-cookie';
 import nocache from 'superagent-no-cache';
 import pref from 'superagent-prefix';
 import request from 'superagent';
+
+const URL_PREFIX = '/admin/auth';
 
 const prefix = pref(URL_PREFIX);
 const cookies = new Cookies();

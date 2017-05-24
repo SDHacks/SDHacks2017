@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {User as UserPropType} from '~/proptypes';
-
-import {addUsers} from '~/actions';
+import {addUsers} from './actions';
 
 import {loadAllUsers} from '~/data/Api';
 
@@ -17,10 +15,8 @@ class UsersPage extends React.Component {
   };
 
   componentWillMount() {
-    loadAllUsers().end((err, res) => {
-      var users = res.body;
-      this.props.dispatch(addUsers(users));
-    });
+    loadAllUsers()
+    .then(res => this.props.dispatch(addUsers(res)));
   }
 
   render() {

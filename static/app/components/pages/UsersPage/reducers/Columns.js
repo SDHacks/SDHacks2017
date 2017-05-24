@@ -1,4 +1,4 @@
-import * as ActionTypes from '~/actions/types';
+import * as ActionTypes from '../actions/types';
 
 /*
 Each state can be an object that defines:

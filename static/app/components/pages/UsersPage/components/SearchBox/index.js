@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {setFilter} from '~/actions';
+import {setFilter} from '../../actions';
 
 const form = reduxForm({
   form: 'search'
@@ -38,7 +38,7 @@ class SearchBox extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  filter: state.filter
+  filter: state.userFilter
 });
 
 const mapDispatchToProps = (dispatch) => {

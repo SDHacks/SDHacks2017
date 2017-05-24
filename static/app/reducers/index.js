@@ -7,14 +7,15 @@ import userColumns from
 
 import users from '~/components/pages/UsersPage/reducers/Users';
 
-import auth from './Auth';
-import filter from './Filter';
+import userFilter from '~/components/pages/UsersPage/reducers/Filter';
+
+import auth from '~/components/auth/reducers/Auth';
 
 export default combineReducers({
   auth,
   userColumns: userColumns,
-  filter,
-  users: users,
+  userFilter,
+  users,
   routing: routerReducer,
   form: formReducer
 });

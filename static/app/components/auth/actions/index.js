@@ -82,26 +82,3 @@ export function loginUser({username, password}) {
     return deferred.promise;
   };
 };
-
-// Users
-export const addUsers = (users) => ({
-  type: Types.ADD_USERS,
-  users
-});
-
-// Filters
-export const setFilter = (filter) => ({
-  type: Types.SET_FILTER,
-  filter
-});
-
-//Columns
-export const addColumn = (column) => ({
-  type: Types.ADD_COLUMN,
-  column
-});
-
-export const removeColumn = (columnName) => ({
-  type: Types.REMOVE_COLUMN,
-  columnName
-});

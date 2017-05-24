@@ -1,23 +1,29 @@
 import {Field, SubmissionError, reduxForm} from 'redux-form';
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import {registerUser} from '~/actions';
+
+import {registerUser} from './actions';
 
 const form = reduxForm({
   form: 'register',
   validate
 });
 
-const renderField = ({input, label, type, meta}) => (
-  <div>
+const renderField = ({input, type, meta}) =>
+  (<div>
     <input className="form-control" type={type} {...input}/>
     {meta && meta.touched && meta.error &&
       <div className="error">{meta.error}</div>}
-  </div>
-);
+  </div>);
+
+renderField.propTypes = {
+  input: PropTypes.object.isRequired,
+  label: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  meta: PropTypes.object
+};
 
 function validate(formProps) {
   const errors = {};

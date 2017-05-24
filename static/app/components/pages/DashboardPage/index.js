@@ -3,15 +3,27 @@ import PropTypes, {instanceOf} from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 
+import {addUsers} from './actions';
+
+import {loadStats} from '~/data/Api';
+
 class DashboardPage extends React.Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
-    cookies: instanceOf(Cookies).isRequired
+    cookies: instanceOf(Cookies).isRequired,
+    dispatch: PropTypes.func.isRequired
   };
 
   constructor(props) {
     super(props);
     this.cookies = props.cookies;
+  }
+
+  componentWillMount() {
+    loadStats()
+    .then((res) => {
+      this.props.dispatch();
+    });
   }
 
   isRole(role, render) {

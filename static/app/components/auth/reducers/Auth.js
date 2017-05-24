@@ -2,7 +2,7 @@ import {
          AUTH_ERROR,
          AUTH_USER,
          UNAUTH_USER,
-} from '~/actions/types';
+} from '../actions/types';
 
 const INITIAL_STATE = {
   error: '',
