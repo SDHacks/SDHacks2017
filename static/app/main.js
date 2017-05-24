@@ -1,15 +1,15 @@
 import {applyMiddleware, compose, createStore} from 'redux';
-
-import App from './components/App';
 import {CookiesProvider} from 'react-cookie';
 import {Provider} from 'react-redux';
 import React from 'react';
 import {Router} from 'react-router';
 import createHistory from 'history/createBrowserHistory';
-import reducer from './reducers';
 import reduxThunk from 'redux-thunk';
 import {render} from 'react-dom';
 import {routerMiddleware} from 'react-router-redux';
+
+import App from './components/App';
+import reducer from './reducers';
 import routes from './routes';
 
 // Create Routing with React-Router-Redux

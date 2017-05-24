@@ -33,6 +33,7 @@
     "dotenv": "^2.0.0",
     "email-templates": "^2.3.4",
     "errorhandler": "1.4.3",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.10.3",
     "express": "^4.14.0",
     "express-device": "0.4.2",

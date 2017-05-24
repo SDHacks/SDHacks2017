@@ -1,8 +1,6 @@
 import {Cookies, withCookies} from 'react-cookie';
 import PropTypes, {instanceOf} from 'prop-types';
-
 import React from 'react';
-import {Roles} from '~/static/Roles';
 import {connect} from 'react-redux';
 
 class DashboardPage extends React.Component {

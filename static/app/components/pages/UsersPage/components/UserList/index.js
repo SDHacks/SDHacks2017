@@ -1,9 +1,10 @@
-import {Column as ColumnPropTypes, User as UserPropTypes} from '~/proptypes';
-
 import PropTypes from 'prop-types';
 import React from 'react';
-import User from './User';
 import {connect} from 'react-redux';
+
+import {Column as ColumnPropTypes, User as UserPropTypes} from '~/proptypes';
+
+import User from './User';
 
 class UserList extends React.Component {
   static propTypes = {
@@ -54,7 +55,7 @@ const getFilteredUsers = (users, filter) => {
 
 const mapStateToProps = (state) => ({
   users: getFilteredUsers(state.users, state.filter),
-  columns: state.columns
+  columns: state.userColumns
 });
 
 export default connect(

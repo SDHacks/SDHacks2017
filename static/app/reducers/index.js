@@ -1,16 +1,20 @@
-import auth from './Auth';
-import columns from './Columns';
-import {combineReducers} from 'redux';
-import filter from './Filter';
 import {reducer as formReducer} from 'redux-form';
 import {routerReducer} from 'react-router-redux';
-import users from './Users';
+import {combineReducers} from 'redux';
+
+import userColumns from
+  '~/components/pages/UsersPage/reducers/Columns';
+
+import users from '~/components/pages/UsersPage/reducers/Users';
+
+import auth from './Auth';
+import filter from './Filter';
 
 export default combineReducers({
   auth,
-  columns,
+  userColumns: userColumns,
   filter,
-  users,
+  users: users,
   routing: routerReducer,
   form: formReducer
 });

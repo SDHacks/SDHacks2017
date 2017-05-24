@@ -2,6 +2,7 @@ import {Cookies, withCookies} from 'react-cookie';
 import PropTypes, {instanceOf} from 'prop-types';
 
 import {AUTH_USER} from '~/actions/types';
+
 import React from 'react';
 import {connect} from 'react-redux';
 

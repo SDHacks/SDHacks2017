@@ -44,7 +44,7 @@ const initialState = [
   }
 ];
 
-const filter = (state = initialState, action) => {
+const userColumns = (state = initialState, action) => {
   switch (action.type) {
   case (ActionTypes.ADD_COLUMN):
     return [
@@ -58,4 +58,4 @@ const filter = (state = initialState, action) => {
   return state;
 };
 
-export default filter;
+export default userColumns;

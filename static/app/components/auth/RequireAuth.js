@@ -1,10 +1,9 @@
 import {Cookies, withCookies} from 'react-cookie';
 import PropTypes, {instanceOf} from 'prop-types';
-
 import Q from 'q';
 import React from 'react';
-import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
+import {connect} from 'react-redux';
 
 export default function(ComposedComponent) {
   class Authentication extends React.Component {
