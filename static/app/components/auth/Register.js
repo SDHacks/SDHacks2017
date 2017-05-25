@@ -2,7 +2,6 @@ import {Field, SubmissionError, reduxForm} from 'redux-form';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
 
 import {registerUser} from './actions';
 
@@ -40,6 +39,10 @@ function validate(formProps) {
 }
 
 class Register extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  };
+
   static propTypes = {
     registerUser: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -51,7 +54,7 @@ class Register extends React.Component {
     this.props.registerUser(formProps)
     .then(() => {
       console.log('Registered!');
-      this.props.dispatch(push('/dashboard'));
+      this.context.router.push('/dashboard');
     })
     .catch((e) => {
       throw new SubmissionError({_error: 'Registration failed'});

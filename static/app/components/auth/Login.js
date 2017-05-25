@@ -2,7 +2,6 @@ import {Field, reduxForm} from 'redux-form';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
 
 import {loginUser} from './actions';
 
@@ -11,6 +10,10 @@ const form = reduxForm({
 });
 
 class Login extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  };
+
   static propTypes = {
     loginUser: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -22,7 +25,7 @@ class Login extends React.Component {
     return this.props.loginUser(formProps)
     .then(() => {
       console.log('Logged in');
-      return this.props.dispatch(push('/dashboard'));
+      return this.context.router.history.push('/dashboard');
     })
     .catch((e) => {
       console.log('Could not log in', e);

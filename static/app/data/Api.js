@@ -27,8 +27,14 @@ export const loadAllUsers = () =>
       .use(prefix)
       .use(nocache));
 
-export const loadStats = () =>
+export const loadUserStats = () =>
   promisify(request
-      .get('/stats')
+      .get('/stats/users')
+      .set('Authorization', cookies.get('token', {path: '/'}))
+      .use(prefix));
+
+export const loadUniversityStats = () =>
+  promisify(request
+      .get('/stats/university')
       .set('Authorization', cookies.get('token', {path: '/'}))
       .use(prefix));

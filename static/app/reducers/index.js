@@ -1,5 +1,4 @@
 import {reducer as formReducer} from 'redux-form';
-import {routerReducer} from 'react-router-redux';
 import {combineReducers} from 'redux';
 
 import userColumns from
@@ -19,6 +18,5 @@ export default combineReducers({
   userFilter,
   users,
   dashboardStats,
-  routing: routerReducer,
   form: formReducer
 });

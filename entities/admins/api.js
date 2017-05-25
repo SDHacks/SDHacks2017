@@ -16,8 +16,13 @@ module.exports = function(routes) {
     })
   );
 
-  routes.get('/stats', requireAuth, (req, res) => {
+  routes.get('/stats/users', requireAuth, (req, res) => {
     User.count({deleted: {$ne: true}})
     .exec((err, count) => res.json({total: count}));
+  });
+
+  routes.get('/stats/university', requireAuth, (req, res) => {
+    User.distinct('university')
+    .exec((err, list) => res.json({total: list.length}));
   });
 };

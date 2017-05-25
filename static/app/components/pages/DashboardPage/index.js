@@ -4,9 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {changeUserStats} from './actions';
-
-import {loadStats} from '~/data/Api';
+import {loadAllStats} from './actions';
 
 import {getRole, Roles} from '~/static/Roles';
 
@@ -29,10 +27,7 @@ class DashboardPage extends React.Component {
       role: this.props.cookies.get('user').role
     };
 
-    loadStats()
-    .then((res) => {
-      this.props.dispatch(changeUserStats(res));
-    });
+    this.props.dispatch(loadAllStats());
   }
 
   isRole(role, render) {
@@ -66,6 +61,16 @@ class DashboardPage extends React.Component {
               {getRole(this.state.role) >= getRole(Roles.ROLE_ADMIN) &&
                 <Link to="/users" className="btn btn-primary">See Users</Link>
               }
+            </div>
+          </div>
+        </div>
+        <div className="col-sm-12 col-md-3">
+          <div className="card">
+            <div className="card-block">
+              <h3 className="card-title">Unique Universities</h3>
+              <p className="card-text">
+                {this.props.stats.university.total.toLocaleString()}
+              </p>
             </div>
           </div>
         </div>

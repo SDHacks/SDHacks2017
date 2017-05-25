@@ -82,3 +82,11 @@ export function loginUser({username, password}) {
     return deferred.promise;
   };
 };
+
+export function logoutUser() {
+  return function(dispatch) {
+    dispatch({type: Types.UNAUTH_USER});
+    cookies.remove('token', {path: '/'});
+    cookies.remove('user', {path: '/'});
+  };
+};

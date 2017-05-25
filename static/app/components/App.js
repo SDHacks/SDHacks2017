@@ -2,8 +2,11 @@ import {Cookies, withCookies} from 'react-cookie';
 import PropTypes, {instanceOf} from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 import {AUTH_USER} from './auth/actions/types';
+import Nav from './Nav';
+import Sidebar from './Sidebar';
 
 class App extends React.Component {
   static propTypes = {
@@ -25,16 +28,22 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p>Header here</p>
+        {/*Top bar navigation*/}
+        <Nav></Nav>
 
-        <div className="container">
-          {this.props.children}
+        <div className="container-fluid">
+          {/*Sidebar navigation*/}
+          <div className="row">
+            <Sidebar></Sidebar>
+          </div>
+
+          <main className="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+            {this.props.children}
+          </main>
         </div>
-
-        <p>Footer here</p>
       </div>
     );
   }
 }
 
-export default connect()(withCookies(App));
+export default withRouter(connect()(withCookies(App)));
