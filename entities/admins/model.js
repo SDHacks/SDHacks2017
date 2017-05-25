@@ -71,7 +71,21 @@ AdminSchema.methods.comparePassword = function(candidatePassword, cb) {
   });
 };
 
+AdminSchema.set('toJSON', {
+  transform: function(doc, ret) {
+    return {
+      _id: ret._id,
+      username: ret.username,
+      role: ret.role,
+      createdAt: ret.createdAt,
+      deleted: ret.deleted,
+      deletedAt: ret.deletedAt
+    };
+  }
+});
+
 AdminSchema.plugin(require('mongoose-sanitizer'));
+
 AdminSchema.plugin(timestamps);
 AdminSchema.plugin(softDelete);
 

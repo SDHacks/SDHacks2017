@@ -12,8 +12,11 @@ import auth from '~/components/auth/reducers/Auth';
 
 import dashboardStats from '~/components/pages/DashboardPage/reducers/Stats';
 
+import admins from '~/components/pages/AdminsPage/reducers/Admins';
+
 export default combineReducers({
   auth,
+  admins,
   userColumns: userColumns,
   userFilter,
   users,

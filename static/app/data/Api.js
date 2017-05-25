@@ -27,6 +27,13 @@ export const loadAllUsers = () =>
       .use(prefix)
       .use(nocache));
 
+export const loadAllAdmins = () =>
+  promisify(request
+      .get('/admins')
+      .set('Authorization', cookies.get('token', {path: '/'}))
+      .use(prefix)
+      .use(nocache));
+
 export const loadUserStats = () =>
   promisify(request
       .get('/stats/users')

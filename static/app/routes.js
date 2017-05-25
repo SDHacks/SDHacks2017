@@ -8,8 +8,8 @@ import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import NotFoundPage from './components/pages/NotFound';
 import Register from './components/auth/Register';
-import RequireAuth from './components/auth/RequireAuth';
 import UsersPage from './components/pages/UsersPage';
+import AdminsPage from './components/pages/AdminsPage';
 
 export default (
   <Switch>
@@ -20,6 +20,7 @@ export default (
     <PrivateRoute path="/logout" component={Logout} />
     <PrivateRoute path="/dashboard" component={Dashboard} />
     <PrivateRoute path="/users" component={UsersPage} />
+    <PrivateRoute path="/admins" component={AdminsPage} />
 
     <Route component={NotFoundPage} />
   </Switch>

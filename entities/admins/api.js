@@ -16,6 +16,14 @@ module.exports = function(routes) {
     })
   );
 
+  routes.get('/admins', requireAuth, roleAuth(roles.ROLE_DEVELOPER),
+  (req, res) =>
+    Admin.find({deleted: {$ne: true}}).sort({createdAt: -1})
+    .exec(function(err, admins) {
+      return res.json(admins);
+    })
+  );
+
   routes.get('/stats/users', requireAuth, (req, res) => {
     User.count({deleted: {$ne: true}})
     .exec((err, count) => res.json({total: count}));

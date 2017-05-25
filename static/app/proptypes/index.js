@@ -7,6 +7,12 @@ export const Column = {
   link: PropTypes.string
 };
 
+export const Admin = {
+  _id: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired
+};
+
 export const User = {
   _id: PropTypes.string.isRequired,
   deletedAt: PropTypes.string,

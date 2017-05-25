@@ -51,6 +51,10 @@ class Sidebar extends React.Component {
           this.sidebarLink('/login', 'Login')
         )}
 
+        {role >= getRole(Roles.ROLE_DEVELOPER) && this.sidebarSection('dev',
+          this.sidebarLink('/admins', 'Admins')
+        )}
+
         {role >= getRole(Roles.ROLE_ADMIN) && this.sidebarSection('admin',
           this.sidebarLink('/users', 'Users')
         )}
