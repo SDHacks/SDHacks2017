@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 mongoose.Promise = require('q').Promise;
 var timestamps = require('mongoose-timestamp');
 var softDelete = require('mongoose-softdelete');
-
 var bcrypt = require('bcrypt-nodejs');
+
 var roles = require('./helper').roles;
 
 require('dotenv').config();

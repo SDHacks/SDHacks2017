@@ -1,0 +1,2 @@
+// Resumes
+export const REPLACE_APPLICANTS = 'REPLACE_APPLICANTS';

@@ -3,50 +3,40 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {setFilter} from '../../actions';
-
 const form = reduxForm({
-  form: 'search'
+  form: 'filterUsers'
 });
 
 class SearchBox extends React.Component {
   static propTypes = {
     filter: PropTypes.string.isRequired,
-    updateFilter: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired
   };
 
   render() {
+    const {handleSubmit} = this.props;
     return (
       <div className="form-group">
         <div className="row">
-          <div className="col-sm-12 col-md-4">
-            <label htmlFor="userSearch">Search</label>
+          <form className="col-sm-12 col-md-4 input-group"
+            onSubmit={handleSubmit}>
             <Field
               id="userSearch"
-              name="search"
+              name="filter"
               className="form-control"
               component="input"
+              placeholder="Filter"
               type="text"
-              onChange={event => {
-                this.props.updateFilter(event.target.value);
-              }}
               value={this.props.filter} />
-          </div>
+            <span className="input-group-btn">
+              <button className="btn btn-primary" type="submit">
+                Filter
+              </button>
+            </span>
+          </form>
         </div>
       </div>);
   }
 }
 
-const mapStateToProps = (state) => ({
-  filter: state.userFilter
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateFilter: (filter) => {
-      dispatch(setFilter(filter));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(form(SearchBox));
+export default connect()(form(SearchBox));

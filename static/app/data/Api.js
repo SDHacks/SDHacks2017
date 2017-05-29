@@ -34,6 +34,13 @@ export const loadAllAdmins = () =>
       .use(prefix)
       .use(nocache));
 
+export const loadAllApplicants = () =>
+  promisify(request
+      .get('/sponsors/applicants')
+      .set('Authorization', cookies.get('token', {path: '/'}))
+      .use(prefix)
+      .use(nocache));
+
 export const loadUserStats = () =>
   promisify(request
       .get('/stats/users')

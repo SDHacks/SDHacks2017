@@ -5,7 +5,7 @@ const initialState = '';
 const filter = (state = initialState, action) => {
   switch (action.type) {
   case ActionTypes.SET_FILTER:
-    return action.filter;
+    return action.filter ? action.filter : '';
   default:
     return state;
   }

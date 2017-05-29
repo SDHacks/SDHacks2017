@@ -75,7 +75,7 @@ module.exports = function(app, config) {
     }
     if ((user.name === config.ADMIN_USER) &&
       (user.pass === config.ADMIN_PASS)) {
-        return next();
+      return next();
     }
     return unauthorized(res);
   };
@@ -119,7 +119,7 @@ module.exports = function(app, config) {
         }
 
         return res.render('entity_views/sponsors/show.pug', {sponsor});
-    })
+      })
 );
 
   // Admin
@@ -128,7 +128,7 @@ module.exports = function(app, config) {
       .exec(function(err, sponsors) {
         return res.render('entity_views/sponsors/admin.pug', {sponsors});
       });
-});
+  });
 
   // Create
   app.post('/sponsors/create', auth, function(req, res) {
@@ -159,31 +159,6 @@ module.exports = function(app, config) {
 
         return res.json({'sponsor': sponsor, 'password': generatedPw});
       });
-  });
-});
-
-
-  app.get('/sponsors/applicants', sponsorAuth, function(req, res) {
-    // Get the most recent date for sanitized users
-    var sanitizedDate = config.RESUME_SANITIZED;
-    // Select the fields necessary for sorting and searching
-    return User.find(
-      {
-        deleted: {$ne: true},
-        confirmed: true,
-        shareResume: true,
-        categories: {$exists: true},
-        resume: {$exists: true},
-        'resume.size': {$gt: 0},
-        createdAt: {$lte: sanitizedDate},
-        checkedIn: true
-      }, 'university categories year gender status').exec(function(err, users) {
-      if (err || (users == null)) {
-        res.status(401);
-        return res.json({'error': true});
-      }
-
-      return res.json(users);
     });
   });
 
@@ -236,7 +211,7 @@ module.exports = function(app, config) {
       return res.json({'error': true});
     }
     return res.json({url: download.url});
-});
+  });
 
   // Destroy
   return app.get('/sponsors/:id/delete', auth, (req, res) =>

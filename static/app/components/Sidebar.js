@@ -39,6 +39,36 @@ class Sidebar extends React.Component {
       {text}
     </NavLink>;
 
+  developerTools = () =>
+    <div>
+      <span className="sidebar__text navbar-text">
+        Developer Tools
+      </span>
+      {this.sidebarSection('dev',
+        this.sidebarLink('/admins', 'Admins')
+      )}
+    </div>;
+
+  administratorTools = () =>
+    <div>
+      <span className="sidebar__text navbar-text">
+        Administrator Tools
+      </span>
+      {this.sidebarSection('admin',
+        this.sidebarLink('/users', 'Users')
+      )}
+    </div>;
+
+  sponsorTools = () =>
+    <div>
+      <span className="sidebar__text navbar-text">
+        Sponsor Tools
+      </span>
+      {this.sidebarSection('sponsor',
+        this.sidebarLink('/resumes', 'Resumes'),
+      )}
+    </div>;
+
   render() {
     let role = this.state.user ?
       getRole(this.state.user.role) :
@@ -51,19 +81,14 @@ class Sidebar extends React.Component {
           this.sidebarLink('/login', 'Login')
         )}
 
-        {role >= getRole(Roles.ROLE_DEVELOPER) && this.sidebarSection('dev',
-          this.sidebarLink('/admins', 'Admins')
-        )}
+        {role >= getRole(Roles.ROLE_DEVELOPER) && this.developerTools()}
 
-        {role >= getRole(Roles.ROLE_ADMIN) && this.sidebarSection('admin',
-          this.sidebarLink('/users', 'Users')
-        )}
+        {role >= getRole(Roles.ROLE_ADMIN) && this.administratorTools()}
 
-        {role >= getRole(Roles.ROLE_SPONSOR) && this.sidebarSection('sponsor',
-          this.sidebarLink('/dashboard', 'Dashboard'),
-        )}
+        {role >= getRole(Roles.ROLE_SPONSOR) && this.sponsorTools()}
 
         {this.props.authenticated && this.sidebarSection('loggedIn',
+          this.sidebarLink('/dashboard', 'Dashboard'),
           this.sidebarLink('/logout', 'Logout')
         )}
       </nav>

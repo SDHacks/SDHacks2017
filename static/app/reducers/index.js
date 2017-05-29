@@ -14,12 +14,15 @@ import dashboardStats from '~/components/pages/DashboardPage/reducers/Stats';
 
 import admins from '~/components/pages/AdminsPage/reducers/Admins';
 
+import resumes from '~/components/pages/ResumesPage/reducers/Resumes';
+
 export default combineReducers({
   auth,
   admins,
   userColumns: userColumns,
   userFilter,
   users,
+  resumes,
   dashboardStats,
   form: formReducer
 });

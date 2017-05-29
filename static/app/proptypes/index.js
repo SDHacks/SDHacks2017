@@ -13,6 +13,19 @@ export const Admin = {
   role: PropTypes.string.isRequired
 };
 
+export const Applicants = {
+  university: PropTypes.string.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  year: PropTypes.number.isRequired,
+  gender: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+};
+
+export const Resumes = {
+  applicants: PropTypes.arrayOf(PropTypes.shape(
+    module.exports.Applicants).isRequired).isRequired
+};
+
 export const User = {
   _id: PropTypes.string.isRequired,
   deletedAt: PropTypes.string,
@@ -27,7 +40,7 @@ export const User = {
   website: PropTypes.string.isRequired,
   github: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
-  major: PropTypes.string.isRequired,
+  major: PropTypes.string,
   university: PropTypes.string.isRequired,
   phone: PropTypes.number.isRequired,
   email: PropTypes.string.isRequired,

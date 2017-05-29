@@ -79,7 +79,7 @@ module.exports = function(app, config) {
   });
 
   // Data
-  require('./api')(apiRoutes);
+  require('./api')(apiRoutes, config);
 
   // Index
   adminRoutes.get('/*', function response(req, res) {

@@ -10,6 +10,7 @@ import NotFoundPage from './components/pages/NotFound';
 import Register from './components/auth/Register';
 import UsersPage from './components/pages/UsersPage';
 import AdminsPage from './components/pages/AdminsPage';
+import ResumesPage from './components/pages/ResumesPage';
 
 export default (
   <Switch>
@@ -21,6 +22,7 @@ export default (
     <PrivateRoute path="/dashboard" component={Dashboard} />
     <PrivateRoute path="/users" component={UsersPage} />
     <PrivateRoute path="/admins" component={AdminsPage} />
+    <PrivateRoute path="/resumes" component={ResumesPage} />
 
     <Route component={NotFoundPage} />
   </Switch>

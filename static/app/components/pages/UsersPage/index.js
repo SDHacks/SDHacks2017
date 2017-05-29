@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {addUsers} from './actions';
+import {addUsers, setFilter} from './actions';
 
 import {loadAllUsers} from '~/data/Api';
 
@@ -11,7 +11,8 @@ import UserList from './components/UserList';
 
 class UsersPage extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    filter: PropTypes.string.isRequired
   };
 
   componentWillMount() {
@@ -22,11 +23,17 @@ class UsersPage extends React.Component {
   render() {
     return (
       <div>
-        <SearchBox></SearchBox>
+        <SearchBox filter={this.props.filter}
+          onSubmit={(values) => this.props.dispatch(setFilter(values.filter))}
+          ></SearchBox>
         <UserList></UserList>
       </div>
     );
   }
 }
 
-export default connect(null)(UsersPage);
+const mapStateToProps = (state) => ({
+  filter: state.userFilter
+});
+
+export default connect(mapStateToProps)(UsersPage);
