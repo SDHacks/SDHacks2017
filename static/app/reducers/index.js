@@ -6,8 +6,6 @@ import userColumns from
 
 import users from '~/components/pages/UsersPage/reducers/Users';
 
-import userFilter from '~/components/pages/UsersPage/reducers/Filter';
-
 import auth from '~/components/auth/reducers/Auth';
 
 import dashboardStats from '~/components/pages/DashboardPage/reducers/Stats';
@@ -20,7 +18,6 @@ export default combineReducers({
   auth,
   admins,
   userColumns: userColumns,
-  userFilter,
   users,
   resumes,
   dashboardStats,

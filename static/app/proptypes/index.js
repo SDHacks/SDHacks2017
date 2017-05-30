@@ -2,9 +2,12 @@ import PropTypes from 'prop-types';
 
 export const Column = {
   name: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
   default: PropTypes.string,
   prefix: PropTypes.string,
-  link: PropTypes.string
+  link: PropTypes.string,
+  sort: PropTypes.bool,
+  key: PropTypes.bool
 };
 
 export const Admin = {
@@ -49,19 +52,19 @@ export const User = {
   lastName: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   resume: PropTypes.shape({
-    size: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired
+    size: PropTypes.number,
+    name: PropTypes.string,
+    type: PropTypes.string,
+    url: PropTypes.string
   }),
-  checkedIn: PropTypes.bool.isRequired,
+  checkedIn: PropTypes.bool,
   confirmed: PropTypes.bool.isRequired,
   teammates: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  bussing: PropTypes.bool.isRequired,
+  bussing: PropTypes.bool,
   travel: PropTypes.shape({
     outOfState: PropTypes.bool.isRequired
   }).isRequired,
-  shareResume: PropTypes.bool.isRequired,
-  categories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  shareResume: PropTypes.bool,
+  categories: PropTypes.arrayOf(PropTypes.string.isRequired),
   majors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };

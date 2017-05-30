@@ -16,9 +16,3 @@ export const removeColumn = (columnName) => ({
   type: Types.REMOVE_COLUMN,
   columnName
 });
-
-// Filters
-export const setFilter = (filter) => ({
-  type: Types.SET_FILTER,
-  filter
-});

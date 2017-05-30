@@ -1,28 +1,27 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {connect} from 'react-redux';
 
-import {Resumes as ResumePropTypes} from '~/proptypes';
+import {Applicants as ApplicantsPropType} from '~/proptypes';
 
 class ResumeList extends React.Component {
   static propTypes = {
-    resumes: PropTypes.shape(
-      ResumePropTypes
+    applicants: PropTypes.arrayOf(
+      ApplicantsPropType
     ).isRequired
   };
 
   render() {
+    if (this.props.applicants.length === 0) {
+      return (
+        <div>Loading Resumes...</div>
+      );
+    }
+
     return (
-      <div>{this.props.resumes.applicants.length}</div>
+      <div>{this.props.applicants.length}</div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  resumes: state.resumes,
-});
-
-export default connect(
-  mapStateToProps
-)(ResumeList);
+export default ResumeList;
 

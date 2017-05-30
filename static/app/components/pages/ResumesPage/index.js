@@ -6,11 +6,16 @@ import {replaceApplicants} from './actions';
 
 import {loadAllApplicants} from '~/data/Api';
 
+import {Resumes as ResumePropTypes} from '~/proptypes';
+
 import ResumeList from './components/ResumeList';
 
 class ResumesPage extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    resumes: PropTypes.shape(
+      ResumePropTypes
+    ).isRequired
   };
 
   componentWillMount() {
@@ -22,10 +27,14 @@ class ResumesPage extends React.Component {
   render() {
     return (
       <div>
-        <ResumeList></ResumeList>
+        <ResumeList applicants={this.props.resumes.applicants}></ResumeList>
       </div>
     );
   }
 }
 
-export default connect(null)(ResumesPage);
+const mapStateToProps = (state) => ({
+  resumes: state.resumes,
+});
+
+export default connect(mapStateToProps)(ResumesPage);

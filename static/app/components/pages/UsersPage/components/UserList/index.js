@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {connect} from 'react-redux';
+import {BootstrapTable, TableHeaderColumn} from
+  'react-bootstrap-table';
 
 import {Column as ColumnPropTypes, User as UserPropTypes} from '~/proptypes';
 
 import User from './User';
+
+import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 class UserList extends React.Component {
   static propTypes = {
@@ -16,49 +19,51 @@ class UserList extends React.Component {
     ).isRequired).isRequired
   };
 
+  renderPaginationPanel = (props) =>
+    (<div className="col">
+      <div>
+        <span>{props.components.totalText}</span>
+        {props.components.pageList}
+      </div>
+    </div>
+    );
+
+  expandComponent = (row) =>
+    <User data={row} />;
+
   render() {
+    let options = {
+      sizePerPage: 10,  // which size per page you want to locate as default
+      pageStartIndex: 1, // where to start counting the pages
+      paginationSize: 3,  // the pagination bar size.
+      paginationPosition: 'top',
+      paginationShowsTotal: true,
+      alwaysShowAllBtns: true,
+      paginationPanel: this.renderPaginationPanel,
+      noDataText: 'There are currently no users'
+    };
+
     return (
-      <table className="table table-sm">
-        <thead className="thead-default">
-          <tr>
-            {Object.values(this.props.columns).map(column =>
-              <th
-                key={column.name}>
-                {column.name}
-              </th>
-            )}
-          </tr>
-        </thead>
-        <tbody>
-          {this.props.users.map(user =>
-            <User
-              key={user._id}
-              {...user}
-              columns={this.props.columns}
-            />
-          )}
-        </tbody>
-      </table>
+      <BootstrapTable
+        data={this.props.users}
+        striped
+        pagination
+        options={options}
+        expandableRow={() => true}
+        expandComponent={this.expandComponent}>
+        {this.props.columns.map(col =>
+          <TableHeaderColumn
+            key={col.name}
+            dataField={col.data}
+            isKey={col.key || false}
+            dataSort
+            filter={{type: 'TextFilter', placeholder: 'Filter'}}
+            >{col.name}</TableHeaderColumn>)
+        }
+      </BootstrapTable>
     );
   }
 }
 
-const getFilteredUsers = (users, filter) => {
-  if (filter !== '') {
-    return users.filter((user) => user.firstName.indexOf(filter) !== -1 ||
-      user.lastName.indexOf(filter) !== -1 ||
-      user._id.indexOf(filter) !== -1);
-  } else {
-    return users;
-  }
-};
-
-const mapStateToProps = (state) => ({
-  users: getFilteredUsers(state.users, state.userFilter),
-  columns: state.userColumns
-});
-
-export default connect(
-  mapStateToProps
-)(UserList);
+export default UserList;
 

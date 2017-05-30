@@ -24,8 +24,7 @@ export const loadAllUsers = () =>
   promisify(request
       .get('/users')
       .set('Authorization', cookies.get('token', {path: '/'}))
-      .use(prefix)
-      .use(nocache));
+      .use(prefix));
 
 export const loadAllAdmins = () =>
   promisify(request

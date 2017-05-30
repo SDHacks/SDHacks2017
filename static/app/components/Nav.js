@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 class Nav extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-inverse bg-inverse">
+      <nav className="navbar navbar-primary fixed-top bg-primary">
         <Link className="navbar-brand" to="/">
           <img src="/assets/img/vectors/logo.svg" width="30" height="30"
             alt="" className="d-inline-block align-top" />

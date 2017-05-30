@@ -27,7 +27,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="admin-body">
         {/*Top bar navigation*/}
         <Nav></Nav>
 

@@ -10,7 +10,9 @@ module.exports = function(routes, config) {
   const requireAuth = passport.authenticate('jwt', {session: false});
 
   routes.get('/users', requireAuth, roleAuth(roles.ROLE_ADMIN), (req, res) =>
-    User.find({deleted: {$ne: true}}).sort({createdAt: -1})
+    User.find({deleted: {$ne: true}})
+    .sort({createdAt: -1})
+    .lean()
     .exec(function(err, users) {
       return res.json(users);
     })
@@ -19,6 +21,7 @@ module.exports = function(routes, config) {
   routes.get('/admins', requireAuth, roleAuth(roles.ROLE_DEVELOPER),
   (req, res) =>
     Admin.find({deleted: {$ne: true}}).sort({createdAt: -1})
+    .lean()
     .exec(function(err, admins) {
       return res.json(admins);
     })
@@ -49,7 +52,9 @@ module.exports = function(routes, config) {
         'resume.size': {$gt: 0},
         createdAt: {$lte: sanitizedDate},
         checkedIn: true
-      }, 'university categories year gender status').exec(function(err, users) {
+      }, 'university categories year gender status')
+      .lean()
+      .exec(function(err, users) {
         if (err || (users == null)) {
           res.status(401);
           return res.json({'error': true});

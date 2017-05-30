@@ -17,7 +17,8 @@ Each state can be an object that defines:
 const initialState = [
   {
     data: 'firstName',
-    name: 'First Name'
+    name: 'First Name',
+    key: true
   },
   {
     data: 'lastName',
