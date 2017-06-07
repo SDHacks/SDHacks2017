@@ -12,7 +12,7 @@ const cookies = new Cookies();
 const promisify = (request) => {
   var deferred = Q.defer();
   request.end((err, res) => {
-    if (err || res.body.error) {
+    if (err) {
       return deferred.reject(err || res.body.error);
     }
     deferred.resolve(res.body);
@@ -49,5 +49,11 @@ export const loadUserStats = () =>
 export const loadUniversityStats = () =>
   promisify(request
       .get('/stats/university')
+      .set('Authorization', cookies.get('token', {path: '/'}))
+      .use(prefix));
+
+export const loadUser = (id) =>
+  promisify(request
+      .get('/users/' + id)
       .set('Authorization', cookies.get('token', {path: '/'}))
       .use(prefix));

@@ -15,7 +15,6 @@ const users = (state = initialState, action) => {
   switch (action.type) {
   case ActionTypes.ADD_USERS:
     return [
-      ...state,
       ...user(undefined, action)
     ];
   default:

@@ -18,6 +18,14 @@ module.exports = function(routes, config) {
     })
   );
 
+  routes.get('/users/:id', requireAuth, roleAuth(roles.ROLE_ADMIN), (req, res) => {
+    console.log(JSON.stringify(req.params));
+    return User.findOne({_id: req.params.id}, function(err, user) {
+      return res.json(user);
+    })
+  }
+  );
+
   routes.get('/admins', requireAuth, roleAuth(roles.ROLE_DEVELOPER),
   (req, res) =>
     Admin.find({deleted: {$ne: true}}).sort({createdAt: -1})

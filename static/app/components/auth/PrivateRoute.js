@@ -7,12 +7,12 @@ class PrivateRoute extends React.Component {
   static propTypes = {
     authenticated: PropTypes.bool.isRequired,
     component: PropTypes.func.isRequired,
-    rest: PropTypes.object
+    path: PropTypes.string.isRequired
   };
 
   render() {
     return (
-      <Route {...this.props.rest} render={props => (
+      <Route path={this.props.path} render={props => (
         this.props.authenticated ? (
           <this.props.component {...props}/>
         ) : (

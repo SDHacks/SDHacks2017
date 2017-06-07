@@ -11,6 +11,7 @@ import Register from './components/auth/Register';
 import UsersPage from './components/pages/UsersPage';
 import AdminsPage from './components/pages/AdminsPage';
 import ResumesPage from './components/pages/ResumesPage';
+import UserPage from './components/pages/UserPage';
 
 export default (
   <Switch>
@@ -20,9 +21,11 @@ export default (
 
     <PrivateRoute path="/logout" component={Logout} />
     <PrivateRoute path="/dashboard" component={Dashboard} />
-    <PrivateRoute path="/users" component={UsersPage} />
     <PrivateRoute path="/admins" component={AdminsPage} />
     <PrivateRoute path="/resumes" component={ResumesPage} />
+
+    <PrivateRoute path="/user/:id" component={UserPage}/>
+    <PrivateRoute path="/users" component={UsersPage} />
 
     <Route component={NotFoundPage} />
   </Switch>
