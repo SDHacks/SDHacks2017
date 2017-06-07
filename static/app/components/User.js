@@ -5,15 +5,15 @@ import {User as UserPropType} from '~/proptypes';
 
 class User extends React.Component {
   static propTypes = {
-    user: PropTypes.shape({
+    user: PropTypes.shape(
       UserPropType
-    }).isRequired
+    ).isRequired
   };
 
   render() {
     return (
       <div>
-        {user.firstName}
+        {this.props.user.firstName}
       </div>
     );
   }

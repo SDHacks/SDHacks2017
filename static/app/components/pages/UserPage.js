@@ -23,11 +23,13 @@ class UserPage extends React.Component {
 
   componentWillMount() {
     loadUser(this.props.match.params.id)
-    .then(res => this.setState({user: res}));
+    .then(res => {
+      this.setState({user: res.user});
+    });
   }
 
   render() {
-    if (!this.state.user) {
+    if (this.state.user === null) {
       return (<div>Loading...</div>);
     }
 

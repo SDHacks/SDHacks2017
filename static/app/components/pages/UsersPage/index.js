@@ -23,13 +23,15 @@ class UsersPage extends React.Component {
   };
 
   componentWillMount() {
-    this.props.dispatch(showLoading());
+    if (!this.props.users.length) {
+      this.props.dispatch(showLoading());
 
-    loadAllUsers()
-    .then(res => {
-      this.props.dispatch(hideLoading());
-      return this.props.dispatch(addUsers(res));
-    });
+      loadAllUsers()
+      .then(res => {
+        this.props.dispatch(hideLoading());
+        return this.props.dispatch(addUsers(res));
+      });
+    }
   }
 
   render() {

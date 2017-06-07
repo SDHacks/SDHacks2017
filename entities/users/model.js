@@ -113,7 +113,7 @@ var UserSchema = new Schema({
   firstHackathon: Boolean,
   outcomeStmt: String, //What they hope their outcome of the hackathon will be
   teammates: [{type: String, match:
-    [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+  [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
     'You must use a valid email']}],
   confirmed: {
     type: Boolean,
@@ -165,6 +165,7 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
 };
 
 UserSchema.plugin(require('mongoose-sanitizer'));
+
 UserSchema.plugin(findOrCreate);
 UserSchema.plugin(timestamps);
 UserSchema.plugin(softDelete);

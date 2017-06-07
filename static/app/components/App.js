@@ -29,7 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="admin-body">
-        <LoadingBar showFastActions className="loading-bar" />
+        <LoadingBar className="loading-bar" />
 
         {/*Top bar navigation*/}
         <Nav></Nav>
