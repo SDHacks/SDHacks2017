@@ -13,8 +13,10 @@ import routes from './routes';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
   compose;
 
-let store = createStore(reducer, composeEnhancers(
-  applyMiddleware(reduxThunk)));
+let store = createStore(reducer,
+composeEnhancers(
+  applyMiddleware(reduxThunk)
+));
 
 render(
   <CookiesProvider>

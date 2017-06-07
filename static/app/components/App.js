@@ -3,6 +3,7 @@ import PropTypes, {instanceOf} from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import LoadingBar from 'react-redux-loading-bar';
 
 import {AUTH_USER} from './auth/actions/types';
 import Nav from './Nav';
@@ -28,6 +29,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="admin-body">
+        <LoadingBar showFastActions className="loading-bar" />
+
         {/*Top bar navigation*/}
         <Nav></Nav>
 

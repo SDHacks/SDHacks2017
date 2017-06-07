@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
+import {showLoading, hideLoading} from 'react-redux-loading-bar';
 
 import {replaceAdmins} from './actions';
 
@@ -14,8 +15,13 @@ class AdminsPage extends React.Component {
   };
 
   componentWillMount() {
+    this.props.dispatch(showLoading());
+
     loadAllAdmins()
-    .then(res => this.props.dispatch(replaceAdmins(res)))
+    .then(res => {
+      this.props.dispatch(hideLoading());
+      return this.props.dispatch(replaceAdmins(res));
+    })
     .catch(console.error);
   }
 
