@@ -46,6 +46,7 @@ class UserList extends React.Component {
     return (
       <BootstrapTable
         data={this.props.users}
+        hover={true}
         striped
         pagination
         options={options}

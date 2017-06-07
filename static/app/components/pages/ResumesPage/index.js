@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
+import {showLoading, hideLoading} from 'react-redux-loading-bar';
 
 import {replaceApplicants} from './actions';
 
@@ -19,8 +20,13 @@ class ResumesPage extends React.Component {
   };
 
   componentWillMount() {
+    this.props.dispatch(showLoading());
+
     loadAllApplicants()
-    .then(res => this.props.dispatch(replaceApplicants(res)))
+    .then(res => {
+      this.props.dispatch(hideLoading());
+      return this.props.dispatch(replaceApplicants(res));
+    })
     .catch(console.error);
   }
 

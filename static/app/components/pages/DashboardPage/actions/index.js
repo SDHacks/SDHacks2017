@@ -1,3 +1,5 @@
+import {showLoading, hideLoading} from 'react-redux-loading-bar';
+
 import * as Types from './types';
 
 import * as Api from '~/data/Api';
@@ -14,9 +16,12 @@ export const changeUniversityStats = (newStats) => ({
 
 export const loadAllStats = () => {
   return function (dispatch) {
+    dispatch(showLoading());
+
     Api.loadUserStats()
     .then((res) => {
       dispatch(changeUserStats(res));
+      dispatch(hideLoading());
     });
 
     Api.loadUniversityStats()

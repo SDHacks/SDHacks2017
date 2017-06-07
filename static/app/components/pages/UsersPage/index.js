@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
+import {showLoading, hideLoading} from 'react-redux-loading-bar';
 
 import {addUsers} from './actions';
 
@@ -22,8 +23,13 @@ class UsersPage extends React.Component {
   };
 
   componentWillMount() {
+    this.props.dispatch(showLoading());
+
     loadAllUsers()
-    .then(res => this.props.dispatch(addUsers(res)));
+    .then(res => {
+      this.props.dispatch(hideLoading());
+      return this.props.dispatch(addUsers(res));
+    });
   }
 
   render() {

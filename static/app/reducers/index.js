@@ -1,5 +1,6 @@
-import {reducer as formReducer} from 'redux-form';
+import {reducer as form} from 'redux-form';
 import {combineReducers} from 'redux';
+import {loadingBarReducer as loadingBar} from 'react-redux-loading-bar';
 
 import userColumns from
   '~/components/pages/UsersPage/reducers/Columns';
@@ -21,5 +22,6 @@ export default combineReducers({
   users,
   resumes,
   dashboardStats,
-  form: formReducer
+  form,
+  loadingBar
 });
