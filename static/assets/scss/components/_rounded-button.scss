@@ -1,12 +1,12 @@
 .rounded-button {
+  font-family: $input-font-family;
   width: 100%;
   max-width: 9em;
   border-radius: $global-radius;
   background-color: $primary-color;
-  text-transform: uppercase;
   font-size: 1.4rem;
   color: $white;
-  padding: 0.6rem 0;
+  padding: 0.6rem 0rem;
 
   @include media-breakpoint-down(sm) {
     max-width: none;

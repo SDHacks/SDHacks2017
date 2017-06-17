@@ -1,7 +1,8 @@
 //Include fonts
-@import 'https://fonts.googleapis.com/css?family=Varela+Round|Josefin+Sans|Nunito:400,500,600,700,300,200';
+@import 'https://fonts.googleapis.com/css?family=Varela+Round|Josefin+Sans|Reem+Kufi:400,500,600,700,300,200';
 
 $body-font-family: 'Varela Round', Helvetica, Roboto, Arial, sans-serif !default;
+$input-font-family: 'Reem Kufi', Helvetica, Roboto, Arial, sans-serif !default;
 
 * {
   color: $global-text-color;
