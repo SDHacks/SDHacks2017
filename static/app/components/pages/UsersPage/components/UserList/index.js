@@ -16,7 +16,8 @@ class UserList extends React.Component {
     ).isRequired).isRequired,
     columns: PropTypes.arrayOf(PropTypes.shape(
       ColumnPropTypes
-    ).isRequired).isRequired
+    ).isRequired).isRequired,
+    onUserUpdate: PropTypes.func.isRequired
   };
 
   renderPaginationPanel = (props) =>
@@ -28,13 +29,9 @@ class UserList extends React.Component {
     </div>
     );
 
-  onUserUpdate = (values) => {
-    // New user values provided
-  }
-
   expandComponent = (row) =>
     <User user={row} initialValues={row}
-      onSubmit={this.onUserUpdate.bind(this)} />;
+      onSubmit={this.props.onUserUpdate.bind(this)} />;
 
   render() {
     let options = {

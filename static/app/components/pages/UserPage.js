@@ -1,7 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import {loadUser} from '~/data/Api';
+
+import {updateUser} from './UsersPage/actions';
 
 import User from '~/components/User';
 
@@ -11,7 +14,8 @@ class UserPage extends React.Component {
       params: PropTypes.shape({
         id: PropTypes.string.isRequired
       }).isRequired
-    }).isRequired
+    }).isRequired,
+    dispatch: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -19,6 +23,10 @@ class UserPage extends React.Component {
     this.state = {
       user: null
     };
+  }
+
+  onUserUpdate(user) {
+    updateUser(user)(this.props.dispatch);
   }
 
   componentWillMount() {
@@ -34,9 +42,10 @@ class UserPage extends React.Component {
     }
 
     return (
-      <User user={this.state.user} />
+      <User user={this.state.user} initialValues={this.state.user}
+        onSubmit={this.onUserUpdate.bind(this)} />
     );
   }
 }
 
-export default UserPage;
+export default connect()(UserPage);

@@ -57,3 +57,10 @@ export const loadUser = (id) =>
       .get('/users/' + id)
       .set('Authorization', cookies.get('token', {path: '/'}))
       .use(prefix));
+
+export const updateUser = (id, user) =>
+  promisify(request
+      .post('/users/' + id)
+      .send(user)
+      .set('Authorization', cookies.get('token', {path: '/'}))
+      .use(prefix));

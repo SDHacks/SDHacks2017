@@ -1,0 +1,10 @@
+.users {
+  &__checkbox {
+    background-color: $primary-color;
+    border-color: $primary-color;
+
+    & > input[value="true"] {
+      background-color: $white;
+    }
+  }
+}
