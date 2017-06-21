@@ -2,6 +2,7 @@ import {Field, reduxForm} from 'redux-form';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
+import {UncontrolledAlert} from 'reactstrap';
 
 import {loginUser} from './actions';
 
@@ -24,20 +25,19 @@ class Login extends React.Component {
   handleFormSubmit(formProps) {
     return this.props.loginUser(formProps)
     .then(() => {
-      console.log('Logged in');
       return this.context.router.history.push('/dashboard');
     })
     .catch((e) => {
-      console.log('Could not log in', e);
+      console.error('Could not log in', e);
     });
   }
 
   renderAlert() {
     if (this.props.errorMessage) {
       return (
-        <div>
-          <span><strong>Error!</strong> {this.props.errorMessage}</span>
-        </div>
+        <UncontrolledAlert color="danger">
+          Could not log in <strong>{this.props.errorMessage}</strong>
+        </UncontrolledAlert>
       );
     }
   }

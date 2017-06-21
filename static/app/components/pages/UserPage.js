@@ -23,17 +23,16 @@ class UserPage extends React.Component {
     this.state = {
       user: null
     };
+
+    loadUser(this.props.match.params.id)
+    .then(res => {
+      this.setState({user: res.user});
+    })
+    .catch(console.error);
   }
 
   onUserUpdate(user) {
     updateUser(user)(this.props.dispatch);
-  }
-
-  componentWillMount() {
-    loadUser(this.props.match.params.id)
-    .then(res => {
-      this.setState({user: res.user});
-    });
   }
 
   render() {
