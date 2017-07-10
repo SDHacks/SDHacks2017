@@ -80,7 +80,10 @@
   &__logo {
     height: 10rem;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
+      height: 8rem;
+    }
+    @include media-breakpoint-up(lg) {
       display: inline-block;
       vertical-align: top;
       height: 10rem;
@@ -88,10 +91,12 @@
   }
 
   &__text {
-    display: inline-block;
-    vertical-align: top;
-    padding-top: 1.5rem;
-    padding-left: 2rem;
+    @include media-breakpoint-up(lg) {
+      display: inline-block;
+      vertical-align: top;
+      padding-top: 1.5rem;
+      padding-left: 2rem;
+    }
   }
 
   &__title {
