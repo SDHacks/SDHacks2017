@@ -1,0 +1,23 @@
+.sd-card {
+  box-shadow: $default-shadow;
+  border-radius: $default-card-radius;
+  border: $default-card-border;
+  padding: 6px;
+  margin-bottom: 1.4rem;
+
+  &__img {
+    height: 200px;
+    position: relative;
+
+    &-collaboration {
+      padding-top: 16px;
+    }
+    &-novelty {
+      position: relative;
+      top: -60px;
+    }
+  }
+  &__faq {
+    border-color: $default-blue;
+  }
+}

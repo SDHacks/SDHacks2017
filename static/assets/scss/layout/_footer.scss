@@ -1,14 +1,12 @@
-footer {
-  border-image: url(/assets/img/hexagon_border-dark-grey.svg) 250 0 215 repeat;
-  border-style: solid;
-  border-bottom-width: 0px !important;
-  background-clip: padding-box;
-  background-color: #313131;
-  text-align: center;
-  color: $white;
-  padding-bottom: 20px;
-  bottom: 0;
-  position: relative;
+.sd-footer {
+  background-color: $default-blue;
+  color: $white !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding: 0 1rem;
+  height: 180px;
+  align-items: center;
 
   p {
     font-size: 1.2em;
@@ -22,10 +20,12 @@ footer {
   }
 
   @include media-breakpoint-up(lg) {
-    height: 230px;
   }
 
   @include media-breakpoint-up(md) {
+    justify-content: center;
+    height: 230px;
+
     img {
       margin-top: 4px;
     }
@@ -39,26 +39,29 @@ footer {
     margin-top: 37px;
   }
 
-  .tesc {
+  &__tesc {
     max-width: 150px;
+    position: absolute;
+    right: 1rem;
+
+    @include media-breakpoint-up(sm) {
+      right: 4rem;
+    }
   }
 
-  .social-media {
-    font-size: 18pt;
+  &__social {
+    font-size: 2rem;
+
     @include media-breakpoint-up(md) {
-      font-size: 28pt;
+      font-size: 2rem;
     }
 
     a:not(:last-child) {
       margin-right: 20px;
     }
 
-    a i {
-      color: white;
-
-      &:hover {
-        color: #19A3C5;
-      }
+    .fa {
+      color: $white;
     }
   }
 }

@@ -1,0 +1,25 @@
+.sd-faq {
+  position: relative;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    transform: skewY(-30deg);
+    transform-origin: top center;
+    z-index: -1;
+    width: 100%;
+
+    &:after {
+      background-color: $light-purple;
+      content: '';
+      display: block;
+      height: 300vh;
+      max-height: 2000px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+    }
+  }
+}
