@@ -6,11 +6,11 @@
   margin-bottom: 1.4rem;
 
   &__img {
-    height: 160px;
+    height: 184px;
 
     &-novelty {
       position: relative;
-      top: -60px;
+      top: -64px;
     }
     @include media-breakpoint-down(md) {
       img {
