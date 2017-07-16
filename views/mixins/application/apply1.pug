@@ -1,0 +1,108 @@
+mixin apply1
+  .row.apply-form__row
+    .col-md-6
+      label.apply-form__required First Name
+      input.apply-form__input-text(type="text", placeholder="First Name", data-validation="length alphanumeric", name="firstName", data-validation-allowing=" -'", data-validation-length="1-50")
+    .col-md-6
+      label.apply-form__required Last Name
+      input.apply-form__input-text(type="text", placeholder="Last Name", data-validation="length alphanumeric", name="lastName", data-validation-allowing=" -'", data-validation-length="1-50")
+
+  .row.apply-form__row
+    .col-sm-12
+      label.apply-form__required Email
+      //- input#js-apply-form__email(type="email", placeholder="email@ucsd.edu", data-validation="email,custom", data-validation-regexp="^[a-zA-Z0-9._%+-]+@([a-zA-Z.]{0,})?ucsd.edu$", data-validation-error-msg="You must enter a current UCSD email address", name="email")
+      input.apply-form__input-email#js-apply-form__email(type="email", placeholder="email@university.edu", data-validation="email,custom", data-validation-regexp="^[a-zA-Z0-9._%+-]+@([a-zA-Z.]{0,})?ucsd.edu$", data-validation-error-msg="You must enter a current UCSD email address", name="email")
+
+  .row.apply-form__row
+    .col-sm-12
+      label.apply-form__required Birthdate
+      .row
+        .col-sm-4
+          select.apply-form__input-select#select-month(data-validation="number", name="birthdate_month", data-validation-error-msg="Please select a birth month", data-validation-error-msg-number="You must be 18+ or a UC student", data-validation-allowing="")
+            option(value="", disabled="", selected="") Month
+            - var n = 1
+            while n <= 12
+              - var month = n < 10 ? '0' + n++ : n++
+              option(value=month)= month
+        .col-sm-4
+          select.apply-form__input-select#select-date(data-validation="number", name="birthdate_day", data-validation-error-msg="Please select a birth day")
+            option(value="", disabled="", selected="") Day
+            - var n = 1
+            while n <= 31
+              - var day = n < 10 ? '0' + n++ : n++
+              option(value=day)= day
+        .col-sm-4
+          select.apply-form__input-select#select-year(data-validation="number", name="birthdate_year", data-validation-error-msg="Please select a birth year", data-validation-allowing="range[1980;1998]", data-validation-error-msg-number="You must be 18+ or a UC student", data-validation-error-msg-container="#age-error-message")
+            option(value="", disabled="", selected="") Year
+            - var n = 1980
+            while n <= 2017
+              option(value=n)= n++
+          span#age-error-message
+
+  .row.apply-form__row
+    .col-md-6
+      label.apply-form__required Gender
+      select.apply-form__input-select(placeholder="Gender", data-validation="required", name="gender")
+        option(value="", disabled="", selected="") Select Gender
+        option(value="Male") Male
+        option(value="Female") Female
+        option(value="Non-Binary") Non-Binary
+        option(value="I prefer not to say") I prefer not to say
+        option(value="Other") Other
+    .col-md-6
+      label.apply-form__required Phone Number
+      input.apply-form__input-text(type="text", placeholder="(555) 555 5555", data-validation="number", data-validation-ignore="(,), ", name="phone", data-validation-error-msg-container="#phone-error-message")
+      span#phone-error-message
+
+  .row.apply-form__row
+    .col-sm-12.no-margin-bottom
+      label.apply-form__required Institution
+    .col-md-6.col-lg-4.col-lg-offset-2
+      .apply-form__institution-card
+        input.apply-form__input-radio.apply-form__institution-radio#institution-radio-uni(type="radio", value="uni", name="institution", checked="")
+        label.apply-form__institution-label#institution-label-uni(for="institution-radio-uni") University
+    .col-md-6.col-lg-4.col-lg-offset-2
+      .apply-form__institution-card
+        input.apply-form__input-radio.apply-form__institution-radio#institution-radio-hs(type="radio", value="hs", name="institution")
+        label.apply-form__institution-label#institution-label-hs(for="institution-radio-hs") High School
+
+  .row.apply-form__row
+    .col-sm-12
+      label.apply-form__required#institution-label University
+      input.apply-form__input-text#institution-uni(type="text", placeholder="University", class="js-apply-form__universities", data-validation="required", data-dropdown-menu="", name="university", value="The University of California, San Diego")
+      input.apply-form__input-text#institution-hs(type="text", placeholder="High School", style="display: none", data-dropdown-menu="", value="")
+
+  .row.apply-form__row
+    .col-lg-6
+      label.apply-form__required#major-label Major
+      input.apply-form__input-text#major(type="text", placeholder="Major", class="js-apply-form__majors", data-validation="required", name="major",
+      data-validation-error-msg-container="#major-error-message")
+      span#major-error-message
+    .col-lg-6
+      label.apply-form__required Graduation Year
+      input.apply-form__input-number(type="number", value="2017", name="year", data-validation="number", data-validation-allowing="range[2017;2030]", data-validation-error-msg-number="Must be a current student or have graduated in 2017")
+
+  .row.apply-form__row
+    .col-lg-6
+      label Github Username
+      .input-group
+        //- span.input-group-label @
+        input.apply-form__input-text.input-group-field(type="text", placeholder="Github Username", name="github" data-validation="length", data-validation-length="0-50")
+    .col-lg-6
+      label Personal Website
+      input.apply-form__input-text(type="text", placeholder="http://example.com/", name="website", data-validation="url", data-validation-optional="true", data-validation-error-msg="Please ensure your URL contains an http://")
+
+  .row.apply-form__row
+    .col-md-4.col-md-offset-4
+      label Resume
+      input(type="file", placeholder="Resume", name="resume", data-validation="mime size", data-validation-max-size="5M", data-validation-allowing="docx, pdf, odt, pages, md, txt, vnd.openxmlformats-officedocument.wordprocessingml")
+
+  .row.apply-form__row
+    .col-sm-12
+      label
+        input.apply-form__input-checkbox(type="checkbox", name="shareResume") 
+        | Would you like us to share your resume and personal information so that companies may contact you about job opportunities?
+
+  .row.apply-form__row
+    .col-sm-12
+      label.js-apply-form__error.js-apply-form__error--message.text-left

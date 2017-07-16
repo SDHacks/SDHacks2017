@@ -8,6 +8,7 @@
   font-size: 1.4rem;
   color: $white;
   padding: 0.6rem 0rem;
+  box-shadow: $default-shadow;
 
   @include media-breakpoint-down(sm) {
     max-width: none;

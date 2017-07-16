@@ -1,0 +1,15 @@
+extends ../layouts/home
+
+//- Apply sections
+include ../mixins/application/apply1
+include ../mixins/application/apply2
+include ../mixins/application/apply3
+
+block content
+  img(src="")
+  form#apply.apply-form__wrapper(role="region", aria-label="Hacker Application", data-infinite-wrap="false", data-auto-play="false", enctype="multipart/form-data", method="POST", action="/api/register")
+    .apply-form
+      h1.apply-form__header Apply for SD Hacks 2017
+      +apply1 
+      +apply2
+      //- +apply3
