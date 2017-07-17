@@ -4,6 +4,13 @@
   border: $default-card-border;
   padding: 6px;
   margin-bottom: 1.4rem;
+  z-index: 1;
+
+  &__about {
+    @include media-breakpoint-down(md) {
+      text-align: center;
+    }
+  }
 
   &__img {
     height: 184px;

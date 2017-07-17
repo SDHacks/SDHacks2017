@@ -4,4 +4,8 @@
   &__title {
     margin-bottom: 2rem;
   }
+  &__subtitle {
+    font-family: $header-font-family;
+    letter-spacing: 0.05rem;
+  }
 }

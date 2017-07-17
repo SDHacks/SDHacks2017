@@ -18,10 +18,11 @@ block content
               h1.hexagon-hero__title Build your dreams.
               .hexagon-hero__subtitle Rimac Arena, UC San Diego
               .hexagon-hero__subtitle October 20-22, 2017
+              .hexagon-hero__subsubtitle Applications open August 7th
               .hexagon-hero__nav
-                //- +get-updates
-                input.hexagon-hero__nav-button.btn.rounded-button(type="button", value="Apply")
-                input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type="button", value="Volunteer")
+                +get-updates
+                //- input.hexagon-hero__nav-button.btn.rounded-button(type="button", value="Apply")
+                //- input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type="button", value="Volunteer")
           .col-md-5
             img.hexagon-hero__featurette(src='/assets/img/site/featurette-hero.png')
 
@@ -31,9 +32,9 @@ block content
         .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile RIMAC Arena, UCSD
         .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile October 20-22, 2017
         .hexagon-hero__nav.hexagon-hero__nav--mobile
-          //- +get-updates
-          input.hexagon-hero__nav-button.btn.rounded-button(type="button", value="Apply")
-          input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type="button", value="Volunteer")
+          +get-updates
+          //- input.hexagon-hero__nav-button.btn.rounded-button(type="button", value="Apply")
+          //- input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type="button", value="Volunteer")
 
   .sd-section.sd-about#sd-about
     .sd-about__background
@@ -42,25 +43,25 @@ block content
       .row
         .col-lg-4.sd-card__wrapper
           .card.sd-card
-            .card-block.sd-card__block
+            .card-block.sd-card__block.sd-card__about
               .card-img.text-center.sd-card__img.sd-card__img-inclusivity
                 img(src='/assets/img/site/featurette-inclusivity.png')
-              h3.card-title.sd-card__title.text-center Inclusivity
+              h3.card-title.sd-card__title.text-center Empowerment
               .card-text.sd-card__text We encourage hackers from all backgrounds, disciplines, and galaxies to build their dreams.
         .col-lg-4.sd-card__wrapper
           .card.sd-card
-            .card-block.sd-card__block
+            .card-block.sd-card__block.sd-card__about
               .card-img.text-center.sd-card__img.sd-card__img-collaboration
                 img(src='/assets/img/site/featurette-collaboration.png')
               h3.card-title.sd-card__title.text-center Collaboration
               .card-text.sd-card__text We’re all here as fellow mentors, 4am-ers, and friends.
         .col-lg-4.sd-card__wrapper
           .card.sd-card
-            .card-block.sd-card__block
+            .card-block.sd-card__block.sd-card__about
               .card-img.text-center.sd-card__img.sd-card__img-novelty
                 img(src='/assets/img/site/featurette-novelty.png')
               h3.card-title.sd-card__title.text-center Novelty
-              .card-text.sd-card__text We strive to make each SD Hacks a memorable and learning experience for all.
+              .card-text.sd-card__text We strive to make each SD Hacks a memorable learning experience for all.
 
   .sd-section.sd-faq#sd-faq
     .sd-faq__background.hidden-md-up
@@ -108,35 +109,35 @@ block content
             .card.sd-card.sd-card__faq
               .card-block.sd-card__block
                 h4.card-title.sd-card__title How can I help?
-                .card-text.sd-card__text Please email us at hello@sdhacks.io if you have a question not listed here or if you’re interested in helping out!
+                .card-text.sd-card__text Please email us at #[a(target='_blank' href='mailto:hello@sdhacks.io') hello@sdhacks.io] if you have a question not listed here or if you’re interested in helping out!
           .sd-card__wrapper
             .card.sd-card.sd-card__faq
               .card-block.sd-card__block
                 h4.card-title.sd-card__title Are there any rules?
-                .card-text.sd-card__text As a Major League Hacking member event, we are adopting Major League Hacking’s Code of Conduct which requires you to respect others and help us keep SD Hacks a safe space for everyone. If you want your project to be considered for an award, you may only submit work that your team wrote during the hackathon.
+                .card-text.sd-card__text As a Major League Hacking member event, we are adopting Major League Hacking’s #[a(href='http://static.mlh.io/docs/mlh-code-of-conduct.pdf' target='_blank') Code of Conduct] which requires you to respect others and help us keep SD Hacks a safe space for everyone. If you want your project to be considered for an award, you may only submit work that your team wrote during the hackathon.
           .sd-card__wrapper
             .card.sd-card.sd-card__faq
               .card-block.sd-card__block
                 h4.card-title.sd-card__title Do I have to pay for parking?
-                .card-text.sd-card__text Yes, parking permits are $2 per hr on Friday evening up to 11pm. After 11pm on Friday, parking is free for the weekend. The closest parking to RIMAC Arena is the Hopkins Parking Structure shown below.
+                .card-text.sd-card__text Yes, parking permits are $2 per hr on Friday evening up to 11pm. After 11pm on Friday, parking is free for the weekend. The closest parking to RIMAC Arena is the #[a(href='https://www.google.com/maps/place/Hopkins+Parking+Structure/@32.8836008,-117.2419505,17z/data=!3m1!4b1!4m5!3m4!1s0x80dc06c1e6156103:0xc6690b999c002d97!8m2!3d32.8835963!4d-117.2397618' target='_blank') Hopkins Parking Structure].
 
   .sd-section.sd-sponsors#sd-sponsors
     .sd-sponsors__background
     h2.sd-faq__title.sd-section__title Sponsors
     .container.text-center
-      .sd-sponsors__subtitle Interested in sponsoring? Email us at hello@sdhacks.io
+      .sd-section__subtitle.sd-sponsors__subtitle Interested in sponsoring? Email us at #[a(href='mailto:sponsor@tesc.ucsd.edu') sponsor@tesc.ucsd.edu]
       .sd-sponsors__bronze
         .sd-sponsors__img
           img.sd-sponsors__sponsor-e8(src='/assets/img/sponsors/e8.png')
 
   .sd-footer#sd-footer
     .sd-footer__social.text-center
-      a(target='_blank' href='https://www.facebook.com/SDHacks/')
+      a.sd-link__icon(target='_blank' href='https://www.facebook.com/SDHacks/')
         i.fa.fa-facebook-square
-      a(target='_blank' href='mailto:hello@sdhacks.io')
+      a.sd-link__icon(target='_blank' href='mailto:hello@sdhacks.io')
         i.fa.fa-envelope
-      a(target='_blank' href='https://twitter.com/sdhacks')
+      a.sd-link__icon(target='_blank' href='https://twitter.com/sdhacks')
         i.fa.fa-twitter
     .sd-footer__tesc.text-right
-      a(target='_blank' href='http://tesc.ucsd.edu')
+      a.sd-link__icon(target='_blank' href='http://tesc.ucsd.edu')
         img.sd-footer__tesc-img(src='/assets/img/site/logo-tesc-white.png')

@@ -1,4 +1,6 @@
 .sd-footer {
+  position: relative;
+  z-index: 3;
   background-color: $default-blue;
   color: $white !important;
   display: flex;

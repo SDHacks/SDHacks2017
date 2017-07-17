@@ -1,4 +1,5 @@
 .rounded-button {
+  // TODO: normalize this class to override default Bootstrap buttons
   font-family: $input-font-family;
   width: 100%;
   max-width: 9em;
@@ -9,6 +10,7 @@
   color: $white;
   padding: 0.6rem 0rem;
   box-shadow: $default-shadow;
+  cursor: pointer;
 
   @include media-breakpoint-down(sm) {
     max-width: none;
