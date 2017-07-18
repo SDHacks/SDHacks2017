@@ -1,11 +1,11 @@
 .hexagon-hero {
-  height: 85vh;
   max-height: 800px;
   width: 100%;
   text-align: center;
 
   @include media-breakpoint-up(md) {
     text-align: left;
+    height: 85vh;
   }
 
   &__background {
@@ -68,12 +68,12 @@
 
   &__container {
     z-index: 3;
-    height: 100%;
-    padding: 2rem 0rem;
+    padding: 3rem 0rem;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
       height: auto;
       padding: inherit;
+      margin-bottom: 0;
     }
   }
 
@@ -131,20 +131,6 @@
 
     &--mobile {
       margin-top: 3rem;
-    }
-
-    &-button, &-input {
-      margin-bottom: 1rem;
-      box-shadow: $default-shadow;
-
-      @include media-breakpoint-up(sm) {
-        max-width: 9rem !important;
-        margin-bottom: 0;
-
-        &:first-child {
-          margin-right: 1rem;
-        }
-      }
     }
   }
 
