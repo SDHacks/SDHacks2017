@@ -18,6 +18,10 @@
     &-novelty {
       position: relative;
       top: -64px;
+
+      img {
+        height: 228px;
+      }
     }
     @include media-breakpoint-down(md) {
       img {

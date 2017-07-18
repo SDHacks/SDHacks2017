@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="123px" height="146px" viewBox="0 0 123 146" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>featurette-novelty</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="featurette-novelty" transform="translate(-11.000000, -11.000000)">
+            <g id="Box" transform="translate(14.000000, 36.000000)">
+                <polygon id="Path-22" fill="#584966" transform="translate(60.080429, 59.186280) rotate(-60.000000) translate(-60.080429, -59.186280) " points="42.0293355 27.9208682 42.0506252 69.6432753 78.1315233 90.4516917 78.0401498 48.7117215"></polygon>
+                <polygon id="Path-22" fill="#C6AAE1" transform="translate(89.066258, 35.170927) rotate(-300.000000) translate(-89.066258, -35.170927) " points="100.817755 7.27492015 65.2458013 26.8802833 76.8971901 63.0669333 112.886715 42.1353796"></polygon>
+                <polygon id="Path-22" fill="#C6AAE1" transform="translate(30.466476, 52.704257) scale(-1, 1) rotate(-300.000000) translate(-30.466476, -52.704257) " points="57.6302592 33.8514162 22.058305 53.4567793 3.30269324 71.5570969 39.2922178 50.6255431"></polygon>
+                <polygon id="Path-22" fill="#8F77A6" transform="translate(77.664444, 90.168987) rotate(-240.000000) translate(-77.664444, -90.168987) " points="77.2349182 69.3077833 42.0157871 89.6415581 77.2562079 111.03019 113.313101 90.2153224"></polygon>
+                <polygon id="Path-22" fill="#AA8DC5" transform="translate(41.983649, 89.864234) rotate(-180.000000) translate(-41.983649, -89.864234) " points="23.9782417 59.1533203 23.9995313 100.875727 59.9890559 120.575148 59.9890559 79.9441736"></polygon>
+                <polygon id="Path-22" fill="#AA8DC5" transform="translate(90.368014, 82.053626) scale(-1, 1) rotate(-300.000000) translate(-90.368014, -82.053626) " points="103.164912 55.5306567 67.5929577 75.1360198 77.1535459 108.576595 113.14307 87.6450416"></polygon>
+                <polygon id="Path-22" fill="#C6AAE1" transform="translate(35.365951, 83.833474) rotate(-300.000000) translate(-35.365951, -83.833474) " points="44.278578 60.341835 8.70662392 79.9471981 26.0357539 107.325114 62.0252785 86.39356"></polygon>
+            </g>
+            <g id="Group-17" transform="translate(58.359803, 29.652696) rotate(-15.000000) translate(-58.359803, -29.652696) translate(33.359803, 5.652696)">
+                <polygon id="Path-22" fill="#75C8DC" transform="translate(16.610805, 28.430864) rotate(-120.000000) translate(-16.610805, -28.430864) " points="16.6239919 18.835012 0.033163015 28.442343 16.6337848 38.0267164 33.1884461 28.3985041"></polygon>
+                <polygon id="Path-22" fill="#A3DAE8" transform="translate(24.804055, 14.327842) rotate(-60.000000) translate(-24.804055, -14.327842) " points="16.5218281 0.0173958299 16.531621 19.2091003 33.0461084 28.6382889 33.0862823 9.58088795"></polygon>
+                <polygon id="Path-22" fill="#5FA2B3" transform="translate(33.002120, 28.531865) rotate(-240.000000) translate(-33.002120, -28.531865) " points="32.8795664 18.9360124 16.5602192 28.3579919 32.8893594 38.1277168 49.4440207 28.4995045"></polygon>
+            </g>
+            <g id="Group-17" transform="translate(104.466508, 40.112955) rotate(-345.000000) translate(-104.466508, -40.112955) translate(88.466508, 24.612955)">
+                <polygon id="Path-22" fill="#FFD07E" transform="translate(10.557966, 18.070895) rotate(-120.000000) translate(-10.557966, -18.070895) " points="10.5663482 11.9716911 0.0210786895 18.0781909 10.5725727 24.1700988 21.0948538 18.0503266"></polygon>
+                <polygon id="Path-22" fill="#FFE0A9" transform="translate(15.765665, 9.106896) rotate(-60.000000) translate(-15.765665, -9.106896) " points="10.501412 0.0110569349 10.5076365 12.2094647 21.0043827 18.2027358 21.0299176 6.08969246"></polygon>
+                <polygon id="Path-22" fill="#E6BB70" transform="translate(20.976423, 18.135092) rotate(-240.000000) translate(-20.976423, -18.135092) " points="20.8985272 12.0358877 10.5258137 18.0245767 20.9047517 24.2342955 31.4270328 18.1145233"></polygon>
+            </g>
+            <g id="Group-17" transform="translate(28.186533, 64.820508) rotate(-30.000000) translate(-28.186533, -64.820508) translate(7.186533, 44.820508)">
+                <polygon id="Path-22" fill="#F87373" transform="translate(13.869907, 23.739575) rotate(-120.000000) translate(-13.869907, -23.739575) " points="13.8809183 15.7271048 0.0276908883 23.7491598 13.8890954 31.7520454 27.7121231 23.7125546"></polygon>
+                <polygon id="Path-22" fill="#F49292" transform="translate(20.711215, 11.963649) rotate(-60.000000) translate(-20.711215, -11.963649) " points="13.7956122 0.0145253977 13.8037893 16.0394659 27.5932721 23.9127732 27.626817 7.99997521"></polygon>
+                <polygon id="Path-22" fill="#D15D5D" transform="translate(27.556542, 23.823910) rotate(-240.000000) translate(-27.556542, -23.823910) " points="27.4542107 15.8114394 13.8276685 23.6787272 27.4623877 31.83638 41.2854155 23.7968892"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

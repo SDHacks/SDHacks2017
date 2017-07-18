@@ -1,44 +1,44 @@
 mixin apply2
-  .row.apply-form__row
+  .row.sd-form__row
     .col-sm-12
       label What kind of food would you like to see at the hackathon?
-      textarea.apply-form__input-textarea(placeholder="Healthy Snacks and Drinks", name="food", data-validation="length", data-validation-length="0-1000")
+      textarea.sd-form__input-textarea(placeholder="Healthy Snacks and Drinks", name="food", data-validation="length", data-validation-length="0-1000")
 
-  .row.apply-form__row
+  .row.sd-form__row
     .col-sm-12
       label Dietary Restrictions
-      textarea.apply-form__input-textarea(placeholder="Dietary Restrictions", name="diet", data-validation="length", data-validation-length="0-1000")
+      textarea.sd-form__input-textarea(placeholder="Dietary Restrictions", name="diet", data-validation="length", data-validation-length="0-1000")
 
-  .row.apply-form__row
+  .row.sd-form__row
     .col-md-4
-      input.apply-form__input-radio(id="outOfStateY", type="radio", value="true", name="outOfState")
+      input.sd-form__input-radio(id="outOfStateY", type="radio", value="true", name="outOfState")
       label(for="outOfStateY") Yes
-      input.apply-form__input-radio(id="outOfStateN", type="radio", value="false", name="outOfState", checked="")
+      input.sd-form__input-radio(id="outOfStateN", type="radio", value="false", name="outOfState", checked="")
       label(for="outOfStateN") No
     .col-md-8#outofstate
-      label.apply-form__required I will be traveling from outside the San Diego county
+      label.sd-form__required I will be traveling from outside the San Diego county
 
     .col-lg-6
       label If yes, from where?
-      input.apply-form__input-text#city(type="text", placeholder="Which city?", name="city", disabled="")
+      input.sd-form__input-text#city(type="text", placeholder="Which city?", name="city", disabled="")
 
-  .row.apply-form__row
+  .row.sd-form__row
 
     .col-md-4
-      label.apply-form__required T-Shirt Fit
+      label.sd-form__required T-Shirt Fit
       br
-      input.apply-form__input-radio(id="shirtFitM", type="radio", value="M", name="shirtFit", checked="")
+      input.sd-form__input-radio(id="shirtFitM", type="radio", value="M", name="shirtFit", checked="")
       label(for="shirtFitM") Men's
-      input.apply-form__input-radio(id="shirtFitW", type="radio", value="W", name="shirtFit")
+      input.sd-form__input-radio(id="shirtFitW", type="radio", value="W", name="shirtFit")
       label(for="shirtFitW") Women's
 
     .col-md-4
-      //- label.apply-form__required T-Shirt Size
+      //- label.sd-form__required T-Shirt Size
       //- each val, ind in ["XS", "S", "M", "L", "XL", "XXL"]
-      //-   input.apply-form__input-radio(id="shirtSize#{val}", type="radio", value=val, checked=ind === 2, name="shirtSize")
+      //-   input.sd-form__input-radio(id="shirtSize#{val}", type="radio", value=val, checked=ind === 2, name="shirtSize")
       //-   label(for="shirtSize#{val}")= val
-      label.apply-form__required T-Shirt Size
-      select.apply-form__input-select(placeholder="Size", data-validation="required", name="shirtSize")
+      label.sd-form__required T-Shirt Size
+      select.sd-form__input-select(placeholder="Size", data-validation="required", name="shirtSize")
         option(value="Select", disabled="", selected="") Select Size
         option(value="XS") X-Small
         option(value="S") Small
@@ -47,44 +47,44 @@ mixin apply2
         option(value="XL") X-Large
         option(value="XXL") XX-Large
 
-  .row.apply-form__row
+  .row.sd-form__row
     .col-md-4
-      input.apply-form__input-radio(id="firstHackathonY", type="radio", value="true", name="firstHackathon", checked="")
+      input.sd-form__input-radio(id="firstHackathonY", type="radio", value="true", name="firstHackathon", checked="")
       label(for="firstHackathonY") Yes
-      input.apply-form__input-radio(id="firstHackathonN", type="radio", value="false", name="firstHackathon")
+      input.sd-form__input-radio(id="firstHackathonN", type="radio", value="false", name="firstHackathon")
       label(for="firstHackathonN") No
     .col-md-8
-      label.apply-form__required This will be my first hackathon
+      label.sd-form__required This will be my first hackathon
 
-  .row.apply-form__row
+  .row.sd-form__row
     .col-sm-12
-      label.apply-form__required What do you hope to get out of attending the hackathon?
+      label.sd-form__required What do you hope to get out of attending the hackathon?
       span#outcomeStmt-length-element 500
       |  chars left
-      textarea.apply-form__input-textarea#outcomeStmt(placeholder="Your outcome", name="outcomeStmt", rows="3", data-validation="length required", data-validation-length="1-500")
+      textarea.sd-form__input-textarea#outcomeStmt(placeholder="Your outcome", name="outcomeStmt", rows="3", data-validation="length required", data-validation-length="1-500")
 
-  .row.apply-form__row
+  .row.sd-form__row
     .col-sm-12.no-margin-bottom
       label Please enter the email addresses of your desired teammates. We will do our best to accept whole teams if ALL members apply and include all members’ email addresses in their applications. Don’t worry, you can come back and edit your application at any time.
     .col-sm-12.large-4
-      input.apply-form__input-email(type="email", placeholder="example@email.com", name="team1", data-validation="email", data-validation-optional="true")
+      input.sd-form__input-email(type="email", placeholder="example@email.com", name="team1", data-validation="email", data-validation-optional="true")
     .col-sm-12.large-4
-      input.apply-form__input-email(type="email", placeholder="example@email.com", name="team2", data-validation="email", data-validation-optional="true")
+      input.sd-form__input-email(type="email", placeholder="example@email.com", name="team2", data-validation="email", data-validation-optional="true")
     .col-sm-12.large-4
-      input.apply-form__input-email(type="email", placeholder="example@email.com", name="team3", data-validation="email", data-validation-optional="true")
+      input.sd-form__input-email(type="email", placeholder="example@email.com", name="team3", data-validation="email", data-validation-optional="true")
 
-  .row.apply-form__row
+  .row.sd-form__row
     .col-sm-12.no-margin-bottom
       label We participate in Major League Hacking (MLH) as a MLH Member Event. You authorize us to share certain application/registration information for event administration, ranking, MLH administration, pre and post-event informational e-mails, and occasional messages about hackathons in line with the MLH Privacy Policy.
     .col-sm-12
       label
-        input.apply-form__input-checkbox(type="checkbox", data-validation="required", data-validation-error-msg="You must accept the Code of Conduct to register") 
+        input.sd-form__input-checkbox(type="checkbox", data-validation="required", data-validation-error-msg="You must accept the Code of Conduct to register") 
         | I accept the 
         a(href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf") MLH Code of Conduct
-  .row.apply-form__row
+  .row.sd-form__row
     .col-sm-12.text-center
-      //- input.button.apply-form__nav-button#js-apply-form__previous(type="button", value="Back")
-      input.js-apply-form__button--final.apply-form__nav-button.btn.btn-default.rounded-button(type="button", class="success button", value="Apply!", id="submitApp")
+      //- input.button.sd-form__nav-button#js-sd-form__previous(type="button", value="Back")
+      input.js-sd-form__button--final.sd-form__nav-button.btn.btn-default.rounded-button(type="button", class="success button", value="Apply!", id="submitApp")
       .spinner(style="display: none")
         .spinner__rect1
         .spinner__rect2
@@ -92,4 +92,4 @@ mixin apply2
         .spinner__rect4
         .spinner__rect5
     .col-sm-12.large-8
-      label.js-apply-form__error.js-apply-form__error--message.text-left(for="#submitApp")
+      label.js-sd-form__error.js-sd-form__error--message.text-left(for="#submitApp")
