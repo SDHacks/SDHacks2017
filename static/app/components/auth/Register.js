@@ -55,7 +55,7 @@ class Register extends React.Component {
     this.props.registerUser(formProps)
     .then(() => {
       console.log('Registered!');
-      this.context.router.push('/dashboard');
+      this.context.router.push('/admin/dashboard');
     })
     .catch((e) => {
       throw new SubmissionError({_error: 'Registration failed'});

@@ -16,7 +16,7 @@ class LogoutPage extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(logoutUser());
-    this.context.router.history.replace('/');
+    this.context.router.history.replace('/admin');
   }
 
   render() {
