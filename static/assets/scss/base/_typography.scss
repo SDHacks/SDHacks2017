@@ -1,20 +1,44 @@
 //Include fonts
-@import 'https://fonts.googleapis.com/css?family=Varela+Round|Josefin+Sans|Reem+Kufi:400,500,600,700,300,200';
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro|Josefin+Sans|Reem+Kufi:400,500,600,700,300,200';
 
-$body-font-family: 'Varela Round', Helvetica, Roboto, Arial, sans-serif !default;
-$input-font-family: 'Reem Kufi', Helvetica, Roboto, Arial, sans-serif !default;
+$body-font-family: 'Source Sans Pro', Helvetica, Roboto, Arial, sans-serif !default;
+$header-font-family: 'Reem Kufi', Helvetica, Roboto, Arial, sans-serif !default;
+$input-font-family: $header-font-family;
 
-* {
+body {
   color: $global-text-color;
+  font-family: $body-font-family;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $dark-blue;
+  font-family: $header-font-family;
+  letter-spacing: 0.1rem;
 }
 
 h2 {
-  text-transform: uppercase;
-  font-weight: bold;
   text-align: center;
-  color: $primary-color;
 }
 
 p {
   font-size: 1.1em;
+}
+
+a {
+  color: $dark-blue;
+  text-decoration: none;
+  border-bottom: 2px solid;
+
+  &:hover {
+    color: $default-blue;
+    text-decoration: none;
+  }
+  &.sd-link__icon {
+    border: none;
+  }
 }

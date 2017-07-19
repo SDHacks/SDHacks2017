@@ -13,20 +13,12 @@ function storeLogin(res) {
 }
 
 export function errorHandler(dispatch, error, type) {
-  let errorMessage = '';
-
-  if (error.data.error) {
-    errorMessage = error.data.error;
-  } else if (error.data) {
-    errorMessage = error.data;
-  } else {
-    errorMessage = error;
-  }
+  let errorMessage = error.message;
 
   if (error.status === 401) {
     dispatch({
       type: type,
-      payload: 'You are not authorized to do this. Please login and try again.'
+      payload: 'The username or password you entered was not correct.'
     });
     logoutUser();
   } else {
@@ -45,8 +37,12 @@ export function registerUser({username, password}) {
     Auth.register(username, password)
     .end((err, res) => {
       if (err) {
-        deferred.reject(res.body.message);
-        return errorHandler(dispatch, res.body.message, Types.AUTH_ERROR);
+        let error = {
+          message: res.body.error,
+          status: res.error.status
+        };
+        deferred.reject(res.body.error);
+        return errorHandler(dispatch, error, Types.AUTH_ERROR);
       }
 
       storeLogin(res);
@@ -68,8 +64,8 @@ export function loginUser({username, password}) {
     Auth.login(username, password)
     .end((err, res) => {
       if (err) {
-        deferred.reject(res.body.message);
-        return errorHandler(dispatch, res.body.message, Types.AUTH_ERROR);
+        deferred.reject(res.error.message);
+        return errorHandler(dispatch, res.error, Types.AUTH_ERROR);
       }
 
       storeLogin(res);

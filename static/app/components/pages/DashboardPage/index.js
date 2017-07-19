@@ -30,16 +30,6 @@ class DashboardPage extends React.Component {
     this.props.dispatch(loadAllStats());
   }
 
-  isRole(role, render) {
-    let userRole = this.state.role;
-
-    if (userRole === role) {
-      return render;
-    }
-
-    return false;
-  }
-
   render() {
     let user = this.cookies.get('user');
     return (

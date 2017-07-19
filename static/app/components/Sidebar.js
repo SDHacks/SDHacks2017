@@ -3,6 +3,7 @@ import {withCookies} from 'react-cookie';
 import {connect} from 'react-redux';
 import {NavLink, withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {Nav, NavItem, NavDropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink as StrapNavLink} from 'reactstrap';
 
 import {Roles, getRole} from '~/static/Roles';
 
@@ -27,11 +28,11 @@ class Sidebar extends React.Component {
   }
 
   sidebarSection = (name, ...children) =>
-    <ul className="nav nav-pills flex-column" key={name}>
-      <li className="nav-item">
+    <Nav pills className="flex-column" key={name}>
+      <NavItem>
         {children}
-      </li>
-    </ul>;
+      </NavItem>
+    </Nav>;
 
   sidebarLink = (dest, text, props) =>
     <NavLink key={dest}

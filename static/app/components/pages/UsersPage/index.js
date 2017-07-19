@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
 
-import {addUsers} from './actions';
+import {addUsers, updateUser} from './actions';
 
 import {loadAllUsers} from '~/data/Api';
 
@@ -34,10 +34,15 @@ class UsersPage extends React.Component {
     }
   }
 
+  onUserUpdate(user) {
+    updateUser(user)(this.props.dispatch);
+  }
+
   render() {
     return (
       <div>
-        <UserList users={this.props.users} columns={this.props.columns}>
+        <UserList users={this.props.users} columns={this.props.columns}
+          onUserUpdate={this.onUserUpdate.bind(this)}>
         </UserList>
       </div>
     );

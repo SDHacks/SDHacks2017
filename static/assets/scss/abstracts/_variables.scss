@@ -16,10 +16,35 @@ $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
-$white: #EEEEEE;
+$white: #fff;
 
-$body-background: #FFF;
+$body-background: #fff;
 $body-font-color: #4B4B4B;
 
 $global-radius: 8px;
 $global-text-color: #656565;
+
+// Beach background theme colors
+$beach-blue: #91D3E3;
+$beach-lightblue: #A3DAE8;
+$beach-lighttan: #F7EEDF;
+$beach-tan: #F7E5C6;
+
+// Used in header text
+$dark-blue: #0D5166;
+
+$default-green: #3FC0B0;
+$default-yellow: #FFD07E;
+$default-blue: #75C8DC;
+$default-red: #F87373;
+$default-purple: #AA8DC5;
+
+$light-green: #92E3D6;
+$light-purple: #C6AAE1;
+
+$default-shadow-color: rgba(12, 42, 51, 0.3);
+$default-shadow: 0 2px 16px $default-shadow-color;
+$extended-shadow: 0 2px 22px $default-shadow-color;
+
+$default-card-radius: 10px;
+$default-card-border: 2px solid $default-purple;

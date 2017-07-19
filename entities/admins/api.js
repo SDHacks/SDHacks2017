@@ -25,6 +25,19 @@ module.exports = function(routes, config) {
       });
     });
 
+  routes.post('/users/:id', requireAuth, roleAuth(roles.ROLE_ADMIN),
+    (req, res) => {
+      if (req.body._id !== req.params.id) {
+        return res.json({error: 'Parameter id does not match object _id'});
+      }
+      User.findOneAndUpdate({_id: req.params.id}, req.body, function(err){
+        if (err) {
+          return res.status(501).json({error: true});
+        }
+        return res.status(200).json({success: true});
+      });
+    });
+
   routes.get('/admins', requireAuth, roleAuth(roles.ROLE_DEVELOPER),
   (req, res) =>
     Admin.find({deleted: {$ne: true}}).sort({createdAt: -1})

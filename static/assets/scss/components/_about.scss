@@ -1,0 +1,26 @@
+.sd-about {
+  position: relative;
+
+  &__background {
+    height: 30vh;
+    position: absolute;
+    top: 0;
+    transform: skewY(-30deg);
+    transform-origin: top center;
+    z-index: -1;
+    width: 100%;
+
+    &:after {
+      background-color: $light-green;
+      content: '';
+      display: block;
+      height: 200vh;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 20vh;
+      z-index: 1; 
+      max-height: 1250px;
+    }
+  }
+}

@@ -48,13 +48,17 @@ module.exports = function(app, config) {
 
     Admin.findOne({username: username}, function(err, existingAdmin) {
       if (err) {
-        return next(err);
+        return res.json(501, 'Error processing request').send({
+          error: 'There was an error processing that request'
+        });
       }
 
       // If user is not unique, return error
       if (existingAdmin) {
-        return res.status(422).send(
-          {error: 'That username is already in use.'});
+        return res.status(422, 'That username is already in use.')
+        .send({
+          error: 'That username is already in use.'
+        });
       }
 
       var admin = new Admin({

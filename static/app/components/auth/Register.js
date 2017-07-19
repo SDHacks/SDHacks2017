@@ -2,6 +2,7 @@ import {Field, SubmissionError, reduxForm} from 'redux-form';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
+import {UncontrolledAlert} from 'reactstrap';
 
 import {registerUser} from './actions';
 
@@ -64,9 +65,9 @@ class Register extends React.Component {
   renderAlert() {
     if (this.props.errorMessage) {
       return (
-        <div>
-          <span><strong>Error!</strong> {this.props.errorMessage}</span>
-        </div>
+        <UncontrolledAlert color="danger" transitionLeaveTimeout={5}>
+          Error <strong>{this.props.errorMessage}</strong>
+        </UncontrolledAlert >
       );
     }
   }

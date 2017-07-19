@@ -43,7 +43,6 @@ export const User = {
   website: PropTypes.string.isRequired,
   github: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
-  major: PropTypes.string,
   university: PropTypes.string.isRequired,
   phone: PropTypes.number.isRequired,
   email: PropTypes.string.isRequired,
@@ -62,7 +61,8 @@ export const User = {
   teammates: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   bussing: PropTypes.bool,
   travel: PropTypes.shape({
-    outOfState: PropTypes.bool.isRequired
+    outOfState: PropTypes.bool.isRequired,
+    city: PropTypes.string
   }).isRequired,
   shareResume: PropTypes.bool,
   categories: PropTypes.arrayOf(PropTypes.string.isRequired),

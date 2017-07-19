@@ -1,0 +1,45 @@
+.sd-card {
+  box-shadow: $default-shadow;
+  border-radius: $default-card-radius;
+  border: $default-card-border;
+  padding: 6px;
+  margin-bottom: 1.4rem;
+  z-index: 1;
+
+  &__about {
+    @include media-breakpoint-down(md) {
+      text-align: center;
+    }
+  }
+
+  &__img {
+    height: 184px;
+
+    &-novelty {
+      position: relative;
+      top: -64px;
+
+      img {
+        height: 228px;
+      }
+    }
+    @include media-breakpoint-down(md) {
+      img {
+        height: 90%;
+      }
+      &-novelty {
+        top: -30px;
+
+        img {
+          height: 100%;
+        }
+      }
+    }
+    &-collaboration {
+      padding-top: 16px;
+    }
+  }
+  &__faq {
+    border-color: $default-blue;
+  }
+}
