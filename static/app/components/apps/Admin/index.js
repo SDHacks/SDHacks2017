@@ -9,7 +9,7 @@ import LoadingBar from 'react-redux-loading-bar';
 import {AUTH_USER} from './auth/actions/types';
 import Nav from './Nav';
 import Sidebar from './Sidebar';
-import PrivateRoute from './auth/PrivateRoute';
+import PrivateRoute from './PrivateRoute';
 import Dashboard from './pages/DashboardPage';
 import HomePage from './pages/HomePage';
 import Login from './auth/Login';
@@ -24,8 +24,7 @@ import UserPage from './pages/UserPage';
 class Admin extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    cookies: instanceOf(Cookies).isRequired,
-    children: PropTypes.object.isRequired
+    cookies: instanceOf(Cookies).isRequired
   };
 
   constructor(props) {

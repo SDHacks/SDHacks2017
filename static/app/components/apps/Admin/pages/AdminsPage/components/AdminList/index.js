@@ -45,7 +45,7 @@ class AdminList extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  admins: state.admins,
+  admins: state.admin.admins,
 });
 
 export default connect(

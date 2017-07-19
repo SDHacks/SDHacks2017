@@ -40,7 +40,7 @@ class ResumesPage extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  resumes: state.resumes,
+  resumes: state.admin.resumes,
 });
 
 export default connect(mapStateToProps)(ResumesPage);

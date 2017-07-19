@@ -101,8 +101,8 @@ class Register extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    errorMessage: state.auth.error,
-    message: state.auth.message
+    errorMessage: state.admin.auth.error,
+    message: state.admin.auth.message
   };
 }
 

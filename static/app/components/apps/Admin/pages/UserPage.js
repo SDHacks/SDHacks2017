@@ -6,7 +6,7 @@ import {loadUser} from '~/data/Api';
 
 import {updateUser} from './UsersPage/actions';
 
-import User from '~/components/User';
+import User from '../User';
 
 class UserPage extends React.Component {
   static propTypes = {

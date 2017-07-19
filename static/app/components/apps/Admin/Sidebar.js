@@ -100,7 +100,7 @@ class Sidebar extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth.authenticated
+    authenticated: state.admin.auth.authenticated
   };
 };
 

@@ -5,7 +5,7 @@ import {BootstrapTable, TableHeaderColumn} from
 
 import {Column as ColumnPropTypes, User as UserPropTypes} from '~/proptypes';
 
-import User from '~/components/User';
+import User from '~/components/apps/Admin/User';
 
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 

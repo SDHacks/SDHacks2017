@@ -50,8 +50,8 @@ class UsersPage extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.users,
-  columns: state.userColumns
+  users: state.admin.users,
+  columns: state.admin.userColumns
 });
 
 export default connect(mapStateToProps)(UsersPage);

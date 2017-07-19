@@ -71,8 +71,8 @@ class DashboardPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth,
-    stats: state.dashboardStats
+    auth: state.admin.auth,
+    stats: state.admin.dashboardStats
   };
 }
 

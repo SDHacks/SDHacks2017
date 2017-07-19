@@ -41,7 +41,6 @@ module.exports = function(routes, config) {
   routes.get('/admins', requireAuth, roleAuth(roles.ROLE_DEVELOPER),
   (req, res) =>
     Admin.find({deleted: {$ne: true}}).sort({createdAt: -1})
-    .lean()
     .exec(function(err, admins) {
       return res.json(admins);
     })
