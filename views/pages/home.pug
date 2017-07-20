@@ -136,13 +136,17 @@ block content
             img.sd-sponsors__sponsor-att(src='/assets/img/sponsors/att.png')
 
   .sd-footer#sd-footer
-    .sd-footer__social.text-center
-      a.sd-link__icon(target='_blank' href='https://www.facebook.com/SDHacks/')
-        i.fa.fa-facebook-square
-      a.sd-link__icon(target='_blank' href='mailto:hello@sdhacks.io')
-        i.fa.fa-envelope
-      a.sd-link__icon(target='_blank' href='https://twitter.com/sdhacks')
-        i.fa.fa-twitter
-    .sd-footer__tesc
-      a.sd-link__icon(target='_blank' href='http://tesc.ucsd.edu')
-        img.sd-footer__tesc-img(src='/assets/img/site/logo-tesc-white.svg')
+    .container-fluid.w-100
+      .row
+        .col-sm-12.col-md-4.offset-md-4.text-center
+          .sd-footer__social
+            a.sd-link__icon(target='_blank' href='https://www.facebook.com/SDHacks/')
+              i.fa.fa-facebook-square
+            a.sd-link__icon(target='_blank' href='mailto:hello@sdhacks.io')
+              i.fa.fa-envelope
+            a.sd-link__icon(target='_blank' href='https://twitter.com/sdhacks')
+              i.fa.fa-twitter
+        .col-sm-12.col-md-3
+          .sd-footer__tesc.text-md-right.mt-4.mt-md-0
+            a.sd-link__icon(target='_blank' href='http://tesc.ucsd.edu')
+              img.sd-footer__tesc-img(src='/assets/img/site/logo-tesc-white.svg')
