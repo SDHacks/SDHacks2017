@@ -10,19 +10,8 @@
     transform-origin: top center;
     z-index: -1;
     width: 100%;
-
-    &:after {
-      background-color: $white;
-      content: '';
-      display: block;
-      min-height: 10vh;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 20vh;
-      z-index: 1;
-    }
   }
+  
   &__subtitle {
     margin-bottom: 1.2rem;
   }
