@@ -7,6 +7,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval-source-map',
   entry: [
+    'react-hot-loader/patch',
     'webpack-hot-middleware/client?timeout=2000&path=/__webpack_hmr',
     path.join(__dirname, 'static/app/main.js'),
   ],
@@ -35,8 +36,6 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: /node_modules/,
       use: [{
-        loader: 'react-hot-loader'
-      }, {
         loader: 'babel-loader',
         options: {
           'presets': ['react', 'es2015', 'stage-0', 'react-hmre']
