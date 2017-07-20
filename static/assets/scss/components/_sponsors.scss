@@ -13,6 +13,15 @@
   }
   
   &__subtitle {
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
+  }
+  &__img {
+    display: inline-block;
+    margin: 12px;
+  }
+  &__sponsor {
+    &-att {
+      max-width: 100px;
+    }
   }
 }

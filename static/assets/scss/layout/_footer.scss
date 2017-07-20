@@ -1,7 +1,7 @@
 .sd-footer {
   position: relative;
   z-index: 3;
-  background-color: $default-blue;
+  background-color: $dark-blue;
   color: $white !important;
   min-height: 100px;
   padding: 2rem;
@@ -38,18 +38,6 @@
 
   .aligned {
     margin-top: 37px;
-  }
-
-  &__tesc {
-    max-width: 150px;
-    display: block;
-    margin: 2rem auto;
-
-    @include media-breakpoint-up(md) {
-      position: absolute;
-      right: 4rem;
-      margin-top: 0;
-    }
   }
 
   &__social {

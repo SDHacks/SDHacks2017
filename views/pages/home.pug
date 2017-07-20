@@ -21,8 +21,8 @@ block content
               .hexagon-hero__subsubtitle Applications open August 7th
               .hexagon-hero__nav
                 +get-updates
-                //- input.hexagon-hero__nav-button.btn.rounded-button(type="button", value="Apply")
-                //- input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type="button", value="Volunteer")
+                //- input.hexagon-hero__nav-button.btn.rounded-button(type='button', value='Apply')
+                //- input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type='button', value='Volunteer')
           .col-md-5
             img.hexagon-hero__featurette(src='/assets/img/site/featurette-hero.svg')
 
@@ -34,21 +34,21 @@ block content
         .hexagon-hero__subsubtitle Applications open August 7th
         .hexagon-hero__nav.hexagon-hero__nav--mobile
           +get-updates
-          //- input.hexagon-hero__nav-button.btn.rounded-button(type="button", value="Apply")
-          //- input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type="button", value="Volunteer")
+          //- input.hexagon-hero__nav-button.btn.rounded-button(type='button', value='Apply')
+          //- input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type='button', value='Volunteer')
 
   .sd-section.sd-about#sd-about
     .sd-about__background
     h2.sd-about__title.sd-section__title SD Hacks is About
     .container
-      .row
+      .row.row-eq-height
         .col-lg-4.sd-card__wrapper
           .card.sd-card
             .card-block.sd-card__block.sd-card__about
               .card-img.text-center.sd-card__img.sd-card__img-inclusivity
                 img(src='/assets/img/site/featurette-inclusivity.svg')
               h3.card-title.sd-card__title.text-center Empowerment
-              .card-text.sd-card__text We encourage hackers from all backgrounds, disciplines, and galaxies to build their dreams.
+              .card-text.sd-card__text We provide all hackers with expertise, hardware and software so they can build out their dreams.
         .col-lg-4.sd-card__wrapper
           .card.sd-card
             .card-block.sd-card__block.sd-card__about
@@ -129,16 +129,24 @@ block content
       .sd-section__subtitle.sd-sponsors__subtitle Interested in sponsoring? Email us at #[a(href='mailto:sponsor@tesc.ucsd.edu') sponsor@tesc.ucsd.edu]
       .sd-sponsors__bronze
         .sd-sponsors__img
-          img.sd-sponsors__sponsor-e8(src='/assets/img/sponsors/e8.png')
+          a.sd-link__img(target='_blank' href='https://e8security.com')
+            img.sd-sponsors__sponsor-e8(src='/assets/img/sponsors/e8.png')
+        .sd-sponsors__img
+          a.sd-link__img(target='_blank' href='https://www.att.com/')
+            img.sd-sponsors__sponsor-att(src='/assets/img/sponsors/att.png')
 
   .sd-footer#sd-footer
-    .sd-footer__social.text-center
-      a.sd-link__icon(target='_blank' href='https://www.facebook.com/SDHacks/')
-        i.fa.fa-facebook-square
-      a.sd-link__icon(target='_blank' href='mailto:hello@sdhacks.io')
-        i.fa.fa-envelope
-      a.sd-link__icon(target='_blank' href='https://twitter.com/sdhacks')
-        i.fa.fa-twitter
-    .sd-footer__tesc
-      a.sd-link__icon(target='_blank' href='http://tesc.ucsd.edu')
-        img.sd-footer__tesc-img(src='/assets/img/site/logo-tesc-white.svg')
+    .container-fluid.w-100
+      .row
+        .col-sm-12.col-md-4.offset-md-4.text-center
+          .sd-footer__social
+            a.sd-link__icon(target='_blank' href='https://www.facebook.com/SDHacks/')
+              i.fa.fa-facebook-square
+            a.sd-link__icon(target='_blank' href='mailto:hello@sdhacks.io')
+              i.fa.fa-envelope
+            a.sd-link__icon(target='_blank' href='https://twitter.com/sdhacks')
+              i.fa.fa-twitter
+        .col-sm-12.col-md-3
+          .sd-footer__tesc.text-md-right.mt-4.mt-md-0
+            a.sd-link__icon(target='_blank' href='http://tesc.ucsd.edu')
+              img.sd-footer__tesc-img(src='/assets/img/site/logo-tesc-white.svg')
