@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 
 import {loadUser} from '~/data/Api';
 
+import User from '../User';
+
 import {updateUser} from './UsersPage/actions';
 
-import User from '../User';
 
 class UserPage extends React.Component {
   static propTypes = {

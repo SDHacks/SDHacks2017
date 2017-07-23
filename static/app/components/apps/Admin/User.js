@@ -80,7 +80,7 @@ class User extends React.Component {
 
     return (
       <div>
-        <Link to={`/user/${this.props.user._id}`}>
+        <Link to={`/admin/user/${this.props.user._id}`}>
           <h3>User <small>{this.props.user._id}</small></h3>
         </Link>
         <form onSubmit={handleSubmit}>

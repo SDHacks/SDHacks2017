@@ -1,4 +1,4 @@
-import {Field, reduxForm} from 'redux-form';
+import {Field, Fields, reduxForm} from 'redux-form';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -7,11 +7,74 @@ import validate from './validate';
 
 class PersonalSection extends React.Component {
   static propTypes = {
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    pristine: PropTypes.bool.isRequired,
+    reset: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      institution: ''
+    };
+  }
+
+  errorResumeUpload({input, className, placeholder, type,
+    meta: {touched, error}}) {
+    delete input.value;
+    return (
+      <div>
+        <input {...input} className={className} placeholder={placeholder}
+          type={type} />
+        {touched && error && <span>{error}</span>}
+      </div>);
+  }
+
+  createResumeUpload() {
+    return (<Field component={this.errorResumeUpload} type="file" name="resume"
+      placeholder="Resume" />);
+  }
+
+  createShareCheckbox() {
+    return (
+      <label>
+        <Field component="input" type="checkbox" name="shareResume"
+          className="sd-form__input-checkbox" />
+        Would you like us to share your resume and personal information so that
+        companies may contact you about job opportunities?
+      </label>);
+  }
+
+  institutionChanged(target, newVal) {
+    this.setState({institution: newVal});
+  }
+
+  createInstitutionCard(value, id, label) {
+    return (<div className="sd-form__institution-card">
+      <Field component="input" type="radio" value={value} name='institution'
+        id={id} className="sd-form__input-radio sd-form__institution-radio"
+        onChange={this.institutionChanged.bind(this)}/>
+      {fields.createLabel(label, false, 'sd-form__institution-label')}
+    </div>);
+  }
+
+  showInstitutionError(info) {
+    const {touched, error} = info.institution.meta;
+    if (!touched || !error){
+      return <div></div>;
+    }
+
+    return (
+      <span>{error}</span>
+    );
   }
 
   render() {
-    return (<div>
+    const {handleSubmit, pristine, submitting} = this.props;
+    return (<form onSubmit={handleSubmit}>
       {fields.createRow(
         fields.createColumn('col-md-6',
           fields.createLabel('First Name'),
@@ -19,7 +82,7 @@ class PersonalSection extends React.Component {
         ),
         fields.createColumn('col-md-6',
           fields.createLabel('Last Name'),
-          fields.createInput('lastName', 'lastName')
+          fields.createInput('lastName', 'Last Name')
         )
       )}
 
@@ -39,10 +102,10 @@ class PersonalSection extends React.Component {
               fields.createMonthPicker()
             )}
             {fields.createColumn('col-sm-4',
-              fields.createInput('birthdate_day', 'Day')
+              fields.createInput('birthdateDay', 'Day', 'number')
             )}
             {fields.createColumn('col-sm-4',
-              fields.createInput('birthdate_year', 'Year')
+              fields.createInput('birthdateYear', 'Year', 'number')
             )}
           </div>
         )
@@ -65,21 +128,31 @@ class PersonalSection extends React.Component {
           fields.createLabel('Institution')
         ),
         fields.createColumn('col-md-6 col-lg-4 col-lg-offset-2',
-          fields.createInstitutionCard('uni', 'institution-radio-uni',
+          this.createInstitutionCard('uni', 'institution-radio-uni',
             'University')
         ),
         fields.createColumn('col-md-6 col-lg-4 col-lg-offset-2',
-          fields.createInstitutionCard('hs', 'institution-radio-hs',
+          this.createInstitutionCard('hs', 'institution-radio-hs',
             'High School')
+        ),
+        fields.createColumn('col-sm-12',
+          <Fields names={['institution']}
+            component={this.showInstitutionError} />
         )
       )}
 
-      {fields.createRow(
+      {this.state.institution === 'uni' && fields.createRow(
         fields.createColumn('col-sm-12',
           fields.createLabel('University'),
           fields.createInput('university',
-            'The University of California, San Diego'),
-          fields.createInput('high-school', 'High School')
+            'The University of California, San Diego')
+        )
+      )}
+
+      {this.state.institution === 'hs' && fields.createRow(
+        fields.createColumn('col-sm-12',
+          fields.createLabel('High School'),
+          fields.createInput('highSchool', 'High School')
         )
       )}
 
@@ -90,23 +163,37 @@ class PersonalSection extends React.Component {
         ),
         fields.createColumn('col-lg-6',
           fields.createLabel('Graduation Year'),
-          fields.createInput('year', '2017')
+          fields.createInput('year', '2017', 'number')
         )
       )}
 
       {fields.createRow(
         fields.createColumn('col-lg-6',
-          fields.createLabel('Github Username'),
+          fields.createLabel('Github Username', false),
           fields.createInput('github', 'Github')
         ),
         fields.createColumn('col-lg-6',
-          fields.createLabel('Personal Website'),
+          fields.createLabel('Personal Website', false),
           fields.createInput('website', 'http://example.com/')
         )
       )}
 
-      <button className="btn btn-primary" type="submit">Next</button>
-    </div>);
+      {fields.createRow(
+        fields.createColumn('col-md-4 col-md-offset-4',
+          fields.createLabel('Resume'),
+          this.createResumeUpload()
+        )
+      )}
+
+      {fields.createRow(
+        fields.createColumn('col-sm-12',
+          this.createShareCheckbox()
+        )
+      )}
+
+      <button className="btn btn-primary" type="submit"
+        disabled={pristine || submitting}>Next</button>
+    </form>);
   }
 
   normalizePhone (value, previousValue) {

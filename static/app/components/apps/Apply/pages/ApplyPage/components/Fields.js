@@ -15,6 +15,17 @@ creates.createColumn = function createColumn(size, ...content) {
   </div>);
 };
 
+creates.errorTextInput =
+  function errorTextInput({input, className, placeholder, type,
+    meta: {touched, error}}) {
+    return (
+      <div>
+        <input {...input} className={className} placeholder={placeholder}
+          type={type} />
+        {touched && error && <span>{error}</span>}
+      </div>);
+  };
+
 creates.createLabel = function createLabel(text, required=true, className='') {
   return (<label className={required ? 'sd-form__required ' +
     className : className}>{text}</label>);
@@ -23,42 +34,57 @@ creates.createLabel = function createLabel(text, required=true, className='') {
 creates.createInput = function createInput(name, placeholder, type='text',
   className='sd-form__input-text', normalize=null) {
   return (<Field className={className}
-    name={name} component="input" placeholder={placeholder} type={type}
-    normalize={normalize} />);
+    name={name} component={creates.errorTextInput} placeholder={placeholder}
+    type={type} normalize={normalize} />);
 };
 
-creates.createMonthPicker = function createMonthPicker() {
-  let months = [
-    'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-    'September', 'October', 'November', 'December'
-  ];
+creates.errorMonthPicker =
+  function errorMonthPicker({input, className, type,
+    meta: {touched, error}}) {
+    let months = [
+      'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December'
+    ];
 
-  return (<Field component="select" className="sd-form__input-select"
-    name="birthdate_month">
-    <option>Month</option>
-    {months.map((month, i) => <option value={i+1}>{month}</option>)}
-  </Field>);
+    return (
+      <div>
+        <select {...input} className={className}
+          type={type}>
+          <option key={-1}>Month</option>
+          {months.map((month, i) =>
+            <option key={i} value={i+1}>{month}</option>)}
+        </select>
+        {touched && error && <span>{error}</span>}
+      </div>);
+  };
+
+creates.errorGenderPicker =
+  function errorGenderPicker({input, className, type,
+    meta: {touched, error}}) {
+    let genders = [
+      'Male', 'Female', 'Non-Binary', 'I prefer not to say', 'Other'
+    ];
+
+    return (
+      <div>
+        <select {...input} className={className}
+          type={type}>
+          <option key={-1}></option>
+          {genders.map((gender, i) =>
+            <option key={i} value={gender}>{gender}</option>)}
+        </select>
+        {touched && error && <span>{error}</span>}
+      </div>);
+  };
+
+creates.createMonthPicker = function createMonthPicker() {
+  return (<Field component={creates.errorMonthPicker} className="sd-form__input-select"
+    name="birthdateMonth" />);
 };
 
 creates.createGenderPicker = function createGenderPicker() {
-  let genders = [
-    'Male', 'Female', 'Non-Binary', 'I prefer not to say', 'Other'
-  ];
-
-  return (<Field component="select" className="sd-form__input-select"
-    name="gender">
-    <option></option>
-    {genders.map((gender) => <option value={gender}>{gender}</option>)}
-  </Field>);
+  return (<Field component={creates.errorGenderPicker}
+    className="sd-form__input-select" name="gender" />);
 };
-
-creates.createInstitutionCard =
-  function createInstitutionCard(value, id, label) {
-    return (<div className="sd-form__institution-card">
-      <Field component="input" type="radio" value={value} name='institution'
-        id={id} className="sd-form__input-radio sd-form__institution-radio" />
-      {this.createLabel(label, false, 'sd-form__institution-label')}
-    </div>);
-  };
 
 export default creates;
