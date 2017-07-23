@@ -1,5 +1,3 @@
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 import PersonalSection from './components/PersonalSection';
@@ -44,11 +42,4 @@ class ApplyPage extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    // errorMessage: state.apply.application.error,
-    // message: state.apply.application.message
-  };
-}
-
-export default connect(mapStateToProps)(ApplyPage);
+export default ApplyPage;

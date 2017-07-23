@@ -46,22 +46,20 @@ class Login extends React.Component {
     const {handleSubmit} = this.props;
 
     return (
-      <div>
-        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          {this.renderAlert()}
-          <div>
-            <label>Username</label>
-            <Field name="username" className="form-control" component="input"
-              type="text" />
-          </div>
-          <div>
-            <label>Password</label>
-            <Field name="password" className="form-control" component="input"
-              type="password" />
-          </div>
-          <button type="submit" className="btn btn-primary">Login</button>
-        </form>
-      </div>
+      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+        {this.renderAlert()}
+        <div>
+          <label>Username</label>
+          <Field name="username" className="form-control" component="input"
+            type="text" />
+        </div>
+        <div>
+          <label>Password</label>
+          <Field name="password" className="form-control" component="input"
+            type="password" />
+        </div>
+        <button type="submit" className="btn btn-primary">Login</button>
+      </form>
     );
   }
 }
