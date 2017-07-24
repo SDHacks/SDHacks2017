@@ -10,9 +10,7 @@ class PersonalSection extends React.Component {
     handleSubmit: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     reset: PropTypes.func.isRequired,
-    submitting: PropTypes.bool.isRequired,
-    institution: PropTypes.string.isRequired,
-    institutionChanged: PropTypes.func.isRequired
+    submitting: PropTypes.bool.isRequired
   }
 
   constructor(props) {
@@ -48,8 +46,7 @@ class PersonalSection extends React.Component {
   createInstitutionCard(value, id, label) {
     return (<div className="sd-form__institution-card">
       <Field component="input" type="radio" value={value} name='institution'
-        id={id} className="sd-form__input-radio sd-form__institution-radio"
-        onChange={this.props.institutionChanged.bind(this)}/>
+        id={id} className="sd-form__input-radio sd-form__institution-radio" />
       {fields.createLabel(label, false, 'sd-form__institution-label')}
     </div>);
   }
@@ -63,6 +60,32 @@ class PersonalSection extends React.Component {
     return (
       <span>{error}</span>
     );
+  }
+
+  showInstitutionBox(info) {
+    const value = info.institution.input.value;
+    if (value === 'uni') {
+      return (
+        fields.createRow(
+          fields.createColumn('col-sm-12',
+            fields.createLabel('University'),
+            fields.createInput('university',
+              'The University of California, San Diego')
+          )
+        )
+      );
+    } else if (value === 'hs') {
+      return (
+        fields.createRow(
+          fields.createColumn('col-sm-12',
+            fields.createLabel('High School'),
+            fields.createInput('highSchool', 'High School')
+          )
+        )
+      );
+    }
+
+    return <span></span>;
   }
 
   render() {
@@ -134,20 +157,7 @@ class PersonalSection extends React.Component {
         )
       )}
 
-      {this.props.institution === 'uni' && fields.createRow(
-        fields.createColumn('col-sm-12',
-          fields.createLabel('University'),
-          fields.createInput('university',
-            'The University of California, San Diego')
-        )
-      )}
-
-      {this.props.institution === 'hs' && fields.createRow(
-        fields.createColumn('col-sm-12',
-          fields.createLabel('High School'),
-          fields.createInput('highSchool', 'High School')
-        )
-      )}
+      <Fields names={['institution']} component={this.showInstitutionBox} />
 
       {fields.createRow(
         fields.createColumn('col-lg-6',
