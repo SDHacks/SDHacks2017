@@ -7,6 +7,7 @@ var bcrypt = require('bcrypt-nodejs');
 var roles = require('./helper').roles;
 
 require('dotenv').config();
+
 var Schema = mongoose.Schema;
 var db = mongoose.createConnection(process.env.MONGODB_URI);
 

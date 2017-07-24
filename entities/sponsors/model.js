@@ -4,6 +4,7 @@ var timestamps = require('mongoose-timestamp');
 var softDelete = require('mongoose-softdelete');
 
 require('dotenv').config();
+
 var Schema = mongoose.Schema;
 var db = mongoose.createConnection(process.env.MONGODB_URI);
 
@@ -46,6 +47,7 @@ var SponsorSchema = new Schema({
 });
 
 SponsorSchema.plugin(require('mongoose-sanitizer'));
+
 SponsorSchema.plugin(timestamps);
 SponsorSchema.plugin(softDelete);
 

@@ -24,7 +24,7 @@ module.exports = function(app, config) {
     }
     if ((user.name === config.ADMIN_USER) &&
       (user.pass === config.ADMIN_PASS)) {
-        return next();
+      return next();
     }
     return unauthorized(res);
   };
@@ -42,7 +42,7 @@ module.exports = function(app, config) {
     }
     if ((user.name === config.CHECKIN_USER) &&
       (user.pass === config.CHECKIN_PASS)) {
-        return next();
+      return next();
     }
     return unauthorized(res);
   };

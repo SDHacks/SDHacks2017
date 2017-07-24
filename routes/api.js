@@ -1,6 +1,7 @@
 //Api Routes
-var multer = require('multer');
 var crypto = require('crypto');
+
+var multer = require('multer');
 var mime = require('mime');
 var EmailTemplate = require('email-templates').EmailTemplate;
 

@@ -3,7 +3,6 @@ var findOrCreate = require('mongoose-findorcreate');
 var timestamps = require('mongoose-timestamp');
 var crate = require('mongoose-crate');
 var S3 = require('mongoose-crate-s3');
-var jwt = require('jsonwebtoken');
 var softDelete = require('mongoose-softdelete');
 var bcrypt = require('bcrypt-nodejs');
 
