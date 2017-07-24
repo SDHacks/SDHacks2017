@@ -36,7 +36,6 @@ const validate = values => {
   if (values.outOfState && !values.city) {
     errors.city = 'Required';
   }
-  console.log(errors);
 
   return errors;
 };
