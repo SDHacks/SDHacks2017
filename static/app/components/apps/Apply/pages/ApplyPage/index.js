@@ -17,7 +17,8 @@ class ApplyPage extends React.Component {
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
     this.state = {
-      page: 1
+      page: 1,
+      institution: ''
     };
   }
 
@@ -70,6 +71,10 @@ class ApplyPage extends React.Component {
     this.updateHash(newPage);
   }
 
+  institutionChanged(target, newVal) {
+    this.setState({institution: newVal});
+  }
+
   render() {
     const {page} = this.state;
 
@@ -77,7 +82,9 @@ class ApplyPage extends React.Component {
       <div className="sd-form__wrapper">
         <div className="sd-form">
           <h1 className="sd-form__header">Apply for SD Hacks 2017</h1>
-          {page === 1 && <PersonalSection onSubmit={this.nextPage} />}
+          {page === 1 && <PersonalSection onSubmit={this.nextPage}
+            institution={this.state.institution}
+            institutionChanged={this.institutionChanged.bind(this)}/>}
           {page === 2 && <ResponseSection onSubmit={this.onSubmit}
             previousPage={this.previousPage} />}
           {page === 3 && <SubmittedSection />}

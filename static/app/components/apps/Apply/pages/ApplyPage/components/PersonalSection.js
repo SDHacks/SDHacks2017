@@ -10,15 +10,13 @@ class PersonalSection extends React.Component {
     handleSubmit: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     reset: PropTypes.func.isRequired,
-    submitting: PropTypes.bool.isRequired
+    submitting: PropTypes.bool.isRequired,
+    institution: PropTypes.string.isRequired,
+    institutionChanged: PropTypes.func.isRequired
   }
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      institution: ''
-    };
   }
 
   errorResumeUpload({input, className, placeholder, type,
@@ -47,15 +45,11 @@ class PersonalSection extends React.Component {
       </label>);
   }
 
-  institutionChanged(target, newVal) {
-    this.setState({institution: newVal});
-  }
-
   createInstitutionCard(value, id, label) {
     return (<div className="sd-form__institution-card">
       <Field component="input" type="radio" value={value} name='institution'
         id={id} className="sd-form__input-radio sd-form__institution-radio"
-        onChange={this.institutionChanged.bind(this)}/>
+        onChange={this.props.institutionChanged.bind(this)}/>
       {fields.createLabel(label, false, 'sd-form__institution-label')}
     </div>);
   }
@@ -140,7 +134,7 @@ class PersonalSection extends React.Component {
         )
       )}
 
-      {this.state.institution === 'uni' && fields.createRow(
+      {this.props.institution === 'uni' && fields.createRow(
         fields.createColumn('col-sm-12',
           fields.createLabel('University'),
           fields.createInput('university',
@@ -148,7 +142,7 @@ class PersonalSection extends React.Component {
         )
       )}
 
-      {this.state.institution === 'hs' && fields.createRow(
+      {this.props.institution === 'hs' && fields.createRow(
         fields.createColumn('col-sm-12',
           fields.createLabel('High School'),
           fields.createInput('highSchool', 'High School')
