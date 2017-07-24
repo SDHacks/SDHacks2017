@@ -17,11 +17,15 @@
   }
   &__img {
     display: inline-block;
-    margin: 12px;
+    margin: 12px 15px;
   }
   &__sponsor {
+    max-width: 140px;
+
     &-att {
       max-width: 100px;
+    }
+    &-a16z {
     }
   }
 }
