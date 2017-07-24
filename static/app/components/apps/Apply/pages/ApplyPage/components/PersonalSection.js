@@ -13,10 +13,6 @@ class PersonalSection extends React.Component {
     submitting: PropTypes.bool.isRequired
   }
 
-  constructor(props) {
-    super(props);
-  }
-
   errorResumeUpload({input, className, placeholder, type,
     meta: {touched, error}}) {
     delete input.value;

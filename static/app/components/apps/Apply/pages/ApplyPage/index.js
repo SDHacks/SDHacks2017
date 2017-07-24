@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 
+import {registerUser} from '~/data/Api';
+
 import PersonalSection from './components/PersonalSection';
 import ResponseSection from './components/ResponseSection';
 import SubmittedSection from './components/SubmittedSection';
+import UserSection from './components/UserSection';
 
 class ApplyPage extends React.Component {
   static propTypes = {
@@ -13,11 +16,12 @@ class ApplyPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onFinalSubmit = this.onFinalSubmit.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
     this.state = {
-      page: 1
+      page: 1,
+      error: null
     };
   }
 
@@ -45,8 +49,22 @@ class ApplyPage extends React.Component {
     this.loadPageFromHash();
   }
 
-  onSubmit() {
-    this.nextPage();
+  onFinalSubmit(values) {
+    // Clean up values
+    values.resume = values.resume[0];
+    values.birthdateDay = ('00' + values.birthdateDay)
+      .substring(values.birthdateDay.length);
+    values.birthdateYear = ('0000' + values.birthdateYear)
+      .substring(values.birthdateYear.length);
+
+    registerUser(values)
+    .then(() => {
+      this.nextPage();
+    })
+    .catch((err) => {
+      console.error(err);
+      this.setState({error: err});
+    });
   }
 
   updateHash(page) {
@@ -92,9 +110,11 @@ class ApplyPage extends React.Component {
         <div className="sd-form">
           {this.createHeader()}
           {page === 1 && <PersonalSection onSubmit={this.nextPage} />}
-          {page === 2 && <ResponseSection onSubmit={this.onSubmit}
+          {page === 2 && <ResponseSection onSubmit={this.nextPage}
             previousPage={this.previousPage} />}
-          {page === 3 && <SubmittedSection />}
+          {page === 3 && <UserSection onSubmit={this.onFinalSubmit}
+            previousPage={this.previousPage} submitError={this.state.error} />}
+          {page === 4 && <SubmittedSection />}
         </div>
       </div>
     );

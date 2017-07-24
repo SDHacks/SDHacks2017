@@ -101,10 +101,13 @@ module.exports = function(app, config, transporter) {
         return res.json({'error': 'This email has already been used'});
       }
 
+      user.username = req.body.username;
+      user.password = req.body.password;
+
       user.firstName = req.body.firstName;
       user.lastName = req.body.lastName;
-      user.birthdate = req.body.birthdate_year + '-' +
-        req.body.birthdate_month + '-' + req.body.birthdate_day
+      user.birthdate = req.body.birthdateYear + '-' +
+        req.body.birthdateMonth + '-' + req.body.birthdateDay
         + 'T00:00:00.000Z'; // Timezone agnostic
       user.gender = req.body.gender;
       user.email = req.body.email;
@@ -117,7 +120,8 @@ module.exports = function(app, config, transporter) {
       user.shareResume = req.body.shareResume;
       user.food = req.body.food;
       user.diet = req.body.diet;
-      user.shirtSize = req.body.shirtFit + req.body.shirtSize;
+      user.shirtFit = req.body.shirtFit;
+      user.shirtSize = req.body.shirtSize;
       user.travel = {
         outOfState: req.body.outOfState,
         city: req.body.city

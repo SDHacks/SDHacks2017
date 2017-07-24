@@ -71,7 +71,9 @@ creates.errorMonthPicker =
           type={type}>
           <option key={-1}>Month</option>
           {months.map((month, i) =>
-            <option key={i} value={i+1}>{month}</option>)}
+            <option key={i} value={(i+1) < 10 ? '0' + (i+1) : (i+1)}>
+              {month}
+            </option>)}
         </select>
         {touched && error && creates.createError(error)}
       </div>);

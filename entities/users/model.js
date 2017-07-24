@@ -5,8 +5,10 @@ var crate = require('mongoose-crate');
 var S3 = require('mongoose-crate-s3');
 var jwt = require('jsonwebtoken');
 var softDelete = require('mongoose-softdelete');
+var bcrypt = require('bcrypt-nodejs');
 
 require('dotenv').config();
+
 var Schema = mongoose.Schema;
 var db = mongoose.createConnection(process.env.MONGODB_URI);
 
@@ -88,6 +90,10 @@ var UserSchema = new Schema({
   diet: {
     type: String,
     trim: true,
+  },
+  shirtFit: {
+    type: String,
+    required: [true, 'You must have a shirt fit']
   },
   shirtSize: {
     type: String,

@@ -139,7 +139,7 @@ class ResponseSection extends React.Component {
         fields.createColumn('col-sm-12 col-md-4 text-center',
           <button className={'btn sd-form__nav-button rounded-button ' +
             'success button'} type="submit"
-            disabled={pristine || submitting}>Apply!</button>
+            disabled={pristine || submitting}>Next!</button>
         )
       )}
     </form>);
