@@ -7,7 +7,6 @@ import validate from './validate';
 
 class PersonalSection extends React.Component {
   static propTypes = {
-    onSubmit: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     reset: PropTypes.func.isRequired,
@@ -43,8 +42,8 @@ class PersonalSection extends React.Component {
       <label>
         <Field component="input" type="checkbox" name="shareResume"
           className="sd-form__input-checkbox" />
-        Would you like us to share your resume and personal information so that
-        companies may contact you about job opportunities?
+        I would like SDHacks to share my resume and personal information so that
+        companies may contact me about job opportunities?
       </label>);
   }
 

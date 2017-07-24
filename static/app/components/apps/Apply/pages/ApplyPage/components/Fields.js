@@ -26,17 +26,27 @@ creates.errorTextInput =
       </div>);
   };
 
-creates.createLabel = function createLabel(text, required=true, className='') {
-  return (<label className={required ? 'sd-form__required ' +
-    className : className}>{text}</label>);
-};
+creates.errorRadio =
+  function errorRadio({input, className, label, defaultVal}) {
+    return (
+      <div className='form-check form-check-inline'>
+        <label className='form-check-label'>
+          <input {...input} className={className} type='radio' value={defaultVal} />
+          {label}
+        </label>
+      </div>);
+  };
 
-creates.createInput = function createInput(name, placeholder, type='text',
-  className='sd-form__input-text', normalize=null) {
-  return (<Field className={className}
-    name={name} component={creates.errorTextInput} placeholder={placeholder}
-    type={type} normalize={normalize} />);
-};
+creates.errorTextArea =
+  function errorTextArea({input, className, placeholder, maxLength,
+    meta: {touched, error}}) {
+    return (
+      <div>
+        <textarea {...input} className={className} placeholder={placeholder}
+          maxLength={maxLength} />
+        {touched && error && <span>{error}</span>}
+      </div>);
+  };
 
 creates.errorMonthPicker =
   function errorMonthPicker({input, className, type,
@@ -53,6 +63,28 @@ creates.errorMonthPicker =
           <option key={-1}>Month</option>
           {months.map((month, i) =>
             <option key={i} value={i+1}>{month}</option>)}
+        </select>
+        {touched && error && <span>{error}</span>}
+      </div>);
+  };
+
+creates.errorTShirtSizePicker =
+  function errorTShirtSizePicker({input, className, type,
+    meta: {touched, error}}) {
+    let sizes = [
+      'X-Small', 'Small', 'Medium', 'Large', 'X-Large', 'XX-Large'
+    ];
+    let values = [
+      'XS', 'S', 'M', 'L', 'XL', 'XXL'
+    ];
+
+    return (
+      <div>
+        <select {...input} className={className}
+          type={type}>
+          <option key={-1}></option>
+          {sizes.map((size, i) =>
+            <option key={i} value={values[i]}>{size}</option>)}
         </select>
         {touched && error && <span>{error}</span>}
       </div>);
@@ -77,14 +109,43 @@ creates.errorGenderPicker =
       </div>);
   };
 
+creates.createLabel = function createLabel(text, required=true, className='') {
+  return (<label className={required ? 'sd-form__required ' +
+    className : className}>{text}</label>);
+};
+
+creates.createInput = function createInput(name, placeholder, type='text',
+  className='sd-form__input-text', normalize=null) {
+  return (<Field className={className}
+    name={name} component={creates.errorTextInput} placeholder={placeholder}
+    type={type} normalize={normalize} />);
+};
+
+creates.createTextArea = function createTextArea(name, placeholder,
+  maxLength=null, className='sd-form__input-textarea') {
+  return (<Field className={className} name={name} maxLength={maxLength}
+    component={creates.errorTextArea} placeholder={placeholder} />);
+};
+
 creates.createMonthPicker = function createMonthPicker() {
-  return (<Field component={creates.errorMonthPicker} className="sd-form__input-select"
-    name="birthdateMonth" />);
+  return (<Field component={creates.errorMonthPicker}
+    className="sd-form__input-select" name="birthdateMonth" />);
 };
 
 creates.createGenderPicker = function createGenderPicker() {
   return (<Field component={creates.errorGenderPicker}
     className="sd-form__input-select" name="gender" />);
+};
+
+creates.createTShirtSizePicker = function createTShirtSizePicker() {
+  return (<Field component={creates.errorTShirtSizePicker}
+    className="sd-form__input-select" name="shirtSize" />);
+};
+
+creates.createRadio = function createRadio(name, value, label,
+  className='sd-form__input-radio form-check-input') {
+  return (<Field component={creates.errorRadio} className={className}
+    name={name} defaultVal={value} label={label} />);
 };
 
 export default creates;
