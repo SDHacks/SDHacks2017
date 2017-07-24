@@ -19,18 +19,23 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
     }),
     new webpack.optimize.UglifyJsPlugin({
       mangle: {
-          screw_ie8: true,
-          keep_fnames: true
+        screw_ie8: true,
+        keep_fnames: true
       },
       compress: {
-          screw_ie8: true,
-          warnings: false
+        screw_ie8: true,
+        warnings: false
       },
       comments: false,
       minimize: true

@@ -1,4 +1,5 @@
-import {Field, reduxForm} from 'redux-form';
+import {Field, Fields, reduxForm} from 'redux-form';
+import {UncontrolledTooltip as Tooltip} from 'reactstrap';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -12,6 +13,20 @@ class ResponseSection extends React.Component {
     pristine: PropTypes.bool.isRequired,
     reset: PropTypes.func.isRequired,
     submitting: PropTypes.bool.isRequired
+  }
+
+  showCity(values) {
+    if (values.outOfState && values.outOfState.input.value === 'true') {
+      return (
+        fields.createRow(
+          fields.createColumn('col-lg-6',
+            fields.createLabel('If yes, from where?', false),
+            fields.createInput('city', 'Which city?')
+          )
+        )
+      );
+    }
+    return <span></span>;
   }
 
   createAcceptBox() {
@@ -46,12 +61,7 @@ class ResponseSection extends React.Component {
         )
       )}
 
-      {fields.createRow(
-        fields.createColumn('col-lg-6',
-          fields.createLabel('If yes, from where?', false),
-          fields.createInput('city', 'Which city?')
-        )
-      )}
+      <Fields names={['outOfState']} component={this.showCity} />
 
       {fields.createRow(
         fields.createColumn('col-lg-6',
@@ -62,6 +72,9 @@ class ResponseSection extends React.Component {
         ),
         fields.createColumn('col-lg-6',
           fields.createLabel('T-Shirt Size'),
+          <a href="#2" id="fitHelp"><i className='fa fa-info-circle'></i></a>,
+          <Tooltip placement="right" target="fitHelp">Shirts tend to run on the
+            smaller side</Tooltip>,
           fields.createTShirtSizePicker()
         )
       )}

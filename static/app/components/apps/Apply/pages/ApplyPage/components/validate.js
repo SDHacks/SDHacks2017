@@ -33,7 +33,7 @@ const validate = values => {
     errors.year = 'Applicants must be current students';
   }
 
-  if (values.outOfState && !values.city) {
+  if (values.outOfState && values.outOfState === 'true' && !values.city) {
     errors.city = 'Required';
   }
 

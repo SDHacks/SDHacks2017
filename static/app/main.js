@@ -9,6 +9,9 @@ import {render} from 'react-dom';
 import reducer from './reducers';
 import routes from './routes';
 
+import 'jquery';
+import 'bootstrap/dist/js/bootstrap';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
   compose;
 
