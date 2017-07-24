@@ -24,7 +24,7 @@ class PersonalSection extends React.Component {
       <div>
         <input {...input} className={className} placeholder={placeholder}
           type={type} />
-        {touched && error && <span>{error}</span>}
+        {touched && error && fields.createError(error)}
       </div>);
   }
 
@@ -58,7 +58,7 @@ class PersonalSection extends React.Component {
     }
 
     return (
-      <span>{error}</span>
+      fields.createError(error)
     );
   }
 
@@ -118,10 +118,10 @@ class PersonalSection extends React.Component {
               fields.createMonthPicker()
             )}
             {fields.createColumn('col-sm-4',
-              fields.createInput('birthdateDay', 'Day', 'number')
+              fields.createInput('birthdateDay', 'Day', 'number', 'sd-form__input-text mb-1 mb-md-0')
             )}
             {fields.createColumn('col-sm-4',
-              fields.createInput('birthdateYear', 'Year', 'number')
+              fields.createInput('birthdateYear', 'Year', 'number', 'sd-form__input-text')
             )}
           </div>
         )
@@ -194,8 +194,12 @@ class PersonalSection extends React.Component {
         )
       )}
 
-      <button className="btn btn-primary" type="submit"
-        disabled={pristine || submitting}>Next</button>
+      {fields.createRow(
+        fields.createColumn('col-sm-12',
+          <button className="btn rounded-button" type="submit"
+            disabled={pristine || submitting}>Next</button>
+        )
+      )}
     </form>);
   }
 

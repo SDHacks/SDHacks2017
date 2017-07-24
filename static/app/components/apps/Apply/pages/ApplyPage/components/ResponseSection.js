@@ -132,17 +132,14 @@ class ResponseSection extends React.Component {
       )}
 
       {fields.createRow(
-        fields.createColumn('col-sm-12 text-center',
+        fields.createColumn('col-sm-12 col-md-4 text-center',
+          <button className="btn rounded-button rounded-button--secondary"
+            type="button" onClick={previousPage}>Go Back</button>
+        ),
+        fields.createColumn('col-sm-12 col-md-4 text-center',
           <button className={'btn sd-form__nav-button rounded-button ' +
             'success button'} type="submit"
             disabled={pristine || submitting}>Apply!</button>
-        )
-      )}
-
-      {fields.createRow(
-        fields.createColumn('col-sm-12',
-          <button className="btn btn-secondary" type="button"
-            onClick={previousPage}>Go Back</button>
         )
       )}
     </form>);

@@ -1,4 +1,5 @@
 import {Field} from 'redux-form';
+import {Alert} from 'reactstrap';
 import React from 'react';
 
 let creates = {};
@@ -15,6 +16,13 @@ creates.createColumn = function createColumn(size, ...content) {
   </div>);
 };
 
+creates.createError = function createError(text) {
+  return (<Alert color="danger" className="sd-form__error">
+    <strong><i className="fa fa-exclamation-triangle"></i> </strong>
+    {text}
+  </Alert>);
+};
+
 creates.errorTextInput =
   function errorTextInput({input, className, placeholder, type,
     meta: {touched, error}}) {
@@ -22,7 +30,7 @@ creates.errorTextInput =
       <div>
         <input {...input} className={className} placeholder={placeholder}
           type={type} />
-        {touched && error && <span>{error}</span>}
+        {touched && error && creates.createError(error)}
       </div>);
   };
 
@@ -31,7 +39,8 @@ creates.errorRadio =
     return (
       <div className='form-check form-check-inline'>
         <label className='form-check-label'>
-          <input {...input} className={className} type='radio' value={defaultVal} />
+          <input {...input} className={className} type='radio'
+            value={defaultVal} />
           {label}
         </label>
       </div>);
@@ -44,7 +53,7 @@ creates.errorTextArea =
       <div>
         <textarea {...input} className={className} placeholder={placeholder}
           maxLength={maxLength} />
-        {touched && error && <span>{error}</span>}
+        {touched && error && creates.createError(error)}
       </div>);
   };
 
@@ -64,7 +73,7 @@ creates.errorMonthPicker =
           {months.map((month, i) =>
             <option key={i} value={i+1}>{month}</option>)}
         </select>
-        {touched && error && <span>{error}</span>}
+        {touched && error && creates.createError(error)}
       </div>);
   };
 
@@ -86,7 +95,7 @@ creates.errorTShirtSizePicker =
           {sizes.map((size, i) =>
             <option key={i} value={values[i]}>{size}</option>)}
         </select>
-        {touched && error && <span>{error}</span>}
+        {touched && error && creates.createError(error)}
       </div>);
   };
 
@@ -105,7 +114,7 @@ creates.errorGenderPicker =
           {genders.map((gender, i) =>
             <option key={i} value={gender}>{gender}</option>)}
         </select>
-        {touched && error && <span>{error}</span>}
+        {touched && error && creates.createError(error)}
       </div>);
   };
 
@@ -129,7 +138,7 @@ creates.createTextArea = function createTextArea(name, placeholder,
 
 creates.createMonthPicker = function createMonthPicker() {
   return (<Field component={creates.errorMonthPicker}
-    className="sd-form__input-select" name="birthdateMonth" />);
+    className="sd-form__input-select mb-1 mb-md-0" name="birthdateMonth" />);
 };
 
 creates.createGenderPicker = function createGenderPicker() {

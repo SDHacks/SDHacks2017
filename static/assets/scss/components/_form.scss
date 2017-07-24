@@ -1,16 +1,15 @@
-.js {
-  &-sd-form__error {
-    &--message {
-      color: $alert-color;
-      font-size: 1.1em;
-      line-height: 3.0em;
-    }
-  }
-}
-
 .sd-form {
   max-width: 800px;
   margin: auto;
+
+  &__logo {
+    max-height: 10rem;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: 1rem;
+    }
+  }
 
   &__wrapper {
     background-color: $beach-blue;
@@ -18,6 +17,7 @@
     position: relative;
     font-family: $header-font-family;
     letter-spacing: 0.05rem;
+    min-height: 100%;
   }
 
   &__row {
@@ -150,7 +150,7 @@
   input[type="email"],
   select,
   textarea {
-    padding: 0.8rem 1.1rem;
+    padding: 0.5rem 1.1rem;
     display: block;
     width: 100%;
 
@@ -168,11 +168,15 @@
   }
 
   &__header {
-    font-size: 1.6rem;
-    text-align: center;
+    padding: 1.5rem 15px;
 
-    @include media-breakpoint-up(md) {
-      font-size: 2.4rem;
+    &--text {
+      font-size: 1.5rem;
+      text-align: center;
+
+      @include media-breakpoint-up(md) {
+        font-size: 2.4rem;
+      } 
     }
 
     &--close {
@@ -243,5 +247,10 @@
     }
   }
 
-
+  &__error {
+    margin-top: 0.35rem;
+    margin-bottom: 0;
+    border-radius: 0.6rem;
+    padding: 0.35rem 0.75rem;
+  }
 }

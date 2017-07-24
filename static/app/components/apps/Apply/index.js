@@ -19,11 +19,7 @@ class Apply extends React.Component {
   }
 
   render() {
-    return (
-      <div className="apply-body">
-        {this.routes()}
-      </div>
-    );
+    return this.routes();
   }
 }
 
