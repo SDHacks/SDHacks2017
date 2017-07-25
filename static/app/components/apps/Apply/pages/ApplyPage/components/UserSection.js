@@ -1,4 +1,4 @@
-import {reduxForm} from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -15,13 +15,19 @@ class UserSection extends React.Component {
     submitError: PropTypes.object
   }
 
+  createAcceptBox() {
+    return (<Field component='input' type='checkbox'
+      className='sd-form__input-checkbox' name='accept' />);
+  }
+
   render() {
     const {previousPage, handleSubmit, pristine, submitting, submitError} =
       this.props;
     return (<form onSubmit={handleSubmit}>
       {fields.createRow(
         fields.createColumn('col-sm-12',
-          <h4>Create an account</h4>
+          <h4>You're Almost Done!</h4>,
+          <h5>To complete your application, please create an account</h5>
         ),
         fields.createColumn('col-md-6',
           fields.createLabel('Username'),
@@ -30,6 +36,23 @@ class UserSection extends React.Component {
         fields.createColumn('col-md-6',
           fields.createLabel('Password'),
           fields.createInput('password', 'Password', 'password')
+        )
+      )}
+
+      {fields.createRow(
+        fields.createColumn('col-sm-12',
+          fields.createLabel('We participate in Major League Hacking (MLH) as '+
+          'a MLH Member Event. You authorize us to share certain '+
+          'application/registration information for event administration, '+
+          'ranking, MLH administration, pre and post-event informational '+
+          'e-mails, and occasional messages about hackathons in line with the '+
+          'MLH Privacy Policy.')
+        ),
+        fields.createColumn('col-sm-12',
+          this.createAcceptBox(),
+          <span>I accept the&nbsp;
+          <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code
+          of Conduct</a></span>
         )
       )}
 

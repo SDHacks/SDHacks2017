@@ -2,6 +2,7 @@ import {Field, Fields, reduxForm} from 'redux-form';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import FileField from './FileField';
 import fields from './Fields';
 import validate from './validate';
 
@@ -25,7 +26,7 @@ class PersonalSection extends React.Component {
   }
 
   createResumeUpload() {
-    return (<Field component={this.errorResumeUpload} type="file" name="resume"
+    return (<Field component={FileField} name="resume"
       placeholder="Resume" />);
   }
 
@@ -35,7 +36,7 @@ class PersonalSection extends React.Component {
         <Field component="input" type="checkbox" name="shareResume"
           className="sd-form__input-checkbox" />
         I would like SDHacks to share my resume and personal information so that
-        companies may contact me about job opportunities?
+        companies may contact me about job opportunities
       </label>);
   }
 
@@ -114,10 +115,12 @@ class PersonalSection extends React.Component {
               fields.createMonthPicker()
             )}
             {fields.createColumn('col-sm-4',
-              fields.createInput('birthdateDay', 'Day', 'number', 'sd-form__input-text mb-1 mb-md-0')
+              fields.createInput('birthdateDay', 'Day', 'number',
+                'sd-form__input-text mb-1 mb-md-0')
             )}
             {fields.createColumn('col-sm-4',
-              fields.createInput('birthdateYear', 'Year', 'number', 'sd-form__input-text')
+              fields.createInput('birthdateYear', 'Year', 'number',
+                'sd-form__input-text')
             )}
           </div>
         )

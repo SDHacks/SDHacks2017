@@ -29,11 +29,6 @@ class ResponseSection extends React.Component {
     return <span></span>;
   }
 
-  createAcceptBox() {
-    return (<Field component='input' type='checkbox'
-      className='sd-form__input-checkbox' name='accept' />);
-  }
-
   render() {
     const {previousPage, handleSubmit, pristine, submitting} = this.props;
     return (<form onSubmit={handleSubmit}>
@@ -72,7 +67,9 @@ class ResponseSection extends React.Component {
         ),
         fields.createColumn('col-lg-6',
           fields.createLabel('T-Shirt Size'),
-          <a href="#2" id="fitHelp"><i className='fa fa-info-circle'></i></a>,
+          <a id="fitHelp" className="sd-form__info">
+            <i className='fa fa-info-circle'></i>
+          </a>,
           <Tooltip placement="right" target="fitHelp">Shirts tend to run on the
             smaller side</Tooltip>,
           fields.createTShirtSizePicker()
@@ -111,23 +108,6 @@ class ResponseSection extends React.Component {
         ),
         fields.createColumn('col-sm-12 col-lg-4',
           fields.createInput('team3', 'example@example.com', 'email')
-        )
-      )}
-
-      {fields.createRow(
-        fields.createColumn('col-sm-12',
-          fields.createLabel('We participate in Major League Hacking (MLH) as '+
-          'a MLH Member Event. You authorize us to share certain '+
-          'application/registration information for event administration, '+
-          'ranking, MLH administration, pre and post-event informational '+
-          'e-mails, and occasional messages about hackathons in line with the '+
-          'MLH Privacy Policy.')
-        ),
-        fields.createColumn('col-sm-12',
-          this.createAcceptBox(),
-          <span>I accept the&nbsp;
-          <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code
-          of Conduct</a></span>
         )
       )}
 
