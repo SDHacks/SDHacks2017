@@ -77,8 +77,10 @@ class ResponseSection extends React.Component {
       )}
 
       {fields.createRow(
-        fields.createColumn('col-sm-12',
+        fields.createColumn('col-sm-12 col-md-5',
           fields.createLabel('This will be my first hackathon'),
+        ),
+        fields.createColumn('col-sm-12 col-md-7',
           fields.createRadio('firstHackathon', true, 'Yes'),
           fields.createRadio('firstHackathon', false, 'No')
         )
