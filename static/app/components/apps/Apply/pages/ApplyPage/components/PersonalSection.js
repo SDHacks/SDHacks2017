@@ -2,6 +2,7 @@ import {Field, Fields, reduxForm} from 'redux-form';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import UniversityField from './UniversityField';
 import FileField from './FileField';
 import fields from './Fields';
 import validate from './validate';
@@ -66,8 +67,9 @@ class PersonalSection extends React.Component {
         fields.createRow(
           fields.createColumn('col-sm-12',
             fields.createLabel('University'),
-            fields.createInput('university',
-              'The University of California, San Diego')
+            <Field component={UniversityField} name='university'
+              className="sd-form__input-text"
+              placeholder='The University of California, San Diego' />
           )
         )
       );
