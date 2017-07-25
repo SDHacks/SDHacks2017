@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {Field} from 'redux-form';
 import {Alert} from 'reactstrap';
 import React from 'react';
@@ -39,8 +40,8 @@ creates.errorRadio =
     return (
       <div className='form-check form-check-inline'>
         <label className='form-check-label'>
-          <input {...input} className={className} type='radio'
-            value={defaultVal} />
+          <input {...input} className={className} type="radio"
+            value={defaultVal} checked={input.value === defaultVal} />
           {label}
         </label>
       </div>);
@@ -156,7 +157,7 @@ creates.createTShirtSizePicker = function createTShirtSizePicker() {
 creates.createRadio = function createRadio(name, value, label,
   className='sd-form__input-radio form-check-input') {
   return (<Field component={creates.errorRadio} className={className}
-    name={name} defaultVal={value} label={label} />);
+    name={name} defaultVal={String(value)} label={label} />);
 };
 
 export default creates;
