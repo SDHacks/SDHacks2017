@@ -1,0 +1,43 @@
+const validate = values => {
+  const errors = {};
+
+  const required = ['firstName', 'lastName', 'email', 'birthdateDay',
+    'birthdateMonth', 'birthdateYear', 'gender', 'phone', 'institution',
+    'major', 'year', 'resume', 'outOfState', 'shirtFit', 'shirtSize',
+    'firstHackathon', 'outcomeStmt', 'accept'
+  ];
+
+  const notValid = required.filter(name => !(name in values));
+  notValid.forEach(name => errors[name] = 'Required');
+
+  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
+
+  if (values.birthdateMonth < 1 || values.birthdateMonth > 12) {
+    errors.birthdateMonth = 'Invalid Month';
+  }
+  if (values.birthdateYear < 1900 || values.birthdateYear > 2010) {
+    errors.birthdateYear = 'Invalid Year';
+  }
+
+  if (values.institution === 'uni' && !values.university) {
+    errors.university = 'Required';
+  }
+
+  if (values.institution === 'hs' && !values.highSchool) {
+    errors.highSchool = 'Required';
+  }
+
+  if (values.year < 2017) {
+    errors.year = 'Applicants must be current students';
+  }
+
+  if (values.outOfState && values.outOfState === 'true' && !values.city) {
+    errors.city = 'Required';
+  }
+
+  return errors;
+};
+
+export default validate;

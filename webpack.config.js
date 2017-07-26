@@ -7,6 +7,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval-source-map',
   entry: [
+    'react-hot-loader/patch',
     'webpack-hot-middleware/client?timeout=2000&path=/__webpack_hmr',
     path.join(__dirname, 'static/app/main.js'),
   ],
@@ -23,6 +24,11 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
+    }),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
     })
   ],
   resolve: {
@@ -35,8 +41,6 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: /node_modules/,
       use: [{
-        loader: 'react-hot-loader'
-      }, {
         loader: 'babel-loader',
         options: {
           'presets': ['react', 'es2015', 'stage-0', 'react-hmre']

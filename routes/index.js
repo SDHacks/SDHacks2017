@@ -8,8 +8,7 @@ module.exports = function(app, config) {
   // Basic
   app.get('/', (req, res) => res.render('pages/home.pug'));
 
-  // Application
-  app.get('/apply', (req, res) => res.render('pages/apply.pug'));
+  require('./apply')(app, config);
 
   // Actual confirmation (link for people who just got selected)
   app.get('/accepted', (req, res) => res.render('pages/accepted.pug'));

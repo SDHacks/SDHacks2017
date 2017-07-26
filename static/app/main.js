@@ -6,9 +6,11 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 import {render} from 'react-dom';
 
-import App from './components/App';
 import reducer from './reducers';
 import routes from './routes';
+
+import 'jquery';
+import 'bootstrap/dist/js/bootstrap';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
   compose;
@@ -21,10 +23,8 @@ composeEnhancers(
 render(
   <CookiesProvider>
     <Provider store={store}>
-      <Router basename="/admin">
-        <App>
-          {routes}
-        </App>
+      <Router>
+        {routes}
       </Router>
     </Provider>
   </CookiesProvider>,

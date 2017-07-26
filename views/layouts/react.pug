@@ -1,0 +1,33 @@
+//- Main Layout of our project
+doctype
+html(lang='en-US', prefix="og: http://ogp.me/ns#")
+    head
+        meta(charset='UTF-8')
+        base(href='/')
+
+        //- Facebook meta data
+        meta(property='og:title', content='SD Hacks 2017')
+        meta(property='og:description', content='Official Website of SD Hacks 2017')
+        meta(property='og:image', content='https://www.sdhacks.io/assets/img/logo.png')
+        meta(property='og:image:secure_url', content='https://www.sdhacks.io/assets/img/logo.png')
+        meta(property='og:image:type', content='image/png')
+
+        block title
+          title SD Hacks 2017 Administration
+        meta(name="theme-color", content="#19A3C5")
+        meta(name='description', content='Official Website of SD Hacks 2017')
+        meta(name='keywords', content='SD Hacks, 2017, SD Hacks 2017, hackathon, UCSD, UC, University of California San Diego, San Diego')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
+        link(rel='shortcut icon', href='/assets/img/favicon.png')
+        //- Load React specific styling
+        link(href='/assets/dist/styles.css', type='text/css', rel='stylesheet')
+        //- Load website styling
+        link(href='/assets/css/sdhacks.min.css', type='text/css', rel='stylesheet')
+        link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', type='text/css', rel='stylesheet')
+        
+    body
+        #root
+
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js')
+        script(src='/assets/dist/main.js')
