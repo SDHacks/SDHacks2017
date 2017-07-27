@@ -14,17 +14,6 @@ class PersonalSection extends React.Component {
     submitting: PropTypes.bool.isRequired
   }
 
-  errorResumeUpload({input, className, placeholder, type,
-    meta: {touched, error}}) {
-    delete input.value;
-    return (
-      <div>
-        <input {...input} className={className} placeholder={placeholder}
-          type={type} />
-        {touched && error && fields.createError(error)}
-      </div>);
-  }
-
   createResumeUpload() {
     return (<Field component={FileField} name="resume"
       placeholder="Resume" />);

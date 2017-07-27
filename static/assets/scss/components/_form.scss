@@ -115,7 +115,10 @@
         border: 0.32rem solid $white;
         background-color: $dark-blue;
       }
+    }
 
+    &--error {
+      border: 2px solid $alert-color;
     }
   }
 
@@ -270,9 +273,7 @@
   }
 
   &__error {
-    margin-top: 0.35rem;
-    margin-bottom: 0;
-    border-radius: 0.6rem;
-    padding: 0.35rem 0.75rem;
+    padding: 0.35rem 0.75rem 0 0;
+    color: $alert-color;
   }
 }
