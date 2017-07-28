@@ -139,13 +139,17 @@
       border: 2px solid $dark-blue;
       opacity: 1;
     }
-    &#institution-radio-uni {
+    &#institution-radio-ucsd {
       background: url('../img/site/featurette-ucsd.png') no-repeat center center;
       background-size: 60%;
     }
+    &#institution-radio-uni {
+      background: url('../img/site/featurette-university.svg') no-repeat center center;
+      background-size: 70%;
+    }
     &#institution-radio-hs {
       background: url('../img/site/featurette-high-school.png') no-repeat center center;
-      background-size: 60%;
+      background-size: 55%;
     }
   }
 

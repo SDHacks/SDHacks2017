@@ -41,12 +41,12 @@ class UserSection extends React.Component {
 
       {fields.createRow(
         fields.createColumn('col-sm-12',
-          fields.createLabel('We participate in Major League Hacking (MLH) as '+
-          'a MLH Member Event. You authorize us to share certain '+
-          'application/registration information for event administration, '+
-          'ranking, MLH administration, pre and post-event informational '+
-          'e-mails, and occasional messages about hackathons in line with the '+
-          'MLH Privacy Policy.')
+          fields.createLabel(`We participate in Major League Hacking (MLH) as 
+          a MLH Member Event. You authorize us to share certain 
+          application/registration information for event administration, 
+          ranking, MLH administration, pre and post-event informational 
+          e-mails, and occasional messages about hackathons in line with the 
+          MLH Privacy Policy.`)
         ),
         fields.createColumn('col-sm-12',
           this.createAcceptBox(),
