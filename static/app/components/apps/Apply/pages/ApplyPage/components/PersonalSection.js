@@ -52,17 +52,7 @@ class PersonalSection extends React.Component {
 
   showInstitutionBox(info) {
     const value = info.institution.input.value;
-    if (value === 'ucsd') {
-      return (
-        fields.createRow(
-          fields.createColumn('col-sm-12',
-            fields.createLabel('UCSD'),
-            fields.createInput('UCSD',
-              'The University of California, San Diego')
-          )
-        )
-      );
-    } else if (value === 'hs') {
+    if (value === 'hs') {
       return (
         fields.createRow(
           fields.createColumn('col-sm-12',
