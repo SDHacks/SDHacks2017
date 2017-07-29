@@ -14,10 +14,13 @@ const validate = values => {
     errors.email = 'Invalid email address';
   }
 
+  if (values.birthdateDay < 1 || values.birthdateDay > 31) {
+    errors.birthdateDay = 'Invalid Day';
+  }
   if (values.birthdateMonth < 1 || values.birthdateMonth > 12) {
     errors.birthdateMonth = 'Invalid Month';
   }
-  if (values.birthdateYear < 1900 || values.birthdateYear > 2010) {
+  if (values.birthdateYear < 1900 || values.birthdateYear > 1999) {
     errors.birthdateYear = 'Invalid Year';
   }
 

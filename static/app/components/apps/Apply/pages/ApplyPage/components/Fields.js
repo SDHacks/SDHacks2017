@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import {Field} from 'redux-form';
-import {Alert} from 'reactstrap';
 import React from 'react';
 
 let creates = {};
@@ -18,19 +17,25 @@ creates.createColumn = function createColumn(size, ...content) {
 };
 
 creates.createError = function createError(text) {
-  return (<Alert color="danger" className="sd-form__error">
+  return (<div className="sd-form__error">
     <strong><i className="fa fa-exclamation-triangle"></i> </strong>
     {text}
-  </Alert>);
+  </div>);
+};
+
+creates.errorClass = function errorClass(className, touched, error) {
+  return className +
+    (touched && error ? ' ' + 'sd-form__input--error' : '');
 };
 
 creates.errorTextInput =
   function errorTextInput({input, className, placeholder, type,
     meta: {touched, error}}) {
+    let errorClass = creates.errorClass(className, touched, error);
     return (
       <div>
-        <input {...input} className={className} placeholder={placeholder}
-          type={type} />
+        <input {...input} className={errorClass}
+          placeholder={placeholder} type={type} />
         {touched && error && creates.createError(error)}
       </div>);
   };
@@ -50,9 +55,10 @@ creates.errorRadio =
 creates.errorTextArea =
   function errorTextArea({input, className, placeholder, maxLength,
     meta: {touched, error}}) {
+    let errorClass = creates.errorClass(className, touched, error);
     return (
       <div>
-        <textarea {...input} className={className} placeholder={placeholder}
+        <textarea {...input} className={errorClass} placeholder={placeholder}
           maxLength={maxLength} />
         {touched && error && creates.createError(error)}
       </div>);
@@ -61,6 +67,7 @@ creates.errorTextArea =
 creates.errorMonthPicker =
   function errorMonthPicker({input, className, type,
     meta: {touched, error}}) {
+    let errorClass = creates.errorClass(className, touched, error);
     let months = [
       'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
       'September', 'October', 'November', 'December'
@@ -68,7 +75,7 @@ creates.errorMonthPicker =
 
     return (
       <div>
-        <select {...input} className={className}
+        <select {...input} className={errorClass}
           type={type}>
           <option key={-1}>Month</option>
           {months.map((month, i) =>
@@ -83,6 +90,7 @@ creates.errorMonthPicker =
 creates.errorTShirtSizePicker =
   function errorTShirtSizePicker({input, className, type,
     meta: {touched, error}}) {
+    let errorClass = creates.errorClass(className, touched, error);
     let sizes = [
       'X-Small', 'Small', 'Medium', 'Large', 'X-Large', 'XX-Large'
     ];
@@ -92,7 +100,7 @@ creates.errorTShirtSizePicker =
 
     return (
       <div>
-        <select {...input} className={className}
+        <select {...input} className={errorClass}
           type={type}>
           <option key={-1}></option>
           {sizes.map((size, i) =>
@@ -105,13 +113,14 @@ creates.errorTShirtSizePicker =
 creates.errorGenderPicker =
   function errorGenderPicker({input, className, type,
     meta: {touched, error}}) {
+    let errorClass = creates.errorClass(className, touched, error);
     let genders = [
       'Male', 'Female', 'Non-Binary', 'I prefer not to say', 'Other'
     ];
 
     return (
       <div>
-        <select {...input} className={className}
+        <select {...input} className={errorClass}
           type={type}>
           <option key={-1}></option>
           {genders.map((gender, i) =>

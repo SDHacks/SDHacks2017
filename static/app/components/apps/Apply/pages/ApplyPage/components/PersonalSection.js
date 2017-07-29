@@ -14,17 +14,6 @@ class PersonalSection extends React.Component {
     submitting: PropTypes.bool.isRequired
   }
 
-  errorResumeUpload({input, className, placeholder, type,
-    meta: {touched, error}}) {
-    delete input.value;
-    return (
-      <div>
-        <input {...input} className={className} placeholder={placeholder}
-          type={type} />
-        {touched && error && fields.createError(error)}
-      </div>);
-  }
-
   createResumeUpload() {
     return (<Field component={FileField} name="resume"
       placeholder="Resume" />);
@@ -41,11 +30,13 @@ class PersonalSection extends React.Component {
   }
 
   createInstitutionCard(value, id, label) {
-    return (<div className="sd-form__institution-card">
-      <Field component="input" type="radio" value={value} name='institution'
-        id={id} className="sd-form__input-radio sd-form__institution-radio" />
-      {fields.createLabel(label, false, 'sd-form__institution-label')}
-    </div>);
+    return (
+      <div className="sd-form__institution-card">
+        <Field component="input" type="radio" value={value} name='institution'
+          id={id} className="sd-form__input-radio sd-form__institution-radio" />
+        {fields.createLabel(label, false, 'sd-form__institution-label')}
+      </div>
+    );
   }
 
   showInstitutionError(info) {
@@ -61,22 +52,22 @@ class PersonalSection extends React.Component {
 
   showInstitutionBox(info) {
     const value = info.institution.input.value;
-    if (value === 'uni') {
-      return (
-        fields.createRow(
-          fields.createColumn('col-sm-12',
-            fields.createLabel('University'),
-            fields.createInput('university',
-              'The University of California, San Diego')
-          )
-        )
-      );
-    } else if (value === 'hs') {
+    if (value === 'hs') {
       return (
         fields.createRow(
           fields.createColumn('col-sm-12',
             fields.createLabel('High School'),
             fields.createInput('highSchool', 'High School')
+          )
+        )
+      );
+    } else if (value === 'uni') {
+      return (
+        fields.createRow(
+          fields.createColumn('col-sm-12',
+            fields.createLabel('University'),
+            fields.createInput('University',
+              'University Name')
           )
         )
       );
@@ -142,15 +133,19 @@ class PersonalSection extends React.Component {
         fields.createColumn('col-sm-12 no-margin-bottom',
           fields.createLabel('Institution')
         ),
-        fields.createColumn('col-md-6 col-lg-4 offset-lg-2',
-          this.createInstitutionCard('uni', 'institution-radio-uni',
-            'University')
+        fields.createColumn('col-md-4',
+          this.createInstitutionCard('ucsd', 'institution-radio-ucsd',
+            'UCSD')
         ),
-        fields.createColumn('col-md-6 col-lg-4',
+        fields.createColumn('col-md-4',
+          this.createInstitutionCard('uni', 'institution-radio-uni',
+            'Other University')
+        ),
+        fields.createColumn('col-md-4',
           this.createInstitutionCard('hs', 'institution-radio-hs',
             'High School')
         ),
-        fields.createColumn('col-sm-12 col-lg-8 offset-lg-2',
+        fields.createColumn('col-sm-12',
           <Fields names={['institution']}
             component={this.showInstitutionError} />
         )

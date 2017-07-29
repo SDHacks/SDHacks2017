@@ -57,6 +57,12 @@ class ApplyPage extends React.Component {
     values.birthdateYear = ('0000' + values.birthdateYear)
       .substring(values.birthdateYear.length);
 
+    // Check for UCSD institution
+    if (values.institution === 'ucsd') {
+      values.institution = 'uni';
+      values.university = 'The University of California, San Diego';
+    }
+
     registerUser(values)
     .then(() => {
       this.nextPage();

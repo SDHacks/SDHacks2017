@@ -36,8 +36,9 @@ export default class FileField extends React.Component {
     let dropzoneProps = {
       accept,
       multiple,
-      onDrop: this.handleDropOrClick,
+      onDrop: this.handleDropOrClick
     };
+
     return (
       <div>
         <input type='hidden' disabled {...input} />
