@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nodemon -e js,coffee server.js",
-    "postinstall": "bower install && gulp prod"
+    "postinstall": "gulp prod"
   },
   "dependencies": {
     "aws-sdk": "^2.5.0",
