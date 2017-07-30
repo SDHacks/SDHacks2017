@@ -31,9 +31,10 @@ class ResumesPage extends React.Component {
   }
 
   render() {
+    let {applicants} = this.props.resumes;
     return (
       <div>
-        <ResumeList applicants={this.props.resumes.applicants}></ResumeList>
+        <ResumeList applicants={applicants}></ResumeList>
       </div>
     );
   }
