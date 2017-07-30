@@ -40,6 +40,9 @@ a {
     color: $default-blue;
     text-decoration: none;
   }
+  &.sd-link__hover-purple:hover {
+    color: $default-purple;
+  }
   &.sd-link__icon,
   &.sd-link__img {
     border: none;
