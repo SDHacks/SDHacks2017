@@ -71,4 +71,5 @@ export const updateUser = (id, user) =>
 export const registerUser = (user) =>
   promisify(request
       .post('/apply/api/register')
-      .send(user));
+      .field(user)
+      .attach('resume', user.resume[0]));

@@ -51,7 +51,6 @@ class ApplyPage extends React.Component {
 
   onFinalSubmit(values) {
     // Clean up values
-    values.resume = values.resume[0];
     values.birthdateDay = ('00' + values.birthdateDay)
       .substring(values.birthdateDay.length);
     values.birthdateYear = ('0000' + values.birthdateYear)
