@@ -1,9 +1,10 @@
-const passport = require('passport'),
-  User = require('../entities/users/model'),
-  Admin = require('../entities/admins/model'),
-  JwtStrategy = require('passport-jwt').Strategy,
-  ExtractJwt = require('passport-jwt').ExtractJwt,
-  LocalStrategy = require('passport-local');
+const passport = require('passport');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const LocalStrategy = require('passport-local');
+
+const User = require('../entities/users/model');
+const Admin = require('../entities/admins/model');
 
 require('dotenv').config();
 

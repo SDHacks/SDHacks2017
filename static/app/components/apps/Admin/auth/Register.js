@@ -7,7 +7,7 @@ import {UncontrolledAlert} from 'reactstrap';
 import {registerUser} from './actions';
 
 const form = reduxForm({
-  form: 'register',
+  form: 'adminRegister',
   validate
 });
 
@@ -39,7 +39,7 @@ function validate(formProps) {
   return errors;
 }
 
-class Register extends React.Component {
+class RegisterPage extends React.Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   };
@@ -106,4 +106,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {registerUser})(form(Register));
+export default connect(mapStateToProps, {registerUser})(form(RegisterPage));

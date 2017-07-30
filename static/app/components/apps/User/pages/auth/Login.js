@@ -7,7 +7,7 @@ import {UncontrolledAlert} from 'reactstrap';
 import {loginUser} from './actions';
 
 const form = reduxForm({
-  form: 'adminLogin'
+  form: 'login'
 });
 
 class LoginPage extends React.Component {

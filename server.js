@@ -10,7 +10,6 @@
   var helmet = require('helmet');
   var http = require('http');
   var logger = require('morgan');
-  var mailer = require('nodemailer');
   var methodOverride = require('method-override');
   var path = require('path');
   var passport = require('passport');
@@ -47,17 +46,6 @@
     // Rendering tools
     app.locals.moment = require('moment');
 
-    // Node mailer
-    var transporter = mailer.createTransport({
-      host: process.env.MAIL_HOST,
-      port: process.env.MAIL_PORT,
-      secure: true,
-      auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
-      }
-    });
-
     // all environments
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'pug');
@@ -88,7 +76,6 @@
 
     // Routing
     require('./routes/index')(app, process.env);
-    require('./routes/api')(app, process.env, transporter);
     require('./routes/models')(app, process.env);
 
     // Error Handling

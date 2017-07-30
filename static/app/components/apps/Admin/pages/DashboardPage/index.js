@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 
 import {loadAllStats} from './actions';
 
+import CookieTypes from '~/static/Cookies';
+
 import {getRole, Roles} from '~/static/Roles';
 
 class DashboardPage extends React.Component {
@@ -24,14 +26,14 @@ class DashboardPage extends React.Component {
 
   componentWillMount() {
     this.state = {
-      role: this.props.cookies.get('user').role
+      role: this.props.cookies.get(CookieTypes.admin.user).role
     };
 
     this.props.dispatch(loadAllStats());
   }
 
   render() {
-    let user = this.cookies.get('user');
+    let user = this.cookies.get(CookieTypes.admin.user);
     return (
       <div className="row">
         <div className="col-sm-12">
@@ -49,7 +51,7 @@ class DashboardPage extends React.Component {
                 {this.props.stats.users.total.toLocaleString()}
               </p>
               {getRole(this.state.role) >= getRole(Roles.ROLE_ADMIN) &&
-                <Link to="/users" className="btn btn-primary">See Users</Link>
+                <Link to="/admin/users" className="btn btn-primary">See Users</Link>
               }
             </div>
           </div>

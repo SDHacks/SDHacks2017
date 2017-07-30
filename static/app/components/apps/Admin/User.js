@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 
 import {User as UserPropType} from '~/proptypes';
 
+import CookieTypes from '~/static/Cookies';
+
 import {getRole, Roles} from '~/static/Roles';
 
 import CheckboxButton from './CheckboxButton';
@@ -33,7 +35,7 @@ class User extends React.Component {
 
   componentWillMount() {
     this.state = {
-      role: this.props.cookies.get('user').role
+      role: this.props.cookies.get(CookieTypes.admin.user).role
     };
   }
 

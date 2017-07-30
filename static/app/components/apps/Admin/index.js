@@ -12,14 +12,16 @@ import Sidebar from './Sidebar';
 import PrivateRoute from './PrivateRoute';
 import Dashboard from './pages/DashboardPage';
 import HomePage from './pages/HomePage';
-import Login from './auth/Login';
+import LoginPage from './auth/Login';
 import Logout from './auth/Logout';
 import NotFoundPage from './pages/NotFound';
-import Register from './auth/Register';
+import RegisterPage from './auth/Register';
 import UsersPage from './pages/UsersPage';
 import AdminsPage from './pages/AdminsPage';
 import ResumesPage from './pages/ResumesPage';
 import UserPage from './pages/UserPage';
+
+import CookieTypes from '~/static/Cookies';
 
 class Admin extends React.Component {
   static propTypes = {
@@ -32,7 +34,7 @@ class Admin extends React.Component {
 
     // Check initial authentication
     const {cookies} = this.props;
-    if (cookies.get('token')) {
+    if (cookies.get(CookieTypes.admin.token)) {
       props.dispatch({type: AUTH_USER});
     }
   }
@@ -41,8 +43,8 @@ class Admin extends React.Component {
     return (
       <Switch>
         <Route exact path="/admin/" component={HomePage} />
-        <Route path="/admin/register" component={Register} />
-        <Route path="/admin/login" component={Login} />
+        <Route path="/admin/register" component={RegisterPage} />
+        <Route path="/admin/login" component={LoginPage} />
 
         <PrivateRoute path="/admin/logout" component={Logout} />
         <PrivateRoute path="/admin/dashboard" component={Dashboard} />

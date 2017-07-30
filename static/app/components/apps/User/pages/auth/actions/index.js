@@ -1,4 +1,4 @@
-import * as Auth from '~/data/AdminAuth';
+import * as Auth from '~/data/Auth';
 
 import * as Types from './types';
 
@@ -10,8 +10,8 @@ import CookieTypes from '~/static/Cookies';
 const cookies = new Cookies();
 
 function storeLogin(res) {
-  cookies.set(CookieTypes.admin.token, res.body.token, {path: '/'});
-  cookies.set(CookieTypes.admin.user, res.body.user, {path: '/'});
+  cookies.set(CookieTypes.user.token, res.body.token, {path: '/'});
+  cookies.set(CookieTypes.user.user, res.body.user, {path: '/'});
 }
 
 export function errorHandler(dispatch, error, type) {
@@ -30,33 +30,6 @@ export function errorHandler(dispatch, error, type) {
     });
   }
 }
-
-// Auth
-export function registerUser({username, password}) {
-  return function(dispatch) {
-    var deferred = Q.defer();
-
-    Auth.register(username, password)
-    .end((err, res) => {
-      if (err) {
-        let error = {
-          message: res.body.error,
-          status: res.error.status
-        };
-        deferred.reject(res.body.error);
-        return errorHandler(dispatch, error, Types.AUTH_ERROR);
-      }
-
-      storeLogin(res);
-      dispatch({
-        type: Types.AUTH_USER
-      });
-      deferred.resolve();
-    });
-
-    return deferred.promise;
-  };
-};
 
 export function loginUser({username, password}) {
   return function(dispatch) {
@@ -84,7 +57,7 @@ export function loginUser({username, password}) {
 export function logoutUser() {
   return function(dispatch) {
     dispatch({type: Types.UNAUTH_USER});
-    cookies.remove(CookieTypes.admin.token, {path: '/'});
-    cookies.remove(CookieTypes.admin.user, {path: '/'});
+    cookies.remove(CookieTypes.user.token, {path: '/'});
+    cookies.remove(CookieTypes.user.user, {path: '/'});
   };
 };

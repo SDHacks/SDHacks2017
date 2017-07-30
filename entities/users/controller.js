@@ -6,130 +6,16 @@ module.exports = function(app, config) {
   var User = require('./model');
 
   const userRoutes = express.Router();
-  const adminRoutes = express.Router();
+  const apiRoutes = express.Router();
 
-  app.use('/users', userRoutes);
-  userRoutes.use('/admin', adminRoutes);
-
-  var auth = function(req, res, next) {
-    var unauthorized = function(res) {
-      res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-      return res.sendStatus(401);
-    };
-
-    var user = require('basic-auth')(req);
-
-    if (!user || !user.name || !user.pass) {
-      return unauthorized(res);
-    }
-    if ((user.name === config.ADMIN_USER) &&
-      (user.pass === config.ADMIN_PASS)) {
-      return next();
-    }
-    return unauthorized(res);
-  };
-
-  var checkinAuth = function(req, res, next) {
-    var unauthorized = function(res) {
-      res.set('WWW-Authenticate', 'Basic realm=Checkin Authorization Required');
-      return res.sendStatus(401);
-    };
-
-    var user = require('basic-auth')(req);
-
-    if (!user || !user.name || !user.pass) {
-      return unauthorized(res);
-    }
-    if ((user.name === config.CHECKIN_USER) &&
-      (user.pass === config.CHECKIN_PASS)) {
-      return next();
-    }
-    return unauthorized(res);
-  };
-
-  // Admin
-  adminRoutes.get('/', auth, (req, res) =>
-    User.find({deleted: {$ne: true}}).sort({createdAt: -1})
-    .exec(function(err, users) {
-      var statuses = {};
-      for (var user of Array.from(users)) {
-        if (statuses[user.status]) {
-          statuses[user.status]++;
-        } else {
-          statuses[user.status] = 1;
-        }
-      }
-      return res.render('entity_views/users/admin.pug',
-        {users, statusCounts: statuses});
-    })
-  );
-
-  adminRoutes.get('/waitlist', auth, (req, res) =>
-    User.find({deleted: {$ne: true}, status: 'Waitlisted'})
-    .sort({createdAt: 1}).exec((err, users) =>
-      res.render('entity_views/users/waitlist.pug', {users}))
-  );
-
-  adminRoutes.get('/checkin', checkinAuth, (req, res) =>
-    User.find({deleted: {$ne: true}, status: 'Confirmed'})
-    .exec((err, users) => res.render('entity_views/users/checkin.pug',
-      {users}))
-  );
-
-  adminRoutes.post('/checkin', checkinAuth, (req, res) =>
-    User.update({email: req.body.email}, {$set: {'checkedIn': true}})
-    .exec(function(err) {
-      if (err) {
-        return res.json({'error': true});
-      }
-      return res.json({'success': true});
-    })
-  );
-
-  // Show
-  userRoutes.get('/:id', (req, res) =>
-    User.findById(req.params.id, function(e, user) {
-      if (e || (user === null)) {
-        res.redirect('/');
-      }
-      return res.render('entity_views/users/show', {user});
-    })
-  );
-
-  // Destroy
-  userRoutes.get('/:id/delete', auth, (req, res) =>
-    User.findById(req.params.id, function(e, user) {
-      if (e) {
-        res.status(400);
-        res.json({'error': 'User not found'});
-      }
-      return user.softdelete(function(err, newUser) {
-        newUser.save();
-        return res.json({'success': true});
-      });
-    })
-  );
-
-  userRoutes.get('/:id/unwaitlist', auth, (req, res) =>
-    User.findById(req.params.id, function(e, user) {
-      if (e) {
-        res.status(400);
-        res.json({'error': 'User not found'});
-      }
-      if (user.status === 'Waitlisted') {
-        user.status = 'Unconfirmed';
-      }
-      user.save();
-      return res.json({'success': true});
-    })
-  );
+  app.use('/user', userRoutes);
+  userRoutes.use('/api', apiRoutes);
 
   // Edit
   userRoutes.post('/:id/edit', function(req, res) {
     var trackEdit = (user, field, from, to) =>
       console.log(`/users/edit: User '${user.firstName} ${user.lastName} 
         changed field ${field} from ${from} to ${to}`);
-    ;
     return User.findById(req.params.id, function(e, user) {
       if (e || (user === null)) {
         res.status(400);

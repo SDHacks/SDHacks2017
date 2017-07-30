@@ -5,6 +5,8 @@ import {NavLink, withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {Nav, NavItem} from 'reactstrap';
 
+import CookieTypes from '~/static/Cookies';
+
 import {Roles, getRole} from '~/static/Roles';
 
 class Sidebar extends React.Component {
@@ -17,13 +19,13 @@ class Sidebar extends React.Component {
     super(props);
 
     this.state = {
-      user: this.props.cookies.get('user')
+      user: this.props.cookies.get(CookieTypes.admin.user)
     };
   }
 
   componentDidUpdate() {
     this.state = {
-      user: this.props.cookies.get('user')
+      user: this.props.cookies.get(CookieTypes.admin.user)
     };
   }
 
