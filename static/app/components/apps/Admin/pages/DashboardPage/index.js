@@ -43,7 +43,7 @@ class DashboardPage extends React.Component {
             <small> ({this.state.role})</small>
           </h2>
         </div>
-        <div className="col-sm-12 col-md-4">
+        <div className="col-sm-12 col-md-6 col-lg-4">
           <div className="card">
             <div className="card-block">
               <h3 className="card-title">Total Users</h3>
@@ -56,7 +56,7 @@ class DashboardPage extends React.Component {
             </div>
           </div>
         </div>
-        <div className="col-sm-12 col-md-4">
+        <div className="col-sm-12 col-md-6 col-lg-4">
           <div className="card">
             <div className="card-block">
               <h3 className="card-title">Unique Universities</h3>

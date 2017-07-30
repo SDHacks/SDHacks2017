@@ -37,6 +37,23 @@ class Admin extends React.Component {
     if (cookies.get(CookieTypes.admin.token)) {
       props.dispatch({type: AUTH_USER});
     }
+    this.state = {
+      isSidebarOpen: false
+    };
+  }
+
+  componentDidUpdate() {
+    if (this.state.isSidebarOpen) {
+      this.setState({
+        isSidebarOpen: false
+      });
+    }
+  }
+
+  toggleSidebar() {
+    this.setState({
+      isSidebarOpen: !this.state.isSidebarOpen
+    });
   }
 
   routes() {
@@ -65,15 +82,16 @@ class Admin extends React.Component {
         <LoadingBar className="loading-bar" />
 
         {/*Top bar navigation*/}
-        <Nav></Nav>
+        <Nav toggleSidebar={this.toggleSidebar.bind(this)}></Nav>
 
         <div className="container-fluid">
           {/*Sidebar navigation*/}
           <div className="row">
-            <Sidebar></Sidebar>
+            <Sidebar isOpen={this.state.isSidebarOpen}></Sidebar>
           </div>
 
-          <main className="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+          <main className={'col-sm-9 offset-sm-3 col-md-8' +
+            ' col-lg-10 offset-md-4 offset-lg-2 pt-3'}>
             {this.routes()}
           </main>
         </div>
