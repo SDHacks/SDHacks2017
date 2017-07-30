@@ -1,7 +1,7 @@
 # <img src="static/assets/img/logo.png" height="100" style="float:left;">
 [![CircleCI](https://circleci.com/gh/SDHacks/SDHacks2017.svg?style=svg)](https://circleci.com/gh/SDHacks/SDHacks2017) [![Heroku](http://heroku-badge.herokuapp.com/?app=sdhacks2017-prod&style=flat)](https://www.sdhacks.io/)
 
-# SD Hacks 2017
+# [SD Hacks 2017](https://sdhacks.io/) 
 
 The website behind the third annual SD Hacks
 
