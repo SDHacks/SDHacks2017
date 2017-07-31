@@ -26,10 +26,12 @@ composeEnhancers(
 render(
   <CookiesProvider>
     <Provider store={store}>
-      <LoadingBar className="loading-bar" />
-      <Router>
-        {routes}
-      </Router>
+      <div>
+        <LoadingBar className="loading-bar" />
+        <Router>
+          {routes}
+        </Router>
+      </div>
     </Provider>
   </CookiesProvider>,
   document.getElementById('root')
