@@ -159,8 +159,8 @@ class PersonalSection extends React.Component {
           fields.createInput('major', 'Major')
         ),
         fields.createColumn('col-lg-6',
-          fields.createLabel('Graduation Year'),
-          fields.createInput('year', '2017', 'number')
+          fields.createLabel('Year in School'),
+          fields.createYearPicker()
         )
       )}
 

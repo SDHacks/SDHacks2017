@@ -130,6 +130,27 @@ creates.errorGenderPicker =
       </div>);
   };
 
+creates.errorYearPicker =
+  function errorYearPicker({input, className, type,
+    meta: {touched, error}}) {
+    let errorClass = creates.errorClass(className, touched, error);
+    let years = [
+      '1', '2', '3', '4', '5+'
+    ];
+
+    return (
+      <div>
+        <select {...input} className={errorClass}
+          type={type}>
+          <option key={-1}></option>
+          {years.map((year, i) =>
+            <option key={i} value={year}>{year}</option>)}
+        </select>
+        {touched && error && creates.createError(error)}
+      </div>);
+  };
+
+
 creates.createLabel = function createLabel(text, required=true, className='') {
   return (<label className={required ? 'sd-form__required ' +
     className : className}>{text}</label>);
@@ -161,6 +182,11 @@ creates.createGenderPicker = function createGenderPicker() {
 creates.createTShirtSizePicker = function createTShirtSizePicker() {
   return (<Field component={creates.errorTShirtSizePicker}
     className="sd-form__input-select" name="shirtSize" />);
+};
+
+creates.createYearPicker = function createYearPicker() {
+  return (<Field component={creates.errorYearPicker}
+    className="sd-form__input-select" name="year" />);
 };
 
 creates.createRadio = function createRadio(name, value, label,

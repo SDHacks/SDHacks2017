@@ -14,7 +14,7 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <Navbar color="primary" inverse toggleable>
+      <Navbar color="primary" inverse toggleable className="sticky-top">
         <NavbarToggler right onClick={this.props.toggleSidebar} />
 
         <Link to="/admin">

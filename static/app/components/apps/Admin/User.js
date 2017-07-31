@@ -92,7 +92,7 @@ class User extends React.Component {
             {this.renderFormField('Last Name', 'lastName', 'col-sm-4')}
             {this.renderFormField('Gender', 'gender', 'col-sm-4')}
             {this.renderFormField('Birthdate', 'birthdate', 'col-sm-4')}
-            {this.renderFormField('Graduating', 'year', 'col-sm-4')}
+            {this.renderFormField('Year', 'year', 'col-sm-4')}
             {this.renderFormField('Phone', 'phone', 'col-sm-4', 'tel')}
             {this.renderFormField('Email', 'email', 'col-sm-4')}
             {this.renderFormField('University', 'university', 'col-sm-4')}
