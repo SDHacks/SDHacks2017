@@ -5,6 +5,7 @@ import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 import {render} from 'react-dom';
+import LoadingBar from 'react-redux-loading-bar';
 
 import reducer from './reducers';
 import routes from './routes';
@@ -25,6 +26,7 @@ composeEnhancers(
 render(
   <CookiesProvider>
     <Provider store={store}>
+      <LoadingBar className="loading-bar" />
       <Router>
         {routes}
       </Router>

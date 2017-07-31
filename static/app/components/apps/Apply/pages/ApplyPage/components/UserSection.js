@@ -30,8 +30,8 @@ class UserSection extends React.Component {
     return (<form onSubmit={handleSubmit}>
       {fields.createRow(
         fields.createColumn('col-sm-12',
-          <h4>You're Almost Done!</h4>,
-          <h5>To complete your application, please create an account</h5>
+          <h4 key="0">You're Almost Done!</h4>,
+          <h5 key="1">To complete your application, please create an account</h5>
         ),
         fields.createColumn('col-md-6',
           fields.createLabel('Username'),

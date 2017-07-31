@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 
 import {registerUser} from '~/data/Api';
 
+import Header from './components/Header';
 import PersonalSection from './components/PersonalSection';
 import ResponseSection from './components/ResponseSection';
 import SubmittedSection from './components/SubmittedSection';
@@ -110,31 +111,13 @@ class ApplyPage extends React.Component {
     this.updateHash(newPage);
   }
 
-  /**
-   * Create the application form header.
-   * @returns {Component}
-   */
-  createHeader() {
-    return (<div className="container sd-form__header">
-      <div className="row no-gutters">
-        <div className="col-2 col-md-12">
-          <img className="sd-form__logo"
-            src="/assets/img/vectors/logo.svg" />
-        </div>
-        <div className="col-10 col-md-12 align-self-center">
-          <div className="sd-form__header--text">Apply for SD Hacks 2017</div>
-        </div>
-      </div>
-    </div>);
-  }
-
   render() {
     const {page} = this.state;
 
     return (
       <div className="sd-form__wrapper">
         <div className="sd-form">
-          {this.createHeader()}
+          <Header />
           {page === 1 && <PersonalSection onSubmit={this.nextPage} />}
           {page === 2 && <ResponseSection onSubmit={this.nextPage}
             previousPage={this.previousPage} />}

@@ -1,34 +1,16 @@
 import React from 'react';
-import {withCookies} from 'react-cookie';
-import {connect} from 'react-redux';
-import {NavLink, withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {NavLink} from 'react-router-dom';
 import {Nav, NavItem, Collapse} from 'reactstrap';
-
-import CookieTypes from '~/static/Cookies';
 
 import {Roles, getRole} from '~/static/Roles';
 
 class Sidebar extends React.Component {
   static propTypes = {
     authenticated: PropTypes.bool.isRequired,
-    cookies: PropTypes.object.isRequired,
-    isOpen: PropTypes.bool.isRequired
+    isOpen: PropTypes.bool,
+    user: PropTypes.object
   };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      user: this.props.cookies.get(CookieTypes.admin.user)
-    };
-  }
-
-  componentDidUpdate() {
-    this.state = {
-      user: this.props.cookies.get(CookieTypes.admin.user)
-    };
-  }
 
   sidebarSection = (name, ...children) =>
     <Nav pills className="flex-column" key={name}>
@@ -75,8 +57,8 @@ class Sidebar extends React.Component {
     </div>;
 
   renderMenu() {
-    let role = this.state.user ?
-      getRole(this.state.user.role) :
+    let role = this.props.user ?
+      getRole(this.props.user.role) :
       getRole(Roles.ROLE_MEMBER);
 
     return (<div>
@@ -100,11 +82,12 @@ class Sidebar extends React.Component {
 
   render() {
     let menu = this.renderMenu();
+    let {isOpen} = this.props;
 
     return (<div>
       <Collapse
         className="col-12 bg-faded sidebar navbar-toggleable-sm width"
-        isOpen={this.props.isOpen}>
+        isOpen={isOpen ? isOpen : false}>
         {menu}
       </Collapse>
       <div className="col-md-4 col-lg-2 hidden-sm-down sidebar bg-faded">
@@ -114,10 +97,6 @@ class Sidebar extends React.Component {
   };
 };
 
-function mapStateToProps(state) {
-  return {
-    authenticated: state.admin.auth.authenticated
-  };
-};
 
-export default withRouter(connect(mapStateToProps)(withCookies(Sidebar)));
+
+export default Sidebar;

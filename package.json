@@ -9,7 +9,8 @@
   "scripts": {
     "start": "nodemon -e js,coffee server.js",
     "heroku-postbuild": "gulp prod --production",
-    "doc": "gulp esdoc"
+    "doc": "gulp esdoc",
+    "storybook": "start-storybook -p 9001 -s ./static -c .storybook"
   },
   "dependencies": {
     "aws-sdk": "^2.5.0",
@@ -117,11 +118,15 @@
     "webpack-stream": "^3.2.0"
   },
   "devDependencies": {
+    "@storybook/addon-knobs": "^3.2.0",
+    "@storybook/addon-options": "^3.2.0",
+    "@storybook/react": "^3.2.0",
     "esdoc": "^1.0.1",
     "esdoc-standard-plugin": "^1.0.0",
     "eslint-plugin-react": "^6.10.3",
     "gulp-esdoc": "^0.4.1",
     "react-hot-loader": "^3.0.0-beta.7",
+    "storybook-addon-smart-knobs": "^3.0.1",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.18.0"
   }
