@@ -10,7 +10,6 @@ var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var nodemon = require('gulp-nodemon');
 var plumber = require('gulp-plumber');
-var esdoc = require('gulp-esdoc');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var webpackStream = require('webpack-stream');
@@ -102,6 +101,8 @@ gulp.task('package-bower', function() {
 });
 
 gulp.task('esdoc', function() {
+  var esdoc = require('gulp-esdoc');
+
   gulp.src(['static/app/**/*.js'], {read: false})
     .pipe(plumber(plumberOptions))
     .pipe(esdoc())
