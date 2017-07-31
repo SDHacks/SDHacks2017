@@ -90,10 +90,6 @@ var UserSchema = new Schema({
     type: String,
     trim: true,
   },
-  shirtFit: {
-    type: String,
-    required: [true, 'You must have a shirt fit']
-  },
   shirtSize: {
     type: String,
     required: [true, 'You must have a shirt size']

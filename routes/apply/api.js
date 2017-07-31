@@ -133,7 +133,6 @@ module.exports = function(routes, config) {
       user.shareResume = req.body.shareResume;
       user.food = req.body.food;
       user.diet = req.body.diet;
-      user.shirtFit = req.body.shirtFit;
       user.shirtSize = req.body.shirtSize;
       user.travel = {
         outOfState: req.body.outOfState,

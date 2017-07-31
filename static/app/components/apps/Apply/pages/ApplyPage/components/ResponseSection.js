@@ -60,12 +60,6 @@ class ResponseSection extends React.Component {
 
       {fields.createRow(
         fields.createColumn('col-lg-6',
-          fields.createLabel('T-Shirt Fit'),
-          <br/>,
-          fields.createRadio('shirtFit', 'M', 'Men\'s'),
-          fields.createRadio('shirtFit', 'W', 'Women\'s')
-        ),
-        fields.createColumn('col-lg-6',
           fields.createLabel('T-Shirt Size'),
           <a id="fitHelp" className="sd-form__info">
             <i className='fa fa-info-circle'></i>
