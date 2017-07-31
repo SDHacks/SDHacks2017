@@ -15,6 +15,10 @@ class UserSection extends React.Component {
     submitError: PropTypes.object
   }
 
+  /**
+   * Create a checkbox to accept the Code of Conduct.
+   * @returns {Component}
+   */
   createAcceptBox() {
     return (<Field component='input' type='checkbox'
       className='sd-form__input-checkbox' name='accept' />);
@@ -51,8 +55,13 @@ class UserSection extends React.Component {
         fields.createColumn('col-sm-12',
           this.createAcceptBox(),
           <span>I accept the&nbsp;
-          <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code
-          of Conduct</a></span>
+            <a
+              className="sd-link__underline sd-link__hover-purple"
+              href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+            >
+              MLH Code of Conduct
+            </a>
+          </span>
         )
       )}
 

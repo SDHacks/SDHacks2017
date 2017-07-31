@@ -1,16 +1,26 @@
 import React from 'react';
+import {Navbar, NavbarToggler} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Nav extends React.Component {
+  static propTypes = {
+    toggleSidebar: PropTypes.func.isRequired
+  };
+
   render() {
     return (
-      <nav className="navbar navbar-primary fixed-top bg-primary">
-        <Link className="navbar-brand" to="/">
-          <img src="/assets/img/vectors/logo.svg" width="30" height="30"
-            alt="" className="d-inline-block align-top" />
-          &nbsp;SD Hacks 2017
+      <Navbar color="primary" inverse toggleable className="sticky-top">
+        <NavbarToggler right onClick={this.props.toggleSidebar} />
+
+        <Link to="/admin">
+          <div className="navbar-brand">
+            <img src="/assets/img/vectors/logo.svg" width="30" height="30"
+              alt="" className="d-inline-block align-top" />
+            &nbsp;SD Hacks 2017
+          </div>
         </Link>
-      </nav>
+      </Navbar>
     );
   };
 };

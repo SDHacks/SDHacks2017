@@ -1,3 +1,5 @@
+// Administrator Roles
+
 const Roles = {
   ROLE_DEVELOPER: 'Developer',
   ROLE_ADMIN: 'Admin',
@@ -5,6 +7,12 @@ const Roles = {
   ROLE_MEMBER: 'Member'
 };
 
+/**
+ * Gets the integer associated with the given role.
+ * @param  {Roles} checkRole The role to check - must be an enum value of
+ * {@link Roles}.
+ * @returns {Integer} The integer for the given role.
+ */
 function getRole(checkRole) {
   var role;
 

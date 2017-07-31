@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path');
+
 var webpack = require('webpack');
 var combineLoaders = require('webpack-combine-loaders');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');

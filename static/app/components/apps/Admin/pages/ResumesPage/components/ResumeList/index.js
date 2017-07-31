@@ -5,9 +5,9 @@ import {Applicants as ApplicantsPropType} from '~/proptypes';
 
 class ResumeList extends React.Component {
   static propTypes = {
-    applicants: PropTypes.arrayOf(
+    applicants: PropTypes.arrayOf(PropTypes.shape(
       ApplicantsPropType
-    ).isRequired
+    ).isRequired).isRequired
   };
 
   render() {

@@ -1,3 +1,9 @@
+/**
+ * Validates the form data for correctness.
+ * @param {Object} values The unvalidated form data.
+ * @returns {(Object|undefined)} An error object where the key represents the
+ * name of the form property, and the value its error.
+ */
 const validate = values => {
   const errors = {};
 

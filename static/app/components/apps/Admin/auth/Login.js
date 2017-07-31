@@ -7,10 +7,10 @@ import {UncontrolledAlert} from 'reactstrap';
 import {loginUser} from './actions';
 
 const form = reduxForm({
-  form: 'login'
+  form: 'adminLogin'
 });
 
-class Login extends React.Component {
+class LoginPage extends React.Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   };
@@ -18,10 +18,13 @@ class Login extends React.Component {
   static propTypes = {
     loginUser: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    dispatch: PropTypes.func.isRequired,
     errorMessage: PropTypes.string,
   };
 
+  /**
+   * Handles the validated form data, and logs the user in.
+   * @param {Object} formProps The validated form data.
+   */
   handleFormSubmit(formProps) {
     return this.props.loginUser(formProps)
     .then(() => {
@@ -32,6 +35,10 @@ class Login extends React.Component {
     });
   }
 
+  /**
+   * Creates a new error alert if there was a login error
+   * @returns {Component}
+   */
   renderAlert() {
     if (this.props.errorMessage) {
       return (
@@ -71,4 +78,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {loginUser})(form(Login));
+export default connect(mapStateToProps, {loginUser})(form(LoginPage));

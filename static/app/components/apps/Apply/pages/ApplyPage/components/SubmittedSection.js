@@ -1,11 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class SubmittedSection extends React.Component {
-  static propTypes = {
-
-  }
-
   render() {
     return (<div className="container">
       <div className="row">

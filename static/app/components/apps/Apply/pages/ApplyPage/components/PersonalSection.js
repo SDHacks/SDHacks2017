@@ -14,11 +14,19 @@ class PersonalSection extends React.Component {
     submitting: PropTypes.bool.isRequired
   }
 
+  /**
+   * Create the resume dropzone component.
+   * @returns {Component}
+   */
   createResumeUpload() {
     return (<Field component={FileField} name="resume"
       placeholder="Resume" />);
   }
 
+  /**
+   * Create the checkbox for sharing.
+   * @returns {Component}
+   */
   createShareCheckbox() {
     return (
       <label>
@@ -29,6 +37,13 @@ class PersonalSection extends React.Component {
       </label>);
   }
 
+  /**
+   * Create an institution card.
+   * @param {String} value The value of the card.
+   * @param {String} id The id of the card.
+   * @param {String} label The label underneath the card.
+   * @returns {Component}
+   */
   createInstitutionCard(value, id, label) {
     return (
       <div className="sd-form__institution-card">
@@ -39,6 +54,11 @@ class PersonalSection extends React.Component {
     );
   }
 
+  /**
+   * Create the error for the institution field.
+   * @param {Object} info Information returned by the {@link Fields} component.
+   * @returns {Component}
+   */
   showInstitutionError(info) {
     const {touched, error} = info.institution.meta;
     if (!touched || !error){
@@ -50,6 +70,11 @@ class PersonalSection extends React.Component {
     );
   }
 
+  /**
+   * Create the input field for university and high school institutions.
+   * @param {Object} info Information returned by the {@link Fileds} component.
+   * @returns {Component}
+   */
   showInstitutionBox(info) {
     const value = info.institution.input.value;
     if (value === 'hs') {
@@ -159,8 +184,8 @@ class PersonalSection extends React.Component {
           fields.createInput('major', 'Major')
         ),
         fields.createColumn('col-lg-6',
-          fields.createLabel('Graduation Year'),
-          fields.createInput('year', '2017', 'number')
+          fields.createLabel('Year in School'),
+          fields.createYearPicker()
         )
       )}
 
@@ -197,6 +222,12 @@ class PersonalSection extends React.Component {
     </form>);
   }
 
+  /**
+   * Formats an input string to match the US phone number format.
+   * @param {String} value The new value in the input field.
+   * @param {String} previousValue The previous value in the input field.
+   * @returns {String} The formatted phone number.
+   */
   normalizePhone (value, previousValue) {
     if (!value) {
       return value;

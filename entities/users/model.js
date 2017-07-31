@@ -63,10 +63,8 @@ var UserSchema = new Schema({
   majors: [{type: String, trim: true}],
   categories: [{type: String, trim: true}],
   year: {
-    type: Number,
-    required: [true, 'You must have a graduation year'],
-    min: [2017, 'You would have already graduated'],
-    max: [2030, 'You are graduating too late']
+    type: String,
+    required: [true, 'You must give a year in school']
   },
   github: {
     type: String,
@@ -89,10 +87,6 @@ var UserSchema = new Schema({
   diet: {
     type: String,
     trim: true,
-  },
-  shirtFit: {
-    type: String,
-    required: [true, 'You must have a shirt fit']
   },
   shirtSize: {
     type: String,

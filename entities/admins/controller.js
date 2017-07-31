@@ -3,12 +3,13 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
 const setUserInfo = require('./helper').setUserInfo;
+const roleAuth = require('./helper').roleAuth;
+const roles = require('./helper').roles;
 
 module.exports = function(app, config) {
 
   // Model and Config
   var Admin = require('./model');
-  var User = require('../users/model');
 
   const adminRoutes = express.Router();
   const authRoutes = express.Router();
@@ -18,9 +19,16 @@ module.exports = function(app, config) {
   adminRoutes.use('/auth', authRoutes);
   adminRoutes.use('/api', apiRoutes);
 
+  require('./api')(apiRoutes, config);
+
   // Middleware to require login/auth
   const requireLogin = passport.authenticate('admin', {session: false});
 
+  /**
+   * Signs a user with the JWT secret.
+   * @param {Object} user The public user information to sign.
+   * @returns {String} The JWT token signed for that user.
+   */
   function generateToken(user) {
     return jwt.sign(user, config.SESSION_SECRET, {
       expiresIn: 10080
@@ -37,7 +45,8 @@ module.exports = function(app, config) {
     });
   });
 
-  authRoutes.post('/register', function(req, res, next) {
+  authRoutes.post('/register', requireLogin, roleAuth(roles.ROLE_ADMIN),
+  function(req, res, next) {
     if (!req.body.username || !req.body.password) {
       return next('Bad Registration: Could not find username and password');
     }
@@ -81,9 +90,6 @@ module.exports = function(app, config) {
       });
     });
   });
-
-  // Data
-  require('./api')(apiRoutes, config);
 
   // Index
   adminRoutes.get('/*', function response(req, res) {

@@ -1,6 +1,7 @@
-var gulp= require('gulp');
+var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var sourcemaps = require('gulp-sourcemaps');
+let cleanCSS = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
@@ -12,28 +13,11 @@ var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var webpackStream = require('webpack-stream');
 var webpack = require('webpack');
-var path = require('path');
 
-gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
-gulp.task('debug', ['package-js', 'sass', 'watch', 'nodemon-debug']);
-gulp.task('test', ['webpack', 'sass', 'eslint', 'package-js']);
-gulp.task('prod', ['webpack', 'sass', 'eslint', 'package-js']);
-
-var bowerComponentPath = 'static/assets/bower/';
-var bowerComponents = [];
-var components = [
-  'jquery/dist/jquery.min.js',
-  'bootstrap/dist/js/bootstrap.min.js',
-  'jquery-ui/jquery-ui.min.js',
-  'jquery-throttle-debounce/jquery.ba-throttle-debounce.min.js',
-  'jquery-form-validator/form-validator/jquery.form-validator.min.js',
-  'jquery-form-validator/form-validator/file.js',
-  'slick-carousel/slick/slick.min.js',
-  'underscore/underscore-min.js'
-];
-bowerComponents = components.map(function(value) {
-  return path.join(bowerComponentPath, value);
-});
+gulp.task('default', ['build-js', 'sass', 'watch', 'nodemon']);
+gulp.task('debug', ['build-js', 'sass', 'watch', 'nodemon-debug']);
+gulp.task('test', ['webpack', 'sass', 'eslint', 'esdoc', 'build-js']);
+gulp.task('prod', ['webpack', 'sass', 'eslint', 'build-js']);
 
 // Handle Errors
 function handleError(err) {
@@ -59,11 +43,12 @@ gulp.task('webpack', function() {
 gulp.task('sass', function () {
   gulp.src('static/assets/scss/sdhacks.scss')
     .pipe(plumber(plumberOptions))
-    .pipe(sourcemaps.init())
-      .pipe(sass({style:'extended'}))
+    .pipe(gutil.env.production ? gutil.noop() : sourcemaps.init())
+      .pipe(sass({style: 'compressed'}).on('error', gutil.log))
       .pipe(rename({suffix: '.min'}))
       .pipe(autoprefixer('last 2 version'))
-    .pipe(sourcemaps.write())
+      .pipe(cleanCSS())
+    .pipe(gutil.env.production ? gutil.noop() : sourcemaps.write())
     .pipe(gulp.dest('static/assets/css'));
 });
 
@@ -87,15 +72,15 @@ gulp.task('build-js', function() {
     .pipe(gulp.dest('static/assets/js/dist'));
 });
 
-gulp.task('package-js', function() {
-  gulp.start(['build-js', 'package-bower']);
-});
+gulp.task('esdoc', function() {
+  var esdoc = require('gulp-esdoc');
 
-gulp.task('package-bower', function() {
-  gulp.src(bowerComponents, {base: bowerComponentPath})
+  gulp.src(['static/app/**/*.js'], {read: false})
     .pipe(plumber(plumberOptions))
-    .pipe(concat('vendor.js'))
-    .pipe(gulp.dest('static/assets/js/dist'));
+    .pipe(esdoc())
+    .on('end', function() {
+      gutil.log('Done!');
+    });
 });
 
 // Watcher

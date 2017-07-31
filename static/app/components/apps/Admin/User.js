@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 
 import {User as UserPropType} from '~/proptypes';
 
+import CookieTypes from '~/static/Cookies';
+
 import {getRole, Roles} from '~/static/Roles';
 
 import CheckboxButton from './CheckboxButton';
@@ -33,7 +35,7 @@ class User extends React.Component {
 
   componentWillMount() {
     this.state = {
-      role: this.props.cookies.get('user').role
+      role: this.props.cookies.get(CookieTypes.admin.user).role
     };
   }
 
@@ -41,6 +43,10 @@ class User extends React.Component {
     return formProps;
   }
 
+  /**
+   * Create a download resume button with associated label.
+   * @returns {Component[]} The components to render.
+   */
   renderResume() {
     return [
       <label key="0" className="col-sm-2 col-form-label">
@@ -56,6 +62,14 @@ class User extends React.Component {
     ];
   }
 
+  /**
+   *
+   * @param {String} label The label of the checkbox.
+   * @param {String} value The name of the checkbox input.
+   * @param {String} [fieldSize=col-sm-10] The class name of the input.
+   * @param {String} [labelSize =col-sm-2] The class name of the label.
+   * @returns {Component[]} The components to render.
+   */
   renderFormCheckbox(label, value, fieldSize = 'col-sm-10',
     labelSize='col-sm-2') {
     return [
@@ -65,6 +79,14 @@ class User extends React.Component {
       </div>];
   }
 
+  /**
+   *
+   * @param {String} label The label of the input field.
+   * @param {String} value The name of the input field.
+   * @param {String} [fieldSize=col-sm-10] The class name of the input.
+   * @param {String} [fieldType=text] The input type.
+   * @param {String} [labelSize=col-sm-2] The class name of the label.
+   */
   renderFormField(label, value, fieldSize = 'col-sm-10',
     fieldType = 'text', labelSize = 'col-sm-2') {
     return [
@@ -90,12 +112,11 @@ class User extends React.Component {
             {this.renderFormField('Last Name', 'lastName', 'col-sm-4')}
             {this.renderFormField('Gender', 'gender', 'col-sm-4')}
             {this.renderFormField('Birthdate', 'birthdate', 'col-sm-4')}
-            {this.renderFormField('Graduating', 'year', 'col-sm-4')}
+            {this.renderFormField('Year', 'year', 'col-sm-4')}
             {this.renderFormField('Phone', 'phone', 'col-sm-4', 'tel')}
-            {this.renderFormField('Shirt Fit', 'shirtFit', 'col-sm-4')}
-            {this.renderFormField('Shirt Size', 'shirtSize', 'col-sm-4')}
-            {this.renderFormField('Email', 'email')}
-            {this.renderFormField('University', 'university')}
+            {this.renderFormField('Email', 'email', 'col-sm-4')}
+            {this.renderFormField('University', 'university', 'col-sm-4')}
+            {this.renderFormField('Shirt Size', 'shirtSize')}
           </div>
           <h4>Portfolio</h4>
           <div className="form-group row mb-4">

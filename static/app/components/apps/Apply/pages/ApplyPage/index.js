@@ -25,6 +25,9 @@ class ApplyPage extends React.Component {
     };
   }
 
+  /**
+   * Check for a URL hash and change pages.
+   */
   loadPageFromHash() {
     const {history} = this.props;
     if (!history.location.hash) {
@@ -49,9 +52,12 @@ class ApplyPage extends React.Component {
     this.loadPageFromHash();
   }
 
+  /**
+   * Modifies then submits the validated data to register the user.
+   * @param {Object} values The validated form data.
+   */
   onFinalSubmit(values) {
     // Clean up values
-    values.resume = values.resume[0];
     values.birthdateDay = ('00' + values.birthdateDay)
       .substring(values.birthdateDay.length);
     values.birthdateYear = ('0000' + values.birthdateYear)
@@ -73,6 +79,10 @@ class ApplyPage extends React.Component {
     });
   }
 
+  /**
+   * Update the URL hash, adding the application page.
+   * @param {Integer} page The new page index.
+   */
   updateHash(page) {
     const {history} = this.props;
 
@@ -82,18 +92,28 @@ class ApplyPage extends React.Component {
     });
   }
 
+  /**
+   * Navigate to the next application page.
+   */
   nextPage() {
     const newPage = this.state.page + 1;
     this.setState({page: newPage});
     this.updateHash(newPage);
   }
 
+  /**
+   * Navigate to the previous application page.
+   */
   previousPage() {
     const newPage = this.state.page - 1;
     this.setState({page: newPage});
     this.updateHash(newPage);
   }
 
+  /**
+   * Create the application form header.
+   * @returns {Component}
+   */
   createHeader() {
     return (<div className="container sd-form__header">
       <div className="row no-gutters">

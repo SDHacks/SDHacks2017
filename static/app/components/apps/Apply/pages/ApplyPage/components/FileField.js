@@ -12,6 +12,9 @@ export default class FileField extends React.Component {
     multiple: PropTypes.bool
   };
 
+  /**
+   * Event handler for dropping or clicking a new file into the zone.
+   */
   handleDropOrClick = (acceptedFiles, rejectedFiles, e) => {
     let eventOrValue = e;
     let {input: {onChange, onBlur}} = this.props;

@@ -12,9 +12,11 @@ import routes from './routes';
 import 'jquery';
 import 'bootstrap/dist/js/bootstrap';
 
+// Required for Redux Devtools Chrome extension
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
   compose;
 
+// Create Redux store with middlewares
 let store = createStore(reducer,
 composeEnhancers(
   applyMiddleware(reduxThunk)
