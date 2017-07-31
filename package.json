@@ -4,7 +4,7 @@
   "private": true,
   "engines": {
     "node": "6.11.1",
-    "npm": "4.5.0"
+    "npm": "3.10.10"
   },
   "scripts": {
     "start": "nodemon -e js,coffee server.js",

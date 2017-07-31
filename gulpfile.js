@@ -19,23 +19,7 @@ var webpack = require('webpack');
 gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
 gulp.task('debug', ['package-js', 'sass', 'watch', 'nodemon-debug']);
 gulp.task('test', ['webpack', 'sass', 'eslint', 'esdoc', 'package-js']);
-gulp.task('prod', ['webpack', 'sass', 'eslint', 'package-js']);
-
-var bowerComponentPath = 'static/assets/bower/';
-var bowerComponents = [];
-var components = [
-  'jquery/dist/jquery.min.js',
-  'bootstrap/dist/js/bootstrap.min.js',
-  'jquery-ui/jquery-ui.min.js',
-  'jquery-throttle-debounce/jquery.ba-throttle-debounce.min.js',
-  'jquery-form-validator/form-validator/jquery.form-validator.min.js',
-  'jquery-form-validator/form-validator/file.js',
-  'slick-carousel/slick/slick.min.js',
-  'underscore/underscore-min.js'
-];
-bowerComponents = components.map(function(value) {
-  return path.join(bowerComponentPath, value);
-});
+gulp.task('prod', ['webpack', 'sass', 'eslint', 'build-js']);
 
 // Handle Errors
 function handleError(err) {
@@ -86,17 +70,6 @@ gulp.task('build-js', function() {
       .pipe(rename({suffix: '.min'}))
     .pipe(concat('app.js'))
     .pipe(gutil.env.production ? gutil.noop() : sourcemaps.write())
-    .pipe(gulp.dest('static/assets/js/dist'));
-});
-
-gulp.task('package-js', function() {
-  gulp.start(['build-js', 'package-bower']);
-});
-
-gulp.task('package-bower', function() {
-  gulp.src(bowerComponents, {base: bowerComponentPath})
-    .pipe(plumber(plumberOptions))
-    .pipe(concat('vendor.js'))
     .pipe(gulp.dest('static/assets/js/dist'));
 });
 
