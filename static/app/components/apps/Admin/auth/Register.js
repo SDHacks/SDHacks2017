@@ -25,6 +25,12 @@ renderField.propTypes = {
   meta: PropTypes.object
 };
 
+/**
+ * Validated the raw form data for errors.
+ * @param {Object} formProps The unvalidated form data.
+ * @returns {Object} The errors with the key as the form input name and value
+ * as the error.
+ */
 function validate(formProps) {
   const errors = {};
 
@@ -51,17 +57,25 @@ class RegisterPage extends React.Component {
     errorMessage: PropTypes.string
   };
 
+  /**
+   * Handles the validated form data and registers the new administrator.
+   * @param {Object} formProps The validated form data.
+   */
   handleFormSubmit(formProps) {
     this.props.registerUser(formProps)
     .then(() => {
       console.log('Registered!');
       this.context.router.push('/admin/dashboard');
     })
-    .catch((e) => {
+    .catch(() => {
       throw new SubmissionError({_error: 'Registration failed'});
     });
   }
 
+  /**
+   * Creates a new error alert if there was an error during registration.
+   * @returns {Component}
+   */
   renderAlert() {
     if (this.props.errorMessage) {
       return (

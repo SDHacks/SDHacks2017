@@ -39,8 +39,10 @@ class Admin extends React.Component {
   }
 
   /**
-   * Render a route with the Administrator layout
-   * @param Component The child component to render within the layout
+   * Render a route with the Administrator layout.
+   * @param {Component} Component The child component to render within the
+   * layout.
+   * @returns {Component}
    */
   renderAdmin = (Component) => {
     let component = <Component />;
@@ -51,8 +53,10 @@ class Admin extends React.Component {
   }
 
   /**
-   * Render a route with the Sponsor layout
-   * @param Component The child component to render within the layout
+   * Render a route with the Sponsor layout.
+   * @param {Component} Component The child component to render within the
+   * layout.
+   * @returns {Component}
    */
   renderSponsor = (Component) => {
     let component = <Component />;

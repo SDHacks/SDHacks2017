@@ -5,6 +5,9 @@ import Admin from './components/apps/Admin';
 import Apply from './components/apps/Apply';
 import User from './components/apps/User';
 
+/**
+ * Main routing for React application.
+ */
 export default (
   <Switch>
     <Route path="/admin" component={Admin} />

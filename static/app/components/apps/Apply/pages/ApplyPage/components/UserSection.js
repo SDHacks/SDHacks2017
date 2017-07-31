@@ -15,6 +15,10 @@ class UserSection extends React.Component {
     submitError: PropTypes.object
   }
 
+  /**
+   * Create a checkbox to accept the Code of Conduct.
+   * @returns {Component}
+   */
   createAcceptBox() {
     return (<Field component='input' type='checkbox'
       className='sd-form__input-checkbox' name='accept' />);

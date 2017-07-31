@@ -2,6 +2,12 @@
 import {Field} from 'redux-form';
 import React from 'react';
 
+/**
+ * Defines all of the custom fields for the application.
+ * Anything beginning with "error" contains a label which renders the error, and
+ * should be rendered only through a redux-form {@link Field}.
+ */
+
 let creates = {};
 
 creates.createRow = function createRow(...content) {

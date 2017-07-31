@@ -17,6 +17,9 @@ class CheckboxButton extends React.Component {
     this.setState({value: nextProps.input.value});
   }
 
+  /**
+   * Updates the value of the checkbox to the opposite value
+   */
   updateValue() {
     let newState = !this.state.value;
     this.setState({value: newState});
@@ -29,7 +32,8 @@ class CheckboxButton extends React.Component {
     let active = value ? 'active' : '';
     let text = value ? 'True' : 'False';
     return (
-      <label className={'btn btn-outline-primary btn-block checkbox-button ' + active}>
+      <label className={'btn btn-outline-primary btn-block checkbox-button '
+        + active}>
         <input type="checkbox" value={value} autoComplete="off"
           onChange={() => this.updateValue()} /> {text}
       </label>

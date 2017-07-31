@@ -21,6 +21,10 @@ class LoginPage extends React.Component {
     errorMessage: PropTypes.string,
   };
 
+  /**
+   * Handles the login form after validation.
+   * @param {Object} formProps The values of the login form.
+   */
   handleFormSubmit(formProps) {
     return this.props.loginUser(formProps)
     .then(() => {
@@ -31,6 +35,9 @@ class LoginPage extends React.Component {
     });
   }
 
+  /**
+   * Renders a login error if one is in the props.
+   */
   renderAlert() {
     if (this.props.errorMessage) {
       return (

@@ -6,10 +6,10 @@ import {withRouter} from 'react-router-dom';
 import LoginPage from './pages/auth/Login';
 
 class User extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
+  /**
+   * The routes for the /user route.
+   */
   routes() {
     return (
       <Switch>

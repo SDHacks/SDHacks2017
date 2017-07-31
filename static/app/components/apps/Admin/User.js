@@ -43,6 +43,10 @@ class User extends React.Component {
     return formProps;
   }
 
+  /**
+   * Create a download resume button with associated label.
+   * @returns {Component[]} The components to render.
+   */
   renderResume() {
     return [
       <label key="0" className="col-sm-2 col-form-label">
@@ -58,6 +62,14 @@ class User extends React.Component {
     ];
   }
 
+  /**
+   *
+   * @param {String} label The label of the checkbox.
+   * @param {String} value The name of the checkbox input.
+   * @param {String} [fieldSize=col-sm-10] The class name of the input.
+   * @param {String} [labelSize =col-sm-2] The class name of the label.
+   * @returns {Component[]} The components to render.
+   */
   renderFormCheckbox(label, value, fieldSize = 'col-sm-10',
     labelSize='col-sm-2') {
     return [
@@ -67,6 +79,14 @@ class User extends React.Component {
       </div>];
   }
 
+  /**
+   *
+   * @param {String} label The label of the input field.
+   * @param {String} value The name of the input field.
+   * @param {String} [fieldSize=col-sm-10] The class name of the input.
+   * @param {String} [fieldType=text] The input type.
+   * @param {String} [labelSize=col-sm-2] The class name of the label.
+   */
   renderFormField(label, value, fieldSize = 'col-sm-10',
     fieldType = 'text', labelSize = 'col-sm-2') {
     return [

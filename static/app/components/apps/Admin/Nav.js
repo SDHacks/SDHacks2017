@@ -8,10 +8,6 @@ class Nav extends React.Component {
     toggleSidebar: PropTypes.func.isRequired
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Navbar color="primary" inverse toggleable className="sticky-top">

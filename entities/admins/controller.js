@@ -24,6 +24,11 @@ module.exports = function(app, config) {
   // Middleware to require login/auth
   const requireLogin = passport.authenticate('admin', {session: false});
 
+  /**
+   * Signs a user with the JWT secret.
+   * @param {Object} user The public user information to sign.
+   * @returns {String} The JWT token signed for that user.
+   */
   function generateToken(user) {
     return jwt.sign(user, config.SESSION_SECRET, {
       expiresIn: 10080

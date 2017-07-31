@@ -34,6 +34,10 @@ class UsersPage extends React.Component {
     }
   }
 
+  /**
+   * Handles an updated user.
+   * @param {Object} user The updated user.
+   */
   onUserUpdate(user) {
     updateUser(user)(this.props.dispatch);
   }

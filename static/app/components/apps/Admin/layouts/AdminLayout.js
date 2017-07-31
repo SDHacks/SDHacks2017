@@ -26,6 +26,9 @@ class AdminLayout extends React.Component {
     }
   }
 
+  /**
+   * Toggles the visibility of the sidebar.
+   */
   toggleSidebar() {
     this.setState({
       isSidebarOpen: !this.state.isSidebarOpen

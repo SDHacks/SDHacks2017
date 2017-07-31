@@ -1,4 +1,4 @@
-import {Field, Fields, reduxForm} from 'redux-form';
+import {Fields, reduxForm} from 'redux-form';
 import {UncontrolledTooltip as Tooltip} from 'reactstrap';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -15,6 +15,12 @@ class ResponseSection extends React.Component {
     submitting: PropTypes.bool.isRequired
   }
 
+  /**
+   * Create a new input field when user claims to be out of state.
+   * @param {Object} values Information returned by the {@link Fields}
+   * component.
+   * @returns {Component}
+   */
   showCity(values) {
     if (values.outOfState && values.outOfState.input.value === 'true') {
       return (

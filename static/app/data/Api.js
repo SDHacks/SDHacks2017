@@ -11,7 +11,10 @@ const ADMIN_URL_PREFIX = '/admin/api';
 const adminPrefix = pref(ADMIN_URL_PREFIX);
 const cookies = new Cookies();
 
-
+/**
+ * Run a request and return a Q promise.
+ * @param  {Object} request The superagent request to run.
+ */
 const promisify = (request) => {
   var deferred = Q.defer();
   request.end((err, res) => {
@@ -23,12 +26,20 @@ const promisify = (request) => {
   return deferred.promise;
 };
 
+/**
+ * Request a list of all users.
+ * @returns {Promise} A promise of the request.
+ */
 export const loadAllUsers = () =>
   promisify(request
       .get('/users')
       .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
       .use(adminPrefix));
 
+/**
+ * Request a list of all admins.
+ * @returns {Promise} A promise of the request.
+ */
 export const loadAllAdmins = () =>
   promisify(request
       .get('/admins')
@@ -36,6 +47,10 @@ export const loadAllAdmins = () =>
       .use(adminPrefix)
       .use(nocache));
 
+/**
+ * Request a list of all applicants.
+ * @returns {Promise} A promise of the request.
+ */
 export const loadAllApplicants = () =>
   promisify(request
       .get('/sponsors/applicants')
@@ -43,24 +58,43 @@ export const loadAllApplicants = () =>
       .use(adminPrefix)
       .use(nocache));
 
+/**
+ * Request the statistics for users.
+ * @returns {Promise} A promise of the request.
+ */
 export const loadUserStats = () =>
   promisify(request
       .get('/stats/users')
       .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
       .use(adminPrefix));
 
+/**
+ * Request the statistics for universities.
+ * @returns {Promise} A promise of the request.
+ */
 export const loadUniversityStats = () =>
   promisify(request
       .get('/stats/university')
       .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
       .use(adminPrefix));
 
+/**
+ * Request information about a given user.
+ * @param  {String} id The ID of the requested user.
+ * @returns {Promise} A promise of the request.
+ */
 export const loadUser = (id) =>
   promisify(request
       .get('/users/' + id)
       .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
       .use(adminPrefix));
 
+/**
+ * Request an update for a given user.
+ * @param  {String} id The ID of the user.
+ * @param  {Object} user The new user object to save.
+ * @returns {Promise} A promise of the request.
+ */
 export const updateUser = (id, user) =>
   promisify(request
       .post('/users/' + id)
@@ -68,6 +102,11 @@ export const updateUser = (id, user) =>
       .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
       .use(adminPrefix));
 
+/**
+ * Request to register a new user.
+ * @param  {Object} user The user fields to register.
+ * @returns {Promise} A promise of the request.
+ */
 export const registerUser = (user) =>
   promisify(request
       .post('/apply/api/register')

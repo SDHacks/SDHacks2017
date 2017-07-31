@@ -9,11 +9,21 @@ import CookieTypes from '~/static/Cookies';
 
 const cookies = new Cookies();
 
+/**
+ * Stores cookies from a login response.
+ * @param {Object} res HTTP request response object.
+ */
 function storeLogin(res) {
   cookies.set(CookieTypes.admin.token, res.body.token, {path: '/'});
   cookies.set(CookieTypes.admin.user, res.body.user, {path: '/'});
 }
 
+/**
+ * Dispatches a new error depending on the error status code.
+ * @param {Function} dispatch The redux store dispatch function.
+ * @param {Object} error The error to dispatch.
+ * @param {String} type The type of error to dispatch.
+ */
 export function errorHandler(dispatch, error, type) {
   let errorMessage = error.message;
 
@@ -32,6 +42,12 @@ export function errorHandler(dispatch, error, type) {
 }
 
 // Auth
+/**
+ * Registers a new user and handles the errors.
+ * @param {{username: String, password: String}} User The details of the new
+ * administrator to register.
+ * @returns {Promise} The registration request promise.
+ */
 export function registerUser({username, password}) {
   return function(dispatch) {
     var deferred = Q.defer();
@@ -58,6 +74,12 @@ export function registerUser({username, password}) {
   };
 };
 
+/**
+ * Attempts to log in as the given user.
+ * @param {{username: String, password: String}} User The details of the
+ * administrator to login.
+ * @returns {Promise} The login request promise.
+ */
 export function loginUser({username, password}) {
   return function(dispatch) {
     // Make the event return a promise
@@ -81,6 +103,10 @@ export function loginUser({username, password}) {
   };
 };
 
+/**
+ * Logout the current authenticated user.
+ * @returns {Function} The function to dispatch.
+ */
 export function logoutUser() {
   return function(dispatch) {
     dispatch({type: Types.UNAUTH_USER});

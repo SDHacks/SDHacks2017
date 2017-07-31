@@ -21,6 +21,10 @@ class LoginPage extends React.Component {
     errorMessage: PropTypes.string,
   };
 
+  /**
+   * Handles the validated form data, and logs the user in.
+   * @param {Object} formProps The validated form data.
+   */
   handleFormSubmit(formProps) {
     return this.props.loginUser(formProps)
     .then(() => {
@@ -31,6 +35,10 @@ class LoginPage extends React.Component {
     });
   }
 
+  /**
+   * Creates a new error alert if there was a login error
+   * @returns {Component}
+   */
   renderAlert() {
     if (this.props.errorMessage) {
       return (

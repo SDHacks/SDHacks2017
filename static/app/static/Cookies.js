@@ -1,3 +1,5 @@
+// Cookie names
+
 export default {
   admin: {
     token: 'adminToken',
