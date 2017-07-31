@@ -1,4 +1,6 @@
-var gulp= require('gulp');
+var path = require('path');
+
+var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
@@ -12,7 +14,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var webpackStream = require('webpack-stream');
 var webpack = require('webpack');
-var path = require('path');
+
 
 gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
 gulp.task('debug', ['package-js', 'sass', 'watch', 'nodemon-debug']);
