@@ -18,7 +18,7 @@ var webpack = require('webpack');
 
 gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
 gulp.task('debug', ['package-js', 'sass', 'watch', 'nodemon-debug']);
-gulp.task('test', ['webpack', 'sass', 'eslint', 'esdoc', 'package-js']);
+gulp.task('test', ['webpack', 'sass', 'eslint', 'esdoc', 'build-js']);
 gulp.task('prod', ['webpack', 'sass', 'eslint', 'build-js']);
 
 // Handle Errors
