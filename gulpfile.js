@@ -10,6 +10,7 @@ var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var nodemon = require('gulp-nodemon');
 var plumber = require('gulp-plumber');
+var esdoc = require('gulp-esdoc');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var webpackStream = require('webpack-stream');
@@ -18,7 +19,7 @@ var webpack = require('webpack');
 
 gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
 gulp.task('debug', ['package-js', 'sass', 'watch', 'nodemon-debug']);
-gulp.task('test', ['webpack', 'sass', 'eslint', 'package-js']);
+gulp.task('test', ['webpack', 'sass', 'eslint', 'esdoc', 'package-js']);
 gulp.task('prod', ['webpack', 'sass', 'eslint', 'package-js']);
 
 var bowerComponentPath = 'static/assets/bower/';
@@ -98,6 +99,15 @@ gulp.task('package-bower', function() {
     .pipe(plumber(plumberOptions))
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('static/assets/js/dist'));
+});
+
+gulp.task('esdoc', function() {
+  gulp.src(['static/app/**/*.js'], {read: false})
+    .pipe(plumber(plumberOptions))
+    .pipe(esdoc())
+    .on('end', function() {
+      gutil.log('Done!');
+    });
 });
 
 // Watcher
