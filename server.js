@@ -3,6 +3,7 @@ var http = require('http');
 var path = require('path');
 
 var bodyParser = require('body-parser');
+var compression = require('compression');
 var cookieParser = require('cookie-parser');
 var device = require('express-device');
 var errorHandler = require('errorhandler');
@@ -13,7 +14,6 @@ var helmet = require('helmet');
 var logger = require('morgan');
 var methodOverride = require('method-override');
 var passport = require('passport');
-var sslRedirect = require('heroku-ssl-redirect');
 var staticDir = require('serve-static');
 var throng = require('throng');
 
@@ -39,8 +39,8 @@ function start() {
   app.listen(port);
 
   require('./routes/redirects')(app);
-  app.use(sslRedirect());
   app.use(helmet());
+  app.use(compression());
 
   // Extras
   // Rendering tools

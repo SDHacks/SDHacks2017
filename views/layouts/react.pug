@@ -20,14 +20,15 @@ html(lang='en-US', prefix="og: http://ogp.me/ns#")
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
         link(rel='shortcut icon', href='/assets/img/favicon.png')
+        
+    body
+        #root
+
         //- Load React specific styling
         link(href='/assets/dist/styles.css', type='text/css', rel='stylesheet')
         //- Load website styling
         link(href='/assets/css/sdhacks.min.css', type='text/css', rel='stylesheet')
         link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', type='text/css', rel='stylesheet')
         
-    body
-        #root
-
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js')
-        script(src='/assets/dist/main.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js' async)
+        script(src='/assets/dist/main.js' async)

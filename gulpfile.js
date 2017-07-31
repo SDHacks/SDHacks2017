@@ -1,8 +1,7 @@
-var path = require('path');
-
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var sourcemaps = require('gulp-sourcemaps');
+let cleanCSS = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
@@ -15,9 +14,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var webpackStream = require('webpack-stream');
 var webpack = require('webpack');
 
-
-gulp.task('default', ['package-js', 'sass', 'watch', 'nodemon']);
-gulp.task('debug', ['package-js', 'sass', 'watch', 'nodemon-debug']);
+gulp.task('default', ['build-js', 'sass', 'watch', 'nodemon']);
+gulp.task('debug', ['build-js', 'sass', 'watch', 'nodemon-debug']);
 gulp.task('test', ['webpack', 'sass', 'eslint', 'esdoc', 'build-js']);
 gulp.task('prod', ['webpack', 'sass', 'eslint', 'build-js']);
 
@@ -45,11 +43,12 @@ gulp.task('webpack', function() {
 gulp.task('sass', function () {
   gulp.src('static/assets/scss/sdhacks.scss')
     .pipe(plumber(plumberOptions))
-    .pipe(sourcemaps.init())
-      .pipe(sass({style:'extended'}))
+    .pipe(gutil.env.production ? gutil.noop() : sourcemaps.init())
+      .pipe(sass({style: 'compressed'}).on('error', gutil.log))
       .pipe(rename({suffix: '.min'}))
       .pipe(autoprefixer('last 2 version'))
-    .pipe(sourcemaps.write())
+      .pipe(cleanCSS())
+    .pipe(gutil.env.production ? gutil.noop() : sourcemaps.write())
     .pipe(gulp.dest('static/assets/css'));
 });
 

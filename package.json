@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nodemon -e js,coffee server.js",
-    "heroku-postbuild": "gulp prod",
+    "heroku-postbuild": "gulp prod --production",
     "doc": "gulp esdoc"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "bootstrap": "^4.0.0-alpha.6",
+    "compression": "^1.7.0",
     "connect-flash": "0.1.1",
     "connect-timeout": "1.7.0",
     "cookie-parser": "1.4.3",
@@ -45,6 +46,7 @@
     "fs-extra": "0.30.0",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "3.1.1",
+    "gulp-clean-css": "^3.7.0",
     "gulp-coffee": "2.3.2",
     "gulp-concat": "2.6.0",
     "gulp-eslint": "^3.0.1",
