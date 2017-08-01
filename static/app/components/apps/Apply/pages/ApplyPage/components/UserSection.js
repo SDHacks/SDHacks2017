@@ -50,7 +50,7 @@ class UserSection extends React.Component {
             <a
               className="sd-link__underline sd-link__hover-purple"
               href='https://git.io/v7B63'>MLH Contest Terms and Conditions</a>
-            and the&nbsp;
+            &nbsp;and the&nbsp;
             <a
               className="sd-link__underline sd-link__hover-purple"
               href='https://git.io/v7B6Z'>MLH Privacy Policy</a>.
