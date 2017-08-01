@@ -110,6 +110,6 @@ gulp.task('nodemon-debug', function() {
       'static/app/*.*'
     ],
     env: {'NODE_ENV': 'development'},
-    nodeArgs: ['--debug=5858', '--nolazy']
+    nodeArgs: ['--inspect-brk=5858', '--nolazy']
   });
 });

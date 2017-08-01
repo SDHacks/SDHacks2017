@@ -23,7 +23,16 @@ let mockUsers = {
   }
 };
 
-storiesOf('Administrator Panel', module)
+storiesOf('Administrator Panel/Layout', module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
+  ))
+  .add('Top Navbar', () => (
+    <Nav />
+  ))
+;
+
+storiesOf('Administrator Panel/Sidebar', module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
   ))
@@ -41,8 +50,5 @@ storiesOf('Administrator Panel', module)
   ))
   .add('Developer Sidebar', () => (
     <Sidebar authenticated user={mockUsers.developer}>Hello Button</Sidebar>
-  ))
-  .add('Top Navbar', () => (
-    <Nav />
   ))
 ;

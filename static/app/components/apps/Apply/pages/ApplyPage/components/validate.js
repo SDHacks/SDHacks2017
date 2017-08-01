@@ -10,7 +10,7 @@ const validate = values => {
   const required = ['firstName', 'lastName', 'email', 'birthdateDay',
     'birthdateMonth', 'birthdateYear', 'gender', 'phone', 'institution',
     'major', 'year', 'resume', 'outOfState', 'shirtFit', 'shirtSize',
-    'firstHackathon', 'outcomeStmt', 'accept'
+    'firstHackathon', 'outcomeStmt', 'accept', 'provision'
   ];
 
   const notValid = required.filter(name => !(name in values));

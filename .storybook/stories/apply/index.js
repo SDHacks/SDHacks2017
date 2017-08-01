@@ -15,7 +15,19 @@ import ResponseSection from '~/components/apps/Apply/pages/ApplyPage/components/
 import SubmittedSection from '~/components/apps/Apply/pages/ApplyPage/components/SubmittedSection';
 import UserSection from '~/components/apps/Apply/pages/ApplyPage/components/UserSection';
 
-storiesOf('Application Form', module)
+storiesOf('Application Form/Layout', module)
+  .addDecorator(story => (
+    <div className="sd-form__wrapper">
+      <div className="sd-form">
+        {story()}
+      </div>
+    </div>
+  ))
+  .add('Form Header', () => (
+    <Header />
+  ));
+
+storiesOf('Application Form/Sections', module)
   .addDecorator(withSmartKnobs)
   .addDecorator(withKnobs)
   .addDecorator(story => (
@@ -26,9 +38,6 @@ storiesOf('Application Form', module)
         </div>
       </div>
     </Provider>
-  ))
-  .add('Form Header', () => (
-    <Header />
   ))
   .add('Personal Section', () => (
     <PersonalSection onSubmit={action('Submitted')} reset={action('Reset')} />
