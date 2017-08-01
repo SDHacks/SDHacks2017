@@ -8,7 +8,6 @@ import {withRouter} from 'react-router-dom';
 import {AUTH_USER} from './auth/actions/types';
 import PrivateRoute from './PrivateRoute';
 import Dashboard from './pages/DashboardPage';
-import HomePage from './pages/HomePage';
 import Logout from './auth/Logout';
 import NotFoundPage from './pages/NotFound';
 import RegisterPage from './auth/Register';
@@ -72,14 +71,12 @@ class Admin extends React.Component {
     return (
       <Switch>
         <Route exact path="/admin/"
-          component={this.renderAdmin(HomePage)} />
+          component={this.renderAdmin(Dashboard)} />
         <Route path="/admin/register"
           component={this.renderAdmin(RegisterPage)} />
 
         <PrivateRoute path="/admin/logout"
           component={this.renderAdmin(Logout)} />
-        <PrivateRoute path="/admin/dashboard"
-          component={this.renderAdmin(Dashboard)} />
         <PrivateRoute path="/admin/admins"
           component={this.renderAdmin(AdminsPage)} />
         <PrivateRoute path="/admin/resumes"

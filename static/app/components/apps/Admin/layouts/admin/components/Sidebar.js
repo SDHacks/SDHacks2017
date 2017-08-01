@@ -82,7 +82,7 @@ class Sidebar extends React.Component {
       {auth && role >= getRole(Roles.ROLE_SPONSOR) && this.sponsorTools()}
 
       {auth && this.sidebarSection('General',
-        this.sidebarLink('/dashboard', 'Dashboard'),
+        this.sidebarLink('/', 'Dashboard'),
         this.sidebarLink('/settings', 'Settings'),
         this.sidebarLink('/logout', 'Logout')
       )}
