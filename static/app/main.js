@@ -26,7 +26,7 @@ composeEnhancers(
 render(
   <CookiesProvider>
     <Provider store={store}>
-      <div>
+      <div className="max-height">
         <LoadingBar className="loading-bar" />
         <Router>
           {routes}
