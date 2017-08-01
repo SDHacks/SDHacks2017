@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {withCookies} from 'react-cookie';
 import {connect} from 'react-redux';
 
+import {loginUser} from '~/components/apps/Admin/auth/actions';
+
+import Login from '~/components/apps/Admin/auth/Login';
+
 import CookieTypes from '~/static/Cookies';
 
 import Sidebar from './components/Sidebar';
@@ -11,7 +15,10 @@ class AdminLayout extends React.Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     cookies: PropTypes.object.isRequired,
-    children: PropTypes.object.isRequired
+    children: PropTypes.object.isRequired,
+
+    loginUser: PropTypes.func.isRequired,
+    loginError: PropTypes.string.isRequired
   };
 
   constructor(props) {
@@ -57,19 +64,27 @@ class AdminLayout extends React.Component {
     let {isAuthenticated} = this.props;
     let {user, isEditing} = this.state;
 
+    let containerState = 'admin-sidebar__container--' +
+      (isAuthenticated ? 'authenticated' : 'logged-out');
+
+    let login = (<Login loginUser={this.props.loginUser}
+      errorMessage={this.props.loginError} />);
+
     return (
       <div className="admin-body d-flex flex-column">
 
         <div className="container-fluid p-0 w-100 h-100">
           <div className="d-flex flex-column flex-md-row h-100">
-            <div className="admin-sidebar__container">
+            <div className={`admin-sidebar__container ${containerState}`}>
               <Sidebar isEditing={isEditing} isAuthenticated={isAuthenticated}
-                user={user} onEditChange={this.toggleEditing.bind(this)} />
+                user={user} onEditChange={this.toggleEditing.bind(this)}>
+                {!isAuthenticated && login}
+              </Sidebar>
             </div>
 
-            <main style={{flex: 1}} className="p-3">
+            {isAuthenticated && <main style={{flex: 1}} className="p-3">
               {this.props.children}
-            </main>
+            </main>}
           </div>
         </div>
       </div>
@@ -79,8 +94,9 @@ class AdminLayout extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: state.admin.auth.authenticated
+    isAuthenticated: state.admin.auth.authenticated,
+    loginError: state.admin.auth.error
   };
 };
 
-export default connect(mapStateToProps)(withCookies(AdminLayout));
+export default connect(mapStateToProps, {loginUser})(withCookies(AdminLayout));

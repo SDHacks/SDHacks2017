@@ -27,7 +27,7 @@ render(
   <CookiesProvider>
     <Provider store={store}>
       <div className="h-100">
-        <LoadingBar className="loading-bar" />
+        <LoadingBar updateTime={100} className="loading-bar" />
         <Router>
           {routes}
         </Router>

@@ -13,7 +13,8 @@ class Sidebar extends React.Component {
     onEditChange: PropTypes.func.isRequired,
     isEditing: PropTypes.bool.isRequired,
     user: PropTypes.object,
-    isHidden: PropTypes.bool
+    isHidden: PropTypes.bool,
+    children: PropTypes.node
   };
 
   constructor(props) {
@@ -74,11 +75,6 @@ class Sidebar extends React.Component {
       getRole(Roles.ROLE_MEMBER);
 
     return (<div>
-      {!auth && this.sidebarSection('General',
-          this.sidebarLink('/', 'Home', {exact: true}),
-          this.sidebarLink('/login', 'Login')
-        )}
-
       {auth && role >= getRole(Roles.ROLE_DEVELOPER) && this.developerTools()}
 
       {auth && role >= getRole(Roles.ROLE_ADMIN) && this.administratorTools()}
@@ -86,10 +82,10 @@ class Sidebar extends React.Component {
       {auth && role >= getRole(Roles.ROLE_SPONSOR) && this.sponsorTools()}
 
       {auth && this.sidebarSection('General',
-          this.sidebarLink('/dashboard', 'Dashboard'),
-          this.sidebarLink('/settings', 'Settings'),
-          this.sidebarLink('/logout', 'Logout')
-        )}
+        this.sidebarLink('/dashboard', 'Dashboard'),
+        this.sidebarLink('/settings', 'Settings'),
+        this.sidebarLink('/logout', 'Logout')
+      )}
     </div>);
   }
 
@@ -140,6 +136,11 @@ class Sidebar extends React.Component {
 
         {this.renderMenu()}
       </div>
+
+      {this.props.children &&
+      <div className="admin-sidebar__children">
+        {this.props.children}
+      </div>}
     </div>);
   };
 };

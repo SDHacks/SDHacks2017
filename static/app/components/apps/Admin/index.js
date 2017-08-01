@@ -73,8 +73,6 @@ class Admin extends React.Component {
           component={this.renderAdmin(HomePage)} />
         <Route path="/admin/register"
           component={this.renderAdmin(RegisterPage)} />
-        <Route path="/admin/login"
-          component={this.renderAdmin(LoginPage)} />
 
         <PrivateRoute path="/admin/logout"
           component={this.renderAdmin(Logout)} />

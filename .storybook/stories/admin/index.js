@@ -42,9 +42,10 @@ storiesOf('Administrator Panel/Layout', module)
 
         <div className="container-fluid p-0 w-100 h-100">
           <div className="d-flex flex-column flex-md-row h-100">
-            <div className="admin-sidebar__container">
+            <div className={`admin-sidebar__container 
+              admin-sidebar__container--authenticated`}>
               <Sidebar isEditing={boolean('isEditing', false)}
-                isAuthenticated={boolean('isAuthenticated', true)}
+                isAuthenticated
                 user={{
                   username: text('Username', 'Redback'),
                   role: text('Role', 'Developer')
@@ -66,34 +67,49 @@ storiesOf('Administrator Panel/Sidebar', module)
     <MemoryRouter initialEntries={['/admin/']}>{story()}</MemoryRouter>
   ))
   .add('Logged Out Sidebar', () => (
-    <Sidebar isAuthenticated={false}>Hello Button</Sidebar>
+    <div className={`admin-sidebar__container
+      admin-sidebar__container--logged-out`}>
+      <Sidebar isAuthenticated={false} onEditChange={action('Change edit')} />
+    </div>
   ))
   .add('Member Sidebar', () => (
-    <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
-      user={{
-        username: text('Username', 'Redback'),
-        role: Roles.ROLE_MEMBER
-      }}>Hello Button</Sidebar>
+    <div className={`admin-sidebar__container
+      admin-sidebar__container--authenticated`}>
+      <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
+        user={{
+          username: text('Username', 'Redback'),
+          role: Roles.ROLE_MEMBER
+        }} onEditChange={action('Change edit')} />
+    </div>
   ))
   .add('Sponsor Sidebar', () => (
-    <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
-      user={{
-        username: text('Username', 'Redback'),
-        role: Roles.ROLE_SPONSOR
-      }}>Hello Button</Sidebar>
+    <div className={`admin-sidebar__container
+      admin-sidebar__container--authenticated`}>
+      <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
+        user={{
+          username: text('Username', 'Redback'),
+          role: Roles.ROLE_SPONSOR
+        }} onEditChange={action('Change edit')} />
+    </div>
   ))
   .add('Admin Sidebar', () => (
-    <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
-      user={{
-        username: text('Username', 'Redback'),
-        role: Roles.ROLE_ADMIN
-      }}>Hello Button</Sidebar>
+    <div className={`admin-sidebar__container
+      admin-sidebar__container--authenticated`}>
+      <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
+        user={{
+          username: text('Username', 'Redback'),
+          role: Roles.ROLE_ADMIN
+        }} onEditChange={action('Change edit')} />
+    </div>
   ))
   .add('Developer Sidebar', () => (
-    <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
-      user={{
-        username: text('Username', 'Redback'),
-        role: Roles.ROLE_DEVELOPER
-      }}>Hello Button</Sidebar>
+    <div className={`admin-sidebar__container
+      admin-sidebar__container--authenticated`}>
+      <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
+        user={{
+          username: text('Username', 'Redback'),
+          role: Roles.ROLE_DEVELOPER
+        }} onEditChange={action('Change edit')} />
+    </div>
   ))
 ;

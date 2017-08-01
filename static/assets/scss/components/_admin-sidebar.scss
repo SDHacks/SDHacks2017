@@ -8,12 +8,25 @@ $left-padding: 1.25rem;
   color: $white;
   font-family: $header-font-family;
   font-weight: 200;
+  display: flex;
+  flex-direction: column;
   
   &__container {
+    transition: max-width 1s linear .5s;
+
     @include media-breakpoint-up(md) {
       flex: 1;
-      max-width: 25rem;
     }
+
+    &--authenticated {
+      @include media-breakpoint-up(md) {
+        max-width: 25rem;
+      }
+    }
+  }
+
+  &__children {
+    flex: 1;
   }
 
   &__header {
