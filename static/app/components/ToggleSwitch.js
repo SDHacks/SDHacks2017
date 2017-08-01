@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class ToggleSwitch extends React.Component {
   static propTypes = {
-    checked: PropTypes.bool,
+    checked: PropTypes.bool.isRequired,
     onChange: PropTypes.func
   };
 
@@ -11,7 +11,7 @@ class ToggleSwitch extends React.Component {
     super(props);
 
     this.state = {
-      isChecked: props.checked ? props.checked : false
+      isChecked: props.checked
     };
   }
 
@@ -19,24 +19,25 @@ class ToggleSwitch extends React.Component {
    * Toggles the checkbox value
    */
   toggle() {
+    let newState = !this.state.isChecked;
     this.setState({
-      isChecked: !this.state.isChecked
+      isChecked: newState
     });
 
     if (this.props.onChange) {
-      this.props.onChange(this.state.isChecked);
+      this.props.onChange(newState);
     }
   }
 
   render() {
-    let {isChecked} = this.state;
+    let {checked} = this.props;
 
     return (
       <div className="switch">
         <input id="toggle-switch"
           className="toggle-switch toggle-switch-round-flat"
           type="checkbox" onChange={this.toggle.bind(this)}
-          checked={isChecked} />
+          checked={checked} />
         <label htmlFor="toggle-switch"></label>
       </div>
     );

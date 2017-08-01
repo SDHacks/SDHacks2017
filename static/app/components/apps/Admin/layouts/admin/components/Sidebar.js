@@ -108,7 +108,8 @@ class Sidebar extends React.Component {
           Your Role: {user.role}
         </div>
         <div className="admin-sidebar__user-toggle">
-          <ToggleSwitch onChange={this.props.onEditChange} />
+          <ToggleSwitch onChange={this.props.onEditChange}
+            checked={isEditing} />
           <div className="admin-sidebar__user-editing">
             Editing:&nbsp;
             <span className="text-uppercase">{isEditing ? 'ON' : 'OFF'}</span>

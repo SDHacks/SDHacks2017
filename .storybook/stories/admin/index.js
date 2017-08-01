@@ -28,54 +28,57 @@ let mockUsers = {
 storiesOf('Administrator Panel/Layout', module)
   .addDecorator(withKnobs)
   .addDecorator(story => (
-    <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
+    <MemoryRouter initialEntries={['/admin/dashboard']}>{story()}</MemoryRouter>
   ))
   .add('Top Navbar', () => (
     <Nav />
   ))
   .add('Overall', 
-    withInfo('Roles: Developer, Admin, Sponsor and Member')(() => {
-      return (<div className="admin-body">
-        {/*Top bar navigation*/}
-        <Nav toggleSidebar={action('Toggled Sidebar')}></Nav>
+    withInfo('Roles: Developer, Admin, Sponsor and Member')(() => (
+      <div className="admin-body d-flex flex-column">
 
-        <div className="container-fluid">
-          {/*Sidebar navigation*/}
-          <div className="row">
-            <Sidebar authenticated={boolean('isAuthenticated', true)}
-              isOpen={false} 
-              user={{
-                username: text('Username', 'Redback'),
-                role: text('Role', 'Developer')
-              }} />
+        <div className="container-fluid p-0 w-100 h-100">
+          <div className="d-flex flex-column flex-md-row h-100">
+            <div className="admin-sidebar__container">
+              <Sidebar isEditing={boolean('isEditing', false)}
+                isAuthenticated={boolean('isAuthenticated', true)}
+                user={{
+                  username: text('Username', 'Redback'),
+                  role: text('Role', 'Developer')
+                }} onEditChange={action('Change edit')} />
+            </div>
+
+            <main style={{flex: 1}} className="p-3">
+              {text('Content', 'Hello World')}
+            </main>
           </div>
-
-          <main className={'col-sm-9 offset-sm-3 col-md-8' +
-            ' col-lg-10 offset-md-4 offset-lg-2 pt-3'}>
-            {text('Content', 'Hello World')}
-          </main>
         </div>
-      </div>)
-    }))
+      </div>
+    )))
 ;
 
 storiesOf('Administrator Panel/Sidebar', module)
+  .addDecorator(withKnobs)
   .addDecorator(story => (
     <MemoryRouter initialEntries={['/admin/']}>{story()}</MemoryRouter>
   ))
   .add('Logged Out Sidebar', () => (
-    <Sidebar authenticated={false}>Hello Button</Sidebar>
+    <Sidebar isAuthenticated={false}>Hello Button</Sidebar>
   ))
   .add('Member Sidebar', () => (
-    <Sidebar authenticated user={mockUsers.member}>Hello Button</Sidebar>
+    <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
+      user={mockUsers.member}>Hello Button</Sidebar>
   ))
   .add('Sponsor Sidebar', () => (
-    <Sidebar authenticated user={mockUsers.sponsor}>Hello Button</Sidebar>
+    <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
+      user={mockUsers.sponsor}>Hello Button</Sidebar>
   ))
   .add('Admin Sidebar', () => (
-    <Sidebar authenticated user={mockUsers.admin}>Hello Button</Sidebar>
+    <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
+      user={mockUsers.admin}>Hello Button</Sidebar>
   ))
   .add('Developer Sidebar', () => (
-    <Sidebar authenticated user={mockUsers.developer}>Hello Button</Sidebar>
+    <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
+      user={mockUsers.developer}>Hello Button</Sidebar>
   ))
 ;
