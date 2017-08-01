@@ -7,10 +7,14 @@
   align-items: center;
 
   &__container {
-    max-width: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      max-width: 20rem;
+    }
   }
 
   &__above {
