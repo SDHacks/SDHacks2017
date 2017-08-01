@@ -42,7 +42,7 @@ export const User = {
   food: PropTypes.string,
   website: PropTypes.string,
   github: PropTypes.string,
-  year: PropTypes.number.isRequired,
+  year: PropTypes.string.isRequired,
   university: PropTypes.string.isRequired,
   phone: PropTypes.number.isRequired,
   email: PropTypes.string.isRequired,

@@ -5,12 +5,11 @@ import {connect} from 'react-redux';
 
 import CookieTypes from '~/static/Cookies';
 
-import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
 
 class AdminLayout extends React.Component {
   static propTypes = {
-    authenticated: PropTypes.bool.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
     cookies: PropTypes.object.isRequired,
     children: PropTypes.object.isRequired
   };
@@ -18,8 +17,10 @@ class AdminLayout extends React.Component {
   constructor(props) {
     super(props);
 
+    this.toggleEditing = this.toggleEditing.bind(this);
     this.state = {
       isSidebarOpen: false,
+      isEditing: false,
       user: this.props.cookies.get(CookieTypes.admin.user)
     };
   }
@@ -31,9 +32,16 @@ class AdminLayout extends React.Component {
       });
     }
 
-    this.state = {
-      user: this.props.cookies.get(CookieTypes.admin.user)
-    };
+    this.state.user = this.props.cookies.get(CookieTypes.admin.user);
+  }
+
+  /**
+   * Toggles whether the user is editing
+   */
+  toggleEditing() {
+    this.setState({
+      isEditing: !this.state.isEditing
+    });
   }
 
   /**
@@ -46,19 +54,20 @@ class AdminLayout extends React.Component {
   }
 
   render() {
-    let {authenticated} = this.props;
-    let {user} = this.state;
+    let {isAuthenticated} = this.props;
+    let {user, isEditing} = this.state;
 
     return (
       <div className="admin-body d-flex flex-column">
 
         <div className="container-fluid p-0 w-100 h-100">
-          <div className="row h-100">
-            <div className="col-md-4 col-lg-3 col-xl-2">
-              <Sidebar authenticated={authenticated} user={user} />
+          <div className="d-flex flex-column flex-md-row h-100">
+            <div className="admin-sidebar__container">
+              <Sidebar isEditing={isEditing} isAuthenticated={isAuthenticated}
+                user={user} onEditChange={this.toggleEditing.bind(this)} />
             </div>
 
-            <main className={'col-md-8 col-lg-9 col-xl-10 pt-3'}>
+            <main style={{flex: 1}} className="p-3">
               {this.props.children}
             </main>
           </div>
@@ -70,7 +79,7 @@ class AdminLayout extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.admin.auth.authenticated
+    isAuthenticated: state.admin.auth.authenticated
   };
 };
 

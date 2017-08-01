@@ -8,7 +8,13 @@ $left-padding: 1.25rem;
   color: $white;
   font-family: $header-font-family;
   font-weight: 200;
-  max-width: 20rem;
+  
+  &__container {
+    @include media-breakpoint-up(md) {
+      flex: 1;
+      max-width: 25rem;
+    }
+  }
 
   &__header {
     display: flex;
@@ -22,6 +28,11 @@ $left-padding: 1.25rem;
   &__logo {
     max-height: 3rem;
     margin: .75rem .75rem .75rem $left-padding;
+  }
+
+  &__toggler {
+    align-self: center;
+    border-color: rgba(255, 255, 255, .3) !important;
   }
 
   &__user-box {
