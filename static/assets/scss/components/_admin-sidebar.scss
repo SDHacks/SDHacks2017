@@ -12,7 +12,7 @@ $left-padding: 1.25rem;
   flex-direction: column;
   
   &__container {
-    transition: max-width 1s linear .5s;
+    transition: max-width 0.15s linear;
 
     @include media-breakpoint-up(md) {
       flex: 1;
@@ -20,8 +20,13 @@ $left-padding: 1.25rem;
 
     &--authenticated {
       @include media-breakpoint-up(md) {
+        flex: 1;
         max-width: 25rem;
       }
+    }
+
+    &--logged-out {
+      max-width: 100%;
     }
   }
 

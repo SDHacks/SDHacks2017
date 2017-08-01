@@ -1,14 +1,11 @@
 import {Field, reduxForm} from 'redux-form';
-import {Cookies, withCookies} from 'react-cookie';
 import React from 'react';
 import {Link} from 'react-router-dom';
-import PropTypes, {instanceOf} from 'prop-types';
+import PropTypes from 'prop-types';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 
 import {User as UserPropType} from '~/proptypes';
-
-import CookieTypes from '~/static/Cookies';
 
 import {getRole, Roles} from '~/static/Roles';
 
@@ -24,20 +21,8 @@ class User extends React.Component {
     reset: PropTypes.func.isRequired,
     submitting: PropTypes.bool.isRequired,
     resume: PropTypes.object,
-    cookies: instanceOf(Cookies).isRequired
+    role: PropTypes.string.isRequired
   };
-
-  constructor(props) {
-    super(props);
-
-    this.cookies = props.cookies;
-  }
-
-  componentWillMount() {
-    this.state = {
-      role: this.props.cookies.get(CookieTypes.admin.user).role
-    };
-  }
 
   handleFormSubmit(formProps) {
     return formProps;
@@ -147,7 +132,7 @@ class User extends React.Component {
             {this.renderFormField('Coming From', 'travel.city', 'col-sm-6')}
             {this.renderFormField('Major Classes', 'majors')}
           </div>
-          {getRole(this.state.role) >= getRole(Roles.ROLE_ADMIN) &&
+          {getRole(this.props.role) >= getRole(Roles.ROLE_ADMIN) &&
             <span>
               <h4>Admin Flags</h4>
               <div className="form-group row mb-4">
@@ -174,7 +159,8 @@ class User extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     resume: ownProps.user.resume ? ownProps.user.resume : null,
-    form: ownProps.user._id
+    form: ownProps.user._id,
+    role: state.admin.auth.user.role
   };
 };
 
@@ -183,4 +169,4 @@ export default compose(
     reduxForm({
       destroyOnUnmount: true
     })
-)(withCookies(User));
+)(User);

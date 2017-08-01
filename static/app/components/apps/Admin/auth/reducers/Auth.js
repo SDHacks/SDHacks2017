@@ -7,15 +7,17 @@ import {
 const INITIAL_STATE = {
   error: '',
   message: '',
-  authenticated: false
+  authenticated: false,
+  user: {}
 };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
   case AUTH_USER:
-    return {...state, error: '', message: '', authenticated: true};
+    return {...state, error: '', message: '', authenticated: true,
+      user: action.payload};
   case UNAUTH_USER:
-    return {...state, authenticated: false};
+    return {...state, authenticated: false, user: {}};
   case AUTH_ERROR:
     return {...state, error: action.payload};
   }

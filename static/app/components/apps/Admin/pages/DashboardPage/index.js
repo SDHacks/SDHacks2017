@@ -1,4 +1,3 @@
-import {Cookies, withCookies} from 'react-cookie';
 import PropTypes, {instanceOf} from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
@@ -6,41 +5,30 @@ import {Link} from 'react-router-dom';
 
 import {loadAllStats} from './actions';
 
-import CookieTypes from '~/static/Cookies';
-
 import {getRole, Roles} from '~/static/Roles';
 
 class DashboardPage extends React.Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
-    cookies: instanceOf(Cookies).isRequired,
+    user: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     stats: PropTypes.object.isRequired
   };
 
-  constructor(props) {
-    super(props);
-
-    this.cookies = props.cookies;
-  }
-
   componentWillMount() {
-    this.state = {
-      role: this.props.cookies.get(CookieTypes.admin.user).role
-    };
-
     this.props.dispatch(loadAllStats());
   }
 
   render() {
-    let user = this.cookies.get(CookieTypes.admin.user);
+    let {user} = this.props;
+
     return (
       <div className="row">
         <div className="col-sm-12">
           <h1>Dashboard</h1>
           <h2 className="text-left">
             {user.username}
-            <small> ({this.state.role})</small>
+            <small> ({user.role})</small>
           </h2>
         </div>
         <div className="col-sm-12 col-md-6 col-lg-4">
@@ -50,7 +38,7 @@ class DashboardPage extends React.Component {
               <p className="card-text">
                 {this.props.stats.users.total.toLocaleString()}
               </p>
-              {getRole(this.state.role) >= getRole(Roles.ROLE_ADMIN) &&
+              {getRole(user.role) >= getRole(Roles.ROLE_ADMIN) &&
                 <Link to="/admin/users" className="btn btn-primary">See Users</Link>
               }
             </div>
@@ -74,8 +62,9 @@ class DashboardPage extends React.Component {
 function mapStateToProps(state) {
   return {
     auth: state.admin.auth,
+    user: state.admin.auth.user,
     stats: state.admin.dashboardStats
   };
 }
 
-export default connect(mapStateToProps)(withCookies(DashboardPage));
+export default connect(mapStateToProps)(DashboardPage);

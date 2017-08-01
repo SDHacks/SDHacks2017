@@ -9,7 +9,6 @@ import {AUTH_USER} from './auth/actions/types';
 import PrivateRoute from './PrivateRoute';
 import Dashboard from './pages/DashboardPage';
 import HomePage from './pages/HomePage';
-import LoginPage from './auth/Login';
 import Logout from './auth/Logout';
 import NotFoundPage from './pages/NotFound';
 import RegisterPage from './auth/Register';
@@ -34,7 +33,10 @@ class Admin extends React.Component {
     // Check initial authentication
     const {cookies} = this.props;
     if (cookies.get(CookieTypes.admin.token)) {
-      props.dispatch({type: AUTH_USER});
+      props.dispatch({
+        type: AUTH_USER,
+        payload: cookies.get(CookieTypes.admin.user)
+      });
     }
   }
 

@@ -24,9 +24,6 @@ class Login extends React.Component {
    */
   handleFormSubmit(formProps) {
     return this.props.loginUser(formProps)
-    .then(() => {
-      return this.context.router.history.replace('/admin/dashboard');
-    })
     .catch((e) => {
       console.error('Could not log in', e);
     });
