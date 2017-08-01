@@ -1,0 +1,83 @@
+$small-font: 0.85rem;
+$smaller-font: 0.75rem;
+$left-padding: 1.25rem;
+
+.admin-sidebar {
+  height: 100%;
+  background-color: $admin-blue;
+  color: $white;
+  font-family: $header-font-family;
+  font-weight: 200;
+  max-width: 20rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__header-text {
+    flex: 1;
+  }
+
+  &__logo {
+    max-height: 3rem;
+    margin: .75rem .75rem .75rem $left-padding;
+  }
+
+  &__user-box {
+    padding: 1.5rem 1rem 0.75rem $left-padding;
+    background-color: $admin-dark-blue;
+    font-size: $small-font;
+  }
+  
+  &__user-name {
+    margin-bottom: 0.5rem;
+  }
+
+  &__user-role {
+    margin-bottom: 0.3rem;
+  }
+
+  &__user-toggle {
+    display: flex;
+    align-items: center;
+  }
+
+  &__user-editing {
+    flex: 1;
+    margin-left: 0.5rem;
+  }
+
+  &__section {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__section-title {
+    padding-left: $left-padding;
+    font-size: $smaller-font;
+    padding-bottom: 0.25rem;
+  }
+
+  &__section-link {
+    display: block;
+    padding: 0.5rem $left-padding;
+    color: $white;
+
+    &:focus {
+      text-decoration: none;
+      color: $white;
+    }
+
+    &:hover {
+      background-color: $admin-dark-blue;
+      color: $white;
+    }
+
+    &--active {
+      background-color: $admin-dark-blue;
+      border-left: 5px solid $default-green;
+      padding-left: calc(#{$left-padding} - 5px);
+    }
+  }
+}

@@ -50,21 +50,18 @@ class AdminLayout extends React.Component {
     let {user} = this.state;
 
     return (
-      <div className="admin-body">
-        {/*Top bar navigation*/}
-        <Nav toggleSidebar={this.toggleSidebar.bind(this)}></Nav>
+      <div className="admin-body d-flex flex-column">
 
-        <div className="container-fluid">
-          {/*Sidebar navigation*/}
-          <div className="row">
-            <Sidebar authenticated={authenticated}
-              isOpen={this.state.isSidebarOpen} user={user}></Sidebar>
+        <div className="container-fluid p-0 w-100 h-100">
+          <div className="row h-100">
+            <div className="col-md-4 col-lg-3 col-xl-2">
+              <Sidebar authenticated={authenticated} user={user} />
+            </div>
+
+            <main className={'col-md-8 col-lg-9 col-xl-10 pt-3'}>
+              {this.props.children}
+            </main>
           </div>
-
-          <main className={'col-sm-9 offset-sm-3 col-md-8' +
-            ' col-lg-10 offset-md-4 offset-lg-2 pt-3'}>
-            {this.props.children}
-          </main>
         </div>
       </div>
     );

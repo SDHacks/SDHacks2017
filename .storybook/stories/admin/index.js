@@ -1,5 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
+import {withKnobs, text, boolean, number} from '@storybook/addon-knobs';
+import {withInfo} from '@storybook/addon-info';
 import {action} from '@storybook/addon-actions';
 import {MemoryRouter} from 'react-router';
 
@@ -24,17 +26,42 @@ let mockUsers = {
 };
 
 storiesOf('Administrator Panel/Layout', module)
+  .addDecorator(withKnobs)
   .addDecorator(story => (
     <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
   ))
   .add('Top Navbar', () => (
     <Nav />
   ))
+  .add('Overall', 
+    withInfo('Roles: Developer, Admin, Sponsor and Member')(() => {
+      return (<div className="admin-body">
+        {/*Top bar navigation*/}
+        <Nav toggleSidebar={action('Toggled Sidebar')}></Nav>
+
+        <div className="container-fluid">
+          {/*Sidebar navigation*/}
+          <div className="row">
+            <Sidebar authenticated={boolean('isAuthenticated', true)}
+              isOpen={false} 
+              user={{
+                username: text('Username', 'Redback'),
+                role: text('Role', 'Developer')
+              }} />
+          </div>
+
+          <main className={'col-sm-9 offset-sm-3 col-md-8' +
+            ' col-lg-10 offset-md-4 offset-lg-2 pt-3'}>
+            {text('Content', 'Hello World')}
+          </main>
+        </div>
+      </div>)
+    }))
 ;
 
 storiesOf('Administrator Panel/Sidebar', module)
   .addDecorator(story => (
-    <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
+    <MemoryRouter initialEntries={['/admin/']}>{story()}</MemoryRouter>
   ))
   .add('Logged Out Sidebar', () => (
     <Sidebar authenticated={false}>Hello Button</Sidebar>

@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {storiesOf} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
-import {withKnobs} from '@storybook/addon-knobs'
-import {withSmartKnobs} from 'storybook-addon-smart-knobs'
+import {withKnobs} from '@storybook/addon-knobs';
 import {MemoryRouter} from 'react-router';
 import {Provider} from 'react-redux';
 
@@ -28,7 +27,6 @@ storiesOf('Application Form/Layout', module)
   ));
 
 storiesOf('Application Form/Sections', module)
-  .addDecorator(withSmartKnobs)
   .addDecorator(withKnobs)
   .addDecorator(story => (
     <Provider store={Store}>

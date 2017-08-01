@@ -118,6 +118,7 @@
     "webpack-stream": "^3.2.0"
   },
   "devDependencies": {
+    "@storybook/addon-info": "^3.2.0",
     "@storybook/addon-knobs": "^3.2.0",
     "@storybook/addon-options": "^3.2.0",
     "@storybook/react": "^3.2.0",
