@@ -11,16 +11,19 @@ import Nav from '~/components/apps/Admin/layouts/admin/components/Nav';
 
 let mockUsers = {
   member: {
-    username: "Redback",
+    username: text('Username', 'Redback'),
     role: Roles.ROLE_MEMBER
   },
   sponsor: {
+    username: text('Username', 'Redback'),
     role: Roles.ROLE_SPONSOR
   },
   admin: {
+    username: text('Username', 'Redback'),
     role: Roles.ROLE_ADMIN
   },
   developer: {
+    username: text('Username', 'Redback'),
     role: Roles.ROLE_DEVELOPER
   }
 };
@@ -67,18 +70,30 @@ storiesOf('Administrator Panel/Sidebar', module)
   ))
   .add('Member Sidebar', () => (
     <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
-      user={mockUsers.member}>Hello Button</Sidebar>
+      user={{
+        username: text('Username', 'Redback'),
+        role: Roles.ROLE_MEMBER
+      }}>Hello Button</Sidebar>
   ))
   .add('Sponsor Sidebar', () => (
     <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
-      user={mockUsers.sponsor}>Hello Button</Sidebar>
+      user={{
+        username: text('Username', 'Redback'),
+        role: Roles.ROLE_SPONSOR
+      }}>Hello Button</Sidebar>
   ))
   .add('Admin Sidebar', () => (
     <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
-      user={mockUsers.admin}>Hello Button</Sidebar>
+      user={{
+        username: text('Username', 'Redback'),
+        role: Roles.ROLE_ADMIN
+      }}>Hello Button</Sidebar>
   ))
   .add('Developer Sidebar', () => (
     <Sidebar isAuthenticated isEditing={boolean('isEditing', false)}
-      user={mockUsers.developer}>Hello Button</Sidebar>
+      user={{
+        username: text('Username', 'Redback'),
+        role: Roles.ROLE_DEVELOPER
+      }}>Hello Button</Sidebar>
   ))
 ;

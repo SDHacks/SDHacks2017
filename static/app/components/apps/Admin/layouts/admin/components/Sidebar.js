@@ -102,10 +102,10 @@ class Sidebar extends React.Component {
     return (
       <div className="admin-sidebar__user-box">
         <div className="admin-sidebar__user-name text-uppercase">
-          User: {user.username}
+          User: {user && user.username}
         </div>
         <div className="admin-sidebar__user-role">
-          Your Role: {user.role}
+          Your Role: {user && user.role}
         </div>
         <div className="admin-sidebar__user-toggle">
           <ToggleSwitch onChange={this.props.onEditChange}
