@@ -42,6 +42,14 @@ function start() {
   app.use(helmet());
   app.use(compression());
 
+  app.use(function (req, res, next) {
+    if (process.env.NODE_ENV === 'production' &&
+      req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect(['https://', req.hostname, req.url].join(''));
+    }
+    return next();
+  });
+
   // Extras
   // Rendering tools
   app.locals.moment = require('moment');

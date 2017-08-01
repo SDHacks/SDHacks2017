@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LoadingBar from 'react-redux-loading-bar';
+import {withCookies} from 'react-cookie';
+import {connect} from 'react-redux';
 
-import Nav from '../Nav';
-import Sidebar from '../Sidebar';
+import CookieTypes from '~/static/Cookies';
+
+import Nav from './components/Nav';
+import Sidebar from './components/Sidebar';
 
 class AdminLayout extends React.Component {
   static propTypes = {
+    authenticated: PropTypes.bool.isRequired,
+    cookies: PropTypes.object.isRequired,
     children: PropTypes.object.isRequired
   };
 
@@ -14,7 +19,8 @@ class AdminLayout extends React.Component {
     super(props);
 
     this.state = {
-      isSidebarOpen: false
+      isSidebarOpen: false,
+      user: this.props.cookies.get(CookieTypes.admin.user)
     };
   }
 
@@ -24,6 +30,10 @@ class AdminLayout extends React.Component {
         isSidebarOpen: false
       });
     }
+
+    this.state = {
+      user: this.props.cookies.get(CookieTypes.admin.user)
+    };
   }
 
   /**
@@ -36,17 +46,19 @@ class AdminLayout extends React.Component {
   }
 
   render() {
+    let {authenticated} = this.props;
+    let {user} = this.state;
+
     return (
       <div className="admin-body">
-        <LoadingBar className="loading-bar" />
-
         {/*Top bar navigation*/}
         <Nav toggleSidebar={this.toggleSidebar.bind(this)}></Nav>
 
         <div className="container-fluid">
           {/*Sidebar navigation*/}
           <div className="row">
-            <Sidebar isOpen={this.state.isSidebarOpen}></Sidebar>
+            <Sidebar authenticated={authenticated}
+              isOpen={this.state.isSidebarOpen} user={user}></Sidebar>
           </div>
 
           <main className={'col-sm-9 offset-sm-3 col-md-8' +
@@ -59,4 +71,10 @@ class AdminLayout extends React.Component {
   }
 };
 
-export default AdminLayout;
+function mapStateToProps(state) {
+  return {
+    authenticated: state.admin.auth.authenticated
+  };
+};
+
+export default connect(mapStateToProps)(withCookies(AdminLayout));

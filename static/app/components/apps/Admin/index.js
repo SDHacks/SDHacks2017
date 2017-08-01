@@ -17,8 +17,8 @@ import UsersPage from './pages/UsersPage';
 import AdminsPage from './pages/AdminsPage';
 import ResumesPage from './pages/ResumesPage';
 import UserPage from './pages/UserPage';
-import AdminLayout from './layouts/AdminLayout';
-import SponsorLayout from './layouts/SponsorLayout';
+import AdminLayout from './layouts/admin';
+import SponsorLayout from './layouts/sponsor';
 
 import CookieTypes from '~/static/Cookies';
 

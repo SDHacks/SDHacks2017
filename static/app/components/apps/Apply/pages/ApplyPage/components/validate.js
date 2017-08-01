@@ -38,10 +38,6 @@ const validate = values => {
     errors.highSchool = 'Required';
   }
 
-  if (values.year < 2017) {
-    errors.year = 'Applicants must be current students';
-  }
-
   if (values.outOfState && values.outOfState === 'true' && !values.city) {
     errors.city = 'Required';
   }
