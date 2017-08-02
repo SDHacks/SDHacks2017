@@ -1,5 +1,6 @@
 .sidebar-filter {
   padding: 1rem $left-padding;
+  transition: background-color linear 0.2s;
   background-color: $admin-dark-blue;
 
   &--disabled {
