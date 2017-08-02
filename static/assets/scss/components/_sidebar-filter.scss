@@ -1,0 +1,58 @@
+.sidebar-filter {
+  padding: 1rem $left-padding;
+  background-color: $admin-dark-blue;
+
+  &--disabled {
+    background-color: inherit;
+  }
+
+  &:not(:first-child) {
+    margin-top: 0.25rem;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__name {
+    margin-left: 0.5rem;
+    flex: 1;
+  }
+
+  &__show {
+    cursor: pointer;
+
+    &--disabled {
+      display: none;
+    }
+  }
+
+  &__toggles {
+    margin-top: 1rem;
+    display: flex;
+  }
+
+  &__toggle {
+    flex: 1;
+
+    &:first-child {
+      margin-right: 1rem;
+    }
+  }
+
+  &__search {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    width: 100%;
+
+    &:focus {
+      margin: 1rem 0;
+      border: none;
+    }
+
+    &::placeholder {
+      color: $admin-dark-blue;
+    }
+  }
+}

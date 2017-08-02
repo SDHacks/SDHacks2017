@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {default as UUID} from 'node-uuid';
 
 class ToggleSwitch extends React.Component {
   static propTypes = {
@@ -15,10 +16,16 @@ class ToggleSwitch extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({
+      id: UUID.v4()
+    });
+  }
+
   /**
    * Toggles the checkbox value
    */
-  toggle() {
+  toggle = () => {
     let newState = !this.state.isChecked;
     this.setState({
       isChecked: newState
@@ -34,11 +41,11 @@ class ToggleSwitch extends React.Component {
 
     return (
       <div className="switch">
-        <input id="toggle-switch"
+        <input id={this.state.id}
           className="toggle-switch toggle-switch-round-flat"
-          type="checkbox" onChange={this.toggle.bind(this)}
+          type="checkbox" onChange={this.toggle}
           checked={checked} />
-        <label htmlFor="toggle-switch"></label>
+        <label htmlFor={this.state.id}></label>
       </div>
     );
   }

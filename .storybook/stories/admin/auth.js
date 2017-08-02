@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 
 import Store from '../redux-middleware';
 
-import Sidebar from '~/components/apps/Admin/layouts/admin/components/Sidebar';
+import Sidebar from '~/components/apps/Admin/layouts/components/AdminSidebar';
 import Login from '~/components/apps/Admin/auth/Login';
 
 storiesOf('Administrator Panel/Authentication', module)

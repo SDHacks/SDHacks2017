@@ -1,13 +1,12 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {withKnobs, text, boolean, number} from '@storybook/addon-knobs';
+import {withKnobs, text, boolean, number, select} from '@storybook/addon-knobs';
 import {withInfo} from '@storybook/addon-info';
 import {action} from '@storybook/addon-actions';
 import {MemoryRouter} from 'react-router';
 
 import {Roles} from '~/static/Roles';
-import Sidebar from '~/components/apps/Admin/layouts/admin/components/Sidebar';
-import Nav from '~/components/apps/Admin/layouts/admin/components/Nav';
+import Sidebar from '~/components/apps/Admin/layouts/components/AdminSidebar';
 
 let mockUsers = {
   member: {
@@ -28,13 +27,13 @@ let mockUsers = {
   }
 };
 
+let roles = {};
+Object.values(Roles).forEach(role => roles[role] = role);
+
 storiesOf('Administrator Panel/Layout', module)
   .addDecorator(withKnobs)
   .addDecorator(story => (
     <MemoryRouter initialEntries={['/admin/dashboard']}>{story()}</MemoryRouter>
-  ))
-  .add('Top Navbar', () => (
-    <Nav />
   ))
   .add('Overall', 
     withInfo('Roles: Developer, Admin, Sponsor and Member')(() => (
@@ -48,7 +47,7 @@ storiesOf('Administrator Panel/Layout', module)
                 isAuthenticated
                 user={{
                   username: text('Username', 'Redback'),
-                  role: text('Role', 'Developer')
+                  role: select('Role', roles, Roles.ROLE_DEVELOPER)
                 }} onEditChange={action('Change edit')} />
             </div>
 
@@ -69,7 +68,9 @@ storiesOf('Administrator Panel/Sidebar', module)
   .add('Logged Out Sidebar', () => (
     <div className={`admin-sidebar__container
       admin-sidebar__container--logged-out`}>
-      <Sidebar isAuthenticated={false} onEditChange={action('Change edit')} />
+      <Sidebar isAuthenticated={false} onEditChange={action('Change edit')}>
+        {text('Content', 'Hello World')}
+      </Sidebar>
     </div>
   ))
   .add('Member Sidebar', () => (

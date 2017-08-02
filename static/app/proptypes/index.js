@@ -10,6 +10,12 @@ export const Column = {
   key: PropTypes.bool
 };
 
+export const Filter = {
+  displayName: PropTypes.string.isRequired,
+  enabled: PropTypes.bool.isRequired,
+  options: PropTypes.object.isRequired
+};
+
 export const Admin = {
   _id: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,

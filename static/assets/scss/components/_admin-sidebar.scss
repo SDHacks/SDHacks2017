@@ -78,6 +78,23 @@ $left-padding: 1.25rem;
     margin-left: 0.5rem;
   }
 
+  &__selected {
+    padding: 0.5rem $left-padding;
+  }
+
+  &__toggles {
+    padding: 1rem $left-padding;
+    background-color: $admin-dark-blue;
+  }
+
+  &__toggle {
+    display: block;
+
+    &:first-child {
+      margin-bottom: 0.75rem;
+    }
+  }
+
   &__section {
     margin-top: 1rem;
     margin-bottom: 1rem;

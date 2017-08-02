@@ -6,7 +6,7 @@ import {loginUser} from '~/components/apps/Admin/auth/actions';
 
 import Login from '~/components/apps/Admin/auth/Login';
 
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/AdminSidebar';
 
 class AdminLayout extends React.Component {
   static propTypes = {

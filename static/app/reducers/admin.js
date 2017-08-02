@@ -13,9 +13,13 @@ import admins from '~/components/apps/Admin/pages/AdminsPage/reducers/Admins';
 import resumes from
   '~/components/apps/Admin/pages/ResumesPage/reducers/Resumes';
 
+import filters from
+  '~/components/apps/Admin/reducers/Filters';
+
 export default {
   auth,
   admins,
+  filters,
   userColumns: userColumns,
   users,
   resumes,

@@ -2,7 +2,7 @@
   // TODO: normalize this class to override default Bootstrap buttons
   font-family: $input-font-family;
   width: 100%;
-  max-width: 9em;
+  max-width: 15rem;
   border-radius: $global-radius;
   background-color: $primary-color;
   letter-spacing: 0.1rem;
@@ -20,11 +20,31 @@
     background-color: darken($primary-color, 3%);
   }
 
+  &--small {
+    font-size: 1.0rem;
+  }
+
   &--secondary {
     background-color: $accent-purple;
 
     &:hover {
       background-color: darken($accent-purple, 3%);
+    }
+  }
+
+  &--success {
+    background-color: $default-green;
+
+    &:hover {
+      background-color: darken($default-green, 3%);
+    }
+  }
+
+  &--alert {
+    background-color: $default-red;
+
+    &:hover {
+      background-color: darken($default-red, 3%);
     }
   }
 }

@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {NavLink} from 'react-router-dom';
 import {NavbarToggler} from 'reactstrap';
+
+import Link from './Link';
+import Section from './Section';
 
 import ToggleSwitch from '~/components/ToggleSwitch';
 
 import {Roles, getRole} from '~/static/Roles';
 
-class Sidebar extends React.Component {
+class AdminSidebar extends React.Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     onEditChange: PropTypes.func.isRequired,
@@ -34,39 +36,24 @@ class Sidebar extends React.Component {
     });
   }
 
-  sidebarSection = (name, ...children) =>
-    <div className="admin-sidebar__section">
-      <div className="admin-sidebar__section-title text-uppercase">
-        {name}
-      </div>
-      {children}
-    </div>;
-
-  sidebarLink = (dest, text, props) =>
-    <NavLink key={dest} className="admin-sidebar__section-link"
-      to={'/admin' + dest} activeClassName="admin-sidebar__section-link--active"
-      {...props}>
-      {text}
-    </NavLink>;
-
   developerTools = () =>
-    this.sidebarSection('Developer Tools',
-      this.sidebarLink('/admins', 'Admins')
-    )
+    <Section name='Developer Tools'>
+      <Link dest='/admins'>Admins</Link>
+    </Section>;
 
   administratorTools = () =>
-    this.sidebarSection('Administrator Tools',
-      this.sidebarLink('/users', 'Users')
-    );
+    <Section name='Administrator Tools'>
+      <Link dest='/users'>Users</Link>
+    </Section>;
 
   sponsorTools = () =>
-    this.sidebarSection('Sponsor Tools',
-      this.sidebarLink('/resumes', 'Resumes'),
-    );
+    <Section name='Sponsor Tools'>
+      <Link dest='/resumes'>Resumes</Link>
+    </Section>;
 
-    /**
-     * Creates the menu based off user role and authentication
-     */
+  /**
+   * Creates the menu based off user role and authentication
+   */
   renderMenu() {
     let auth = this.props.isAuthenticated;
 
@@ -81,11 +68,11 @@ class Sidebar extends React.Component {
 
       {auth && role >= getRole(Roles.ROLE_SPONSOR) && this.sponsorTools()}
 
-      {auth && this.sidebarSection('General',
-        this.sidebarLink('/', 'Dashboard'),
-        this.sidebarLink('/settings', 'Settings'),
-        this.sidebarLink('/logout', 'Logout')
-      )}
+      {auth && <Section name='General'>
+        <Link dest='/' exact>Dashboard</Link>
+        <Link dest='/settings'>Settings</Link>
+        <Link dest='/logout'>Logout</Link>
+      </Section>}
     </div>);
   }
 
@@ -147,4 +134,4 @@ class Sidebar extends React.Component {
 
 
 
-export default Sidebar;
+export default AdminSidebar;
