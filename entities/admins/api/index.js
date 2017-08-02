@@ -4,7 +4,7 @@ const express = require('express');
 const roleAuth = require('../helper').roleAuth;
 const roles = require('../helper').roles;
 
-const requireAuth = passport.authenticate('jwt', {session: false});
+const requireAuth = passport.authenticate('adminJwt', {session: false});
 
 module.exports = function(routes, config) {
   var Admin = require('../model');

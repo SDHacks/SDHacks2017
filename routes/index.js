@@ -2,11 +2,15 @@
 module.exports = function(app, config) {
   var User = require('../entities/users/model');
 
-  require('express-jwt')({secret: config.USER_SECRET,
-    userProperty: 'payload'});
+  require('express-jwt')({
+    secret: config.USER_SECRET,
+    userProperty: 'payload'
+  });
 
   // Basic
   app.get('/', (req, res) => res.render('pages/home.pug'));
+  app.get('/login', (req, res) => res.render('pages/user/home.pug'));
+  app.get('/logout', (req, res) => res.render('pages/user/home.pug'));
 
   require('./apply')(app, config);
 
@@ -23,57 +27,11 @@ module.exports = function(app, config) {
       }
 
       // Redirect to the profile
-      return res.redirect(`/users/${req.params.id}`);
+      return res.redirect('/login#confirmed');
     })
   );
 
-  var loadLivePage = function(req, res) {
-    var menu = {
-      'updates': {
-        'name': 'Updates',
-        'url': '/live'
-      },
-      'prizes': {
-        'name': 'Prizes',
-        'url': '/live/prizes'
-      },
-      'schedule': {
-        'name': 'Schedule',
-        'url': '/live#schedule'
-      },
-      'hardware': {
-        'name': 'Hardware',
-        'url': '//hardware.mlh.io/',
-        'target': '_blank'
-      },
-      'helpq': {
-        'name': 'HelpQ',
-        'url': '//mentor.sdhacks.io',
-        'target': '_blank'
-      },
-      'devpost': {
-        'name': 'Devpost',
-        'url': '//sdhacks2017.devpost.com',
-        'target': '_blank'
-      },
-      'discord': {
-        'name': 'Discord',
-        'url': '//discord.gg/zHC3Jpz',
-        'target': '_blank'
-      }
-    };
-    return res.render(`pages/live/${req.params.page}.pug`,
-      {page: req.params.page, menu});
-  };
-
-  // Live site (index)
-  app.get('/live', function(req, res) {
-    req.params.page = 'index';
-    return loadLivePage(req, res);
-  });
-
-  // Live site (other pages)
-  app.get('/live/:page', loadLivePage);
+  require('./live')(app, config);
 
   // Development Hot-Middleware
   if (config.NODE_ENV === 'development') {

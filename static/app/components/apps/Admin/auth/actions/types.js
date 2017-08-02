@@ -1,6 +1,4 @@
 // Auth
-export const AUTH_USER = 'auth_user',
-  UNAUTH_USER = 'unauth_user',
-  AUTH_ERROR = 'auth_error',
-  FORGOT_PASSWORD_REQUEST = 'forgot_password_request',
-  RESET_PASSWORD_REQUEST = 'reset_password_request';
+export const AUTH_USER = 'AUTH_ADMIN';
+export const UNAUTH_USER = 'UNAUTH_ADMIN';
+export const AUTH_ERROR = 'AUTH_ADMIN_ERROR';

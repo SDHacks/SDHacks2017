@@ -69,20 +69,33 @@ function(username, password, done) {
   });
 });
 
-const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
+const jwtAdminLogin = new JwtStrategy(jwtOptions, function(payload, done) {
   Admin.findById(payload._id, function(err, user) {
     if (err) {
       return done(err, false);
     }
 
     if (user) {
-      done(null, user);
-    } else {
-      done(null, false);
+      return done(null, user);
     }
+    return done(null, false);
   });
 });
 
-passport.use('jwt', jwtLogin);
+const jwtUserLogin = new JwtStrategy(jwtOptions, function(payload, done) {
+  User.findById(payload._id, function(err, user) {
+    if (err) {
+      return done(err, false);
+    }
+
+    if (user) {
+      return done(null, user);
+    }
+    return done(null, false);
+  });
+});
+
+passport.use('adminJwt', jwtAdminLogin);
+passport.use('userJwt', jwtUserLogin);
 passport.use('user', userLogin);
 passport.use('admin', adminLogin);

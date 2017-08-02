@@ -2,7 +2,7 @@ import nocache from 'superagent-no-cache';
 import pref from 'superagent-prefix';
 import request from 'superagent';
 
-const URL_PREFIX = '/user/auth';
+const URL_PREFIX = '/user';
 
 const prefix = pref(URL_PREFIX);
 
