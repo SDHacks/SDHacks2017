@@ -78,23 +78,29 @@ class PersonalSection extends React.Component {
    */
   showInstitutionBox(info) {
     const value = info.institution.input.value;
-    if (value === 'uni') {
+    if (value === 'hs') {
+      return (
+        fields.createRow(
+          fields.createColumn('col-sm-12',
+<<<<<<< HEAD
+            fields.createLabel('High School'),
+            fields.createInput('highSchool', 'High School')
+=======
+            fields.createLabel('University'),
+            <Field component={UniversityField} name='university'
+              className="sd-form__input-text"
+              placeholder='The University of California, San Diego' />
+>>>>>>> university-autosuggest
+          )
+        )
+      );
+    } else if (value === 'uni') {
       return (
         fields.createRow(
           fields.createColumn('col-sm-12',
             fields.createLabel('University'),
-            <Field component={UniversityField} name='university'
-              className="sd-form__input-text"
-              placeholder="University" />
-          )
-        )
-      );
-    } else if (value === 'hs') {
-      return (
-        fields.createRow(
-          fields.createColumn('col-sm-12',
-            fields.createLabel('High School'),
-            fields.createInput('highSchool', 'High School')
+            fields.createInput('University',
+              'University Name')
           )
         )
       );

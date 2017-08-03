@@ -48,6 +48,7 @@ export function getSuggestions(text) {
   .filter(school =>
     // For each of its alternative names
     alternatives[school].filter(alt => alt.search(text) > -1).length > 0
+    && basics.indexOf(school) === -1
   );
 
   return [
