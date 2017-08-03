@@ -40,14 +40,16 @@ const alternatives = {
 };
 
 export function getSuggestions(text) {
-  let basicRegexp = new RegExp(text, 'i');
+  let trimmed = text.trim();
+
+  let basicRegexp = new RegExp(trimmed, 'i');
   let basics = basic.filter(word => word.search(basicRegexp) > -1);
 
   let alt = Object.keys(alternatives)
   // For each alternative school
   .filter(school =>
     // For each of its alternative names
-    alternatives[school].filter(alt => alt.search(text) > -1).length > 0
+    alternatives[school].filter(alt => alt.search(basicRegexp) > -1).length > 0
     && basics.indexOf(school) === -1
   );
 
