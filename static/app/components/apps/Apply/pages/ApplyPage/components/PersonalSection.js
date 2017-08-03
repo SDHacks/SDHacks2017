@@ -2,6 +2,7 @@ import {Field, Fields, reduxForm} from 'redux-form';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import UniversityField from './UniversityField';
 import FileField from './FileField';
 import fields from './Fields';
 import validate from './validate';
@@ -77,22 +78,23 @@ class PersonalSection extends React.Component {
    */
   showInstitutionBox(info) {
     const value = info.institution.input.value;
-    if (value === 'hs') {
+    if (value === 'uni') {
+      return (
+        fields.createRow(
+          fields.createColumn('col-sm-12',
+            fields.createLabel('University'),
+            <Field component={UniversityField} name='university'
+              className="sd-form__input-text"
+              placeholder='The University of California, San Diego' />
+          )
+        )
+      );
+    } else if (value === 'hs') {
       return (
         fields.createRow(
           fields.createColumn('col-sm-12',
             fields.createLabel('High School'),
             fields.createInput('highSchool', 'High School')
-          )
-        )
-      );
-    } else if (value === 'uni') {
-      return (
-        fields.createRow(
-          fields.createColumn('col-sm-12',
-            fields.createLabel('University'),
-            fields.createInput('University',
-              'University Name')
           )
         )
       );
