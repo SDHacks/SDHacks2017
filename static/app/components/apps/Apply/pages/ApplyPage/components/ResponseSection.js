@@ -54,45 +54,19 @@ class ResponseSection extends React.Component {
       )}
 
       {fields.createRow(
-        fields.createColumn('col-sm-12',
+        fields.createColumn('col-lg-6',
           fields.createLabel('I will be travelling from outside the '+
               'San Diego county'),
           fields.createRadio('outOfState', true, 'Yes'),
           fields.createRadio('outOfState', false, 'No')
-        )
-      )}
-
-      <Fields names={['outOfState']} component={this.showCity} />
-
-      {fields.createRow(
+        ),
         fields.createColumn('col-lg-6',
           fields.createLabel('T-Shirt Size'),
-          <a id="fitHelp" className="sd-form__info">
-            <i className='fa fa-info-circle'></i>
-          </a>,
-          <Tooltip placement="right" target="fitHelp">Shirts tend to run on the
-            smaller side</Tooltip>,
           fields.createTShirtSizePicker()
         )
       )}
 
-      {fields.createRow(
-        fields.createColumn('col-sm-12 col-md-5',
-          fields.createLabel('This will be my first hackathon'),
-        ),
-        fields.createColumn('col-sm-12 col-md-7',
-          fields.createRadio('firstHackathon', true, 'Yes'),
-          fields.createRadio('firstHackathon', false, 'No')
-        )
-      )}
-
-      {fields.createRow(
-        fields.createColumn('col-sm-12',
-          fields.createLabel('What do you hope to get out of attending the ' +
-            'hackathon? 500 characters or less'),
-          fields.createTextArea('outcomeStmt', 'Your outcome', 500)
-        )
-      )}
+      <Fields names={['outOfState']} component={this.showCity} />
 
       {fields.createRow(
         fields.createColumn('col-sm-12',

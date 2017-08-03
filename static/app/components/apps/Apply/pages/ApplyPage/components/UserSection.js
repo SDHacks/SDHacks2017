@@ -10,7 +10,7 @@ class UserSection extends React.Component {
     handleSubmit: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     reset: PropTypes.func.isRequired,
-    submitting: PropTypes.bool.isRequired,
+    isSubmitting: PropTypes.bool.isRequired,
     previousPage: PropTypes.func.isRequired,
     submitError: PropTypes.object
   }
@@ -34,7 +34,7 @@ class UserSection extends React.Component {
   }
 
   render() {
-    const {previousPage, handleSubmit, pristine, submitting, submitError} =
+    const {previousPage, handleSubmit, pristine, isSubmitting, submitError} =
       this.props;
     return (<form onSubmit={handleSubmit}>
       {fields.createRow(
@@ -99,12 +99,13 @@ class UserSection extends React.Component {
       {fields.createRow(
         fields.createColumn('col-sm-12 col-md-4 text-center',
           <button className="btn rounded-button rounded-button--secondary"
-            type="button" onClick={previousPage}>Go Back</button>
+            type="button" onClick={previousPage}
+            disabled={isSubmitting}>Go Back</button>
         ),
         fields.createColumn('col-sm-12 col-md-4 text-center',
           <button className={'btn sd-form__nav-button rounded-button ' +
             'success button'} type="submit"
-            disabled={pristine || submitting}>Apply!</button>
+            disabled={pristine || isSubmitting}>Apply!</button>
         )
       )}
 

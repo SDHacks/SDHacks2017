@@ -138,8 +138,6 @@ module.exports = function(routes, config) {
         outOfState: req.body.outOfState,
         city: req.body.city
       };
-      user.firstHackathon = req.body.firstHackathon;
-      user.outcomeStmt = req.body.outcomeStmt;
       user.teammates = [];
 
       if (req.body.team1) {
