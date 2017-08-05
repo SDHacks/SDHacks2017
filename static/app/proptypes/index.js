@@ -23,6 +23,8 @@ export const Admin = {
 };
 
 export const Applicants = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
   university: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   year: PropTypes.number.isRequired,

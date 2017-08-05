@@ -1,0 +1,52 @@
+$left-padding: 2rem;
+
+.resume-list {
+  width: 100%;
+
+  &__header {
+    vertical-align: middle !important;
+    height: 5rem;
+    background-color: $white;
+    font-size: 1.2rem;
+    color: $admin-blue;
+
+    &--spacer {
+      width: $left-padding;
+      background-color: $white;
+    }
+  }
+  
+  &__toggle {
+    display: flex;
+    align-items: center;
+    .switch {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+  }
+
+  &__compacted {
+    &--active {
+      color: $accent-green;
+    }
+
+    &--inactive {
+      color: $accent-red;
+    }
+  }
+
+  &__value {
+    vertical-align: middle !important;
+    font-size: 1.1rem;
+
+    &--spacer {
+      width: $left-padding;
+    }
+  }
+
+  &__btn {
+    &--compacted {
+      padding: 0.1rem !important;
+    }
+  }
+}

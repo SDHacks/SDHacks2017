@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
 
 import {replaceApplicants} from './actions';
@@ -13,28 +14,45 @@ import ResumeList from './components/ResumeList';
 
 class ResumesPage extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    replaceApplicants: PropTypes.func.isRequired,
+    showLoading: PropTypes.func.isRequired,
+    hideLoading: PropTypes.func.isRequired,
     resumes: PropTypes.shape(
       ResumePropTypes
     ).isRequired
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isCompacted: false
+    };
+  }
+
+  toggleCompacted = () => this.setState({isCompacted: !this.state.isCompacted});
+
   componentWillMount() {
-    this.props.dispatch(showLoading());
+    let {showLoading, hideLoading, replaceApplicants} = this.props;
+
+    showLoading();
 
     loadAllApplicants()
     .then(res => {
-      this.props.dispatch(hideLoading());
-      return this.props.dispatch(replaceApplicants(res));
+      hideLoading();
+      return replaceApplicants(res);
     })
     .catch(console.error);
   }
 
   render() {
     let {applicants} = this.props.resumes;
+    let {isCompacted} = this.state;
+
     return (
-      <div>
-        <ResumeList applicants={applicants}></ResumeList>
+      <div className="resume-body">
+        <ResumeList isCompacted={isCompacted}
+          onCompactChange={this.toggleCompacted} applicants={applicants} />
       </div>
     );
   }
@@ -44,4 +62,10 @@ const mapStateToProps = (state) => ({
   resumes: state.admin.resumes,
 });
 
-export default connect(mapStateToProps)(ResumesPage);
+const mapDispatchToProps = (dispatch) => ({
+  replaceApplicants: bindActionCreators(replaceApplicants, dispatch),
+  showLoading: bindActionCreators(showLoading, dispatch),
+  hideLoading: bindActionCreators(hideLoading, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResumesPage);

@@ -62,7 +62,7 @@ $left-padding: 1.25rem;
   &__header {
     display: flex;
     align-items: center;
-    margin-bottom: 0.5rem;
+    min-height: 5rem;
   }
 
   &__header-text {

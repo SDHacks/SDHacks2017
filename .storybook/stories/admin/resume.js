@@ -8,6 +8,7 @@ import {MemoryRouter} from 'react-router';
 
 import {Roles} from '~/static/Roles';
 import Sidebar from '~/components/apps/Admin/layouts/components/SponsorSidebar';
+import ResumeList from '~/components/apps/Admin/pages/ResumesPage/components/ResumeList';
 
 let roles = {};
 Object.values(Roles).forEach(role => roles[role] = role);
@@ -88,5 +89,31 @@ storiesOf('Resume Tool/Sidebar', module)
           options: {}
         }
       })} />
+  ))
+;
+
+storiesOf('Resume Tool/List', module)
+  .add('List', () => (
+    <ResumeList
+    onCompactChange={action('Compact Changed')}
+    isCompacted={boolean('isCompacted', true)}
+    applicants={[
+      {
+        firstName: 'Nicholas',
+        lastName: 'Thomson',
+        university: 'The University of California, San Diego',
+        year: '3',
+        gender: 'Male',
+        status: 'Confirmed'
+      },
+      {
+        firstName: 'Vincent',
+        lastName: 'Liaw',
+        university: 'The University of California, San Diego',
+        year: '3',
+        gender: 'Male',
+        status: 'Confirmed'
+      }
+    ]}/>
   ))
 ;
