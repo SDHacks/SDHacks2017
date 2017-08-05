@@ -64,15 +64,16 @@ export default class Filter extends React.Component {
     let showDisabled = !enabled ? 'sidebar-filter__show--disabled' : '';
 
     return (<div className={`sidebar-filter ${disabledClass}`}>
-      <div className="sidebar-filter__header">
+      <a className="sidebar-filter__header"
+        onClick={this.toggleHidden.bind(this)}>
         <ToggleSwitch checked={enabled} onChange={onEnableChange} />
         <span className="sidebar-filter__name">{name}</span>
-        <a onClick={this.toggleHidden.bind(this)}
+        <span
           className={`sidebar-filter__show ${showDisabled}`}>
           {isHidden && <i className="fa fa-angle-down"></i>}
           {!isHidden && <i className="fa fa-angle-up"></i>}
-        </a>
-      </div>
+        </span>
+      </a>
       {!isHidden && <div className="sidebar-filter__settings">
         <div className="sidebar-filter__toggles">
           <button className={`btn rounded-button rounded-button--small

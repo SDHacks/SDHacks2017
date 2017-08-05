@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {NavbarToggler} from 'reactstrap';
+import {Link as RouteLink} from 'react-router-dom';
 
 import {Roles, getRole} from '~/static/Roles';
 
@@ -47,9 +48,14 @@ class SponsorSidebar extends React.Component {
     let {user, selected} = this.props;
 
     return (
-      <div className="admin-sidebar__user-box">
-        <div className="admin-sidebar__user-name text-uppercase">
-          Welcome, {user.username}
+      <div className="admin-sidebar__user-box admin-sidebar__dark">
+        <div className="d-flex">
+          <div className="admin-sidebar__user-name text-uppercase">
+            Welcome, {user.username}
+          </div>
+          <div className="admin-sidebar__logout">
+            <RouteLink to="/admin/logout">Logout</RouteLink>
+          </div>
         </div>
         <div className="admin-sidebar__download">
           <button className="btn rounded-button rounded-button--small">
@@ -110,13 +116,20 @@ class SponsorSidebar extends React.Component {
       </div>
 
       <div className={this.state.isHidden ? 'hidden-sm-down' : ''}>
+        <RouteLink to="/admin/"
+          className="admin-sidebar__back admin-sidebar__dark">
+          <i className="fa fa-chevron-left"></i>&nbsp;
+          Back to Dashboard
+        </RouteLink>
+
         {this.renderUser()}
+
         <div className="admin-sidebar__selected">
           Showing: {selected} of {total}
         </div>
 
         <Section name='Global Toggles'>
-          <div className="admin-sidebar__toggles">
+          <div className="admin-sidebar__toggles admin-sidebar__dark">
             <button className={`btn rounded-button rounded-button--small
               rounded-button--success admin-sidebar__toggle`}>
               Select All

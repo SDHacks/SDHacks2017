@@ -83,7 +83,7 @@ class AdminSidebar extends React.Component {
     let {user, isEditing} = this.props;
 
     return (
-      <div className="admin-sidebar__user-box">
+      <div className="admin-sidebar__user-box admin-sidebar__dark">
         <div className="admin-sidebar__user-name text-uppercase">
           User: {user && user.username}
         </div>
