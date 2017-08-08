@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import ToggleSwitch from '~/components/ToggleSwitch';
 
+import AutoSuggest from '~/components/AutoSuggest';
+
 export default class Filter extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -21,6 +23,7 @@ export default class Filter extends React.Component {
     super(props);
 
     this.state = {
+      newOption: '',
       isHidden: true
     };
   }
@@ -38,7 +41,7 @@ export default class Filter extends React.Component {
    * Renders the optional filter with a given name, and a checkbox.
    * @param {String} optionName The name of the option to render.
    * @param {Boolean} checked True if the filter is chosen.
-   * @param {Integer} key Render key for React
+   * @param {Integer} key Render key for React.
    * @returns {Component} The optional filter components.
    */
   renderFilterOption(optionName, checked, key) {
@@ -49,6 +52,41 @@ export default class Filter extends React.Component {
           checked={checked} onChange={() =>
             onOptionChange(optionName)} />
         {optionName}
+      </div>
+    );
+  }
+
+  getOptionSuggestions = () => [
+    'aaab',
+    'bbbc',
+    'cccd'
+  ];
+
+  updateNewOption = (event, {newValue}) => {
+    this.setState({
+      newOption: newValue
+    });
+  }
+
+  /**
+   * Renders the new filter option field with autosuggestion.
+   * @returns {Component} The new filter option field.
+   */
+  renderNewOptionField() {
+    let inputProps = {
+      placeholder: 'New Filter',
+      className: 'sd-form__input-text sidebar-filter__search',
+      value: this.state.newOption,
+      onChange: this.updateNewOption
+    };
+
+    return (
+      <div className="sidebar-filter__autosuggest">
+        <AutoSuggest
+          getSuggestions={this.getOptionSuggestions}
+          inputProps={inputProps}
+          onSuggestionSelected={console.log}
+        />
       </div>
     );
   }
@@ -88,11 +126,10 @@ export default class Filter extends React.Component {
           </button>
         </div>
 
-        <input type="text" placeholder="Search"
-          className="sd-form__input-text sidebar-filter__search" />
-
         {options && Object.keys(options).map((optionName, i) =>
           this.renderFilterOption(optionName, options[optionName], i))}
+
+        {this.renderNewOptionField()}
       </div>}
     </div>);
   }

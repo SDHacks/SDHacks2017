@@ -45,17 +45,29 @@
   }
 
   &__search {
-    margin: 1rem 0;
     padding: 0.5rem 1rem;
     width: 100%;
+    border: 2px solid $admin-dark-blue;
 
     &:focus {
-      margin: 1rem 0;
-      border: none;
+      margin: 0;
     }
 
     &::placeholder {
       color: $admin-dark-blue;
+    }
+  }
+
+  &__autosuggest {
+    margin: 1rem 0;
+    position: relative;
+
+    a {
+      color: $admin-blue;
+    }
+
+    .sd-form__suggestions-container {
+      width: 100%;
     }
   }
 }
