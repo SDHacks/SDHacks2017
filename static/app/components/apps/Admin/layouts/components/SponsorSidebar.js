@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import {NavbarToggler} from 'reactstrap';
 import {Link as RouteLink} from 'react-router-dom';
 
-import {Roles, getRole} from '~/static/Roles';
-
 import Filter from './Filter';
 import Link from './Link';
 import Section from './Section';
@@ -128,25 +126,11 @@ class SponsorSidebar extends React.Component {
           Showing: {selected} of {total}
         </div>
 
-        <Section name='Global Toggles'>
-          <div className="admin-sidebar__toggles admin-sidebar__dark">
-            <button className={`btn rounded-button rounded-button--small
-              rounded-button--success admin-sidebar__toggle`}>
-              Select All
-            </button>
-            <button className={`btn rounded-button rounded-button--small
-              rounded-button--alert admin-sidebar__toggle`}>
-              Select None
-            </button>
-          </div>
-        </Section>
-
         <Section name='Filters'>
           {this.renderFilters()}
         </Section>
 
         <Section name='General'>
-          <Link dest='/' exact>Dashboard</Link>
           <Link dest='/settings'>Settings</Link>
           <Link dest='/logout'>Logout</Link>
         </Section>

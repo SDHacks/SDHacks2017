@@ -15,6 +15,7 @@ class SponsorLayout extends React.Component {
     children: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired,
     filters: PropTypes.object.isRequired,
+    filtered: PropTypes.number.isRequired,
     resumes: PropTypes.shape(ResumePropType).isRequired,
 
     toggleFilter: PropTypes.func.isRequired,
@@ -28,7 +29,7 @@ class SponsorLayout extends React.Component {
   }
 
   render() {
-    let {user, filters, resumes} = this.props;
+    let {user, filters, resumes, filtered} = this.props;
 
     return (
       <div className="admin-body d-flex flex-column">
@@ -37,7 +38,7 @@ class SponsorLayout extends React.Component {
           <div className="d-flex flex-column flex-md-row h-100">
             <div className={`admin-sidebar__container
               admin-sidebar__container--authenticated`}>
-              <Sidebar user={user} selected={0}
+              <Sidebar user={user} selected={filtered}
                 total={resumes.applicants.length}
                 toggleFilter={this.props.toggleFilter}
                 toggleFilterOption={this.props.toggleFilterOption}
@@ -60,7 +61,8 @@ function mapStateToProps(state) {
   return {
     filters: state.admin.filters,
     resumes: state.admin.resumes,
-    user: state.admin.auth.user
+    user: state.admin.auth.user,
+    filtered: state.admin.resumes.filtered
   };
 }
 

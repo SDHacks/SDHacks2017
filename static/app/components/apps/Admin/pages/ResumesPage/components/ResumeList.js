@@ -11,7 +11,7 @@ class ResumeList extends React.Component {
     isCompacted: PropTypes.bool.isRequired,
     applicants: PropTypes.arrayOf(PropTypes.shape(
       ApplicantsPropType
-    ).isRequired).isRequired
+    ).isRequired)
   };
 
   constructor(props) {
@@ -22,8 +22,17 @@ class ResumeList extends React.Component {
         'lastName': 'Last Name',
         'year': 'Year',
         'university': 'University',
-        'gender': 'Gender'
-      }
+        'gender': 'Gender',
+        'major': 'Major'
+      },
+      smallColumns: [
+        'Year',
+        'Gender'
+      ],
+      mediumColumns: [
+        'First Name',
+        'Last Name'
+      ]
     };
   }
 
@@ -33,7 +42,11 @@ class ResumeList extends React.Component {
    * @returns {Component} The header component to render
    */
   renderHeader(name) {
-    return (<th key={name} className="resume-list__header">
+    let {smallColumns, mediumColumns} = this.state;
+    let small = smallColumns.indexOf(name) !== -1;
+    let medium = mediumColumns.indexOf(name) !== -1;
+    return (<th key={name} className={`resume-list__header
+      resume-list__header--${small ? 'small' : (medium ? 'medium' : 'large')}`}>
       {name}
     </th>);
   }
@@ -41,7 +54,6 @@ class ResumeList extends React.Component {
   render() {
     let {columns} = this.state;
     let {applicants, isCompacted, onCompactChange} = this.props;
-    console.log(isCompacted);
 
     return (
       <table className={`resume-list table ${isCompacted ? 'table-sm' : ''}`}>
@@ -65,7 +77,7 @@ class ResumeList extends React.Component {
         </thead>
 
         <tbody>
-          {applicants.map(applicant =>
+          {applicants && applicants.map(applicant =>
             <tr className="resume-list__row">
               <td className="resume-list__value resume-list__value--spacer">
               </td>

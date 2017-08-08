@@ -76,7 +76,7 @@ module.exports = function(routes, config, requireAuth) {
         'resume.size': {$gt: 0},
         createdAt: {$lte: sanitizedDate},
         checkedIn: true
-      }, 'firstName lastName university categories year gender status')
+      }, 'firstName lastName university categories year gender major')
       .lean()
       .exec(function(err, users) {
         if (err || (users == null)) {

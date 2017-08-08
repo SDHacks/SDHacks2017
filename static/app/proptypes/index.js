@@ -27,9 +27,9 @@ export const Applicants = {
   lastName: PropTypes.string.isRequired,
   university: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  year: PropTypes.number.isRequired,
+  year: PropTypes.string.isRequired,
   gender: PropTypes.string.isRequired,
-  status: PropTypes.string.isRequired,
+  major: PropTypes.string.isRequired
 };
 
 export const Resumes = {
@@ -74,5 +74,5 @@ export const User = {
   }).isRequired,
   shareResume: PropTypes.bool,
   categories: PropTypes.arrayOf(PropTypes.string.isRequired),
-  majors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  major: PropTypes.string.isRequired
 };

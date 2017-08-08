@@ -2,6 +2,7 @@ $left-padding: 2rem;
 
 .resume-list {
   width: 100%;
+  table-layout: fixed;
 
   &__header {
     vertical-align: middle !important;
@@ -14,11 +15,20 @@ $left-padding: 2rem;
       width: $left-padding;
       background-color: $white;
     }
+
+    &--small {
+      width: 6rem;
+    }
+
+    &--medium {
+      width: 10rem;
+    }
   }
   
   &__toggle {
     display: flex;
     align-items: center;
+    border-bottom-width: 1px;
     .switch {
       display: inline-block;
       margin-right: 1rem;

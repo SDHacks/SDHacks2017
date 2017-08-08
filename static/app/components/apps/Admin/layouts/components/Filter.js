@@ -46,7 +46,7 @@ export default class Filter extends React.Component {
     return (
       <div className="sidebar-filter__filter" key={key}>
         <input type="checkbox" className="sd-form__input-checkbox"
-          checked={checked} onChange={(e) =>
+          checked={checked} onChange={() =>
             onOptionChange(optionName)} />
         {optionName}
       </div>
