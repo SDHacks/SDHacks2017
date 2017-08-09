@@ -7,7 +7,9 @@ export default class AutoSuggest extends React.Component {
     inputProps: PropTypes.object.isRequired,
 
     getSuggestions: PropTypes.func.isRequired,
-    onSuggestionSelected: PropTypes.func.isRequired
+    onSuggestionSelected: PropTypes.func.isRequired,
+
+    minChars: PropTypes.number
   };
 
   constructor(props) {
@@ -41,7 +43,8 @@ export default class AutoSuggest extends React.Component {
 
   getSuggestionValue = (suggestion) => suggestion;
 
-  shouldRenderSuggestions = (value) => value.trim().length > 2;
+  shouldRenderSuggestions = (value) => value.trim().length >
+    (this.props.minChars ? this.props.minChars : 0);
 
   /**
    * As defined by the react-autosuggest documentation

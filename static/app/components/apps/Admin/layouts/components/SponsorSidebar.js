@@ -13,6 +13,7 @@ class SponsorSidebar extends React.Component {
     selected: PropTypes.number.isRequired,
     total: PropTypes.number.isRequired,
     filters: PropTypes.object.isRequired,
+    filterOptions: PropTypes.object.isRequired,
 
     toggleFilter: PropTypes.func.isRequired,
     toggleFilterOption: PropTypes.func.isRequired,
@@ -80,7 +81,7 @@ class SponsorSidebar extends React.Component {
    * Renders the all filters
    */
   renderFilters() {
-    let {filters} = this.props;
+    let {filters, filterOptions} = this.props;
 
     return (<div className="admin-sidebar__filters">
 
@@ -89,6 +90,7 @@ class SponsorSidebar extends React.Component {
         return (<Filter key={i}
           enabled={filter.enabled} name={filter.displayName}
           options={filter.options}
+          availableOptions={filterOptions[filterName]}
           onOptionChange={this.handleToggleFilterOption(filterName)}
           onEnableChange={this.handleToggleFilter(filterName)}
           selectAllOptions={this.handleSelectAll(filterName)}

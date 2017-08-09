@@ -95,7 +95,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    loginUser: loginUser,
+    loginUser: bindActionCreators(loginUser, dispatch),
     toggleEditing: bindActionCreators(toggleEditing, dispatch)
   };
 }

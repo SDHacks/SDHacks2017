@@ -4,7 +4,7 @@ import * as Types from '../actions/types';
 const INITIAL_STATE = {
   'major': {
     displayName: 'Major',
-    enabled: true,
+    enabled: false,
     options: {
       'Computer Engineering': true,
       'Computer Science': false,

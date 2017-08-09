@@ -41,6 +41,7 @@ export default class UniversityField extends React.Component {
           getSuggestions={getSuggestions}
           inputProps={inputProps}
           onSuggestionSelected={this.onUniversitySelected}
+          minChars={3}
         />
         {touched && error && fields.createError(error)}
       </div>

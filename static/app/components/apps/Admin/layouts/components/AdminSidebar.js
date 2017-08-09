@@ -81,6 +81,10 @@ class AdminSidebar extends React.Component {
    */
   renderUser() {
     let {user, isEditing} = this.props;
+    let auth = this.props.isAuthenticated;
+    let role = this.props.user ?
+      getRole(this.props.user.role) :
+      getRole(Roles.ROLE_MEMBER);
 
     return (
       <div className="admin-sidebar__user-box admin-sidebar__dark">
@@ -90,6 +94,7 @@ class AdminSidebar extends React.Component {
         <div className="admin-sidebar__user-role">
           Your Role: {user && user.role}
         </div>
+        {auth && role >= getRole(Roles.ROLE_ADMIN) &&
         <div className="admin-sidebar__user-toggle">
           <ToggleSwitch onChange={this.props.onEditChange}
             checked={isEditing} />
@@ -97,7 +102,7 @@ class AdminSidebar extends React.Component {
             Editing:&nbsp;
             <span className="text-uppercase">{isEditing ? 'ON' : 'OFF'}</span>
           </div>
-        </div>
+        </div>}
       </div>
     );
   }

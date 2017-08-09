@@ -12,6 +12,7 @@ export default class Filter extends React.Component {
     enabled: PropTypes.bool.isRequired,
     onEnableChange: PropTypes.func.isRequired,
 
+    availableOptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     options: PropTypes.object.isRequired,
     onOptionChange: PropTypes.func.isRequired,
 
@@ -56,11 +57,8 @@ export default class Filter extends React.Component {
     );
   }
 
-  getOptionSuggestions = () => [
-    'aaab',
-    'bbbc',
-    'cccd'
-  ];
+  getOptionSuggestions = (val) => this.props.availableOptions
+    .filter(opt => opt.toLowerCase().indexOf(val.toLowerCase()) !== -1);
 
   updateNewOption = (event, {newValue}) => {
     this.setState({

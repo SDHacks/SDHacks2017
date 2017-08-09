@@ -28,8 +28,30 @@ class SponsorLayout extends React.Component {
     super(props);
   }
 
+  /**
+   * Creates an object which maps all properties of every applicant to a unique
+   * list of values for that property.
+   * @param {Object[]} applicants The list of applicants to iterate over.
+   * @returns {Object} A mapping of applicant property to unique array of
+   * values.
+   */
+  createFilterOptions = (applicants) => {
+    if (applicants.length < 1) {
+      return {};
+    }
+
+    let modelApplicant = applicants[0];
+    return Object.keys(modelApplicant)
+    .reduce((total, curr) => {
+      total[curr] = [...new Set(applicants.map(item => item[curr]))];
+      return total;
+    }
+    , {});
+  }
+
   render() {
     let {user, filters, resumes, filtered} = this.props;
+    let filterOptions = this.createFilterOptions(resumes.applicants);
 
     return (
       <div className="admin-body d-flex flex-column">
@@ -44,7 +66,8 @@ class SponsorLayout extends React.Component {
                 toggleFilterOption={this.props.toggleFilterOption}
                 selectAllOptions={this.props.selectAllOptions}
                 selectNoneOptions={this.props.selectNoneOptions}
-                filters={filters} />
+                filters={filters}
+                filterOptions={filterOptions} />
             </div>
 
             <main className={'admin-body__content'}>
