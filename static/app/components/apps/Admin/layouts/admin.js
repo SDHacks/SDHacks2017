@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
+import {toggleEditing} from '~/components/apps/Admin/actions';
 
 import {loginUser} from '~/components/apps/Admin/auth/actions';
 
@@ -13,18 +16,19 @@ class AdminLayout extends React.Component {
     isAuthenticated: PropTypes.bool.isRequired,
     user: PropTypes.object.isRequired,
     children: PropTypes.object.isRequired,
+    isEditing: PropTypes.bool.isRequired,
 
     loginUser: PropTypes.func.isRequired,
-    loginError: PropTypes.string.isRequired
+    loginError: PropTypes.string.isRequired,
+
+    toggleEditing: PropTypes.func.isRequired
   };
 
   constructor(props) {
     super(props);
 
-    this.toggleEditing = this.toggleEditing.bind(this);
     this.state = {
-      isSidebarOpen: false,
-      isEditing: false
+      isSidebarOpen: false
     };
   }
 
@@ -34,15 +38,6 @@ class AdminLayout extends React.Component {
         isSidebarOpen: false
       });
     }
-  }
-
-  /**
-   * Toggles whether the user is editing
-   */
-  toggleEditing() {
-    this.setState({
-      isEditing: !this.state.isEditing
-    });
   }
 
   /**
@@ -56,7 +51,7 @@ class AdminLayout extends React.Component {
 
   render() {
     let {isAuthenticated, user} = this.props;
-    let {isEditing} = this.state;
+    let {isEditing} = this.props;
 
     let containerState = 'admin-sidebar__container--' +
       (isAuthenticated ? 'authenticated' : 'logged-out');
@@ -74,7 +69,7 @@ class AdminLayout extends React.Component {
           <div className="d-flex flex-column flex-md-row h-100">
             <div className={`admin-sidebar__container ${containerState}`}>
               <Sidebar isEditing={isEditing} isAuthenticated={isAuthenticated}
-                user={user} onEditChange={this.toggleEditing.bind(this)}>
+                user={user} onEditChange={this.props.toggleEditing}>
                 {!isAuthenticated && login}
               </Sidebar>
             </div>
@@ -93,8 +88,16 @@ function mapStateToProps(state) {
   return {
     isAuthenticated: state.admin.auth.authenticated,
     user: state.admin.auth.user,
-    loginError: state.admin.auth.error
+    loginError: state.admin.auth.error,
+    isEditing: state.admin.general.editing
   };
 };
 
-export default connect(mapStateToProps, {loginUser})(AdminLayout);
+function mapDispatchToProps(dispatch) {
+  return {
+    loginUser: loginUser,
+    toggleEditing: bindActionCreators(toggleEditing, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminLayout);

@@ -1,3 +1,8 @@
+// General
+export const ENABLE_EDITING = 'ENABLE_EDITING';
+export const DISABLE_EDITING = 'DISABLE_EDITING';
+export const TOGGLE_EDITING = 'TOGGLE_EDITING';
+
 // Filters
 export const ADD_FILTER = 'ADD_FILTER';
 export const REMOVE_FILTER = 'REMOVE_FILTER';

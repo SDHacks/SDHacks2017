@@ -1,5 +1,17 @@
 import * as Types from './types';
 
+export const enableEditing = () => ({
+  type: Types.ENABLE_EDITING
+});
+
+export const disableEditing = () => ({
+  type: Types.DISABLE_EDITING
+});
+
+export const toggleEditing = () => ({
+  type: Types.TOGGLE_EDITING
+});
+
 export const addFilter = (name, displayName) => ({
   type: Types.ADD_FILTER,
   name,
