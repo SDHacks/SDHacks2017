@@ -29,7 +29,10 @@ export const Applicants = {
   categories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   year: PropTypes.string.isRequired,
   gender: PropTypes.string.isRequired,
-  major: PropTypes.string.isRequired
+  major: PropTypes.string.isRequired,
+  resume: PropTypes.shape({
+    url: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export const Resumes = {

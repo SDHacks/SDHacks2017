@@ -87,10 +87,12 @@ class ResumeList extends React.Component {
                 </td>
               )}
               <td className="resume-list__value">
-                <button className={`btn rounded-button rounded-button--small
+                <a
+                  href={applicant.resume.url} download
+                  className={`btn rounded-button rounded-button--small
                   ${isCompacted ? 'resume-list__btn--compacted' : ''}`}>
                   Download Resume
-                </button>
+                </a>
               </td>
             </tr>
           )}
