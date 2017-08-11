@@ -64,14 +64,17 @@ class ResumeList extends React.Component {
 
             {Object.values(columns).map(name => this.renderHeader(name))}
 
-            <th className="resume-list__header resume-list__toggle">
-              <ToggleSwitch checked={isCompacted} onChange={onCompactChange} />
-              Compact View:&nbsp;
-              <span className={`resume-list__compacted text-uppercase
-              ${isCompacted ? 'resume-list__compacted--active' :
-              'resume-list__compacted--inactive'}`}>
-                {isCompacted ? 'ON' : 'OFF'}
-              </span>
+            <th className="resume-list__header">
+              <div className="resume-list__toggle">
+                <ToggleSwitch checked={isCompacted}
+                  onChange={onCompactChange} />
+                Compact View:&nbsp;
+                <span className={`resume-list__compacted text-uppercase
+                ${isCompacted ? 'resume-list__compacted--active' :
+                'resume-list__compacted--inactive'}`}>
+                  {isCompacted ? 'ON' : 'OFF'}
+                </span>
+              </div>
             </th>
           </tr>
         </thead>
