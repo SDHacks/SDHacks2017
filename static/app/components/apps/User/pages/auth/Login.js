@@ -1,4 +1,5 @@
 import {Field, reduxForm} from 'redux-form';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {UncontrolledAlert} from 'reactstrap';
@@ -35,7 +36,7 @@ class Login extends React.Component {
       return (
         <div className="user-login__error">
           <UncontrolledAlert color="danger">
-            <strong>{this.props.errorMessage}</strong>
+            {this.props.errorMessage}
           </UncontrolledAlert>
         </div>
       );
@@ -48,23 +49,68 @@ class Login extends React.Component {
     return (
       <form className="user-login"
         onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <div className="user-login__above">
-          {this.renderAlert()}
+        <div className="hexagon-hero__background user-login__background">
+          <div className="hexagon-hero__water"></div>
+          <div className="hexagon-hero__beach"></div>
         </div>
-        <div className="user-login__container">
-          <div className="user-login__username">
-            <Field name="username" className="form-control" component="input"
-              type="text" placeholder="Username" />
+        <div className="user-login__above">
+          <div className="user-login__alerts">
+            {this.renderAlert()}
           </div>
-          <div className="user-login__password">
-            <Field name="password" className="form-control" component="input"
-              type="password" placeholder="Password" />
+          <div className="user-login__header">
+            <Link to="/">
+              <img className="user-login__logo"
+                src="/assets/img/vectors/logo.svg"/>
+            </Link>
+            <span className="user-login__header-text">
+              Applicants
+            </span>
           </div>
-          <button type="submit" className="btn btn-primary user-login__button">
-            Login
-          </button>
+        </div>
+        <div className="user-login__container sd-form">
+          <div className="user-login__username row sd-form__row">
+            <div className="col-12">
+              <label>Username</label>
+              <Field name="username" component="input" type="text"
+                className="form-control sd-form__input-text"
+                placeholder="Username" />
+            </div>
+          </div>
+          <div className="user-login__password row sd-form__row">
+            <div className="col-12">
+              <label>Password</label>
+              <Field name="password" component="input" type="password"
+                className="form-control sd-form__input-text"
+                placeholder="Password" />
+            </div>
+          </div>
+          <div className="row sd-form__row">
+            <div className="col-12">
+              <button type="submit" className={`btn rounded-button
+                rounded-button--small user-login__button`}>
+                Login
+              </button>
+            </div>
+          </div>
         </div>
         <div className="user-login__below">
+          <div className="row sd-form__row">
+            <div className="col-12">
+              <Link to="/apply" className={`btn rounded-button
+                rounded-button--secondary rounded-button--small
+                user-login__apply`}>
+                I don't have an account, I still need to apply
+              </Link>
+            </div>
+          </div>
+          <div className="row sd-form__row">
+            <div className="col-12">
+              <Link to="/user/forgot"
+                className="sd-link__underline user-login__forgot">
+                Forgot your password?
+              </Link>
+            </div>
+          </div>
         </div>
       </form>
     );

@@ -3,6 +3,9 @@ $form-border-radius: 0.6rem;
 .sd-form {
   max-width: 800px;
   margin: auto;
+  color: $dark-blue;
+  font-family: $header-font-family;
+  letter-spacing: 0.05rem;
 
   &__logo {
     max-height: 10rem;
@@ -15,10 +18,7 @@ $form-border-radius: 0.6rem;
 
   &__wrapper {
     background-color: $beach-blue;
-    color: $dark-blue;
     position: relative;
-    font-family: $header-font-family;
-    letter-spacing: 0.05rem;
     min-height: 100%;
   }
 

@@ -1,4 +1,7 @@
 $brand-primary: $primary-color;
+$alert-danger-bg: $accent-red;
+$alert-danger-text: $white;
+$alert-danger-border: darken($alert-danger-bg, 5%);
 
 body {
   background-color: $body-background;
@@ -40,4 +43,22 @@ body {
   td {
     padding: $table-sm-cell-padding $table-cell-padding;
   }
+}
+
+.alert {
+  margin-bottom: 0;
+}
+
+.alert-dismissible .close {
+  padding: 0.5rem 1rem;
+  top: -0.5rem;
+  right: -1rem;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.alert-danger {
+  @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
 }

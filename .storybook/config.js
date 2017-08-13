@@ -8,6 +8,8 @@ function loadStories() {
   require('./stories/admin/resume.js');
 
   require('./stories/apply/index.js');
+
+  require('./stories/user/index.js');
 }
 
 configure(loadStories, module);

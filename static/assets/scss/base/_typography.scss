@@ -35,6 +35,10 @@ a {
   
   &.sd-link__underline {
     border-bottom: 2px solid;
+
+    &:focus {
+      text-decoration: none;
+    }
   }
   &:hover {
     color: $default-blue;
