@@ -183,7 +183,7 @@ class PersonalSection extends React.Component {
       {fields.createRow(
         fields.createColumn('col-lg-6',
           fields.createLabel('Major'),
-          fields.createInput('major', 'Major')
+          fields.createMajorPicker()
         ),
         fields.createColumn('col-lg-6',
           fields.createLabel('Year in School'),
