@@ -1,6 +1,11 @@
+$form-border-radius: 0.6rem;
+
 .sd-form {
   max-width: 800px;
   margin: auto;
+  color: $dark-blue;
+  font-family: $header-font-family;
+  letter-spacing: 0.05rem;
 
   &__logo {
     max-height: 10rem;
@@ -13,11 +18,52 @@
 
   &__wrapper {
     background-color: $beach-blue;
-    color: $dark-blue;
     position: relative;
-    font-family: $header-font-family;
-    letter-spacing: 0.05rem;
     min-height: 100%;
+  }
+
+  &__suggestions-container {
+    z-index: 100;
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 2px;
+    max-height: 10rem;
+    width: calc(100% - 1.75em);
+    border-radius: $form-border-radius;
+
+    &::-webkit-scrollbar {
+      float: left;
+      width: 0.75em;
+      border-radius: $form-border-radius;
+
+      &-track {
+        border-radius: 0 $form-border-radius $form-border-radius 0;
+        background-color: $white;
+      }
+
+      &-thumb {
+        border-radius: $form-border-radius;
+        background-color: $dark-gray;
+      }
+    }
+  }
+
+  &__suggestions-list {
+    list-style: none;
+    background-color: $white;
+    padding: 0 1rem;
+    margin: 0;
+  }
+
+  &__suggestions-suggestion {
+    padding: 0.25rem 1rem 0.25rem 0;
+    background-color: transparent;
+  }
+
+  &__suggestions-link {
+    cursor: pointer;
+    width: 100%;
   }
 
   &__row {
@@ -78,7 +124,7 @@
       background-color: $white;
       border: none;
       outline: none;
-      border-radius: 0.6rem;
+      border-radius: $form-border-radius;
       letter-spacing: 0.05rem;
       margin: 0;
       color: $dark-blue;
@@ -119,6 +165,7 @@
 
     &--error {
       border: 2px solid $alert-color;
+      margin: -2px;
     }
   }
 
@@ -157,7 +204,7 @@
     box-shadow: $extended-shadow;
     height: 250px;
     position: relative;
-    border-radius: 0.6rem;
+    border-radius: $form-border-radius;
     background-color: $white;
 
     label {
@@ -170,7 +217,7 @@
   }
 
   input[type="checkbox"] {
-    border-radius: 0.2rem;
+    
   }
 
   input[type="text"],

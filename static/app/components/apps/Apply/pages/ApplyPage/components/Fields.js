@@ -2,6 +2,8 @@
 import {Field} from 'redux-form';
 import React from 'react';
 
+import majors from '~/static/Majors.json';
+
 /**
  * Defines all of the custom fields for the application.
  * Anything beginning with "error" contains a label which renders the error, and
@@ -156,6 +158,22 @@ creates.errorYearPicker =
       </div>);
   };
 
+creates.errorMajorPicker =
+  function errorMajorPicker({input, className, type,
+    meta: {touched, error}}) {
+    let errorClass = creates.errorClass(className, touched, error);
+
+    return (
+      <div>
+        <select {...input} className={errorClass}
+          type={type}>
+          <option key={-1}></option>
+          {majors.map((major, i) =>
+            <option key={i} value={major}>{major}</option>)}
+        </select>
+        {touched && error && creates.createError(error)}
+      </div>);
+  };
 
 creates.createLabel = function createLabel(text, required=true, className='') {
   return (<label className={required ? 'sd-form__required ' +
@@ -193,6 +211,11 @@ creates.createTShirtSizePicker = function createTShirtSizePicker() {
 creates.createYearPicker = function createYearPicker() {
   return (<Field component={creates.errorYearPicker}
     className="sd-form__input-select" name="year" />);
+};
+
+creates.createMajorPicker = function createMajorPicker() {
+  return (<Field component={creates.errorMajorPicker}
+    className="sd-form__input-select" name="major" />);
 };
 
 creates.createRadio = function createRadio(name, value, label,

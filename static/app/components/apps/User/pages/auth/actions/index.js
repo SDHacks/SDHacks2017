@@ -45,7 +45,8 @@ export function loginUser({username, password}) {
 
       storeLogin(res);
       dispatch({
-        type: Types.AUTH_USER
+        type: Types.AUTH_USER,
+        payload: res.body.user
       });
       deferred.resolve();
     });

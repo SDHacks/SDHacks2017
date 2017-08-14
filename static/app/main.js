@@ -26,8 +26,8 @@ composeEnhancers(
 render(
   <CookiesProvider>
     <Provider store={store}>
-      <div>
-        <LoadingBar className="loading-bar" />
+      <div className="h-100">
+        <LoadingBar updateTime={100} className="loading-bar" />
         <Router>
           {routes}
         </Router>

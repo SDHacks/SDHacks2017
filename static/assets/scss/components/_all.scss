@@ -1,5 +1,7 @@
 // Imports all of the components
 @import 'about';
+@import 'admin-login';
+@import 'admin-sidebar';
 @import 'card';
 @import 'checkbox-button';
 @import 'countdown-hexes';
@@ -14,10 +16,12 @@
 @import 'live-prizes';
 @import 'live-schedule';
 @import 'loading-bar';
-@import 'resume-browser';
+@import 'resume-list';
 @import 'rounded-button';
 @import 'rounded-input';
 @import 'section';
-@import 'sidebar';
+@import 'sidebar-filter';
 @import 'sponsors';
+@import 'toggle-switch';
 @import 'user-checkin';
+@import 'user-login';

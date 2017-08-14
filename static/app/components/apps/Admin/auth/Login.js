@@ -1,16 +1,13 @@
 import {Field, reduxForm} from 'redux-form';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {connect} from 'react-redux';
 import {UncontrolledAlert} from 'reactstrap';
-
-import {loginUser} from './actions';
 
 const form = reduxForm({
   form: 'adminLogin'
 });
 
-class LoginPage extends React.Component {
+class Login extends React.Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   };
@@ -27,9 +24,6 @@ class LoginPage extends React.Component {
    */
   handleFormSubmit(formProps) {
     return this.props.loginUser(formProps)
-    .then(() => {
-      return this.context.router.history.push('/admin/dashboard');
-    })
     .catch((e) => {
       console.error('Could not log in', e);
     });
@@ -42,9 +36,11 @@ class LoginPage extends React.Component {
   renderAlert() {
     if (this.props.errorMessage) {
       return (
-        <UncontrolledAlert color="danger">
-          Could not log in <strong>{this.props.errorMessage}</strong>
-        </UncontrolledAlert>
+        <div className="admin-login__error">
+          <UncontrolledAlert color="danger">
+            <strong>{this.props.errorMessage}</strong>
+          </UncontrolledAlert>
+        </div>
       );
     }
   }
@@ -53,29 +49,29 @@ class LoginPage extends React.Component {
     const {handleSubmit} = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        {this.renderAlert()}
-        <div>
-          <label>Username</label>
-          <Field name="username" className="form-control" component="input"
-            type="text" />
+      <form className="admin-login"
+        onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+        <div className="admin-login__above">
+          {this.renderAlert()}
         </div>
-        <div>
-          <label>Password</label>
-          <Field name="password" className="form-control" component="input"
-            type="password" />
+        <div className="admin-login__container">
+          <div className="admin-login__username">
+            <Field name="username" className="form-control" component="input"
+              type="text" placeholder="Username" />
+          </div>
+          <div className="admin-login__password">
+            <Field name="password" className="form-control" component="input"
+              type="password" placeholder="Password" />
+          </div>
+          <button type="submit" className="btn btn-primary admin-login__button">
+            Login
+          </button>
         </div>
-        <button type="submit" className="btn btn-primary">Login</button>
+        <div className="admin-login__below">
+        </div>
       </form>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    errorMessage: state.admin.auth.error,
-    message: state.admin.auth.message
-  };
-}
-
-export default connect(mapStateToProps, {loginUser})(form(LoginPage));
+export default form(Login);

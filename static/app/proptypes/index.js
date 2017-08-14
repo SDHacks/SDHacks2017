@@ -10,6 +10,12 @@ export const Column = {
   key: PropTypes.bool
 };
 
+export const Filter = {
+  displayName: PropTypes.string.isRequired,
+  enabled: PropTypes.bool.isRequired,
+  options: PropTypes.object.isRequired
+};
+
 export const Admin = {
   _id: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
@@ -17,11 +23,16 @@ export const Admin = {
 };
 
 export const Applicants = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
   university: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  year: PropTypes.number.isRequired,
+  year: PropTypes.string.isRequired,
   gender: PropTypes.string.isRequired,
-  status: PropTypes.string.isRequired,
+  major: PropTypes.string.isRequired,
+  resume: PropTypes.shape({
+    url: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export const Resumes = {
@@ -42,7 +53,7 @@ export const User = {
   food: PropTypes.string,
   website: PropTypes.string,
   github: PropTypes.string,
-  year: PropTypes.number.isRequired,
+  year: PropTypes.string.isRequired,
   university: PropTypes.string.isRequired,
   phone: PropTypes.number.isRequired,
   email: PropTypes.string.isRequired,
@@ -66,5 +77,5 @@ export const User = {
   }).isRequired,
   shareResume: PropTypes.bool,
   categories: PropTypes.arrayOf(PropTypes.string.isRequired),
-  majors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  major: PropTypes.string.isRequired
 };

@@ -8,13 +8,14 @@ html(lang='en-US', prefix="og: http://ogp.me/ns#")
         //- Facebook meta data
         meta(property='og:title', content='SD Hacks 2017')
         meta(property='og:description', content='Official Website of SD Hacks 2017')
-        meta(property='og:image', content='https://www.sdhacks.io/assets/img/logo.png')
-        meta(property='og:image:secure_url', content='https://www.sdhacks.io/assets/img/logo.png')
+        meta(property='og:image', content='https://www.sdhacks.io/assets/img/og/default.png')
+        meta(property='og:image:secure_url', content='https://www.sdhacks.io/assets/img/og/default.png')
         meta(property='og:image:type', content='image/png')
 
         block title
           title SD Hacks 2017 Administration
-        meta(name="theme-color", content="#19A3C5")
+        block theme-color
+            meta(name="theme-color", content="#19A3C5")
         meta(name='description', content='Official Website of SD Hacks 2017')
         meta(name='keywords', content='SD Hacks, 2017, SD Hacks 2017, hackathon, UCSD, UC, University of California San Diego, San Diego')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')

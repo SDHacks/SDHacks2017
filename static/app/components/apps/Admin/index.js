@@ -8,8 +8,6 @@ import {withRouter} from 'react-router-dom';
 import {AUTH_USER} from './auth/actions/types';
 import PrivateRoute from './PrivateRoute';
 import Dashboard from './pages/DashboardPage';
-import HomePage from './pages/HomePage';
-import LoginPage from './auth/Login';
 import Logout from './auth/Logout';
 import NotFoundPage from './pages/NotFound';
 import RegisterPage from './auth/Register';
@@ -34,7 +32,10 @@ class Admin extends React.Component {
     // Check initial authentication
     const {cookies} = this.props;
     if (cookies.get(CookieTypes.admin.token)) {
-      props.dispatch({type: AUTH_USER});
+      props.dispatch({
+        type: AUTH_USER,
+        payload: cookies.get(CookieTypes.admin.user)
+      });
     }
   }
 
@@ -70,16 +71,12 @@ class Admin extends React.Component {
     return (
       <Switch>
         <Route exact path="/admin/"
-          component={this.renderAdmin(HomePage)} />
+          component={this.renderAdmin(Dashboard)} />
         <Route path="/admin/register"
           component={this.renderAdmin(RegisterPage)} />
-        <Route path="/admin/login"
-          component={this.renderAdmin(LoginPage)} />
 
         <PrivateRoute path="/admin/logout"
           component={this.renderAdmin(Logout)} />
-        <PrivateRoute path="/admin/dashboard"
-          component={this.renderAdmin(Dashboard)} />
         <PrivateRoute path="/admin/admins"
           component={this.renderAdmin(AdminsPage)} />
         <PrivateRoute path="/admin/resumes"

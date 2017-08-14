@@ -22,7 +22,8 @@ class ApplyPage extends React.Component {
     this.previousPage = this.previousPage.bind(this);
     this.state = {
       page: 1,
-      error: null
+      error: null,
+      isSubmitting: false
     };
   }
 
@@ -58,6 +59,10 @@ class ApplyPage extends React.Component {
    * @param {Object} values The validated form data.
    */
   onFinalSubmit(values) {
+    this.setState({
+      isSubmitting: true
+    });
+
     // Clean up values
     values.birthdateDay = ('00' + values.birthdateDay)
       .substring(values.birthdateDay.length);
@@ -77,6 +82,11 @@ class ApplyPage extends React.Component {
     .catch((err) => {
       console.error(err);
       this.setState({error: err});
+    })
+    .finally(() => {
+      this.setState({
+        isSubmitting: false
+      });
     });
   }
 
@@ -122,7 +132,8 @@ class ApplyPage extends React.Component {
           {page === 2 && <ResponseSection onSubmit={this.nextPage}
             previousPage={this.previousPage} />}
           {page === 3 && <UserSection onSubmit={this.onFinalSubmit}
-            previousPage={this.previousPage} submitError={this.state.error} />}
+            previousPage={this.previousPage} submitError={this.state.error}
+            isSubmitting={this.state.isSubmitting} />}
           {page === 4 && <SubmittedSection />}
         </div>
       </div>

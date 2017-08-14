@@ -13,10 +13,16 @@ import admins from '~/components/apps/Admin/pages/AdminsPage/reducers/Admins';
 import resumes from
   '~/components/apps/Admin/pages/ResumesPage/reducers/Resumes';
 
+import filters from '~/components/apps/Admin/reducers/Filters';
+
+import general from '~/components/apps/Admin/reducers/General';
+
 export default {
   auth,
   admins,
-  userColumns: userColumns,
+  filters,
+  general,
+  userColumns,
   users,
   resumes,
   dashboardStats,

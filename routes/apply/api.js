@@ -126,7 +126,7 @@ module.exports = function(routes, config) {
       user.email = req.body.email;
       user.phone = req.body.phone;
       user.university = req.body.university;
-      user.majors = [req.body.major];
+      user.major = req.body.major;
       user.year = req.body.year;
       user.github = req.body.github;
       user.website = req.body.website;
@@ -138,8 +138,6 @@ module.exports = function(routes, config) {
         outOfState: req.body.outOfState,
         city: req.body.city
       };
-      user.firstHackathon = req.body.firstHackathon;
-      user.outcomeStmt = req.body.outcomeStmt;
       user.teammates = [];
 
       if (req.body.team1) {

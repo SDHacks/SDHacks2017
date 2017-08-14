@@ -109,8 +109,6 @@ var UserSchema = new Schema({
     type: Boolean,
     default: false
   },
-  firstHackathon: Boolean,
-  outcomeStmt: String, //What they hope their outcome of the hackathon will be
   teammates: [{type: String, match:
   [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
     'You must use a valid email']}],

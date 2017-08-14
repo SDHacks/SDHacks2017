@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {storiesOf} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
-import {withKnobs} from '@storybook/addon-knobs'
-import {withSmartKnobs} from 'storybook-addon-smart-knobs'
+import {withKnobs} from '@storybook/addon-knobs';
 import {MemoryRouter} from 'react-router';
 import {Provider} from 'react-redux';
 
@@ -15,8 +14,19 @@ import ResponseSection from '~/components/apps/Apply/pages/ApplyPage/components/
 import SubmittedSection from '~/components/apps/Apply/pages/ApplyPage/components/SubmittedSection';
 import UserSection from '~/components/apps/Apply/pages/ApplyPage/components/UserSection';
 
-storiesOf('Application Form', module)
-  .addDecorator(withSmartKnobs)
+storiesOf('Application Form/Layout', module)
+  .addDecorator(story => (
+    <div className="sd-form__wrapper">
+      <div className="sd-form">
+        {story()}
+      </div>
+    </div>
+  ))
+  .add('Form Header', () => (
+    <Header />
+  ));
+
+storiesOf('Application Form/Sections', module)
   .addDecorator(withKnobs)
   .addDecorator(story => (
     <Provider store={Store}>
@@ -26,9 +36,6 @@ storiesOf('Application Form', module)
         </div>
       </div>
     </Provider>
-  ))
-  .add('Form Header', () => (
-    <Header />
   ))
   .add('Personal Section', () => (
     <PersonalSection onSubmit={action('Submitted')} reset={action('Reset')} />

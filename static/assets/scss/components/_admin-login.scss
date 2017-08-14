@@ -1,0 +1,41 @@
+.admin-login {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      max-width: 20rem;
+    }
+  }
+
+  &__above {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__below {
+    flex: 1;
+  }
+
+  &__button {
+    background-color: $admin-dark-blue;
+    border-color: $admin-dark-blue;
+    width: 100%;
+
+    &:hover {
+      background-color: $admin-dark-blue;
+      border-color: $admin-dark-blue;
+      cursor: pointer;
+    }
+  }
+}

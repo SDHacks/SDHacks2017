@@ -1,16 +1,14 @@
 import {Field, reduxForm} from 'redux-form';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {connect} from 'react-redux';
 import {UncontrolledAlert} from 'reactstrap';
 
-import {loginUser} from './actions';
-
 const form = reduxForm({
-  form: 'login'
+  form: 'userLogin'
 });
 
-class LoginPage extends React.Component {
+class Login extends React.Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   };
@@ -22,28 +20,25 @@ class LoginPage extends React.Component {
   };
 
   /**
-   * Handles the login form after validation.
-   * @param {Object} formProps The values of the login form.
+   * Handles the validated form data, and logs the user in.
+   * @param {Object} formProps The validated form data.
    */
   handleFormSubmit(formProps) {
-    return this.props.loginUser(formProps)
-    .then(() => {
-      return this.context.router.history.push('/admin/dashboard');
-    })
-    .catch((e) => {
-      console.error('Could not log in', e);
-    });
+    this.props.loginUser(formProps);
   }
 
   /**
-   * Renders a login error if one is in the props.
+   * Creates a new error alert if there was a login error
+   * @returns {Component}
    */
   renderAlert() {
     if (this.props.errorMessage) {
       return (
-        <UncontrolledAlert color="danger">
-          Could not log in <strong>{this.props.errorMessage}</strong>
-        </UncontrolledAlert>
+        <div className="user-login__error">
+          <UncontrolledAlert color="danger">
+            {this.props.errorMessage}
+          </UncontrolledAlert>
+        </div>
       );
     }
   }
@@ -52,29 +47,74 @@ class LoginPage extends React.Component {
     const {handleSubmit} = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        {this.renderAlert()}
-        <div>
-          <label>Username</label>
-          <Field name="username" className="form-control" component="input"
-            type="text" />
+      <form className="user-login"
+        onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+        <div className="hexagon-hero__background user-login__background">
+          <div className="hexagon-hero__water"></div>
+          <div className="hexagon-hero__beach"></div>
         </div>
-        <div>
-          <label>Password</label>
-          <Field name="password" className="form-control" component="input"
-            type="password" />
+        <div className="user-login__above">
+          <div className="user-login__alerts">
+            {this.renderAlert()}
+          </div>
+          <div className="user-login__header">
+            <a href="/">
+              <img className="user-login__logo"
+                src="/assets/img/vectors/logo.svg"/>
+            </a>
+            <span className="user-login__header-text">
+              Applicants
+            </span>
+          </div>
         </div>
-        <button type="submit" className="btn btn-primary">Login</button>
+        <div className="user-login__container sd-form">
+          <div className="user-login__username row sd-form__row">
+            <div className="col-12">
+              <label>Username</label>
+              <Field name="username" component="input" type="text"
+                className="form-control sd-form__input-text"
+                placeholder="Username" />
+            </div>
+          </div>
+          <div className="user-login__password row sd-form__row">
+            <div className="col-12">
+              <label>Password</label>
+              <Field name="password" component="input" type="password"
+                className="form-control sd-form__input-text"
+                placeholder="Password" />
+            </div>
+          </div>
+          <div className="row sd-form__row">
+            <div className="col-12">
+              <button type="submit" className={`btn rounded-button
+                rounded-button--small user-login__button`}>
+                Login
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="user-login__below">
+          <div className="row sd-form__row">
+            <div className="col-12">
+              <Link to="/apply" className={`btn rounded-button
+                rounded-button--secondary rounded-button--small
+                user-login__apply`}>
+                I don't have an account, I still need to apply
+              </Link>
+            </div>
+          </div>
+          <div className="row sd-form__row">
+            <div className="col-12">
+              <Link to="/user/forgot"
+                className="sd-link__underline user-login__forgot">
+                Forgot your password?
+              </Link>
+            </div>
+          </div>
+        </div>
       </form>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    errorMessage: state.admin.auth.error,
-    message: state.admin.auth.message
-  };
-}
-
-export default connect(mapStateToProps, {loginUser})(form(LoginPage));
+export default form(Login);
