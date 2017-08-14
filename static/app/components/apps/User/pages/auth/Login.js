@@ -58,10 +58,10 @@ class Login extends React.Component {
             {this.renderAlert()}
           </div>
           <div className="user-login__header">
-            <Link to="/">
+            <a href="/">
               <img className="user-login__logo"
                 src="/assets/img/vectors/logo.svg"/>
-            </Link>
+            </a>
             <span className="user-login__header-text">
               Applicants
             </span>
