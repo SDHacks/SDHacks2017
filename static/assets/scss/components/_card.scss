@@ -17,14 +17,14 @@
   }
 
   &__img {
-    height: 184px;
+    height: 188px;
 
     &-novelty {
       position: relative;
-      top: -64px;
+      top: -72px;
 
       img {
-        height: 228px;
+        height: 250px;
       }
     }
     @include media-breakpoint-down(md) {
@@ -40,7 +40,7 @@
       }
     }
     &-collaboration {
-      padding-top: 16px;
+      padding-top: 8px;
     }
   }
   &__faq {
