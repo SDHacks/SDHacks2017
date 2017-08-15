@@ -2,7 +2,7 @@ import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {UncontrolledAlert} from 'reactstrap';
+import {Alert} from 'reactstrap';
 
 const form = reduxForm({
   form: 'userLogin'
@@ -18,6 +18,27 @@ class Login extends React.Component {
     handleSubmit: PropTypes.func.isRequired,
     errorMessage: PropTypes.string,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isErrorVisible: false
+    };
+  }
+
+  componentWillReceiveProps(newProps) {
+    // Show error message if new one appears
+    if (newProps.errorMessage) {
+      this.setState({
+        isErrorVisible: true
+      });
+    }
+  }
+
+  dismissError = () => this.setState({
+    isErrorVisible: false
+  });
 
   /**
    * Handles the validated form data, and logs the user in.
@@ -35,9 +56,10 @@ class Login extends React.Component {
     if (this.props.errorMessage) {
       return (
         <div className="user-login__error">
-          <UncontrolledAlert color="danger">
+          <Alert color="danger" isOpen={this.state.isErrorVisible}
+            toggle={this.dismissError}>
             {this.props.errorMessage}
-          </UncontrolledAlert>
+          </Alert>
         </div>
       );
     }

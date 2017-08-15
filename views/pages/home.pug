@@ -12,7 +12,7 @@ block content
     .hexagon-hero__container.container.align-self-center
       .hidden-sm-down
         .row
-          .col-md-7
+          .col-md-8
             img.hexagon-hero__logo(src='/assets/img/vectors/logo.svg')
             .hexagon-hero__text
               h1.hexagon-hero__title Build your dreams.
@@ -20,10 +20,10 @@ block content
               .hexagon-hero__subtitle October 20-22, 2017
               .hexagon-hero__subsubtitle Applications open August 20th
               .hexagon-hero__nav
-                +get-updates
-                //- input.hexagon-hero__nav-button.btn.rounded-button(type='button', value='Apply')
-                //- input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type='button', value='Volunteer')
-          .col-md-5
+                //- +get-updates
+                a.btn.rounded-button.hexagon-hero__nav-button(href='/apply') Apply
+                //- a.btn.rounded-button.rounded-button--secondary(href='/volunteer') Volunteer
+          .col-md-4
             img.hexagon-hero__featurette(src='/assets/img/site/featurette-hero.svg')
 
       .hidden-md-up.d-flex.flex-column
@@ -33,9 +33,9 @@ block content
         .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile October 20-22, 2017
         .hexagon-hero__subsubtitle Applications open August 7th
         .hexagon-hero__nav.hexagon-hero__nav--mobile
-          +get-updates
-          //- input.hexagon-hero__nav-button.btn.rounded-button(type='button', value='Apply')
-          //- input.hexagon-hero__nav-button.btn.rounded-button.rounded-button--secondary(type='button', value='Volunteer')
+          //- +get-updates
+          a.btn.rounded-button.hexagon-hero__nav-button(href='/apply') Apply
+          //- a.btn.rounded-button.rounded-button--secondary(href='/volunteer') Volunteer
 
   .sd-section.sd-about#sd-about
     .sd-about__background
