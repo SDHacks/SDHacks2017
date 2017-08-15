@@ -15,7 +15,7 @@
     max-width: none;
   }
 
-  &:hover {
+  &:hover, &:focus {
     color: $white;
     background-color: darken($primary-color, 3%);
   }

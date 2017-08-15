@@ -9,7 +9,7 @@ import {AUTH_USER} from './pages/auth/actions/types';
 import PrivateRoute from './PrivateRoute';
 import LoginPage from './pages/LoginPage';
 import Logout from './pages/auth/Logout';
-import UserPage from './pages/UserPage';
+import UserPage from './pages/UserPage/index';
 
 import CookieTypes from '~/static/Cookies';
 

@@ -8,14 +8,6 @@ class ToggleSwitch extends React.Component {
     onChange: PropTypes.func
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isChecked: props.checked
-    };
-  }
-
   componentWillMount() {
     this.setState({
       id: UUID.v4()
@@ -26,10 +18,7 @@ class ToggleSwitch extends React.Component {
    * Toggles the checkbox value
    */
   toggle = () => {
-    let newState = !this.state.isChecked;
-    this.setState({
-      isChecked: newState
-    });
+    let newState = !this.props.checked;
 
     if (this.props.onChange) {
       this.props.onChange(newState);
