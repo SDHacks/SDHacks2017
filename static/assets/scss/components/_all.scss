@@ -1,8 +1,15 @@
 // Imports all of the components
+
+// General components
+@import 'rounded-button';
+@import 'rounded-input';
+@import 'card';
+@import 'section';
+
+// Specific pages
 @import 'about';
 @import 'admin-login';
 @import 'admin-sidebar';
-@import 'card';
 @import 'checkbox-button';
 @import 'countdown-hexes';
 @import 'faq';
@@ -17,9 +24,6 @@
 @import 'live-schedule';
 @import 'loading-bar';
 @import 'resume-list';
-@import 'rounded-button';
-@import 'rounded-input';
-@import 'section';
 @import 'sidebar-filter';
 @import 'sponsors';
 @import 'toggle-switch';
