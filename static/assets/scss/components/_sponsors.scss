@@ -19,13 +19,20 @@
     display: inline-block;
     margin: 12px 15px;
   }
-  &__sponsor {
-    max-width: 140px;
+  &__bronze {
+    .sd-sponsors__sponsor {
+      max-width: 140px;
 
-    &-att {
-      max-width: 100px;
+      &-att {
+        max-width: 100px;
+      }
+      &-a16z {
+      }
     }
-    &-a16z {
+  }
+  &__platinum {
+    .sd-sponsors__sponsor {
+      max-width: 400px;
     }
   }
 }
