@@ -2,7 +2,7 @@ import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Alert} from 'reactstrap';
+import {Alert, UncontrolledAlert} from 'reactstrap';
 
 const form = reduxForm({
   form: 'userLogin'
@@ -17,6 +17,10 @@ class Login extends React.Component {
     loginUser: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     errorMessage: PropTypes.string,
+    alerts: PropTypes.arrayOf(PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired
+    }).isRequired).isRequired
   };
 
   constructor(props) {
@@ -49,10 +53,26 @@ class Login extends React.Component {
   }
 
   /**
-   * Creates a new error alert if there was a login error
+   * Creates a new alert at the top of the page.
+   * @param {String} type The type of alert to display.
+   * @param {String} text The text of the alert.
+   * @return {Component}
+   */
+  renderAlert(type, text) {
+    return (
+      <div key={text} className="user-login__alert">
+        <UncontrolledAlert color={type}>
+          {text}
+        </UncontrolledAlert>
+      </div>
+    );
+  }
+
+  /**
+   * Creates a new error alert if there was a login error.
    * @returns {Component}
    */
-  renderAlert() {
+  renderErrorAlert() {
     if (this.props.errorMessage) {
       return (
         <div className="user-login__error">
@@ -66,7 +86,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const {handleSubmit} = this.props;
+    const {handleSubmit, alerts} = this.props;
 
     return (
       <form className="user-login"
@@ -77,7 +97,8 @@ class Login extends React.Component {
         </div>
         <div className="user-login__above">
           <div className="user-login__alerts">
-            {this.renderAlert()}
+            {this.renderErrorAlert()}
+            {alerts.map(({type, text}) => this.renderAlert(type, text))}
           </div>
           <div className="user-login__header">
             <a href="/">

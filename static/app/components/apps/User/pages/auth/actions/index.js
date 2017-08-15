@@ -20,7 +20,7 @@ export function errorHandler(dispatch, error, type) {
   if (error.status === 401) {
     dispatch({
       type: type,
-      payload: 'The username or password you entered was not correct.'
+      payload: 'Unable to log in with that username and password.'
     });
     logoutUser();
   } else {

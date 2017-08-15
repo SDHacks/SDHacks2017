@@ -20,7 +20,8 @@ const jwtOptions = {
 };
 
 const returnMessages = {
-  INCORRECT_LOGIN: 'Your login details could not be verified. Please try again.'
+  INCORRECT_LOGIN: 'Your login details could not be verified. Please try again.',
+  NOT_CONFIRMED: 'You have not yet confirmed this account'
 };
 
 const userLogin = new LocalStrategy(localOptions,
@@ -31,6 +32,10 @@ function(username, password, done) {
     }
     if (!user) {
       return done(null, false, {error: returnMessages.INCORRECT_LOGIN});
+    }
+
+    if (!user.confirmed) {
+      return done(null, false, {error: returnMessages.NOT_CONFIRMED});
     }
 
     user.comparePassword(password, function(err, isMatch) {

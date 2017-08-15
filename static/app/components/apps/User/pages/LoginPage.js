@@ -10,9 +10,26 @@ class LoginPage extends React.Component {
   static propTypes = {
     history: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
 
     loginUser: PropTypes.func.isRequired,
     loginError: PropTypes.string.isRequired
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      alerts: []
+    };
+
+    if (props.location.hash === '#confirmed') {
+      this.state = {
+        alerts: [...this.state.alerts, {
+          type: 'success',
+          text: 'You have successfully confirmed your account'
+        }]
+      };
+    }
   };
 
   loginUser = (formProps) => {
@@ -28,7 +45,8 @@ class LoginPage extends React.Component {
     let {loginError} = this.props;
 
     return (
-      <Login loginUser={this.loginUser} errorMessage={loginError} />
+      <Login loginUser={this.loginUser} errorMessage={loginError}
+        alerts={this.state.alerts ? this.state.alerts : []} />
     );
   }
 }
