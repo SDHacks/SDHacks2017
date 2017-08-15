@@ -1,5 +1,4 @@
 .rounded-button {
-  // TODO: normalize this class to override default Bootstrap buttons
   font-family: $input-font-family;
   width: 100%;
   max-width: 15rem;
@@ -17,6 +16,7 @@
   }
 
   &:hover {
+    color: $white;
     background-color: darken($primary-color, 3%);
   }
 

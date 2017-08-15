@@ -31,10 +31,17 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
+export function removeError(dispatch) {
+  dispatch({
+    type: Types.REMOVE_ERROR
+  });
+}
+
 export function loginUser({username, password}) {
   return function(dispatch) {
     // Make the event return a promise
     var deferred = Q.defer();
+    removeError(dispatch);
 
     Auth.login(username, password)
     .end((err, res) => {

@@ -54,8 +54,11 @@
   }
 
   &__error {
-    margin: 0 auto -2rem;
     font-family: $header-font-family;
+    
+    @include media-breakpoint-up(md) {
+      margin: 0 auto -2rem;
+    }
   }
 
   &__forgot {
