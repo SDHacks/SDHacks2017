@@ -26,7 +26,8 @@ const returnMessages = {
 
 const userLogin = new LocalStrategy(localOptions,
 function(username, password, done) {
-  User.findOne({username: username}, function(err, user) {
+  User.findOne({username: {$regex : new RegExp(username, 'i')}},
+  function(err, user) {
     if (err) {
       return done(err);
     }
