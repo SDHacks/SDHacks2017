@@ -175,6 +175,8 @@ module.exports = function(routes, config) {
             }
             return userError('Failed due to database error');
           }
+          console.log(req.protocol + '://' + req.get('host') +
+              '/confirm/' + user._id);
 
           return confirmSender({
             to: user.email,
@@ -186,6 +188,7 @@ module.exports = function(routes, config) {
           },
           function(err) {
             if (err) {
+              console.error(err);
               return userError('Failed to send email confirmation');
             }
 
