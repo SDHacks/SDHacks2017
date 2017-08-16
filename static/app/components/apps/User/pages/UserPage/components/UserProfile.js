@@ -6,12 +6,27 @@ import ToggleSwitch from '~/components/ToggleSwitch';
 
 class UserProfile extends React.Component {
   static propTypes = {
+    pristine: PropTypes.bool.isRequired,
+    reset: PropTypes.bool.isRequired,
+    submitting: PropTypes.bool.isRequired,
+
     user: PropTypes.object.isRequired
   };
 
   transportToggle = ({input}) =>
     <ToggleSwitch checked={Boolean(input.value)}
       onChange={input.onChange} />;
+
+  genderSelect = ({input, className}) => {
+    let genders = [
+      'Male', 'Female', 'Non-Binary', 'I prefer not to say', 'Other'
+    ];
+
+    return (<select {...input} className={className}>
+      {genders.map((gender, i) =>
+        <option key={i} value={gender}>{gender}</option>)}
+    </select>);
+  };
 
   shirtSizeSelect = ({input, className}) => {
     let sizes = [
@@ -98,21 +113,24 @@ class UserProfile extends React.Component {
         &nbsp; I am requesting transportation to attend
       </h5>
       <div className="row mt-3">
-        <div className="col-md-6">
+        <div className="col-md-6 mb-3">
+          <h5>Gender:</h5>
+          <Field component={this.genderSelect} name="gender"
+            className="sd-form__input-select user-profile__select" />
+        </div>
+        <div className="col-md-6 mb-3">
           <h5>T-Shirt Size (Unisex):</h5>
           <Field component={this.shirtSizeSelect} name="shirtSize"
             className="sd-form__input-select user-profile__select" />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 mb-3">
           <h5>Github Username:</h5>
           <Field component="input" name="github" type="text"
             className={`sd-form__input-text user-profile__input
             user-profile__github`}
             placeholder="GithubUser" />
         </div>
-      </div>
-      <div className="row mt-4">
-        <div className="col-md-6">
+        <div className="col-md-6 mb-3">
           <h5>Personal Website:</h5>
           <Field component="input" type="text" name="website"
             className={`sd-form__input-text user-profile__input
@@ -144,15 +162,23 @@ class UserProfile extends React.Component {
   );
 
   render() {
-    let {user} = this.props;
+    let {user, pristine, submitting} = this.props;
 
     return (
       <form className="user-profile">
-        <h1 className="user-profile__hello">
-          Hello, <span className="user-profile__name">
-            {user.firstName} {user.lastName}
-          </span>!
-        </h1>
+        <div className="user-profile__header">
+          <h1 className="user-profile__hello">
+            Hello, <span className="user-profile__name">
+              {user.firstName} {user.lastName}
+            </span>!
+          </h1>
+          <div className={`user-profile__apply ${pristine ?
+            'user-profile__apply--hidden' : ''}`}>
+            <input type="submit" value="Update"
+              className="btn rounded-button rounded-button--small"
+              disabled={pristine || submitting} />
+          </div>
+        </div>
 
         <div className="user-profile__form">
           <div className="user-profile__column user-profile__column--left">

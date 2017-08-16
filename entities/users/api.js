@@ -2,25 +2,19 @@ const passport = require('passport');
 
 const requireAuth = passport.authenticate('userJwt', {session: false});
 
+const editableFields = [
+  'firstName', 'lastName', 'university', 'email', 'phone', 'teammates',
+  'food', 'diet', 'travel', 'shirtSize', 'github', 'website', 'resume',
+  'shareResume', 'gender'
+];
+
 module.exports = function(routes, config) {
   routes.get('/current', requireAuth, function(req, res) {
     var user = req.user;
-    var outputUser = {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      university: user.university,
-      email: user.email,
-      phone: user.phone,
-      teammates: user.teammates,
-      food: user.food,
-      diet: user.diet,
-      travel: user.travel,
-      shirtSize: user.shirtSize,
-      github: user.github,
-      website: user.website,
-      resume: user.resume,
-      shareResume: user.shareResume
-    };
+    var outputUser = {};
+    editableFields.forEach(function(field) {
+      outputUser[field] = user[field];
+    });
     return res.json(outputUser);
   });
 

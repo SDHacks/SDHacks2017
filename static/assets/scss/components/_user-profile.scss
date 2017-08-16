@@ -15,8 +15,13 @@
     font-size: 0.9rem;
   }
 
+  &__header {
+    display: flex;
+  }
+
   &__hello {
     margin-bottom: 3rem;
+    flex: 1;
 
     @include media-breakpoint-down(sm) {
       font-size: 1.75rem;
@@ -25,8 +30,22 @@
     }
   }
 
+  &__apply {
+    flex-grow: 1;
+    text-align: right;
+    opacity: 1;
+    visibility: visible;
+    transition: visibility 0.2s linear 0s, opacity 0.2s linear;
+
+    &--hidden {
+      transition: visibility 0s linear 0.2s, opacity 0.2s linear;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
   &__name {
-    border-bottom: 3px solid;
+    font-weight: bold;
   }
 
   &__form {

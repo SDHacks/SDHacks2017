@@ -61,7 +61,7 @@ class ResponseSection extends React.Component {
           fields.createRadio('outOfState', false, 'No')
         ),
         fields.createColumn('col-lg-6',
-          fields.createLabel('T-Shirt Size'),
+          fields.createLabel('T-Shirt Size (Unisex)'),
           fields.createTShirtSizePicker()
         )
       )}

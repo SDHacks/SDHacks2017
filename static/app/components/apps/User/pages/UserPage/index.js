@@ -30,14 +30,16 @@ class UserPage extends React.Component {
   }
 
   /**
-   * Creates a new error alert if there was a login error
+   * Creates a new error alert if there was a login error.
+   * @param {String} message The message to display in the alert.
+   * @param {String} type The type of alert to show.
    * @returns {Component}
    */
-  renderAlert(message) {
+  renderAlert(message, type='danger') {
     if (message) {
       return (
         <div className="user-page__error">
-          <UncontrolledAlert color="danger">
+          <UncontrolledAlert color={type}>
             <div className="container">
               {message}
             </div>
@@ -58,7 +60,7 @@ class UserPage extends React.Component {
         </div>
         <div className="user-page__above">
           <div className="user-page__alerts">
-            {this.renderAlert('This is an example warning.')}
+
           </div>
           <div className="user-page__header">
             <a href="/">
