@@ -201,6 +201,23 @@ $form-border-radius: $global-radius;
       background: url('../img/site/featurette-high-school.png') no-repeat center center;
       background-size: 55%;
     }
+
+    @include media-breakpoint-down(md) {
+      height: 4rem;
+
+      &#institution-radio-ucsd {
+        background: url('../img/site/featurette-ucsd.png') no-repeat 1rem center;
+        background-size: 15%;
+      }
+      &#institution-radio-uni {
+        background: url('../img/site/featurette-university.svg') no-repeat 1rem center;
+        background-size: 15%;
+      }
+      &#institution-radio-hs {
+        background: url('../img/site/featurette-high-school.png') no-repeat 1rem center;
+        background-size: 15%;
+      }
+    }
   }
 
   &__institution-card {
@@ -217,6 +234,17 @@ $form-border-radius: $global-radius;
       text-align: center;
       display: block;
       pointer-events: none;
+    }
+    @include media-breakpoint-down(md) {
+      height: 4rem;
+      // Offset row bottom margin
+      margin-bottom: -0.6rem;
+
+      label {
+        text-align: left;
+        padding-left: 5.6rem;
+        bottom: 1rem;
+      }
     }
   }
 
