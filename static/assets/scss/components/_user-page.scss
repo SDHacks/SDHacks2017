@@ -28,6 +28,23 @@
     display: flex;
     align-items: center;
     align-self: flex-start;
+    width: 100%;
+
+    &-left {
+      flex: 1;
+    }
+
+    &-right {
+      flex: 1;
+    }
+
+    &-center {
+      flex: 2;
+    }
+  }
+
+  &__logout {
+    margin-left: 4rem;
   }
 
   &__header-text {
@@ -39,6 +56,34 @@
   &__logo {
     max-height: 3rem;
     margin: .5rem .75rem .75rem $left-padding;
+  }
+
+  &__nav {
+    text-align: right;
+    font-family: $header-font-family;
+    font-size: 1.2rem;
+  }
+
+  &__status {
+    &--accepted {
+      color: $default-green;
+    }
+
+    &--rejected, &--declined, &--late {
+      color: $default-red;
+    }
+
+    &--waitlisted {
+      color: $default-blue;
+    }
+
+    &--unconfirmed {
+      color: $default-purple;
+    }
+
+    &--applied {
+      color: $default-purple;
+    }
   }
 
   &__alerts {

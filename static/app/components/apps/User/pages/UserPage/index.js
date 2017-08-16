@@ -1,6 +1,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {UncontrolledAlert} from 'reactstrap';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
@@ -49,6 +50,38 @@ class UserPage extends React.Component {
     }
   }
 
+
+  /**
+   * Renders the status for the navigation bar.
+   * @param {String} status The status of the user in the database.
+   * @returns {Component}
+   */
+  renderUserStatus(status) {
+    // If there is no status
+    if (!status) {
+      status = 'Applied';
+    }
+    let button = <span></span>;
+
+    switch (status) {
+    case ('Unconfirmed'):
+    case ('Confirmed'):
+      button = (<button type="button" className={`btn rounded-button
+        rounded-button--small rounded-button--short user-page__rsvp`}>
+        RSVP
+      </button>);
+    };
+
+    return (<span>
+      Status:&nbsp;
+      <span className={`user-page__status
+        user-page__status--${status.toLowerCase()}`}>
+        {status}
+      </span>
+      {button}
+    </span>);
+  }
+
   render() {
     let {user} = this.props;
 
@@ -63,13 +96,24 @@ class UserPage extends React.Component {
 
           </div>
           <div className="user-page__header">
-            <a href="/">
-              <img className="user-page__logo"
-                src="/assets/img/vectors/logo.svg"/>
-            </a>
-            <span className="user-page__header-text">
-              Your Application
-            </span>
+            <div className="user-page__header-left">
+              <a href="/">
+                <img className="user-page__logo"
+                  src="/assets/img/vectors/logo.svg"/>
+              </a>
+              <span className="user-page__header-text">
+                Your Application
+              </span>
+            </div>
+            <div className="user-page__header-center">
+              <div className="user-page__nav container">
+                {this.renderUserStatus(user.status)}
+                <Link to="/logout"
+                  className="sd-link__underline user-page__logout">Logout</Link>
+              </div>
+            </div>
+            <div className="user-page__header-right">
+            </div>
           </div>
         </div>
 

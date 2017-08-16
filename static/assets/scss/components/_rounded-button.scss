@@ -24,6 +24,11 @@
     font-size: 1.0rem;
   }
 
+  &--short {
+    width: inherit;
+    padding: 0.6rem 1rem;
+  }
+
   &--secondary {
     background-color: $accent-purple;
 
