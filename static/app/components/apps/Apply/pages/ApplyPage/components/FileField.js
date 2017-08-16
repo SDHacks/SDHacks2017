@@ -31,7 +31,6 @@ export default class FileField extends React.Component {
     onChange(eventOrValue); // update value
   }
 
-
   render() {
     let {input, meta: {touched, error}} = this.props;
     let {accept, multiple} = this.props;
