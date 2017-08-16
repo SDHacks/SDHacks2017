@@ -19,6 +19,8 @@ class UserPage extends React.Component {
   };
 
   componentWillMount() {
+    document.body.classList.add('user-page__body');
+
     let {showLoading, hideLoading, getCurrentUser} = this.props;
 
     showLoading();
@@ -28,6 +30,10 @@ class UserPage extends React.Component {
       hideLoading();
     })
     .catch(console.error);
+  }
+
+  componentWillUnmount () {
+    document.body.classList.remove('user-page__body');
   }
 
   /**
@@ -96,23 +102,17 @@ class UserPage extends React.Component {
 
           </div>
           <div className="user-page__header">
-            <div className="user-page__header-left">
-              <a href="/">
-                <img className="user-page__logo"
-                  src="/assets/img/vectors/logo.svg"/>
-              </a>
-              <span className="user-page__header-text">
-                Your Application
-              </span>
-            </div>
-            <div className="user-page__header-center">
-              <div className="user-page__nav container">
-                {this.renderUserStatus(user.status)}
-                <Link to="/logout"
-                  className="sd-link__underline user-page__logout">Logout</Link>
-              </div>
-            </div>
-            <div className="user-page__header-right">
+            <a href="/">
+              <img className="user-page__logo"
+                src="/assets/img/vectors/logo.svg"/>
+            </a>
+            <span className="user-page__header-text">
+              Your Application
+            </span>
+            <div className="user-page__nav container">
+              {this.renderUserStatus(user.status)}
+              <Link to="/logout"
+                className="sd-link__underline user-page__logout">Logout</Link>
             </div>
           </div>
         </div>

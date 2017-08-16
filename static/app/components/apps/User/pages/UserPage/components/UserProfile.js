@@ -56,11 +56,11 @@ class UserProfile extends React.Component {
       to request a change.
 
       <div className="user-profile__school row">
-        <div className="col-4 col-md-3">
+        <div className="col-4 col-md-6 col-lg-3">
           <img className="user-profile__school-image"
             src="/assets/img/site/featurette-ucsd.svg" />
         </div>
-        <div className="col-8 col-md-9 user-profile__school-info">
+        <div className="col-8 col-md-6 col-lg-9 user-profile__school-info">
           <div>School: </div>
           <div className="user-profile__school-name">
             {user.university}
@@ -113,24 +113,24 @@ class UserProfile extends React.Component {
         &nbsp; I am requesting transportation to attend
       </h5>
       <div className="row mt-3">
-        <div className="col-md-6 mb-3">
+        <div className="col-lg-6 mb-3">
           <h5>Gender:</h5>
           <Field component={this.genderSelect} name="gender"
             className="sd-form__input-select user-profile__select" />
         </div>
-        <div className="col-md-6 mb-3">
+        <div className="col-lg-6 mb-3">
           <h5>T-Shirt Size (Unisex):</h5>
           <Field component={this.shirtSizeSelect} name="shirtSize"
             className="sd-form__input-select user-profile__select" />
         </div>
-        <div className="col-md-6 mb-3">
+        <div className="col-lg-6 mb-3">
           <h5>Github Username:</h5>
           <Field component="input" name="github" type="text"
             className={`sd-form__input-text user-profile__input
             user-profile__github`}
             placeholder="GithubUser" />
         </div>
-        <div className="col-md-6 mb-3">
+        <div className="col-lg-6 mb-3">
           <h5>Personal Website:</h5>
           <Field component="input" type="text" name="website"
             className={`sd-form__input-text user-profile__input
@@ -139,13 +139,13 @@ class UserProfile extends React.Component {
         </div>
       </div>
       <div className="row mt-4">
-        <div className="col-md-6">
+        <div className="col-lg-6">
           <a href={user.resume ? user.resume.url : ''} download
             className="btn rounded-button rounded-button--small">
             View Current Resume
           </a>
         </div>
-        <div className="col-md-6">
+        <div className="col-lg-6 mt-3 mt-lg-0">
           <a href="#" className={`btn rounded-button rounded-button--small
             rounded-button--secondary`}>
             Upload New Resume
@@ -175,7 +175,7 @@ class UserProfile extends React.Component {
           <div className={`user-profile__apply ${pristine ?
             'user-profile__apply--hidden' : ''}`}>
             <input type="submit" value="Update"
-              className="btn rounded-button rounded-button--small"
+              className="btn rounded-button rounded-button--small mb-3 mb-md-0"
               disabled={pristine || submitting} />
           </div>
         </div>
