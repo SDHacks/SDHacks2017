@@ -1,4 +1,8 @@
+var crypto = require('crypto');
+
 const passport = require('passport');
+var multer = require('multer');
+var mime = require('mime');
 
 const requireAuth = passport.authenticate('userJwt', {session: false});
 
@@ -11,74 +15,68 @@ const readOnlyFields = [
   'status', 'firstName', 'lastName', 'university', 'email', 'phone'
 ];
 
+var storage = multer.diskStorage({
+  dest: 'public/uploads/',
+  filename(req, file, cb) {
+    return crypto.pseudoRandomBytes(16, (err, raw) =>
+      cb(null, raw.toString('hex') + '.' + mime.extension(file.mimetype)));
+  }
+});
+
+var upload = multer({
+  storage,
+  //5MB file size
+  limits: {fileSize: 5 * 1024 * 1024}
+});
+
 module.exports = function(routes, config) {
-  routes.get('/current', requireAuth, function(req, res) {
-    var user = req.user;
+  var User = require('./model');
+
+  function outputCurrentUser(user) {
     var outputUser = {};
     [... editableFields, ...readOnlyFields].forEach(function(field) {
       outputUser[field] = user[field];
     });
-    return res.json(outputUser);
+    return outputUser;
+  }
+
+  routes.get('/current', requireAuth, function(req, res) {
+    var user = req.user;
+    return res.json(outputCurrentUser(user));
   });
 
-  // Edit
-  routes.post('/edit', requireAuth, function(req, res) {
-    var trackEdit = (user, field, from, to) =>
-      console.log(`/users/edit: User '${user.firstName} ${user.lastName} 
-        changed field ${field} from ${from} to ${to}`);
-    return User.findById(req.params.id, function(e, user) {
+  routes.post('/update', upload.single('resume'), requireAuth,
+  function(req, res) {
+    var user = req.user;
+    const delta = req.body;
+    console.log(`User ${user._id} has updated ${Object.keys(delta).length}
+      fields in their profile`);
+
+    // Ensure final delta is only editing editable fields.
+    var updateDelta = {};
+    Object.keys(delta).forEach(function(field) {
+      if (editableFields.indexOf(field) !== -1) {
+        updateDelta[field] = delta[field];
+      }
+    });
+
+    return User.findByIdAndUpdate({_id: user._id}, {$set: updateDelta},
+    {new: true}, function(e, user) {
       if (e || (user === null)) {
-        res.status(400);
-        return res.json({'error': 'User not found'});
-      }
-      if (!req.body.id) {
-        res.status(500);
-        return res.json({'error': 'Something went wrong in the request'});
+        return res.json({'error': 'Unable to update user'});
       }
 
-      // Make rules for certain fields
-      var originalValue = req.body.value;
-      var sendReferral = false;
-
-      // Teammates
-      if (req.body.id.indexOf('teammate') === 0) {
-        var teammateId = req.body.id.slice(-1);
-        trackEdit(user, req.body.id, user.teammates[teammateId],
-          req.body.value);
-        // Ensure they're not adding a new email
-        if (user.teammates[teammateId] === undefined) {
-          user.teammates.push(req.body.value);
-        } else {
-          user.teammates[teammateId] = req.body.value;
-        }
-        user.markModified('teammates');
-        sendReferral = true;
-
-      } else if (req.body.id === 'major') {
-        trackEdit(user, 'majors', user.majors, req.body.value);
-        user.majors = [req.body.value];
-      } else if (req.body.id === 'travel') {
-        user.travel.outOfState = (req.body.value !== 'San Diego');
-        trackEdit(user, 'city', user.travel.city, req.body.value);
-        user.travel.city = req.body.value;
-      } else {
-        trackEdit(user, req.body.id, user[req.body.id], req.body.value);
-        user[req.body.id] = req.body.value;
+      if (req.file) {
+        return user.attach('resume', {path: req.file.path}, function(error) {
+          if (error) {
+            return res.json({'error':
+              'There was an error updating your resume'});
+          }
+          return res.json(outputCurrentUser(user));
+        });
       }
 
-      return user.save(function(err) {
-        if (err) {
-          res.status(500);
-          console.error('Error editing user data');
-          return res.json({'error': 'Something went wrong in the database'});
-        }
-
-        if (sendReferral) {
-          // TODO: Outsource referral system
-          // referTeammates(user, req);
-        }
-        return res.send(originalValue);
-      });
+      return res.json(outputCurrentUser(user));
     });
   });
 };

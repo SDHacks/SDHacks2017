@@ -5,18 +5,30 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {UncontrolledAlert} from 'reactstrap';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
+import diff from 'object-diff';
 
 import UserProfile from './components/UserProfile';
-import {getCurrentUser} from './actions';
+import {getCurrentUser, updateCurrentUser} from './actions';
+
+import {updateUserField} from '~/data/User';
 
 class UserPage extends React.Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
 
     getCurrentUser: PropTypes.func.isRequired,
+    updateCurrentUser: PropTypes.func.isRequired,
     showLoading: PropTypes.func.isRequired,
     hideLoading: PropTypes.func.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      alerts: []
+    };
+  }
 
   componentWillMount() {
     document.body.classList.add('user-page__body');
@@ -37,25 +49,41 @@ class UserPage extends React.Component {
   }
 
   /**
+   * Creates a new alert to render to the top of the screen.
+   * @param {String} message The message to display in the alert.
+   * @param {String} type The type of alert to show.
+   * @param {String} title The title of the alert.
+   */
+  createAlert(message, type='danger', title) {
+    this.setState({
+      alerts: [...this.state.alerts, {
+        message,
+        type,
+        title
+      }]
+    });
+  }
+
+  /**
    * Creates a new error alert if there was a login error.
    * @param {String} message The message to display in the alert.
    * @param {String} type The type of alert to show.
+   * @param {String} title The title of the alert.
    * @returns {Component}
    */
-  renderAlert(message, type='danger') {
+  renderAlert(message, type='danger', title) {
     if (message) {
       return (
         <div className="user-page__error">
           <UncontrolledAlert color={type}>
             <div className="container">
-              {message}
+              <strong>{title}</strong> {message}
             </div>
           </UncontrolledAlert>
         </div>
       );
     }
   }
-
 
   /**
    * Renders the status for the navigation bar.
@@ -88,7 +116,29 @@ class UserPage extends React.Component {
     </span>);
   }
 
+  /**
+   * Requests that the server update the current user to the new, given values.
+   * @param {Object} newUser The new user object to update to.
+   */
+  updateUser = (newUser) => {
+    let {updateCurrentUser} = this.props;
+    let oldUser = this.props.user;
+    // Delta is all the changed fields in the form
+    const delta = diff(oldUser, newUser);
+
+    updateUserField(delta)
+    .then((newUser) => {
+      updateCurrentUser(newUser);
+      this.createAlert('You have successfully updated your profile', 'success');
+    })
+    .catch((err) => {
+      this.createAlert(err.message, 'danger', 'Something went wrong!');
+      console.error(err);
+    });
+  }
+
   render() {
+    let {alerts} = this.state;
     let {user} = this.props;
 
     return (
@@ -99,7 +149,8 @@ class UserPage extends React.Component {
         </div>
         <div className="user-page__above">
           <div className="user-page__alerts">
-
+            {alerts.map(({message, type, title}) =>
+              this.renderAlert(message, type, title))}
           </div>
           <div className="user-page__header">
             <a href="/">
@@ -118,7 +169,8 @@ class UserPage extends React.Component {
         </div>
 
         <div className="user-page__container container">
-          <UserProfile user={user} initialValues={user} />
+          <UserProfile user={user} initialValues={user}
+            onSubmit={this.updateUser} />
         </div>
       </div>
     );
@@ -135,7 +187,8 @@ function mapDispatchToProps(dispatch) {
   return {
     showLoading: bindActionCreators(showLoading, dispatch),
     hideLoading: bindActionCreators(hideLoading, dispatch),
-    getCurrentUser: bindActionCreators(getCurrentUser, dispatch)
+    getCurrentUser: bindActionCreators(getCurrentUser, dispatch),
+    updateCurrentUser: bindActionCreators(updateCurrentUser, dispatch)
   };
 };
 

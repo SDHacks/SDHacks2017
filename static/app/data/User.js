@@ -3,6 +3,8 @@ import nocache from 'superagent-no-cache';
 import pref from 'superagent-prefix';
 import request from 'superagent';
 
+import {promisify} from './helpers';
+
 import CookieTypes from '~/static/Cookies';
 
 const URL_PREFIX = '/user';
@@ -17,12 +19,12 @@ const cookies = new Cookies();
  * @returns {Promise} A promise of the request.
  */
 export const login = (username, password) => {
-  return request
+  return promisify(request
       .post('/login')
       .set('Content-Type', 'application/json')
       .send({username, password})
       .use(prefix)
-      .use(nocache);
+      .use(nocache));
 };
 
 /**
@@ -30,10 +32,24 @@ export const login = (username, password) => {
  * @returns {Promise} A promise of the request
  */
 export const getCurrentUser = () => {
-  return request
+  return promisify(request
       .get('/api/current')
       .set('Content-Type', 'application/json')
       .set('Authorization', cookies.get(CookieTypes.user.token, {path: '/'}))
       .use(prefix)
-      .use(nocache);
+      .use(nocache));
+};
+
+/**
+ * Updates a field for a given user.
+ * @returns {Promise} A promise of the request.
+ */
+export const updateUserField = (user) => {
+  return promisify(request
+      .post('/api/update')
+      .field(user)
+      .attach('resume', user.resume ? user.resume[0] : null)
+      .set('Authorization', cookies.get(CookieTypes.user.token, {path: '/'}))
+      .use(prefix)
+      .use(nocache));
 };

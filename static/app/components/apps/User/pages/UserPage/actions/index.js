@@ -1,4 +1,4 @@
-import * as Api from '~/data/Auth';
+import * as Api from '~/data/User';
 
 import * as Types from './types';
 
@@ -14,8 +14,8 @@ export const updateCurrentUser = (user) => ({
 export const getCurrentUser = () => (dispatch) => {
   var deferred = Q.defer();
   Api.getCurrentUser()
-  .then((res) => {
-    dispatch(updateCurrentUser(res.body));
+  .then((user) => {
+    dispatch(updateCurrentUser(user));
     deferred.resolve();
   })
   .catch(deferred.reject);

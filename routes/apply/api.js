@@ -173,6 +173,7 @@ module.exports = function(routes, config) {
                 return userError(err.errors[field].message, 400);
               }
             }
+            console.error(err);
             return userError('Failed due to database error');
           }
 

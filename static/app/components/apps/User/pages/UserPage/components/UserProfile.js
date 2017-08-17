@@ -4,11 +4,14 @@ import {Field, reduxForm} from 'redux-form';
 
 import ToggleSwitch from '~/components/ToggleSwitch';
 
+import FileField from '~/components/FileField';
+
 class UserProfile extends React.Component {
   static propTypes = {
     pristine: PropTypes.bool.isRequired,
-    reset: PropTypes.bool.isRequired,
+    reset: PropTypes.func.isRequired,
     submitting: PropTypes.bool.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
 
     user: PropTypes.object.isRequired
   };
@@ -140,16 +143,15 @@ class UserProfile extends React.Component {
       </div>
       <div className="row mt-4">
         <div className="col-lg-6">
-          <a href={user.resume ? user.resume.url : ''} download
+          <a tabIndex="-1" href={user.resume ? user.resume.url : ''} download
             className="btn rounded-button rounded-button--small">
             View Current Resume
           </a>
         </div>
         <div className="col-lg-6 mt-3 mt-lg-0">
-          <a href="#" className={`btn rounded-button rounded-button--small
-            rounded-button--secondary`}>
-            Upload New Resume
-          </a>
+          <Field component={FileField} name="resume"
+            placeholder="Resume" button className="sd-form__dropzone--button"
+            secondary text="Upload New Resume"/>
         </div>
       </div>
       <div className="mt-4 user-profile__sharing">
@@ -162,10 +164,10 @@ class UserProfile extends React.Component {
   );
 
   render() {
-    let {user, pristine, submitting} = this.props;
+    let {user, pristine, submitting, handleSubmit} = this.props;
 
     return (
-      <form className="user-profile">
+      <form className="user-profile" onSubmit={handleSubmit}>
         <div className="user-profile__header">
           <h1 className="user-profile__hello">
             Hello, <span className="user-profile__name">
