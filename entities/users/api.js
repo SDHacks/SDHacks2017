@@ -1,8 +1,4 @@
-var crypto = require('crypto');
-
 const passport = require('passport');
-var multer = require('multer');
-var mime = require('mime');
 
 const requireAuth = passport.authenticate('userJwt', {session: false});
 
@@ -15,21 +11,9 @@ const readOnlyFields = [
   'status', 'firstName', 'lastName', 'university', 'email', 'phone'
 ];
 
-var storage = multer.diskStorage({
-  dest: 'public/uploads/',
-  filename(req, file, cb) {
-    return crypto.pseudoRandomBytes(16, (err, raw) =>
-      cb(null, raw.toString('hex') + '.' + mime.extension(file.mimetype)));
-  }
-});
-
-var upload = multer({
-  storage,
-  //5MB file size
-  limits: {fileSize: 5 * 1024 * 1024}
-});
-
 module.exports = function(routes, config) {
+  const upload = require('../../config/uploads')(config);
+
   var User = require('./model');
 
   function outputCurrentUser(user) {
