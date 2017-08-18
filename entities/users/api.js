@@ -6,13 +6,13 @@ const editableFields = [
   'teammates', 'food', 'diet', 'travel', 'shirtSize', 'github', 'website',
   'resume', 'shareResume', 'gender'
 ];
-
 const readOnlyFields = [
   'status', 'firstName', 'lastName', 'university', 'email', 'phone'
 ];
 
 module.exports = function(routes, config) {
   const upload = require('../../config/uploads')(config);
+  const {forgotSender} = require('../../config/mailer')(config);
 
   var User = require('./model');
 
@@ -62,5 +62,34 @@ module.exports = function(routes, config) {
 
       return res.json(outputCurrentUser(user));
     });
+  });
+
+  routes.post('/forgot', function(req, res) {
+    if (!req.body.email) {
+      return res.json({error: 'No email was sent'});
+    }
+
+    return User.findOne({email: req.body.email}, function(e, user) {
+      if (e || user === null) {
+        return res.json({error: 'No user found by that email'});
+      }
+
+      return forgotSender({
+        to: user.email,
+        subject: 'Your Password has been Reset!'
+      }, {
+        'user': user
+      },
+      function(err) {
+        if (err) {
+          console.error(err);
+          return res.json({error: 'Failed to send email'});
+        }
+
+        res.status(200);
+        return res.json({success: true});
+      });
+    });
+
   });
 };

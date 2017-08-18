@@ -22,16 +22,26 @@ module.exports = function(config) {
     new EmailTemplate('./views/emails/confirmation'),
     {
       from: sender
-    });
+    }
+  );
 
   var referSender = transporter.templateSender(
     new EmailTemplate('./views/emails/refer'),
     {
       from: sender
-    });
+    }
+  );
+
+  var forgotSender = transporter.templateSender(
+    new EmailTemplate('./views/emails/forgot'),
+    {
+      from: sender
+    }
+  );
 
   return {
     confirmSender,
-    referSender
+    referSender,
+    forgotSender
   };
 };

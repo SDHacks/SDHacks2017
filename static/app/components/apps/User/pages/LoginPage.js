@@ -6,6 +6,8 @@ import {withRouter} from 'react-router-dom';
 import {loginUser} from './auth/actions';
 import Login from './auth/Login';
 
+import {forgotPassword} from '~/data/User';
+
 class LoginPage extends React.Component {
   static propTypes = {
     history: PropTypes.object.isRequired,

@@ -28,8 +28,22 @@ export const login = (username, password) => {
 };
 
 /**
+ * Requests a password reset for the current user.
+ * @param {String} email The email address of the user.
+ * @returns {Promise} A promise of the request.
+ */
+export const forgotPassword = (email) => {
+  return promisify(request
+      .post('/api/forgot')
+      .set('Content-Type', 'application/json')
+      .send({email})
+      .use(prefix)
+      .use(nocache));
+};
+
+/**
  * Get the information about the current user.
- * @returns {Promise} A promise of the request
+ * @returns {Promise} A promise of the request.
  */
 export const getCurrentUser = () => {
   return promisify(request
