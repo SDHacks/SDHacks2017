@@ -9,6 +9,7 @@ import {AUTH_USER} from './pages/auth/actions/types';
 import PrivateRoute from './PrivateRoute';
 import LoginPage from './pages/LoginPage';
 import ForgotPage from './pages/ForgotPage';
+import ResetPage from './pages/ResetPage';
 import Logout from './pages/auth/Logout';
 import UserPage from './pages/UserPage/index';
 
@@ -41,6 +42,7 @@ class User extends React.Component {
       <Switch>
         <Route exact path="/user/login" component={LoginPage} />
         <Route exact path="/user/forgot" component={ForgotPage} />
+        <Route path="/user/reset/:id" component={ResetPage} />
 
         <PrivateRoute exact path="/user" component={UserPage} />
         <PrivateRoute exact path="/user/logout" component={Logout} />

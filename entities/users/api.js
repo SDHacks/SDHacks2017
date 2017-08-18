@@ -78,7 +78,9 @@ module.exports = function(routes, config) {
         to: user.email,
         subject: 'Your Password has been Reset!'
       }, {
-        'user': user
+        'user': user,
+        'resetUrl': req.protocol + '://' + req.get('host') +
+          '/user/reset/' + user._id
       },
       function(err) {
         if (err) {
@@ -89,6 +91,26 @@ module.exports = function(routes, config) {
         res.status(200);
         return res.json({success: true});
       });
+    });
+
+  });
+
+  routes.post('/reset', function(req, res) {
+    if (!req.body.id || !req.body.newPassword) {
+      return res.json({error: 'No ID or password were sent'});
+    }
+
+    const id = req.body.id;
+    const password = req.body.newPassword;
+
+    return User.findById(req.body.id, function(e, user) {
+      if (e || user === null) {
+        return res.json({error: 'No user found by that id'});
+      }
+
+      user.password = password;
+      user.save();
+      return res.json({success: true});
     });
 
   });

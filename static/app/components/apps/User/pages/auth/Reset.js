@@ -8,7 +8,7 @@ const form = reduxForm({
   form: 'userForgot'
 });
 
-class Forgot extends React.Component {
+class Reset extends React.Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
@@ -99,10 +99,18 @@ class Forgot extends React.Component {
         <div className="user-login__container sd-form">
           <div className="user-login__username row sd-form__row">
             <div className="col-12">
-              <label>Email</label>
-              <Field name="email" component="input" type="email"
-                className="form-control sd-form__input-email"
-                placeholder="Email" />
+              <label>New Password</label>
+              <Field name="password" component="input" type="password"
+                className="form-control sd-form__input-text"
+                placeholder="Password" />
+            </div>
+          </div>
+          <div className="user-login__username row sd-form__row">
+            <div className="col-12">
+              <label>Repeat New Password</label>
+              <Field name="passwordRepeat" component="input" type="password"
+                className="form-control sd-form__input-text"
+                placeholder="Password" />
             </div>
           </div>
           <div className="row sd-form__row">
@@ -130,4 +138,4 @@ class Forgot extends React.Component {
   }
 }
 
-export default form(Forgot);
+export default form(Reset);
