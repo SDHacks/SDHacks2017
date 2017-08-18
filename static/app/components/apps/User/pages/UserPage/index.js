@@ -69,12 +69,13 @@ class UserPage extends React.Component {
    * @param {String} message The message to display in the alert.
    * @param {String} type The type of alert to show.
    * @param {String} title The title of the alert.
+   * @param {String} key The given key for the element.
    * @returns {Component}
    */
-  renderAlert(message, type='danger', title) {
+  renderAlert(message, type='danger', title, key='0') {
     if (message) {
       return (
-        <div className="user-page__error">
+        <div className="user-page__error" key={key}>
           <UncontrolledAlert color={type}>
             <div className="container">
               <strong>{title}</strong> {message}
@@ -149,8 +150,8 @@ class UserPage extends React.Component {
         </div>
         <div className="user-page__above">
           <div className="user-page__alerts">
-            {alerts.map(({message, type, title}) =>
-              this.renderAlert(message, type, title))}
+            {alerts.map(({message, type, title}, i) =>
+              this.renderAlert(message, type, title, i))}
           </div>
           <div className="user-page__header">
             <a href="/">

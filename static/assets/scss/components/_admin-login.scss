@@ -5,6 +5,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: $white !important;
+
+  &__container, &__above, &__below {
+    z-index: 3;
+  }
 
   &__container {
     display: flex;
@@ -37,5 +42,60 @@
       border-color: $admin-dark-blue;
       cursor: pointer;
     }
+  }
+
+  &__background {
+    height: 36rem;
+    width: 63rem;
+    background-color: lighten($primary-color, 10%);
+    position: absolute;
+    bottom: -37rem;
+    right: 0;
+    z-index: 2;
+    overflow: hidden;
+    transform: skewY(-30deg);
+    transform-origin: 0 0;
+
+    &:before {
+      background-color: darken($primary-color, 10%);
+      content: '';
+      display: block;
+      height: 12rem;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 2;
+    }
+
+    &:after {
+      background-color: $primary-color;
+      content: '';
+      display: block;
+      height: 12rem;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 12rem;
+      z-index: 0;
+    }
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+
+    h1 {
+      color: $white;
+    }
+  }
+
+  &__username, &__password {
+    margin-bottom: 1rem;
+  }
+
+  &__input {
+    border: none;
+    font-family: $header-font-family;
+
   }
 }

@@ -16,10 +16,6 @@ class UserProfile extends React.Component {
     user: PropTypes.object.isRequired
   };
 
-  transportToggle = ({input}) =>
-    <ToggleSwitch checked={Boolean(input.value)}
-      onChange={input.onChange} />;
-
   genderSelect = ({input, className}) => {
     let genders = [
       'Male', 'Female', 'Non-Binary', 'I prefer not to say', 'Other'
@@ -111,10 +107,6 @@ class UserProfile extends React.Component {
         className={`sd-form__input-text user-profile__input
         user-profile__diet`}
         placeholder="No Soylent"/>
-      <h5 className="user-profile__transportation my-4">
-        <Field component={this.transportToggle} name="travel.outOfState" />
-        &nbsp; I am requesting transportation to attend
-      </h5>
       <div className="row mt-3">
         <div className="col-lg-6 mb-3">
           <h5>Gender:</h5>

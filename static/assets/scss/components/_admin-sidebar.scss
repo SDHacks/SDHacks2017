@@ -63,6 +63,7 @@ $left-padding: 1.25rem;
     display: flex;
     align-items: center;
     min-height: 5rem;
+    z-index: 3;
   }
 
   &__header-text {

@@ -70,7 +70,6 @@ class AdminSidebar extends React.Component {
 
       {auth && <Section name='General'>
         <Link dest='/' exact>Dashboard</Link>
-        <Link dest='/settings'>Settings</Link>
         <Link dest='/logout'>Logout</Link>
       </Section>}
     </div>);

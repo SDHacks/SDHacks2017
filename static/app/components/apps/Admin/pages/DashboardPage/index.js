@@ -39,7 +39,9 @@ class DashboardPage extends React.Component {
                 {this.props.stats.users.total.toLocaleString()}
               </p>
               {getRole(user.role) >= getRole(Roles.ROLE_ADMIN) &&
-                <Link to="/admin/users" className="btn btn-primary">See Users</Link>
+                <Link to="/admin/users" className="btn btn-primary">
+                  See Users
+                </Link>
               }
             </div>
           </div>
