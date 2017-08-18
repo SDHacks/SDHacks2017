@@ -217,7 +217,7 @@ class PersonalSection extends React.Component {
       )}
 
       {fields.createRow(
-        fields.createColumn('col-sm-12',
+        fields.createColumn('col-sm-12 text-right',
           <button className="btn rounded-button" type="submit"
             disabled={pristine || submitting}>Next</button>
         )
