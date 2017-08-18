@@ -1,25 +1,40 @@
+$primary-color = #2B6177;
+$gray = #666666;
+$white = #FFFFFF;
+
 h1 {
   color: #19A3C5;
 }
+.body-drip {
+  background: url('https://s3-us-west-1.amazonaws.com/sdhacks2017-production/assets/email-background.png') no-repeat center center;
+  padding: 5%;
+}
+
 .content {
-  max-width: 500px !important;
+  max-width: 600px !important;
   border-spacing: 0;
   border-collapse: collapse;
-  font-family: proxima-nova,'helvetica neue',helvetica,'Segoe UI',Roboto,geneva,sans-serif;
-  height: 100%!important;
-  width: 100%!important;
+  font-family: 'Source Sans Pro','helvetica neue',helvetica,'Segoe UI',Roboto,geneva,sans-serif;
+  height: 100% !important;
+  width: 100% !important;
   color: #646464;
   font-size: 15px;
   line-height: 150%;
-  background: #ffffff;
+  background: $white;
   margin: 0;
   padding: 0;
-  border: 0;
+  border: 2px solid $primary-color;
 
   p {
-    color:#646464
+    color: $gray;
   }
 }
+
 .logo {
-  width: 100%;
+  width: 256px;
+}
+
+.button {
+  max-width: 90%;
+  width: 300px;
 }
