@@ -8,7 +8,10 @@ export const promisify = (request) => {
   var deferred = Q.defer();
   request.end((err, res) => {
     if (err || res.body.error) {
-      return deferred.reject(new Error(res.body.error || err));
+      if (res.body) {
+        return deferred.reject(new Error(res.body.error));
+      }
+      return deferred.reject(new Error(err));
     }
     deferred.resolve(res.body);
   });
