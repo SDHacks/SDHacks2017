@@ -19,7 +19,7 @@ export default class UniversityField extends React.Component {
     super(props);
   }
 
-  onUniversitySelected = () => {
+  onUniversitySelected = (suggestion) => {
     let {input} = this.props;
     input.onChange(suggestion);
   }
