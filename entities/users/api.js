@@ -100,12 +100,11 @@ module.exports = function(routes, config) {
       return res.json({error: 'No ID or password were sent'});
     }
 
-    const id = req.body.id;
     const password = req.body.newPassword;
 
     return User.findById(req.body.id, function(e, user) {
       if (e || user === null) {
-        return res.json({error: 'No user found by that id'});
+        return res.json({error: 'No user found by that ID'});
       }
 
       user.password = password;

@@ -16,6 +16,7 @@ module.exports = function(routes, config) {
             }, {
               'user': user,
               'referUrl': req.protocol + '://' + req.get('host')
+              'applyUrl': req.protocol + '://' + req.get('host') + '/apply'
             });
           }
         })
