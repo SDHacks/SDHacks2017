@@ -96,6 +96,11 @@ class UserSection extends React.Component {
           <button className={'btn sd-form__nav-button rounded-button ' +
             'success button'} type="submit"
             disabled={pristine || isSubmitting}>Apply!</button>
+        ),
+        fields.createColumn('col-sm-12 col-md-4 text-center',
+          <span>
+            {isSubmitting && <img className="sd-form__loading" src="/assets/img/site/loading.svg" />}
+          </span>
         )
       )}
 

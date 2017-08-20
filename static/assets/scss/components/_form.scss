@@ -360,4 +360,8 @@ $form-border-radius: $global-radius;
     padding: 0.35rem 0.75rem 0 0;
     color: $alert-color;
   }
+
+  &__loading {
+    max-height: 3rem;
+  }
 }

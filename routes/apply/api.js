@@ -15,7 +15,6 @@ module.exports = function(routes, config) {
               subject: user.firstName + '\'s invitation to SD Hacks 2017'
             }, {
               'user': user,
-              'referUrl': req.protocol + '://' + req.get('host')
               'applyUrl': req.protocol + '://' + req.get('host') + '/apply'
             });
           }
@@ -97,6 +96,10 @@ module.exports = function(routes, config) {
               for (var field in err.errors) {
                 return userError(err.errors[field].message, 400);
               }
+            }
+            // Duplicate key error
+            if (err.code === 11000) {
+              return userError('That username has already been used.');
             }
             console.error(err);
             return userError('Failed due to database error');
