@@ -11,6 +11,9 @@ export const promisify = (request) => {
       if (res.body) {
         return deferred.reject(new Error(res.body.error));
       }
+      if (err.status === 401) {
+        return deferred.reject(new Error('Username or Password was incorrect'));
+      }
       return deferred.reject(new Error(err));
     }
     deferred.resolve(res.body);
