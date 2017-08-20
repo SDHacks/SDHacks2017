@@ -10,7 +10,7 @@ block content
     .hexagon-hero__beach
   .hexagon-hero.d-flex
     .hexagon-hero__container.container.align-self-center
-      .hidden-sm-down
+      .d-none.d-md-block
         .row
           .col-md-8
             img.hexagon-hero__logo(src='/assets/img/vectors/logo.svg')
@@ -26,7 +26,7 @@ block content
           .col-md-4
             img.hexagon-hero__featurette(src='/assets/img/site/featurette-hero.svg')
 
-      .hidden-md-up.d-flex.flex-column
+      .d-md-none.d-flex.flex-column
         img.hexagon-hero__logo.hexagon-hero__logo--mobile(src='/assets/img/vectors/logo.svg')
         h1.hexagon-hero__title Build your dreams.
         .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile RIMAC Arena, UCSD
@@ -65,7 +65,7 @@ block content
               .card-text.sd-card__text We strive to make each SD Hacks a memorable learning experience for all.
 
   .sd-section.sd-faq#sd-faq
-    .sd-faq__background.hidden-md-up
+    .sd-faq__background.d-md-none
     h2.sd-faq__title.sd-section__title FAQ
     .container
       .row
