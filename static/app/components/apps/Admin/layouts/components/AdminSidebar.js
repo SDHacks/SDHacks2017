@@ -110,7 +110,7 @@ class AdminSidebar extends React.Component {
     let auth = this.props.isAuthenticated;
 
     return (<div className="admin-sidebar">
-      <div className={`admin-sidebar__header navbar-toggleable-md
+      <div className={`admin-sidebar__header navbar-expand-md
         navbar-inverse`}>
         <img className="admin-sidebar__logo"
           src="/assets/img/vectors/logo.svg"/>
@@ -118,11 +118,11 @@ class AdminSidebar extends React.Component {
           Admin Dashboard
         </span>
         <NavbarToggler right
-          className="admin-sidebar__toggler"
+          className="admin-sidebar__toggler navbar-dark"
           onClick={this.toggleHidden.bind(this)} />
       </div>
 
-      <div className={this.state.isHidden ? 'hidden-sm-down' : ''}>
+      <div className={this.state.isHidden ? 'd-none d-md-block' : ''}>
         {auth && this.renderUser()}
 
         {this.renderMenu()}
