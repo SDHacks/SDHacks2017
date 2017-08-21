@@ -364,4 +364,9 @@ $form-border-radius: $global-radius;
   &__loading {
     max-height: 3rem;
   }
+
+  &__home {
+    margin: 0 auto;
+    display: block;
+  }
 }
