@@ -75,7 +75,7 @@ class Login extends React.Component {
   renderErrorAlert() {
     if (this.props.errorMessage) {
       return (
-        <div className="user-login__error">
+        <div className="user-login__error user-login__alert">
           <Alert color="danger" isOpen={this.state.isErrorVisible}
             toggle={this.dismissError}>
             {this.props.errorMessage}

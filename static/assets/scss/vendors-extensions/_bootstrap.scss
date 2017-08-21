@@ -1,7 +1,12 @@
 $brand-primary: $primary-color;
+
 $alert-danger-bg: $accent-red;
 $alert-danger-text: $white;
 $alert-danger-border: darken($alert-danger-bg, 5%);
+
+$alert-success-bg: $accent-green;
+$alert-success-text: $white;
+$alert-success-border: darken($alert-success-bg, 5%);
 
 body {
   background-color: $body-background;
@@ -61,4 +66,8 @@ body {
 
 .alert-danger {
   @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+}
+
+.alert-success {
+  @include alert-variant($alert-success-bg, $alert-success-border, $alert-success-text);
 }
