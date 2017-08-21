@@ -7,14 +7,14 @@
   z-index: 1;
 
   &__wrapper {
-    display: inline-block !important;
+    display: block !important;
   }
 
   @include media-breakpoint-up(md) {
     height: 100%;
 
-    &__text {
-      height: 76px;
+    &__text-featurette {
+      min-height: 76px;
     }
   }
 
