@@ -16,11 +16,3 @@ body {
 #root {
   height: 100%;
 }
-
-/**
- * Overriding default bootstrap classes
- */
-.alert-success {
-  background-color: $accent-green;
-  color: $white;
-}
