@@ -54,7 +54,8 @@ function(username, password, done) {
 
 const adminLogin = new LocalStrategy(localOptions,
 function(username, password, done) {
-  Admin.findOne({username: username}, function(err, admin) {
+  Admin.findOne({username: {$regex : new RegExp(username, 'i')}},
+  function(err, admin) {
     if (err) {
       return done(err);
     }
