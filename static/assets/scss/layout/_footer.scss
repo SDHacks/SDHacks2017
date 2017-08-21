@@ -42,9 +42,11 @@
 
   &__social {
     font-size: 2rem;
+    margin-bottom: 1.2rem;
 
     @include media-breakpoint-up(md) {
       font-size: 2rem;
+      margin-bottom: 0;
     }
 
     a:not(:last-child) {
