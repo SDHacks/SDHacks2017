@@ -119,7 +119,7 @@ var UserSchema = new Schema({
   //Rejected, Unconfirmed, Confirmed, Declined, Late, and Waitlisted
   status: {
     type: String,
-    trim: true,
+    trim: true
   },
   checkedIn: {
     type: Boolean,

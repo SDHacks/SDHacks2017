@@ -39,6 +39,10 @@ a {
     &:focus {
       text-decoration: none;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
   &:hover {
     color: $default-blue;

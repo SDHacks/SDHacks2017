@@ -7,7 +7,8 @@ const alternatives = {
   ],
   'The University of California, Davis': [
     'UCD',
-    'UC Davis'
+    'UC Davis',
+    'UCDavis'
   ],
   'The University of California, Irvine': [
     'UCI',

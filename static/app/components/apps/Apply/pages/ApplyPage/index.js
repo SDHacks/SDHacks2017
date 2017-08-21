@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
+import Progress from 'react-progress';
 
 import {registerUser} from '~/data/Api';
 
@@ -126,6 +127,7 @@ class ApplyPage extends React.Component {
 
     return (
       <div className="sd-form__wrapper">
+        <Progress percent={(page * 100) / 4} />
         <div className="sd-form">
           <Header />
           {page === 1 && <PersonalSection onSubmit={this.nextPage} />}

@@ -48,7 +48,7 @@ export default class Filter extends React.Component {
   renderFilterOption(optionName, checked, key) {
     let {onOptionChange} = this.props;
     return (
-      <div className="sidebar-filter__filter" key={key}>
+      <div className="sd-form sidebar-filter__filter" key={key}>
         <input type="checkbox" className="sd-form__input-checkbox"
           checked={checked} onChange={() =>
             onOptionChange(optionName)} />

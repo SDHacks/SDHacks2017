@@ -63,6 +63,8 @@ $left-padding: 1.25rem;
     display: flex;
     align-items: center;
     min-height: 5rem;
+    z-index: 3;
+    padding: 0 0.5rem;
   }
 
   &__header-text {
@@ -71,7 +73,7 @@ $left-padding: 1.25rem;
 
   &__logo {
     max-height: 3rem;
-    margin: .75rem .75rem .75rem $left-padding;
+    margin: .75rem;
   }
 
   &__toggler {

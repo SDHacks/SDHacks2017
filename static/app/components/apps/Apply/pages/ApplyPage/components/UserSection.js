@@ -67,20 +67,10 @@ class UserSection extends React.Component {
         fields.createColumn('col-sm-12',
           this.createProvisionBox(),
           <span>
-            I agree to the terms of both the&nbsp;
-            <a
-              className="sd-link__underline sd-link__hover-purple"
-              href='https://git.io/v7B63'>MLH Contest Terms and Conditions</a>
-            &nbsp;and the&nbsp;
-            <a
-              className="sd-link__underline sd-link__hover-purple"
-              href='https://git.io/v7B6Z'>MLH Privacy Policy</a>.
-            Please note that you may
-            receive pre and post-event informational e-mails and occasional
-            messages about hackathons from MLH as per the&nbsp;
-            <a
-              className="sd-link__underline sd-link__hover-purple"
-              href='https://git.io/v7B6Z'>MLH Privacy Policy</a>.
+            I agree to the&nbsp;
+            <a className="sd-link__underline sd-link__hover-purple"
+              href="https://git.io/v7bCA">MLH Data Sharing Policy
+            </a>.
           </span>
         ),
         fields.createColumn('col-sm-12',
@@ -106,6 +96,11 @@ class UserSection extends React.Component {
           <button className={'btn sd-form__nav-button rounded-button ' +
             'success button'} type="submit"
             disabled={pristine || isSubmitting}>Apply!</button>
+        ),
+        fields.createColumn('col-sm-12 col-md-4 text-center',
+          <span>
+            {isSubmitting && <img className="sd-form__loading" src="/assets/img/site/loading.svg" />}
+          </span>
         )
       )}
 

@@ -21,6 +21,14 @@
     border-color: $accent-purple;
   }
 
+  &--small {
+    font-size: 1.0rem;
+  }
+
+  &--full {
+    max-width: none;
+  }
+
   &:focus {
     outline: none;
   }

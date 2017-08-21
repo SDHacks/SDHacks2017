@@ -2,6 +2,7 @@ import {
          AUTH_ERROR,
          AUTH_USER,
          UNAUTH_USER,
+         REMOVE_ERROR
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -20,6 +21,8 @@ export default function (state = INITIAL_STATE, action) {
     return {...state, authenticated: false, user: {}};
   case AUTH_ERROR:
     return {...state, error: action.payload};
+  case REMOVE_ERROR:
+    return {...state, error: ''};
   }
 
   return state;

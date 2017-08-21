@@ -3,9 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import UniversityField from './UniversityField';
-import FileField from './FileField';
 import fields from './Fields';
 import validate from './validate';
+
+import FileField from '~/components/FileField';
 
 class PersonalSection extends React.Component {
   static propTypes = {
@@ -21,7 +22,7 @@ class PersonalSection extends React.Component {
    */
   createResumeUpload() {
     return (<Field component={FileField} name="resume"
-      placeholder="Resume" />);
+      placeholder="Resume" text="Drop Your Resume" />);
   }
 
   /**
@@ -216,7 +217,7 @@ class PersonalSection extends React.Component {
       )}
 
       {fields.createRow(
-        fields.createColumn('col-sm-12',
+        fields.createColumn('col-sm-12 text-right',
           <button className="btn rounded-button" type="submit"
             disabled={pristine || submitting}>Next</button>
         )

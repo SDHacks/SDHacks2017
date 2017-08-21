@@ -49,21 +49,31 @@ class Login extends React.Component {
     const {handleSubmit} = this.props;
 
     return (
-      <form className="admin-login"
+      <form className="sd-form admin-login"
         onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+        <div className="admin-login__background">
+        </div>
         <div className="admin-login__above">
           {this.renderAlert()}
         </div>
         <div className="admin-login__container">
+          <div className="admin-login__title text-center">
+            <h1>Login</h1>
+          </div>
           <div className="admin-login__username">
-            <Field name="username" className="form-control" component="input"
-              type="text" placeholder="Username" />
+            Username
+            <Field name="username" className={`form-control rounded-input
+              rounded-input--small rounded-input--full admin-login__input`}
+              component="input" type="text" placeholder="Username" />
           </div>
           <div className="admin-login__password">
-            <Field name="password" className="form-control" component="input"
-              type="password" placeholder="Password" />
+            Password
+            <Field name="password" className={`form-control rounded-input
+              rounded-input--small rounded-input--full admin-login__input`}
+              component="input" type="password" placeholder="Password" />
           </div>
-          <button type="submit" className="btn btn-primary admin-login__button">
+          <button type="submit" className={`btn rounded-button
+            rounded-button--small rounded-button--full`}>
             Login
           </button>
         </div>

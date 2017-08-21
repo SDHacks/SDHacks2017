@@ -17,7 +17,7 @@
   }
   &__img {
     display: inline-block;
-    margin: 12px 15px;
+    margin: 12px 18px;
   }
   &__bronze {
     .sd-sponsors__sponsor {
@@ -28,6 +28,14 @@
       }
       &-a16z {
       }
+    }
+  }
+  &__silver {
+    .sd-sponsors__img {
+      margin: 15px 24px;
+    }
+    .sd-sponsors__sponsor {
+      max-width: 268px;
     }
   }
   &__platinum {

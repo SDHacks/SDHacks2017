@@ -1,4 +1,4 @@
-import * as Auth from '~/data/Auth';
+import * as Auth from '~/data/User';
 
 import * as Types from './types';
 
@@ -10,8 +10,8 @@ import CookieTypes from '~/static/Cookies';
 const cookies = new Cookies();
 
 function storeLogin(res) {
-  cookies.set(CookieTypes.user.token, res.body.token, {path: '/'});
-  cookies.set(CookieTypes.user.user, res.body.user, {path: '/'});
+  cookies.set(CookieTypes.user.token, res.token, {path: '/'});
+  cookies.set(CookieTypes.user.user, res.user, {path: '/'});
 }
 
 export function errorHandler(dispatch, error, type) {
@@ -20,7 +20,7 @@ export function errorHandler(dispatch, error, type) {
   if (error.status === 401) {
     dispatch({
       type: type,
-      payload: 'The username or password you entered was not correct.'
+      payload: 'Unable to log in with that username and password.'
     });
     logoutUser();
   } else {
@@ -31,24 +31,30 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
+export function removeError(dispatch) {
+  dispatch({
+    type: Types.REMOVE_ERROR
+  });
+}
+
 export function loginUser({username, password}) {
   return function(dispatch) {
     // Make the event return a promise
     var deferred = Q.defer();
+    removeError(dispatch);
 
     Auth.login(username, password)
-    .end((err, res) => {
-      if (err) {
-        deferred.reject(res.error.message);
-        return errorHandler(dispatch, res.error, Types.AUTH_ERROR);
-      }
-
+    .then((res) => {
       storeLogin(res);
       dispatch({
         type: Types.AUTH_USER,
-        payload: res.body.user
+        payload: res.user
       });
       deferred.resolve();
+    })
+    .catch((err) => {
+      deferred.reject(err.message);
+      return errorHandler(dispatch, err, Types.AUTH_ERROR);
     });
 
     return deferred.promise;

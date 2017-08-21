@@ -53,11 +53,6 @@
     }
   }
 
-  &__error {
-    margin: 0 auto -2rem;
-    font-family: $header-font-family;
-  }
-
   &__forgot {
     font-family: $header-font-family;
   }
@@ -81,5 +76,9 @@
 
   &__alerts {
     width: 100%;
+  }
+
+  &__alert {
+    font-family: $header-font-family;
   }
 }

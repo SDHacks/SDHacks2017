@@ -2,7 +2,8 @@ import Cookies from 'universal-cookie';
 import nocache from 'superagent-no-cache';
 import pref from 'superagent-prefix';
 import request from 'superagent';
-import Q from 'q';
+
+import {promisify} from './helpers';
 
 import CookieTypes from '~/static/Cookies';
 
@@ -10,21 +11,6 @@ const ADMIN_URL_PREFIX = '/admin/api';
 
 const adminPrefix = pref(ADMIN_URL_PREFIX);
 const cookies = new Cookies();
-
-/**
- * Run a request and return a Q promise.
- * @param  {Object} request The superagent request to run.
- */
-const promisify = (request) => {
-  var deferred = Q.defer();
-  request.end((err, res) => {
-    if (err) {
-      return deferred.reject(new Error(res.body.error || err));
-    }
-    deferred.resolve(res.body);
-  });
-  return deferred.promise;
-};
 
 /**
  * Request a list of all users.

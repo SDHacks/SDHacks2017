@@ -21,6 +21,7 @@ html(lang='en-US', prefix="og: http://ogp.me/ns#")
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
         link(rel='shortcut icon', href='/assets/img/favicon.png')
+        link(rel='stylesheet', href='/assets/css/sdhacks.min.css')
 
     block bodyVars
     body(class=typeof bodyClass === "undefined" ? undefined : bodyClass)
@@ -35,12 +36,9 @@ html(lang='en-US', prefix="og: http://ogp.me/ns#")
           ga('send', 'pageview');
 
     
-    link(rel='stylesheet', href='/assets/css/sdhacks.min.css')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous")
-    script(src='/assets/js/dist/vendor.js')
-    script(src='/assets/js/dist/app.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js'
         integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8="
         crossorigin="anonymous")
@@ -51,3 +49,4 @@ html(lang='en-US', prefix="og: http://ogp.me/ns#")
     link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
         integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=",
         crossorigin="anonymous", type='text/css', rel='stylesheet')
+    script(src='/assets/js/dist/app.js')

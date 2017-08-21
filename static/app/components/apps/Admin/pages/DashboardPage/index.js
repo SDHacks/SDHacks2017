@@ -33,20 +33,22 @@ class DashboardPage extends React.Component {
         </div>
         <div className="col-sm-12 col-md-6 col-lg-4">
           <div className="card">
-            <div className="card-block">
+            <div className="card-body">
               <h3 className="card-title">Total Users</h3>
               <p className="card-text">
                 {this.props.stats.users.total.toLocaleString()}
               </p>
               {getRole(user.role) >= getRole(Roles.ROLE_ADMIN) &&
-                <Link to="/admin/users" className="btn btn-primary">See Users</Link>
+                <Link to="/admin/users" className="btn btn-primary">
+                  See Users
+                </Link>
               }
             </div>
           </div>
         </div>
         <div className="col-sm-12 col-md-6 col-lg-4">
           <div className="card">
-            <div className="card-block">
+            <div className="card-body">
               <h3 className="card-title">Unique Universities</h3>
               <p className="card-text">
                 {this.props.stats.university.total.toLocaleString()}

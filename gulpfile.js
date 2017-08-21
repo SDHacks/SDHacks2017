@@ -62,7 +62,7 @@ gulp.task('eslint', function() {
 
 // JS Builder
 gulp.task('build-js', function() {
-  gulp.src(['static/assets/js/*.js', 'static/assets/js/vendor/*.js'])
+  gulp.src(['static/assets/js/*.js', '!static/assets/js/easter/*'])
     .pipe(plumber(plumberOptions))
     .pipe(gutil.env.production ? gutil.noop() : sourcemaps.init())
       .pipe(uglify())
@@ -86,8 +86,7 @@ gulp.task('esdoc', function() {
 // Watcher
 gulp.task('watch', function() {
   gulp.watch('static/assets/scss/**/*.scss', ['sass']);
-  gulp.watch(['static/assets/js/*.js', 'static/assets/js/vendor/*.js'],
-    ['package-js']);
+  gulp.watch(['static/assets/js/*.js'], ['build-js']);
 });
 
 // Nodemon
