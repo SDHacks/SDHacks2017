@@ -6,8 +6,16 @@
   margin-bottom: 1.4rem;
   z-index: 1;
 
+  &__wrapper {
+    display: inline-block !important;
+  }
+
   @include media-breakpoint-up(md) {
     height: 100%;
+
+    &__text {
+      height: 76px;
+    }
   }
 
   &__about {
