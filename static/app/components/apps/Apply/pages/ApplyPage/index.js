@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import Progress from 'react-progress';
+import ReactGA from 'react-ga';
 
 import {registerUser} from '~/data/Api';
 
@@ -78,6 +79,12 @@ class ApplyPage extends React.Component {
 
     registerUser(values)
     .then(() => {
+      // Log successful application with Google Analytics
+      ReactGA.event({
+        category: 'Application',
+        action: 'Successful',
+      });
+
       this.nextPage();
     })
     .catch((err) => {

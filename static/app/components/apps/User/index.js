@@ -4,6 +4,7 @@ import PropTypes, {instanceOf} from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 import {AUTH_USER} from './pages/auth/actions/types';
 import PrivateRoute from './PrivateRoute';
@@ -18,7 +19,8 @@ import CookieTypes from '~/static/Cookies';
 class User extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    cookies: instanceOf(Cookies).isRequired
+    cookies: instanceOf(Cookies).isRequired,
+    location: PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -32,6 +34,21 @@ class User extends React.Component {
         payload: cookies.get(CookieTypes.user.user)
       });
     }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.onRouteChanged();
+    }
+  }
+
+  /**
+   * Update the Google analytics to set the current page.
+   */
+  onRouteChanged() {
+    let {location} = this.props;
+    ReactGA.set({page: location.pathname + location.search});
+    ReactGA.pageview(location.pathname + location.search);
   }
 
   /**
