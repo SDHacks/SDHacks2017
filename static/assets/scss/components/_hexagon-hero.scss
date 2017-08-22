@@ -128,9 +128,13 @@
 
   &__nav {
     margin-top: 3rem;
+    
+    &--secondary {
+      margin-top: 0;
+    }
 
     &--mobile {
-      margin-top: 3rem;
+      margin: 3rem 1rem 0;
     }
     &-button {
       margin-bottom: 1rem;
@@ -147,12 +151,17 @@
     position: relative;
     left: -4rem;
     top: 2rem;
+    transform: scale(.95);
 
     @include media-breakpoint-up(md) {
-      left: -8rem;
+      left: -11rem;
+    }
+    @include media-breakpoint-down(md) {
+      left: -12rem;
+      transform: scale(.75);
     }
     @include media-breakpoint-up(lg) {
-      top: -2rem;
+      top: -5rem;
     }
     @include media-breakpoint-up(xl) {
       left: -12rem;
