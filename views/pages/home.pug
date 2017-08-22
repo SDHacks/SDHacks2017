@@ -4,7 +4,9 @@ extends ../layouts/home
 //- Any mixins
 include ../mixins/get-updates
 
+
 block content
+  - volunteerUrl = 'https://tesc.typeform.com/to/PYPjRK'
   .hexagon-hero__background
     .hexagon-hero__water
     .hexagon-hero__beach
@@ -22,6 +24,7 @@ block content
                 //- +get-updates
                 a.btn.rounded-button.hexagon-hero__nav-button(href='/apply') Apply
                 a.btn.rounded-button.rounded-button--secondary.hexagon-hero__nav-button(href='/user/login') Login
+                a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
           .col-md-4
             img.hexagon-hero__featurette(src='/assets/img/site/featurette-hero.svg')
 
@@ -34,6 +37,7 @@ block content
           //- +get-updates
           a.btn.rounded-button.hexagon-hero__nav-button(href='/apply') Apply
           a.btn.rounded-button.rounded-button--secondary.hexagon-hero__nav-button(href='/user/login') Login
+          a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
 
   .sd-section.sd-about#sd-about
     .sd-about__background

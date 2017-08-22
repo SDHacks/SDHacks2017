@@ -36,15 +36,23 @@
   &--secondary {
     background-color: $accent-purple;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: darken($accent-purple, 3%);
+    }
+  }
+
+  &--alternate {
+    background-color: $accent-green;
+
+    &:hover, &:focus {
+      background-color: darken($accent-green, 5%);
     }
   }
 
   &--success {
     background-color: $default-green;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: darken($default-green, 3%);
     }
   }
@@ -52,7 +60,7 @@
   &--alert {
     background-color: $default-red;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: darken($default-red, 3%);
     }
   }
