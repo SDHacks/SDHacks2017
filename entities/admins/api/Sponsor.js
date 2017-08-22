@@ -63,26 +63,20 @@ module.exports = function(routes, config, requireAuth) {
 
   routes.get('/applicants', requireAuth, roleAuth(roles.ROLE_SPONSOR),
   (req, res) => {
-    // Get the most recent date for sanitized users
-    var sanitizedDate = config.RESUME_SANITIZED;
     // Select the fields necessary for sorting and searching
     return User.find(
       {
         deleted: {$ne: true},
         confirmed: true,
         shareResume: true,
-        categories: {$exists: true},
         resume: {$exists: true},
         'resume.size': {$gt: 0},
-        createdAt: {$lte: sanitizedDate},
-        checkedIn: true
+        sanitized: true
       },
-      'firstName lastName university categories year gender major resume.url')
-      .lean()
+      'firstName lastName university year gender major resume.url')
       .exec(function(err, users) {
         if (err || (users == null)) {
-          res.status(401);
-          return res.json({'error': true});
+          return res.json({'error': 'No users were found'});
         }
 
         return res.json(users);

@@ -31,7 +31,7 @@ class UserList extends React.Component {
 
   expandComponent = (row) =>
     <User user={row} initialValues={row}
-      onSubmit={this.props.onUserUpdate.bind(this)} />;
+      onSubmit={this.props.onUserUpdate.bind(this)} />
 
   render() {
     let options = {
