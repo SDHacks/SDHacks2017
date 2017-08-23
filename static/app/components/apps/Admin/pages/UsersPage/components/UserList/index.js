@@ -8,8 +8,6 @@ import {Column as ColumnPropTypes, User as UserPropTypes} from '~/proptypes';
 
 import User from '~/components/apps/Admin/User';
 
-import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
-
 class UserList extends React.Component {
   static propTypes = {
     users: PropTypes.arrayOf(PropTypes.shape(
