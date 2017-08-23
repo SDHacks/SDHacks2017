@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
+import {default as UUID} from 'node-uuid';
 
 import {User as UserPropType} from '~/proptypes';
 
@@ -120,13 +121,10 @@ class User extends React.Component {
           </span>}
           <h4>Preferences</h4>
           <div className="form-group row mb-4">
-            {this.renderFormField('Diet', 'diet', 'col-sm-10')}
-            {this.renderFormField('Food', 'food', 'col-sm-10')}
-            {this.renderFormField('Outcome', 'outcomeStmt', 'col-sm-10')}
-            {this.renderFormCheckbox('First Hackathon', 'firstHackathon',
-              'col-sm-10')}
+            {this.renderFormField('Diet', 'diet', 'col-sm-4')}
+            {this.renderFormField('Food', 'food', 'col-sm-4')}
           </div>
-          <h4>Status</h4>
+          <h4>Travel</h4>
           <div className="form-group row mb-4">
             {this.renderFormCheckbox('Out Of State', 'travel.outOfState',
               'col-sm-2')}
@@ -159,7 +157,7 @@ class User extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     resume: ownProps.user.resume ? ownProps.user.resume : null,
-    form: ownProps.user._id,
+    //form: ownProps.user._id,
     role: state.admin.auth.user.role
   };
 };
@@ -167,6 +165,8 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
     connect(mapStateToProps),
     reduxForm({
+      form: UUID.v4(),
+      destroyOnUnmount: true,
       enableReinitialize: true
     })
 )(User);

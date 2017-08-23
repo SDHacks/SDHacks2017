@@ -3,7 +3,8 @@ import * as Api from '~/data/Api';
 import * as Types from './types';
 
 // Users
-export const addUsers = (users) => ({
+export const addUsers = (users) => (dispatch) =>
+dispatch({
   type: Types.ADD_USERS,
   users
 });

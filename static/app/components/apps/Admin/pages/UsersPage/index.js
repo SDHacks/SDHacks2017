@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
 
 import {addUsers, updateUser} from './actions';
@@ -13,23 +14,28 @@ import UserList from './components/UserList';
 
 class UsersPage extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     users: PropTypes.arrayOf(PropTypes.shape(
       UserPropTypes
     ).isRequired).isRequired,
     columns: PropTypes.arrayOf(PropTypes.shape(
       ColumnPropTypes
-    ).isRequired).isRequired
+    ).isRequired).isRequired,
+
+    showLoading: PropTypes.func.isRequired,
+    hideLoading: PropTypes.func.isRequired,
+    addUsers: PropTypes.func.isRequired,
+    updateUser: PropTypes.func.isRequired
   };
 
   componentWillMount() {
-    if (!this.props.users.length) {
-      this.props.dispatch(showLoading());
+    let {users, showLoading, hideLoading, addUsers} = this.props;
+    if (!users.length) {
+      showLoading();
 
       loadAllUsers()
       .then(res => {
-        this.props.dispatch(hideLoading());
-        return this.props.dispatch(addUsers(res));
+        hideLoading();
+        return addUsers(res);
       });
     }
   }
@@ -38,15 +44,14 @@ class UsersPage extends React.Component {
    * Handles an updated user.
    * @param {Object} user The updated user.
    */
-  onUserUpdate(user) {
-    updateUser(user)(this.props.dispatch);
-  }
+  onUserUpdate = (user) =>
+    this.props.updateUser(user);
 
   render() {
     return (
       <div>
         <UserList users={this.props.users} columns={this.props.columns}
-          onUserUpdate={this.onUserUpdate.bind(this)}>
+          onUserUpdate={this.onUserUpdate}>
         </UserList>
       </div>
     );
@@ -58,4 +63,13 @@ const mapStateToProps = (state) => ({
   columns: state.admin.userColumns
 });
 
-export default connect(mapStateToProps)(UsersPage);
+function mapDispatchToProps(dispatch) {
+  return {
+    updateUser: bindActionCreators(updateUser, dispatch),
+    addUsers: bindActionCreators(addUsers, dispatch),
+    showLoading: bindActionCreators(showLoading, dispatch),
+    hideLoading: bindActionCreators(hideLoading, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersPage);
