@@ -18,10 +18,16 @@ module.exports = function(routes, config, requireAuth) {
       if (req.body._id !== req.params.id) {
         return res.json({error: 'Parameter id does not match object _id'});
       }
-      User.findOneAndUpdate({_id: req.params.id}, req.body, function(err){
+      User.findOneAndUpdate({_id: req.params.id}, req.body, function(err, user){
         if (err) {
           return res.status(501).json({error: true});
         }
+
+        User.findById(req.params.id).lean().exec(function(err, user) {
+          // Diff the output
+          console.log(`Admin '${req.user.username}' edited the user `+
+            `'${user._id}'`);
+        });
         return res.status(200).json({success: true});
       });
     });

@@ -46,8 +46,6 @@ export const User = {
   deleted: PropTypes.bool,
   createdAt: PropTypes.string.isRequired,
   updatedAt: PropTypes.string.isRequired,
-  outcomeStmt: PropTypes.string.isRequired,
-  firstHackathon: PropTypes.bool.isRequired,
   shirtSize: PropTypes.string.isRequired,
   diet: PropTypes.string,
   food: PropTypes.string,

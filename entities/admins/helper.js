@@ -59,6 +59,7 @@ function roleAuth(role) {
 
       // If admin is found, check role.
       if (getRole(foundAdmin.role) >= getRole(role)) {
+        req.user.role = foundAdmin.role;
         return next();
       }
 

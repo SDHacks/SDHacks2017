@@ -33,9 +33,8 @@ class CheckboxButton extends React.Component {
     let text = value ? 'True' : 'False';
     return (
       <label className={'btn btn-outline-primary btn-block checkbox-button '
-        + active}>
-        <input type="checkbox" value={value} autoComplete="off"
-          onChange={() => this.updateValue()} /> {text}
+        + active} onClick={() => this.updateValue()}>
+        <input type="checkbox" value={value} autoComplete="off" /> {text}
       </label>
     );
   }

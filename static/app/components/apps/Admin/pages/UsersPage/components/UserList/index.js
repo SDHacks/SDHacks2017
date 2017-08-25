@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {BootstrapTable, TableHeaderColumn} from
-  'react-bootstrap-table';
+import ReactTable from 'react-table';
+
+import 'react-table/react-table.css';
 
 import {Column as ColumnPropTypes, User as UserPropTypes} from '~/proptypes';
 
 import User from '~/components/apps/Admin/User';
-
-import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 class UserList extends React.Component {
   static propTypes = {
@@ -30,40 +29,23 @@ class UserList extends React.Component {
     );
 
   expandComponent = (row) =>
-    <User user={row} initialValues={row}
-      onSubmit={this.props.onUserUpdate.bind(this)} />;
+    <div className="user-list__child">
+      <User user={row} initialValues={row}
+        onSubmit={this.props.onUserUpdate.bind(this)} />
+    </div>
 
   render() {
-    let options = {
-      sizePerPage: 10,  // which size per page you want to locate as default
-      pageStartIndex: 1, // where to start counting the pages
-      paginationSize: 3,  // the pagination bar size.
-      paginationPosition: 'top',
-      paginationShowsTotal: true,
-      alwaysShowAllBtns: true,
-      paginationPanel: this.renderPaginationPanel,
-      noDataText: 'There are currently no users'
-    };
-
     return (
-      <BootstrapTable
+      <ReactTable
         data={this.props.users}
-        hover={true}
-        striped
-        pagination
-        options={options}
-        expandableRow={() => true}
-        expandComponent={this.expandComponent}>
-        {this.props.columns.map(col =>
-          <TableHeaderColumn
-            key={col.name}
-            dataField={col.data}
-            isKey={col.key || false}
-            dataSort
-            filter={{type: 'TextFilter', placeholder: 'Filter'}}
-            >{col.name}</TableHeaderColumn>)
-        }
-      </BootstrapTable>
+        columns={this.props.columns}
+        defaultPageSize={10}
+        className="-striped -highlight"
+        SubComponent={({original}) => this.expandComponent(original)}
+        filterable
+        defaultFilterMethod={(filter, row) =>
+          String(row[filter.id]).indexOf(filter.value) !== -1}>
+      </ReactTable>
     );
   }
 }

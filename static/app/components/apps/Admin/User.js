@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
+import {default as UUID} from 'node-uuid';
 
 import {User as UserPropType} from '~/proptypes';
 
@@ -40,8 +41,8 @@ class User extends React.Component {
       <div key="1" className="col-sm-4">
         <a className="btn btn-primary form-control"
           role="button" target="_blank"
-          disabled={!this.props.resume} href={this.props.resume.url} download>
-          Download
+          disabled={!this.props.resume} href={this.props.resume.url}>
+          View
         </a>
       </div>
     ];
@@ -101,7 +102,8 @@ class User extends React.Component {
             {this.renderFormField('Phone', 'phone', 'col-sm-4', 'tel')}
             {this.renderFormField('Email', 'email', 'col-sm-4')}
             {this.renderFormField('University', 'university', 'col-sm-4')}
-            {this.renderFormField('Shirt Size', 'shirtSize')}
+            {this.renderFormField('Major', 'major', 'col-sm-4')}
+            {this.renderFormField('Shirt Size', 'shirtSize', 'col-sm-4')}
           </div>
           <h4>Portfolio</h4>
           <div className="form-group row mb-4">
@@ -119,18 +121,14 @@ class User extends React.Component {
           </span>}
           <h4>Preferences</h4>
           <div className="form-group row mb-4">
-            {this.renderFormField('Diet', 'diet', 'col-sm-10')}
-            {this.renderFormField('Food', 'food', 'col-sm-10')}
-            {this.renderFormField('Outcome', 'outcomeStmt', 'col-sm-10')}
-            {this.renderFormCheckbox('First Hackathon', 'firstHackathon',
-              'col-sm-10')}
+            {this.renderFormField('Diet', 'diet', 'col-sm-4')}
+            {this.renderFormField('Food', 'food', 'col-sm-4')}
           </div>
-          <h4>Status</h4>
+          <h4>Travel</h4>
           <div className="form-group row mb-4">
             {this.renderFormCheckbox('Out Of State', 'travel.outOfState',
               'col-sm-2')}
             {this.renderFormField('Coming From', 'travel.city', 'col-sm-6')}
-            {this.renderFormField('Major Classes', 'majors')}
           </div>
           {getRole(this.props.role) >= getRole(Roles.ROLE_ADMIN) &&
             <span>
@@ -159,7 +157,7 @@ class User extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     resume: ownProps.user.resume ? ownProps.user.resume : null,
-    form: ownProps.user._id,
+    //form: ownProps.user._id,
     role: state.admin.auth.user.role
   };
 };
@@ -167,6 +165,8 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
     connect(mapStateToProps),
     reduxForm({
-      destroyOnUnmount: true
+      form: UUID.v4(),
+      destroyOnUnmount: true,
+      enableReinitialize: true
     })
 )(User);
