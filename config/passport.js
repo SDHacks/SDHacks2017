@@ -31,7 +31,7 @@ function(username, password, done) {
     if (err) {
       return done(err);
     }
-    if (!user) {
+    if (!user || user.deleted) {
       return done(null, false, {error: returnMessages.INCORRECT_LOGIN});
     }
 
@@ -56,7 +56,7 @@ const adminLogin = new LocalStrategy(localOptions,
 function(username, password, done) {
   Admin.findOne({username: {$regex : new RegExp(username, 'i')}},
   function(err, admin) {
-    if (err) {
+    if (err || admin.deleted) {
       return done(err);
     }
     if (!admin) {
@@ -78,7 +78,7 @@ function(username, password, done) {
 
 const jwtAdminLogin = new JwtStrategy(jwtOptions, function(payload, done) {
   Admin.findById(payload._id, function(err, user) {
-    if (err) {
+    if (err || user.deleted) {
       return done(err, false);
     }
 

@@ -98,3 +98,28 @@ export const registerUser = (user) =>
       .post('/apply/api/register')
       .field(user)
       .attach('resume', user.resume[0]));
+
+/**
+ * Request to register a new admin.
+ * @param {Object} admin The admin fields to register.
+ * @returns {Promise} A promise of the request.
+ */
+export const registerAdmin = (admin) =>
+  promisify(request
+      .post('/admins/register')
+      .send(admin)
+      .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
+      .use(adminPrefix));
+
+/**
+ * Request to delete a new admin.
+ * @param {String} adminId The ID of the admin to delete.
+ * @returns {Promise} A promise of the request.
+ */
+export const deleteAdmin = (adminId) =>
+  promisify(request
+      .post('/admins/delete')
+      .send({id: adminId})
+      .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
+      .use(adminPrefix));
+

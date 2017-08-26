@@ -13,6 +13,26 @@ import ResumeList from '~/components/apps/Admin/pages/ResumesPage/components/Res
 let roles = {};
 Object.values(Roles).forEach(role => roles[role] = role);
 
+const mockFilterOptions = {
+  github: ['redbackthomson', 'vincentliaw'],
+  year: [2, 3]
+};
+
+const mockFilters = {
+  'github': {
+    displayName: 'Github',
+    enabled: true,
+    options: {
+      'RedbackThomson': true
+    }
+  },
+  'year': {
+    displayName: 'Year',
+    enabled: false,
+    options: {}
+  }
+};
+
 storiesOf('Resume Tool/Layout', module)
   .addDecorator(withKnobs)
   .addDecorator(story => (
@@ -26,7 +46,11 @@ storiesOf('Resume Tool/Layout', module)
             admin-sidebar__container--authenticated`}>
             <Sidebar user={{
               username: text('Username', 'Facetweet'),
-              role: select('Role', roles, Roles.ROLE_SPONSOR)
+              role: select('Role', roles, Roles.ROLE_SPONSOR),
+              resume: {
+                url: text('Resume.URL', 'example.com')
+              },
+              github: text('Github', 'RedbackThomson')
             }}
             selected={number('Selected', 672)}
             total={number('Total', 3367)}
@@ -34,20 +58,8 @@ storiesOf('Resume Tool/Layout', module)
             toggleFilterOption={action('Toggle Option')}
             selectAllOptions={action('Select All')}
             selectNoneOptions={action('Select None')}
-            filters={object('Filters', {
-              'github': {
-                displayName: 'Github',
-                enabled: true,
-                options: {
-                  'RedbackThomson': true
-                }
-              },
-              'year': {
-                displayName: 'Year',
-                enabled: false,
-                options: {}
-              }
-            })} />
+            filters={object('Filters', mockFilters)}
+            filterOptions={object('FilterOptions', mockFilterOptions)} />
           </div>
 
           <main style={{flex: 1}} className="p-3">
@@ -67,7 +79,11 @@ storiesOf('Resume Tool/Sidebar', module)
   .add('Sponsor View', () => (
     <Sidebar user={{
         username: text('Username', 'Facetweet'),
-        role: select('Role', roles, Roles.ROLE_SPONSOR)
+        role: select('Role', roles, Roles.ROLE_SPONSOR),
+        resume: {
+          url: text('Resume.URL', 'example.com')
+        },
+        github: text('Github', 'RedbackThomson')
       }}
       selected={number('Selected', 672)}
       total={number('Total', 3367)}
@@ -75,25 +91,42 @@ storiesOf('Resume Tool/Sidebar', module)
       toggleFilterOption={action('Toggle Option')}
       selectAllOptions={action('Select All')}
       selectNoneOptions={action('Select None')}
-      filters={object('Filters', {
-        'github': {
-          displayName: 'Github',
-          enabled: true,
-          options: {
-            'RedbackThomson': true
-          }
-        },
-        'year': {
-          displayName: 'Year',
-          enabled: false,
-          options: {}
-        }
-      })} />
+      filters={object('Filters', mockFilters)}
+      filterOptions={object('FilterOptions', mockFilterOptions)} />
   ))
 ;
 
 storiesOf('Resume Tool/List', module)
   .add('List', () => (
+    <ResumeList
+    onCompactChange={action('Compact Changed')}
+    isCompacted={boolean('isCompacted', false)}
+    applicants={[
+      {
+        firstName: 'Nicholas',
+        lastName: 'Thomson',
+        university: 'The University of California, San Diego',
+        year: '3',
+        gender: 'Male',
+        status: 'Confirmed',
+        resume: {
+          url: 'example.com'
+        }
+      },
+      {
+        firstName: 'Vincent',
+        lastName: 'Liaw',
+        university: 'The University of California, San Diego',
+        year: '3',
+        gender: 'Male',
+        status: 'Confirmed',
+        resume: {
+          url: 'example.com'
+        }
+      }
+    ]}/>
+  ))
+  .add('List (Compacted)', () => (
     <ResumeList
     onCompactChange={action('Compact Changed')}
     isCompacted={boolean('isCompacted', true)}
@@ -104,7 +137,10 @@ storiesOf('Resume Tool/List', module)
         university: 'The University of California, San Diego',
         year: '3',
         gender: 'Male',
-        status: 'Confirmed'
+        status: 'Confirmed',
+        resume: {
+          url: 'example.com'
+        }
       },
       {
         firstName: 'Vincent',
@@ -112,7 +148,10 @@ storiesOf('Resume Tool/List', module)
         university: 'The University of California, San Diego',
         year: '3',
         gender: 'Male',
-        status: 'Confirmed'
+        status: 'Confirmed',
+        resume: {
+          url: 'example.com'
+        }
       }
     ]}/>
   ))

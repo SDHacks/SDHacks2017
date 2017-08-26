@@ -1,13 +1,8 @@
 import PropTypes from 'prop-types';
 
 export const Column = {
-  name: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
-  default: PropTypes.string,
-  prefix: PropTypes.string,
-  link: PropTypes.string,
-  sort: PropTypes.bool,
-  key: PropTypes.bool
+  Header: PropTypes.string.isRequired,
+  accessor: PropTypes.string.isRequired
 };
 
 export const Filter = {

@@ -2,37 +2,24 @@ import * as ActionTypes from '../actions/types';
 
 const initialState = [
   {
-    Header: 'Name',
-    columns: [
-      {
-        Header: 'First Name',
-        accessor: 'firstName'
-      },
-      {
-        Header: 'Last Name',
-        accessor: 'lastName'
-      }
-    ]
+    Header: 'First Name',
+    accessor: 'firstName'
   },
   {
-    columns: [
-      {
-        Header: 'Github',
-        accessor: 'github'
-      },
-      {
-        Header: 'Email',
-        accessor: 'email'
-      }
-    ]
+    Header: 'Last Name',
+    accessor: 'lastName'
   },
   {
-    columns: [
-      {
-        Header: 'Major',
-        accessor: 'major'
-      }
-    ]
+    Header: 'Github',
+    accessor: 'github'
+  },
+  {
+    Header: 'Email',
+    accessor: 'email'
+  },
+  {
+    Header: 'Major',
+    accessor: 'major'
   }
 ];
 
@@ -41,11 +28,14 @@ const userColumns = (state = initialState, action) => {
   case (ActionTypes.ADD_COLUMN):
     return [
       ...state,
-      action.column
+      {
+        Header: action.column,
+        accessor: action.column
+      }
     ];
   case (ActionTypes.REMOVE_COLUMN):
     return Object.values(state)
-      .filter(key => key.data !== action.columnName);
+      .filter(key => key.accessor !== action.columnName);
   }
   return state;
 };

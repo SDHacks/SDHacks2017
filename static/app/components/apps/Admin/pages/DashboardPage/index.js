@@ -23,7 +23,7 @@ class DashboardPage extends React.Component {
     let {user} = this.props;
 
     return (
-      <div className="row">
+      <div className="row p-3">
         <div className="col-sm-12">
           <h1>Dashboard</h1>
           <h2 className="text-left">

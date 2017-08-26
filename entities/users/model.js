@@ -3,7 +3,7 @@ var findOrCreate = require('mongoose-findorcreate');
 var timestamps = require('mongoose-timestamp');
 var crate = require('mongoose-crate');
 var S3 = require('mongoose-crate-s3');
-var softDelete = require('mongoose-softdelete');
+var mongooseDelete = require('mongoose-delete');
 var bcrypt = require('bcrypt-nodejs');
 
 require('dotenv').config();
@@ -205,7 +205,7 @@ UserSchema.plugin(require('mongoose-sanitizer'));
 
 UserSchema.plugin(findOrCreate);
 UserSchema.plugin(timestamps);
-UserSchema.plugin(softDelete);
+UserSchema.plugin(mongooseDelete);
 UserSchema.plugin(crate, {
   storage: new S3({
     key: process.env.S3_KEY,

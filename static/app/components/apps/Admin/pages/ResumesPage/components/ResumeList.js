@@ -37,16 +37,16 @@ class ResumeList extends React.Component {
   }
 
   /**
-   * Creates a header by the given name
-   * @param {String} name The name of the column to display
-   * @returns {Component} The header component to render
+   * Creates a header by the given name.
+   * @param {String} name The name of the column to display.
+   * @returns {Component} The header component to render.
    */
   renderHeader(name) {
     let {smallColumns, mediumColumns} = this.state;
     let small = smallColumns.indexOf(name) !== -1;
     let medium = mediumColumns.indexOf(name) !== -1;
-    return (<th key={name} className={`resume-list__header
-      resume-list__header--${small ? 'small' : (medium ? 'medium' : 'large')}`}>
+    return (<th key={name} className={`admin-list__header
+      admin-list__header--${small ? 'small' : (medium ? 'medium' : 'large')}`}>
       {name}
     </th>);
   }
@@ -56,22 +56,22 @@ class ResumeList extends React.Component {
     let {applicants, isCompacted, onCompactChange} = this.props;
 
     return (
-      <table className={`resume-list table ${isCompacted ? 'table-sm' : ''}`}>
+      <table className={`admin-list table ${isCompacted ? 'table-sm' : ''}`}>
         <thead>
-          <tr className="resume-list__row">
-            <th className="resume-list__header resume-list__header--spacer">
+          <tr className="admin-list__row">
+            <th className="admin-list__header admin-list__header--spacer">
             </th>
 
             {Object.values(columns).map(name => this.renderHeader(name))}
 
-            <th className="resume-list__header">
-              <div className="resume-list__toggle">
+            <th className="admin-list__header">
+              <div className="admin-list__toggle">
                 <ToggleSwitch checked={isCompacted}
                   onChange={onCompactChange} />
                 Compact View:&nbsp;
-                <span className={`resume-list__compacted text-uppercase
-                ${isCompacted ? 'resume-list__compacted--active' :
-                'resume-list__compacted--inactive'}`}>
+                <span className={`admin-list__compacted text-uppercase
+                ${isCompacted ? 'admin-list__compacted--active' :
+                'admin-list__compacted--inactive'}`}>
                   {isCompacted ? 'ON' : 'OFF'}
                 </span>
               </div>
@@ -81,19 +81,19 @@ class ResumeList extends React.Component {
 
         <tbody>
           {applicants && applicants.map(applicant =>
-            <tr className="resume-list__row">
-              <td className="resume-list__value resume-list__value--spacer">
+            <tr className="admin-list__row">
+              <td className="admin-list__value admin-list__value--spacer">
               </td>
               {Object.keys(columns).map(column =>
-                <td className="resume-list__value">
+                <td className="admin-list__value">
                   {applicant[column]}
                 </td>
               )}
-              <td className="resume-list__value">
+              <td className="admin-list__value">
                 <a
                   href={applicant.resume.url} download
                   className={`btn rounded-button rounded-button--small
-                  ${isCompacted ? 'resume-list__btn--compacted' : ''}`}>
+                  ${isCompacted ? 'admin-list__btn--compacted' : ''}`}>
                   Download Resume
                 </a>
               </td>

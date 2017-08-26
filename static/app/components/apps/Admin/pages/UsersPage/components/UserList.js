@@ -40,7 +40,7 @@ class UserList extends React.Component {
         data={this.props.users}
         columns={this.props.columns}
         defaultPageSize={10}
-        className="-striped -highlight"
+        className="-striped -highlight user-list"
         SubComponent={({original}) => this.expandComponent(original)}
         filterable
         defaultFilterMethod={(filter, row) =>
