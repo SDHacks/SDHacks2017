@@ -3,7 +3,6 @@
 }
 .sd-nav {
   width: 100%;
-  // background-color: $white;
   position: fixed;
   top: 0;
   z-index: 8;
@@ -12,7 +11,7 @@
   -webkit-transition: opacity .25s ease-in-out;
 
   // Default hidden navigation bar
-  &--background {
+  &__background {
     background-color: $white;
     opacity: 0;
     box-shadow: $default-shadow;
@@ -34,7 +33,7 @@
     margin-bottom: 0;
   }
 
-  &--logo {
+  &__logo {
     margin-top: 12px;
     height: 64px;
 
@@ -65,28 +64,29 @@
       z-index: 10;
     }
   }
-  &--left {
+  &__left {
     float: left;
   }
-  &--side {
-    @include media-breakpoint-down(md) {
+  &__side {
+    @include media-breakpoint-down(sm) {
       float: none;
       text-align: center;
     }
   }
-  &--right {
+  &__right {
     float: right;
+    margin-right: 5rem;
 
-    @include media-breakpoint-up(md) {
-      margin-right: 8rem;
+    @include media-breakpoint-up(lg) {
+      margin-right: 7rem;
     }
   }
-  &--mobile {
+  &__mobile {
     ul {
       padding-left: 0;
     }
   }
-  &--links {
+  &__links {
     a {
       display: inline-block;
       padding: 32px 20px 28px 20px;
@@ -118,11 +118,11 @@
       padding-bottom: 3px;
       text-transform: uppercase;
     }
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(sm) {
       display: none;
     }
   }
-  &--mobile-link {
+  &__mobile-link {
     padding-top: 15px;
     padding-bottom: 15px;
 
@@ -165,15 +165,18 @@
   left: 20px;
   width: 32px;
   border: none;
-  top: 10px;
+  top: 24px;
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-up(md) {
+    display: none;
   }
+
   .mobile-hamburger {
     border-top: 3px solid;
     border-color: $dark-blue;
     height: auto;
     position: relative;
+    top: -14px;
     transition: all 0.25s;
     width: 100%;
     display: inline-block;
@@ -249,7 +252,6 @@
   transition: opacity 0.25s, visibility 0s linear 0.5s;
   visibility: hidden;
   z-index: 10;
-  // font-family: $header-font-family;
 
   a {
     text-decoration: none;

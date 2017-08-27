@@ -1,5 +1,6 @@
 .hexagon-hero {
   max-height: 800px;
+  min-height: 667px;
   width: 100%;
   text-align: center;
 
@@ -161,7 +162,7 @@
       transform: scale(.75);
     }
     @include media-breakpoint-up(lg) {
-      top: -5rem;
+      top: -3rem;
     }
     @include media-breakpoint-up(xl) {
       left: -12rem;
