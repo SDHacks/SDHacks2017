@@ -1,6 +1,7 @@
 import {Field, Fields, reduxForm} from 'redux-form';
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import UniversityField from './UniversityField';
 import fields from './Fields';
@@ -107,6 +108,14 @@ class PersonalSection extends React.Component {
   render() {
     const {handleSubmit, pristine, submitting} = this.props;
     return (<form onSubmit={handleSubmit}>
+      {fields.createRow(
+        fields.createColumn('col-12 text-center',
+          <p>
+            Already applied?&nbsp;
+            <Link className="sd-link__underline" to="/login">Login here</Link>!
+          </p>
+        )
+      )}
       {fields.createRow(
         fields.createColumn('col-md-6',
           fields.createLabel('First Name'),
