@@ -49,6 +49,14 @@
     }
   }
 
+  &--warn {
+    background-color: $accent-yellow;
+
+    &:hover, &:focus {
+      background-color: darken($accent-yellow, 5%);
+    }
+  }
+
   &--success {
     background-color: $default-green;
 

@@ -1,0 +1,282 @@
+.sd-inline-list {
+  list-style-type: none;
+}
+.sd-nav {
+  width: 100%;
+  // background-color: $white;
+  position: fixed;
+  top: 0;
+  z-index: 8;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+
+  // Default hidden navigation bar
+  &--background {
+    background-color: $white;
+    opacity: 0;
+    box-shadow: $default-shadow;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transition: opacity 0.25s, visibility 0s linear 0.5s;
+    min-height: 80px;
+
+    &-active {
+      opacity: 1;
+    }
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+
+  &--logo {
+    margin-top: 12px;
+    height: 64px;
+
+    &-wrap {
+      -webkit-transition: 0.25s ease-in-out;
+      -moz-transition: 0.25s ease-in-out;
+      -o-transition: 0.25s ease-in-out;
+      transition: 0.25s ease-in-out;
+      transform: translateY(100px);
+      display: inline-block;
+      position: relative;
+      top: -100px;
+    }
+
+    // Logo translate up for animation
+    &-up {
+      transform: translateY(0);
+    }
+
+    @include media-breakpoint-down(lg) {
+      height: 60px;
+      margin-top: 15px;
+      margin-bottom: 12px;
+    }
+    @include media-breakpoint-down(md) {
+      height: 50px;
+      position: relative;
+      z-index: 10;
+    }
+  }
+  &--left {
+    float: left;
+  }
+  &--side {
+    @include media-breakpoint-down(md) {
+      float: none;
+      text-align: center;
+    }
+  }
+  &--right {
+    float: right;
+
+    @include media-breakpoint-up(md) {
+      margin-right: 8rem;
+    }
+  }
+  &--mobile {
+    ul {
+      padding-left: 0;
+    }
+  }
+  &--links {
+    a {
+      display: inline-block;
+      padding: 32px 20px 28px 20px;
+      cursor: pointer;
+
+      li:after {
+        content: '';
+        display: block;
+        margin: auto;
+        height: 2px;
+        width: 0px;
+        background: transparent;
+        transition: width .5s ease, background-color .5s ease;
+      }
+
+      &:hover {
+        text-decoration: none;
+        color: lighten($dark-blue, 10%);
+      }
+      &:hover li:after {
+        width: 100%;
+        background: $default-purple;
+      }
+    }
+    li {
+      font-size: 14px;
+      letter-spacing: 0.7px;
+      line-height: 1.6;
+      padding-bottom: 3px;
+      text-transform: uppercase;
+    }
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+  &--mobile-link {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+}
+/* Defines the breakpoint at which the nav will collapse */
+
+/* Safari requires animations to be loaded before being called. */
+@keyframes header_fadeIn {
+  from { transform: translateY(-100px); }
+  to { transform: translateY(0px); }
+}
+/* Firefox < 16 */
+@-moz-keyframes header_fadeIn {
+  from { transform: translateY(-100px); }
+  to { transform: translateY(0px); }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes header_fadeIn {
+  from { transform: translateY(-100px); }
+  to { transform: translateY(0px); }
+}
+/* Internet Explorer */
+@-ms-keyframes header_fadeIn {
+  from { transform: translateY(-100px); }
+  to { transform: translateY(0px); }
+}
+/* Opera < 12.1 */
+@-o-keyframes header_fadeIn {
+  from { transform: translateY(-100px); }
+  to { transform: translateY(0px); }
+}
+.mobile-link {
+  cursor: pointer;
+  height: 34px;
+  position: absolute;
+  left: 20px;
+  width: 32px;
+  border: none;
+  top: 10px;
+
+  @include media-breakpoint-down(md) {
+  }
+  .mobile-hamburger {
+    border-top: 3px solid;
+    border-color: $dark-blue;
+    height: auto;
+    position: relative;
+    transition: all 0.25s;
+    width: 100%;
+    display: inline-block;
+
+    &:before,
+    &:after {
+      border-top: 3px solid;
+      border-color: $dark-blue;
+      content: ' ';
+      height: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      transition: all 0.25s;
+    }
+    &:before {
+      top: -12px;
+    }
+    &:after {
+      bottom: -9px;
+    }
+  }
+}
+.nav-open {
+  background-color: $white;
+
+  .logo {
+    opacity: 0;
+  }
+  .mobile-link {
+    .mobile-hamburger {
+      border-color: transparent;
+      z-index: 999999;
+
+      &:before,
+      &:after {
+        -webkit-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        top: 0;
+      }
+      &:before {
+        transform: rotate3d(0, 0, 1, 45deg);
+      }
+      &:after {
+        transform: rotate3d(0, 0, 1, -45deg);
+      }
+    }
+  }
+  .navigation {
+    opacity: 1;
+    transform: translateY(0px);
+    transition-delay: 0s;
+    visibility: visible;
+
+    li {
+      transform: translateX(0px);
+    }
+  }
+}
+.navigation {
+  background: $white;
+  bottom: 0;
+  float: none;
+  left: 0;
+  margin-top: 0px;
+  opacity: 0;
+  padding: 0px 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding-top: 75px;
+  transition: opacity 0.25s, visibility 0s linear 0.5s;
+  visibility: hidden;
+  z-index: 10;
+  // font-family: $header-font-family;
+
+  a {
+    text-decoration: none;
+    border: none;
+  }
+  li a {
+    color: $dark-blue;
+    display: block;
+    padding: 20px 0px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+
+    &:focus {
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+  }
+  li {
+    display: block;
+    transform: translateX(-10px);
+    transition: opacity 0.25s, transform 0.25s;
+    text-align: center;
+  }
+  .dropdown > a {
+    display: none;
+  }
+}

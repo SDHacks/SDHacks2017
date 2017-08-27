@@ -7,6 +7,42 @@ include ../mixins/get-updates
 
 block content
   - volunteerUrl = 'https://tesc.typeform.com/to/PYPjRK'
+  - sponsorUrl = 'mailto://tesc.ucsd.edu'
+
+    nav.sd-nav
+      .sd-nav--background
+      .container.sd-container
+        .sd-nav--left.sd-nav--side
+          a(href="/").sd-nav--logo-wrap.sd-nav--logo-up
+            img.sd-nav--logo(src="/assets/img/vectors/logo.svg")
+        .sd-nav--right.hidden-md-down
+          ul.sd-inline-list.sd-nav--links
+            a(href="/apply")
+              li Apply
+            a(href="/user/login")
+              li Login
+            a(href=volunteerUrl)
+              li Volunteer
+            a(href=sponsorUrl)
+              li Sponsor
+            a(href="http://2016.sdhacks.io")
+              li 2016 Site
+        a.mobile-link.hidden-md-up.sd-nav--mobile-link
+          span.mobile-hamburger
+          .navigation.nav-right.sd-nav--mobile
+            ul
+              li
+                a.sd-nav--mobile-link(href="/") Home
+              li
+                a.sd-nav--mobile-link(href="/apply") Apply
+              li
+                a.sd-nav--mobile-link(href="/user/login") Login
+              li
+                a.sd-nav--mobile-link(href=volunteerUrl) Volunteer
+              li
+                a.sd-nav--mobile-link(href=sponsorUrl) Sponsor
+              li
+                a.sd-nav--mobile-link(href="http://2016.sdhacks.io") 2016 Site
   .hexagon-hero__background
     .hexagon-hero__water
     .hexagon-hero__beach
