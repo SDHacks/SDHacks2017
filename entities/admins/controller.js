@@ -39,6 +39,10 @@ module.exports = function(app, config) {
   authRoutes.post('/login', requireLogin, function (req, res) {
     var adminInfo = setUserInfo(req.user);
 
+    // Update access date
+    req.user.lastAccessed = new Date();
+    req.user.save();
+
     res.status(200).json({
       token: `JWT ${generateToken(adminInfo)}`,
       user: adminInfo

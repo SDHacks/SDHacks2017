@@ -10,15 +10,17 @@
     display: block !important;
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     height: 100%;
 
     &__text-featurette {
-      min-height: 76px;
+      min-height: 72px;
     }
   }
 
   &__about {
+    padding-bottom: 0.5rem;
+
     @include media-breakpoint-down(md) {
       text-align: center;
     }

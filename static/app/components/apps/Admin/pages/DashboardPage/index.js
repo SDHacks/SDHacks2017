@@ -23,36 +23,38 @@ class DashboardPage extends React.Component {
     let {user} = this.props;
 
     return (
-      <div className="row">
-        <div className="col-sm-12">
-          <h1>Dashboard</h1>
-          <h2 className="text-left">
-            {user.username}
-            <small> ({user.role})</small>
-          </h2>
-        </div>
-        <div className="col-sm-12 col-md-6 col-lg-4">
-          <div className="card">
-            <div className="card-body">
-              <h3 className="card-title">Total Users</h3>
-              <p className="card-text">
-                {this.props.stats.users.total.toLocaleString()}
-              </p>
-              {getRole(user.role) >= getRole(Roles.ROLE_ADMIN) &&
-                <Link to="/admin/users" className="btn btn-primary">
-                  See Users
-                </Link>
-              }
+      <div className="container-fluid p-3">
+        <div className="row">
+          <div className="col-sm-12">
+            <h1>Dashboard</h1>
+            <h2 className="text-left">
+              {user.username}
+              <small> ({user.role})</small>
+            </h2>
+          </div>
+          <div className="col-sm-12 col-md-6 col-lg-4">
+            <div className="card">
+              <div className="card-body">
+                <h3 className="card-title">Total Users</h3>
+                <p className="card-text">
+                  {this.props.stats.users.total.toLocaleString()}
+                </p>
+                {getRole(user.role) >= getRole(Roles.ROLE_ADMIN) &&
+                  <Link to="/admin/users" className="btn btn-primary">
+                    See Users
+                  </Link>
+                }
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-sm-12 col-md-6 col-lg-4">
-          <div className="card">
-            <div className="card-body">
-              <h3 className="card-title">Unique Universities</h3>
-              <p className="card-text">
-                {this.props.stats.university.total.toLocaleString()}
-              </p>
+          <div className="col-sm-12 col-md-6 col-lg-4">
+            <div className="card">
+              <div className="card-body">
+                <h3 className="card-title">Unique Universities</h3>
+                <p className="card-text">
+                  {this.props.stats.university.total.toLocaleString()}
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -4,9 +4,45 @@ extends ../layouts/home
 //- Any mixins
 include ../mixins/get-updates
 
-
 block content
   - volunteerUrl = 'https://tesc.typeform.com/to/PYPjRK'
+  - sponsorUrl = 'mailto://tesc.ucsd.edu'
+
+    nav.sd-nav
+      .sd-nav__background
+      .container.sd-container
+        .sd-nav__left.sd-nav__side
+          a(href="/").sd-nav__logo-wrap.sd-nav__logo-up
+            img.sd-nav__logo(src="/assets/img/vectors/logo.svg")
+        .sd-nav__right.hidden-sm-down
+          ul.sd-inline-list.sd-nav__links
+            a(href="/apply")
+              li Apply
+            a(href="/user/login")
+              li Login
+            a(href=volunteerUrl)
+              li Volunteer
+            a(href=sponsorUrl)
+              li Sponsor
+            a(href="http://2016.sdhacks.io")
+              li 2016 Site
+        a.mobile-link.hidden-sm-up.sd-nav__mobile-link
+          span.mobile-hamburger
+          .navigation.nav-right.sd-nav__mobile
+            ul
+              li
+                a.sd-nav__mobile-link(href="/") Home
+              li
+                a.sd-nav__mobile-link(href="/apply") Apply
+              li
+                a.sd-nav__mobile-link(href="/user/login") Login
+              li
+                a.sd-nav__mobile-link(href=volunteerUrl) Volunteer
+              li
+                a.sd-nav__mobile-link(href=sponsorUrl) Sponsor
+              li
+                a.sd-nav__mobile-link(href="http://2016.sdhacks.io") 2016 Site
+
   .hexagon-hero__background
     .hexagon-hero__water
     .hexagon-hero__beach
@@ -23,8 +59,6 @@ block content
               .hexagon-hero__nav
                 //- +get-updates
                 a.btn.rounded-button.hexagon-hero__nav-button(href='/apply') Apply
-                a.btn.rounded-button.rounded-button--secondary.hexagon-hero__nav-button(href='/user/login') Login
-              .hexagon-hero__nav.hexagon-hero__nav--secondary
                 a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
           .col-md-4
             img.hexagon-hero__featurette(src='/assets/img/site/featurette-hero.svg')
@@ -37,7 +71,6 @@ block content
         .hexagon-hero__nav.hexagon-hero__nav--mobile
           //- +get-updates
           a.btn.rounded-button.hexagon-hero__nav-button(href='/apply') Apply
-          a.btn.rounded-button.rounded-button--secondary.hexagon-hero__nav-button(href='/user/login') Login
           a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
 
   .sd-section.sd-about#sd-about
@@ -167,5 +200,5 @@ block content
             a.sd-link__icon(target='_blank' href='http://tesc.ucsd.edu')
               img.sd-footer__tesc-img(src='/assets/img/site/logo-tesc-white.svg')
 
-  a(id="mlh-trust-badge" style="border:none;display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=white" target="_blank")
+  a.mlh-badge(id="mlh-trust-badge" href="https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=white" target="_blank")
     img(src="/assets/img/vectors/mlh.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%")

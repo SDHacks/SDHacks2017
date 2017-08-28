@@ -12,18 +12,42 @@ module.exports = function(routes, config) {
 
   const userRoutes = express.Router();
   const sponsorRoutes = express.Router();
+  const adminRoutes = express.Router();
 
   routes.use('/users', userRoutes);
   routes.use('/sponsors', sponsorRoutes);
+  routes.use('/admins', adminRoutes);
 
   require('./User')(userRoutes, config, requireAuth);
   require('./Sponsor')(sponsorRoutes, config, requireAuth);
 
-  routes.get('/admins', requireAuth, roleAuth(roles.ROLE_DEVELOPER),
+  adminRoutes.get('/', requireAuth, roleAuth(roles.ROLE_DEVELOPER),
   (req, res) =>
     Admin.find({deleted: {$ne: true}}).sort({createdAt: -1})
     .exec(function(err, admins) {
       return res.json(admins);
+    })
+  );
+
+  adminRoutes.post('/register', requireAuth, roleAuth(roles.ROLE_DEVELOPER),
+  (req, res) =>
+    Admin.create(req.body, (err) => {
+      if (err) {
+        console.error(err);
+        console.log(Admin.schema.path('role').enumValues);
+        return res.json({error: true});
+      }
+      res.json({success: true});
+    })
+  );
+
+  adminRoutes.post('/delete', requireAuth, roleAuth(roles.ROLE_DEVELOPER),
+  (req, res) =>
+    Admin.delete({_id: req.body.id}, (err) => {
+      if (err) {
+        return res.json({error: true});
+      }
+      res.json({success: true});
     })
   );
 

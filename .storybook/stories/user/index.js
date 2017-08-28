@@ -68,7 +68,8 @@ storiesOf('User Panel', module)
   .add('Login', () => (
     <Login loginUser={action('Logged In')}
       handleSubmit={action('Form submitted')}
-      errorMessage={text('Error', null)} />
+      errorMessage={text('Error', null)}
+      alerts={[]} />
   ))
 ;
 
