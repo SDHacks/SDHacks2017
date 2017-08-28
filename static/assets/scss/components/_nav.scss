@@ -7,8 +7,6 @@
   top: 0;
   z-index: 8;
   transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out;
 
   // Default hidden navigation bar
   &__background {
@@ -38,14 +36,12 @@
     height: 64px;
 
     &-wrap {
-      -webkit-transition: 0.25s ease-in-out;
-      -moz-transition: 0.25s ease-in-out;
-      -o-transition: 0.25s ease-in-out;
       transition: 0.25s ease-in-out;
       transform: translateY(100px);
       display: inline-block;
       position: relative;
       top: -100px;
+      z-index: 11;
     }
 
     // Logo translate up for animation
@@ -61,7 +57,7 @@
     @include media-breakpoint-down(md) {
       height: 50px;
       position: relative;
-      z-index: 10;
+      z-index: 11;
     }
   }
   &__left {
@@ -89,7 +85,8 @@
   &__links {
     a {
       display: inline-block;
-      padding: 32px 20px 28px 20px;
+      padding: 32px 20px 0px 20px;
+      margin-bottom: 28px;
       cursor: pointer;
 
       li:after {
@@ -131,30 +128,9 @@
     }
   }
 }
-/* Defines the breakpoint at which the nav will collapse */
 
 /* Safari requires animations to be loaded before being called. */
 @keyframes header_fadeIn {
-  from { transform: translateY(-100px); }
-  to { transform: translateY(0px); }
-}
-/* Firefox < 16 */
-@-moz-keyframes header_fadeIn {
-  from { transform: translateY(-100px); }
-  to { transform: translateY(0px); }
-}
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes header_fadeIn {
-  from { transform: translateY(-100px); }
-  to { transform: translateY(0px); }
-}
-/* Internet Explorer */
-@-ms-keyframes header_fadeIn {
-  from { transform: translateY(-100px); }
-  to { transform: translateY(0px); }
-}
-/* Opera < 12.1 */
-@-o-keyframes header_fadeIn {
   from { transform: translateY(-100px); }
   to { transform: translateY(0px); }
 }
@@ -162,7 +138,7 @@
   cursor: pointer;
   height: 34px;
   position: absolute;
-  left: 20px;
+  right: 1rem;
   width: 32px;
   border: none;
   top: 24px;
@@ -202,6 +178,7 @@
 }
 .nav-open {
   background-color: $white;
+  transition: background-color 0.25s;
 
   .logo {
     opacity: 0;
@@ -213,8 +190,6 @@
 
       &:before,
       &:after {
-        -webkit-transform-origin: 50% 50%;
-        -ms-transform-origin: 50% 50%;
         transform-origin: 50% 50%;
         top: 0;
       }
@@ -267,8 +242,6 @@
 
     &:focus {
       outline: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
       appearance: none;
     }
   }

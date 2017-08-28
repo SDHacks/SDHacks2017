@@ -5,6 +5,8 @@ import {withRouter} from 'react-router-dom';
 
 import ApplyPage from './pages/ApplyPage';
 
+import NavHeader from '~/components/NavHeader';
+
 class Apply extends React.Component {
 
   /**
@@ -12,9 +14,12 @@ class Apply extends React.Component {
    */
   routes() {
     return (
-      <Switch>
-        <Route exact path="/apply/" component={ApplyPage} />
-      </Switch>
+      <div className="h-100">
+        <NavHeader />
+        <Switch>
+          <Route exact path="/apply/" component={ApplyPage} />
+        </Switch>
+      </div>
     );
   }
 

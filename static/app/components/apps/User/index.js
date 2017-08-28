@@ -16,6 +16,8 @@ import UserPage from './pages/UserPage/index';
 
 import CookieTypes from '~/static/Cookies';
 
+import NavHeader from '~/components/NavHeader';
+
 class User extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -56,14 +58,17 @@ class User extends React.Component {
    */
   routes() {
     return (
-      <Switch>
-        <Route exact path="/user/login" component={LoginPage} />
-        <Route exact path="/user/forgot" component={ForgotPage} />
-        <Route path="/user/reset/:id" component={ResetPage} />
+      <div className="h-100">
+        <NavHeader />
+        <Switch>
+          <Route exact path="/user/login" component={LoginPage} />
+          <Route exact path="/user/forgot" component={ForgotPage} />
+          <Route path="/user/reset/:id" component={ResetPage} />
 
-        <PrivateRoute exact path="/user" component={UserPage} />
-        <PrivateRoute exact path="/user/logout" component={Logout} />
-      </Switch>
+          <PrivateRoute exact path="/user" component={UserPage} />
+          <PrivateRoute exact path="/user/logout" component={Logout} />
+        </Switch>
+      </div>
     );
   }
 

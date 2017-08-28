@@ -1,0 +1,16 @@
+.mlh-badge {
+  border: none;
+  display: block;
+  max-width: 100px;
+  min-width: 60px;
+  position: fixed;
+  left: 1rem;
+  top: 0;
+  width: 10%;
+  z-index: 100;
+
+  @include media-breakpoint-up(md) {
+    right: 50px;
+    left: inherit;
+  }
+}
