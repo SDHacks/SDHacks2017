@@ -26,8 +26,14 @@ const validate = values => {
   if (values.birthdateMonth < 1 || values.birthdateMonth > 12) {
     errors.birthdateMonth = 'Invalid Month';
   }
-  if (values.birthdateYear < 1900 || values.birthdateYear > 1999) {
+  if (values.birthdateYear < 1900) {
     errors.birthdateYear = 'Invalid Year';
+  }
+
+  if (values.birthdateYear > 1999) {
+    if (values.university.indexOf('The University of California') === -1) {
+      errors.birthdateYear = 'Invalid Year';
+    }
   }
 
   if (values.institution === 'uni' && !values.university) {
