@@ -41,7 +41,6 @@ export default class NavHeader extends React.Component {
     const navOpen = (isHidden ? '' : 'nav-open');
     const activeBackground = (isBackgroundActive ?
       'sd-nav__background-active' : '');
-    console.log(isHidden, isLogoUp);
     const logoUp = ((isHidden && isLogoUp) ? 'sd-nav__logo-up' : '');
 
     return (<nav className={`sd-nav ${navOpen}`}>
