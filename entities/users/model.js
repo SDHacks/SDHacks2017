@@ -66,12 +66,8 @@ var UserSchema = new Schema({
   // Declares which university the user attends
   university: {
     type: String,
-    trim: true
-  },
-  // Declares which high school the user attends
-  highSchool: {
-    type: String,
-    trim: true
+    trim: true,
+    required: [true, 'You must have a university or high school']
   },
   // Declares which major the user has specified
   major: {
