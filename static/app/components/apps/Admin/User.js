@@ -35,10 +35,10 @@ class User extends React.Component {
    */
   renderResume() {
     return [
-      <label key="0" className="col-sm-2 col-form-label">
+      <label key="0" className="col-sm-3 col-form-label">
         Download Resume
       </label>,
-      <div key="1" className="col-sm-4">
+      <div key="1" className="col-sm-3">
         <a className="btn btn-primary form-control"
           role="button" target="_blank"
           disabled={!this.props.resume} href={this.props.resume.url}>
@@ -53,7 +53,7 @@ class User extends React.Component {
    * @param {String} label The label of the checkbox.
    * @param {String} value The name of the checkbox input.
    * @param {String} [fieldSize=col-sm-10] The class name of the input.
-   * @param {String} [labelSize =col-sm-2] The class name of the label.
+   * @param {String} [labelSize =col-sm-4] The class name of the label.
    * @returns {Component[]} The components to render.
    */
   renderFormCheckbox(label, value, fieldSize = 'col-sm-10',
@@ -71,9 +71,9 @@ class User extends React.Component {
    * @param {String} value The name of the input field.
    * @param {String} [fieldSize=col-sm-10] The class name of the input.
    * @param {String} [fieldType=text] The input type.
-   * @param {String} [labelSize=col-sm-2] The class name of the label.
+   * @param {String} [labelSize=col-sm-4] The class name of the label.
    */
-  renderFormField(label, value, fieldSize = 'col-sm-10',
+  renderFormField(label, value, fieldSize = 'col-sm-4',
     fieldType = 'text', labelSize = 'col-sm-2') {
     return [
       <label key="0" className={labelSize + ' col-form-label'}>{label}</label>,
@@ -92,61 +92,70 @@ class User extends React.Component {
           <h3>User <small>{this.props.user._id}</small></h3>
         </Link>
         <form onSubmit={handleSubmit}>
-          <h4>Personal Details</h4>
-          <div className="form-group row mb-4">
-            {this.renderFormField('First Name', 'firstName', 'col-sm-4')}
-            {this.renderFormField('Last Name', 'lastName', 'col-sm-4')}
-            {this.renderFormField('Gender', 'gender', 'col-sm-4')}
-            {this.renderFormField('Birthdate', 'birthdate', 'col-sm-4')}
-            {this.renderFormField('Year', 'year', 'col-sm-4')}
-            {this.renderFormField('Phone', 'phone', 'col-sm-4', 'tel')}
-            {this.renderFormField('Email', 'email', 'col-sm-4')}
-            {this.renderFormField('University', 'university', 'col-sm-4')}
-            {this.renderFormField('Major', 'major', 'col-sm-4')}
-            {this.renderFormField('Shirt Size', 'shirtSize', 'col-sm-4')}
-          </div>
-          <h4>Portfolio</h4>
-          <div className="form-group row mb-4">
-            {this.renderFormField('Github', 'github', 'col-sm-4')}
-            {this.renderFormField('Website', 'website', 'col-sm-4')}
-          </div>
-          {this.props.resume &&
-          <span>
-            <h4>Resume</h4>
-            <div className="form-group row mb-4">
-              {this.renderResume()}
-              {this.renderFormCheckbox('Share Resume', 'shareResume',
-              'col-sm-2')}
-            </div>
-          </span>}
-          <h4>Preferences</h4>
-          <div className="form-group row mb-4">
-            {this.renderFormField('Diet', 'diet', 'col-sm-4')}
-            {this.renderFormField('Food', 'food', 'col-sm-4')}
-          </div>
-          <h4>Travel</h4>
-          <div className="form-group row mb-4">
-            {this.renderFormCheckbox('Out Of State', 'travel.outOfState',
-              'col-sm-2')}
-            {this.renderFormField('Coming From', 'travel.city', 'col-sm-6')}
-          </div>
-          {getRole(this.props.role) >= getRole(Roles.ROLE_ADMIN) &&
-            <span>
-              <h4>Admin Flags</h4>
-              <div className="form-group row mb-4">
-                {this.renderFormCheckbox('Confirmed', 'confirmed', 'col-sm-2')}
-                {this.renderFormCheckbox('Checked In', 'checkedIn', 'col-sm-2')}
-                {this.renderFormCheckbox('Bussing', 'bussing', 'col-sm-2')}
-                {this.renderFormField('Categories', 'categories')}
+          <div className="row">
+            <div className="col-6">
+              <h5>Login Information</h5>
+              <div className="form-group row mb-2">
+                {this.renderFormField('Username', 'username')}
+                {this.renderFormField('Email', 'email')}
               </div>
-            </span>
-          }
-          <button type="submit" className="btn btn-primary"
-            disabled={pristine || submitting}>Apply</button>
-          <button type="button" disabled={pristine || submitting}
-            className="btn btn-secondary" onClick={reset}>
-            Reset
-          </button>
+              <h5>Portfolio</h5>
+              <div className="form-group row mb-2">
+                {this.renderFormField('Github', 'github')}
+                {this.renderFormField('Website', 'website')}
+              </div>
+              {this.props.resume &&
+              <span>
+                <h5>Resume</h5>
+                <div className="form-group row mb-2">
+                  {this.renderResume()}
+                  {this.renderFormCheckbox('Share Resume', 'shareResume',
+                    'col-sm-4')}
+                </div>
+              </span>}
+              <h5>Travel</h5>
+              <div className="form-group row mb-2">
+                {this.renderFormCheckbox('Out Of State', 'travel.outOfState',
+                  'col-sm-4')}
+                {this.renderFormField('Coming From', 'travel.city')}
+              </div>
+              {getRole(this.props.role) >= getRole(Roles.ROLE_ADMIN) &&
+                <span>
+                  <h5>Admin Flags</h5>
+                  <div className="form-group row mb-2">
+                    {this.renderFormCheckbox('Confirmed', 'confirmed', 'col-sm-4')}
+                    {this.renderFormCheckbox('Checked In', 'checkedIn', 'col-sm-4')}
+                    {this.renderFormCheckbox('Bussing', 'bussing', 'col-sm-4')}
+                    {this.renderFormField('Categories', 'categories')}
+                  </div>
+                </span>
+              }
+            </div>
+            <div className="col-6">
+              <h5>Personal Details</h5>
+              <div className="form-group row mb-2">
+                {this.renderFormField('First Name', 'firstName', 'col-sm-4')}
+                {this.renderFormField('Last Name', 'lastName', 'col-sm-4')}
+                {this.renderFormField('Gender', 'gender', 'col-sm-4')}
+                {this.renderFormField('Birthdate', 'birthdate', 'col-sm-4')}
+                {this.renderFormField('Year', 'year', 'col-sm-4')}
+                {this.renderFormField('Phone', 'phone', 'col-sm-4', 'tel')}
+                {this.renderFormField('University', 'university', 'col-sm-4')}
+                {this.renderFormField('Major', 'major', 'col-sm-4')}
+                {this.renderFormField('Shirt Size', 'shirtSize', 'col-sm-4')}
+                {this.renderFormField('Diet', 'diet', 'col-sm-4')}
+                {this.renderFormField('Food', 'food', 'col-sm-4')}
+              </div>
+              <button type="submit"
+                className="btn rounded-button rounded-button--small"
+                disabled={pristine || submitting}>Apply</button>
+              <button type="button" disabled={pristine || submitting}
+                className={`btn rounded-button rounded-button--small
+                  rounded-button--secondary`} onClick={reset}>
+                Reset
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     );

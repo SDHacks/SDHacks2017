@@ -58,8 +58,14 @@ class ResumesPage extends React.Component {
 
     return (
       <div className="resume-body">
-        <ResumeList isCompacted={isCompacted}
-          onCompactChange={this.toggleCompacted} applicants={applicants} />
+        <div className="d-none d-md-block">
+          <ResumeList isCompacted={isCompacted}
+            onCompactChange={this.toggleCompacted} applicants={applicants} />
+        </div>
+        <div className="resume-body__mobile d-block d-md-none p-4">
+          <h4><i className="fa fa-ban"></i>&nbsp;Unavailable on Mobile</h4>
+          <h5>We recommend that you view this page from a computer</h5>
+        </div>
       </div>
     );
   }

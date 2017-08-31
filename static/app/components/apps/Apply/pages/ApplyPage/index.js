@@ -76,6 +76,9 @@ class ApplyPage extends React.Component {
       values.institution = 'uni';
       values.university = 'The University of California, San Diego';
     }
+    if (values.institution === 'hs') {
+      values.university = values.highSchool;
+    }
 
     registerUser(values)
     .then(() => {

@@ -31,16 +31,25 @@ class UsersPage extends React.Component {
   };
 
   componentWillMount() {
-    let {users, showLoading, hideLoading, addUsers} = this.props;
+    let {users} = this.props;
     if (!users.length) {
-      showLoading();
-
-      loadAllUsers()
-      .then(res => {
-        hideLoading();
-        return addUsers(res);
-      });
+      this.loadUsers();
     }
+  }
+
+  /**
+   * Loads all the users into the redux state.
+   */
+  loadUsers = () => {
+    let {showLoading, hideLoading, addUsers} = this.props;
+
+    showLoading();
+
+    loadAllUsers()
+    .then(res => {
+      hideLoading();
+      return addUsers(res);
+    });
   }
 
   /**
@@ -59,8 +68,20 @@ class UsersPage extends React.Component {
   render() {
     return (
       <div className="d-flex flex-column h-100 p-3">
-        <ColumnEditor columns={this.props.columns}
-          onAddColumn={this.onAddColumn} onDeleteColumn={this.onRemoveColumn} />
+        <div className="row">
+          <div className="col-md-6">
+            <ColumnEditor columns={this.props.columns}
+              onAddColumn={this.onAddColumn}
+              onDeleteColumn={this.onRemoveColumn} />
+          </div>
+          <div className="col-md-6">
+            <h4>Tools</h4>
+            <button className="btn rounded-button rounded-button--small"
+              onClick={this.loadUsers}>
+              <i className="fa fa-refresh"></i>&nbsp;Refresh
+            </button>
+          </div>
+        </div>
         <UserList users={this.props.users} columns={this.props.columns}
           onUserUpdate={this.onUserUpdate} />
       </div>
