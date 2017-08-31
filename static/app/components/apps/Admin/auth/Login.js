@@ -57,9 +57,6 @@ class Login extends React.Component {
           {this.renderAlert()}
         </div>
         <div className="admin-login__container">
-          <div className="admin-login__title text-center">
-            <h1>Login</h1>
-          </div>
           <div className="admin-login__username">
             Username
             <Field name="username" className={`form-control rounded-input
