@@ -6,7 +6,7 @@ include ../mixins/get-updates
 
 block content
   - volunteerUrl = 'https://tesc.typeform.com/to/PYPjRK'
-  - sponsorUrl = 'mailto://tesc.ucsd.edu'
+  - sponsorUrl = 'mailto:sponsor@tesc.ucsd.edu'
 
     nav.sd-nav
       .sd-nav__background
@@ -162,7 +162,7 @@ block content
     .sd-sponsors__background
     h2.sd-faq__title.sd-section__title Sponsors
     .container.text-center
-      .sd-section__subtitle.sd-sponsors__subtitle Interested in sponsoring? Email us at #[a.sd-link__underline(href='mailto:sponsor@tesc.ucsd.edu') sponsor@tesc.ucsd.edu]
+      .sd-section__subtitle.sd-sponsors__subtitle Interested in sponsoring? Email us at #[a.sd-link__underline(href=sponsorUrl) sponsor@tesc.ucsd.edu]
       .sd-sponsors__platinum
         .sd-sponsors__img
           a.sd-link__img(target='_blank' href='https://viasat.com')
