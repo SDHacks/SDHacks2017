@@ -80,5 +80,7 @@
 
   &__alert {
     font-family: $header-font-family;
+    z-index: 9;
+    position: relative;
   }
 }
