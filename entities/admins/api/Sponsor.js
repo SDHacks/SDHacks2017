@@ -3,7 +3,6 @@ const fs = require('fs');
 const csv = require('fast-csv');
 const generatePassword = require('password-generator');
 const moment = require('moment');
-const uuid = require('node-uuid');
 const S3Archiver = require('s3-archiver');
 
 const roleAuth = require('../helper').roleAuth;
@@ -22,6 +21,7 @@ module.exports = function(routes, config, requireAuth) {
 
   // Model and Config
   var User = require('../../users/model');
+  var Download = require('../../downloads/model');
 
   var exportApplicantInfo = function(users, archive, finalize) {
     var csvStream = csv.format({headers: true});
@@ -35,7 +35,7 @@ module.exports = function(routes, config, requireAuth) {
       csvStream.write({
         firstName: user.firstName,
         lastName: user.lastName,
-        graduationYear: user.year,
+        schoolYear: user.year,
         university: user.university,
         gender: user.gender,
         status: user.status,
@@ -99,13 +99,22 @@ module.exports = function(routes, config, requireAuth) {
         `resumes/${user.resume.name}`
       );
 
-      var fileName = req.params.username + '-' +
+      var fileName = req.user.username + '-' +
         moment().format('YYYYMMDDHHmmss') + '-' +
         generatePassword(12, false, /[\dA-F]/) + '.zip';
 
-      var downloadId = uuid.v1();
-      res.json({'zipping': downloadId});
-      console.log('Zipping started for ', fileNames.length, 'files');
+      let newDownload = new Download({
+        fileCount: req.body.applicants.length,
+        adminId: req.user._id
+      });
+
+      newDownload.save(function(err, download) {
+        if (err) {
+          next(err);
+        }
+        res.json({'downloadId': download._id});
+        console.log('Zipping started for ', download.fileCount, 'files');
+      });
 
       zipper.localConfig.finalizing = (archive, finalize) =>
         exportApplicantInfo(users, archive, finalize);
@@ -113,26 +122,25 @@ module.exports = function(routes, config, requireAuth) {
       return zipper.zipFiles(fileNames, `downloads/${fileName}`, {
         ACL: 'public-read'
       }, function(err, result) {
-        var download = {downloadId: downloadId};
         if (err) {
           console.error(err);
-          download.error = true;
+          newDownload.error = true;
         } else {
-          download.url = result.Location;
+          newDownload.accessUrl = result.Location;
         }
-        req.sponsor.downloads.push(download);
-        return req.sponsor.save();
+        newDownload.fulfilled = true;
+        return newDownload.save();
       });
     })
   );
 
   routes.get('/applicants/download/:id', requireAuth,
   roleAuth(roles.ROLE_SPONSOR), function(req, res) {
-    var download = req.sponsor.downloads.filter(download =>
-      download.downloadId === req.params.id).pop();
-    if (download === undefined) {
-      return res.json({'error': true});
-    }
-    return res.json({url: download.url});
+    Download.findById(req.params.id, function(err, download) {
+      if (err || download.error) {
+        return res.json({'error': true});
+      }
+      return res.json({url: download.accessUrl});
+    });
   });
 };

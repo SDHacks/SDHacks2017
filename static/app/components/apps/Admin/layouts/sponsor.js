@@ -2,8 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {showLoading, hideLoading} from 'react-redux-loading-bar';
 
 import {Resumes as ResumePropType} from '~/proptypes';
+
+import {applyResumeFilter} from '~/static/ResumeFilter';
+
+import {downloadResumes, pollDownload} from '~/data/Api';
 
 import {toggleFilter, toggleFilterOption, selectAllOptions,
   selectNoneOptions} from '../actions';
@@ -12,6 +17,9 @@ import Sidebar from './components/SponsorSidebar';
 
 class SponsorLayout extends React.Component {
   static propTypes = {
+    showLoading: PropTypes.func.isRequired,
+    hideLoading: PropTypes.func.isRequired,
+
     children: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired,
     filters: PropTypes.object.isRequired,
@@ -49,6 +57,45 @@ class SponsorLayout extends React.Component {
     , {});
   }
 
+  /**
+   * Gives the request to download the resumes that are currently selected.
+   */
+  downloadResumes = () => {
+    let {showLoading, hideLoading, filters, resumes} = this.props;
+    showLoading();
+
+    const filtered = applyResumeFilter(filters, resumes.applicants)
+      .map(user => user._id);
+
+    downloadResumes(filtered)
+    .then((res) => {
+      this.startPolling(res.downloadId);
+    })
+    .catch(console.error);
+  };
+
+  /**
+   * Polls a requested to download until it completes or errors.
+   * @param {String} downloadId The ID of the download to poll for.
+   */
+  startPolling = (downloadId) => {
+    const pollingInterval = 1000;
+
+    pollDownload(downloadId)
+    .then((res) => {
+      if (res.url) {
+        hideLoading();
+        return window.open(res.url);
+      }
+
+      setTimeout(() => this.startPolling(downloadId), pollingInterval);
+    })
+    .catch((err) => {
+      console.error(err);
+      hideLoading();
+    });
+  };
+
   render() {
     let {user, filters, resumes, filtered} = this.props;
     let filterOptions = this.createFilterOptions(resumes.applicants);
@@ -67,7 +114,8 @@ class SponsorLayout extends React.Component {
                 selectAllOptions={this.props.selectAllOptions}
                 selectNoneOptions={this.props.selectNoneOptions}
                 filters={filters}
-                filterOptions={filterOptions} />
+                filterOptions={filterOptions}
+                onDownloadResumes={this.downloadResumes} />
             </div>
 
             <main className={'admin-body__content'}>
@@ -94,7 +142,9 @@ function mapDispatchToProps(dispatch) {
     toggleFilter: bindActionCreators(toggleFilter, dispatch),
     toggleFilterOption: bindActionCreators(toggleFilterOption, dispatch),
     selectAllOptions: bindActionCreators(selectAllOptions, dispatch),
-    selectNoneOptions: bindActionCreators(selectNoneOptions, dispatch)
+    selectNoneOptions: bindActionCreators(selectNoneOptions, dispatch),
+    showLoading: bindActionCreators(showLoading, dispatch),
+    hideLoading: bindActionCreators(hideLoading, dispatch)
   };
 }
 

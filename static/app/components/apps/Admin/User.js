@@ -123,10 +123,13 @@ class User extends React.Component {
                 <span>
                   <h5>Admin Flags</h5>
                   <div className="form-group row mb-2">
-                    {this.renderFormCheckbox('Confirmed', 'confirmed', 'col-sm-4')}
-                    {this.renderFormCheckbox('Checked In', 'checkedIn', 'col-sm-4')}
+                    {this.renderFormCheckbox('Confirmed', 'confirmed',
+                      'col-sm-4')}
+                    {this.renderFormCheckbox('Checked In', 'checkedIn',
+                      'col-sm-4')}
                     {this.renderFormCheckbox('Bussing', 'bussing', 'col-sm-4')}
-                    {this.renderFormField('Categories', 'categories')}
+                    {this.renderFormCheckbox('Sanitized', 'sanitized',
+                      'col-sm-4')}
                   </div>
                 </span>
               }
