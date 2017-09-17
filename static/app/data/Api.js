@@ -123,3 +123,25 @@ export const deleteAdmin = (adminId) =>
       .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
       .use(adminPrefix));
 
+/**
+ * Request to download a given set of resumes.
+ * @param {String[]} applicants An array of User IDs to download
+ * @returns {Promise} A promise of the request.
+ */
+export const downloadResumes = (applicants) =>
+  promisify(request
+      .post('/sponsors/applicants/download')
+      .send({applicants})
+      .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
+      .use(adminPrefix));
+
+/**
+ * Requests the status of an ongoing download.
+ * @param {String} downloadId The given ID of the download.
+ * @returns {Promise} A promise of the request.
+ */
+export const pollDownload = (downloadId) =>
+    promisify(request
+      .get('/sponsors/applicants/download/' + downloadId)
+      .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
+      .use(adminPrefix));
