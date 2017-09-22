@@ -56,6 +56,7 @@ module.exports = function(routes, config) {
             return res.json({'error':
               'There was an error updating your resume'});
           }
+          user.save();
           return res.json(outputCurrentUser(user));
         });
       }
