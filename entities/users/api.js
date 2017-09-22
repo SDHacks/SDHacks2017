@@ -4,10 +4,10 @@ const requireAuth = passport.authenticate('userJwt', {session: false});
 
 const editableFields = [
   'teammates', 'food', 'diet', 'travel', 'shirtSize', 'github', 'website',
-  'resume', 'shareResume', 'gender'
+  'shareResume', 'gender'
 ];
 const readOnlyFields = [
-  'status', 'firstName', 'lastName', 'university', 'email', 'phone'
+  'status', 'firstName', 'lastName', 'university', 'email', 'phone', 'resume'
 ];
 
 module.exports = function(routes, config) {
@@ -56,6 +56,7 @@ module.exports = function(routes, config) {
             return res.json({'error':
               'There was an error updating your resume'});
           }
+          user.save();
           return res.json(outputCurrentUser(user));
         });
       }

@@ -88,9 +88,7 @@ class User extends React.Component {
 
     return (
       <div>
-        <Link to={`/admin/user/${this.props.user._id}`}>
-          <h3>User <small>{this.props.user._id}</small></h3>
-        </Link>
+        <h3>User <small>{this.props.user._id}</small></h3>
         <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-6">

@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Field, reduxForm} from 'redux-form';
 
-import ToggleSwitch from '~/components/ToggleSwitch';
-
 import FileField from '~/components/FileField';
 
 class UserProfile extends React.Component {
