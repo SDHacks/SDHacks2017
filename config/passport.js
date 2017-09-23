@@ -26,7 +26,7 @@ const returnMessages = {
 
 const userLogin = new LocalStrategy(localOptions,
 function(username, password, done) {
-  User.findOne({username: {$regex : new RegExp(username, 'i')}},
+  User.findOne({username: new RegExp(`^${username}$`, 'i')},
   function(err, user) {
     if (err) {
       return done(err);
@@ -54,7 +54,7 @@ function(username, password, done) {
 
 const adminLogin = new LocalStrategy(localOptions,
 function(username, password, done) {
-  Admin.findOne({username: {$regex : new RegExp(username, 'i')}},
+  Admin.findOne({username: {$regex : new RegExp(`^${username}$`, 'i')}},
   function(err, admin) {
     if (err || admin.deleted) {
       return done(err);
