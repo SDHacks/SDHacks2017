@@ -8,6 +8,7 @@ import AutoSuggest from '~/components/AutoSuggest';
 export default class Filter extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
+    editable: PropTypes.bool.isRequired,
 
     enabled: PropTypes.bool.isRequired,
     onEnableChange: PropTypes.func.isRequired,
@@ -90,7 +91,7 @@ export default class Filter extends React.Component {
   }
 
   render() {
-    let {name, enabled, options, onEnableChange} = this.props;
+    let {name, enabled, options, onEnableChange, editable} = this.props;
     let {isHidden} = this.state;
 
     // Hide if disabled
@@ -127,7 +128,7 @@ export default class Filter extends React.Component {
         {options && Object.keys(options).map((optionName, i) =>
           this.renderFilterOption(optionName, options[optionName], i))}
 
-        {this.renderNewOptionField()}
+        {editable && this.renderNewOptionField()}
       </div>}
     </div>);
   }

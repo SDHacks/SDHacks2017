@@ -2,18 +2,46 @@ import * as Types from '../actions/types';
 
 //const INITIAL_STATE = {};
 const INITIAL_STATE = {
+  'university': {
+    displayName: 'University',
+    enabled: false,
+    editable: true,
+    options: {
+      'The University of California, San Diego': true
+    }
+  },
   'major': {
     displayName: 'Major',
     enabled: false,
+    editable: true,
     options: {
-      'Computer Engineering': true,
+      'Computer Engineering': false,
       'Computer Science': false,
     }
   },
   'year': {
     displayName: 'Year',
     enabled: false,
-    options: {}
+    editable: false,
+    options: {
+      '1': false,
+      '2': false,
+      '3': false,
+      '4': false,
+      '5+': false,
+    }
+  },
+  'gender': {
+    displayName: 'Gender',
+    enabled: false,
+    editable: false,
+    options: {
+      'Male': false,
+      'Female': false,
+      'Non-Binary': false,
+      'I prefer not to say': false,
+      'Other': false
+    }
   },
 };
 
