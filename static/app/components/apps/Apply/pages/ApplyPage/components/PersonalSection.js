@@ -111,6 +111,9 @@ class PersonalSection extends React.Component {
       {fields.createRow(
         fields.createColumn('col-12 text-center',
           <p>
+            Applications are now closed for non-UCSD students.
+          </p>,
+          <p>
             Already applied?&nbsp;
             <Link className="sd-link__underline" to="/login">Login here</Link>!
           </p>
@@ -174,14 +177,14 @@ class PersonalSection extends React.Component {
           this.createInstitutionCard('ucsd', 'institution-radio-ucsd',
             'UCSD')
         ),
-        fields.createColumn('col-md-4',
+        /* fields.createColumn('col-md-4',
           this.createInstitutionCard('uni', 'institution-radio-uni',
             'Other University')
         ),
         fields.createColumn('col-md-4',
           this.createInstitutionCard('hs', 'institution-radio-hs',
             'High School')
-        ),
+        ), */
         fields.createColumn('col-sm-12',
           <Fields names={['institution']}
             component={this.showInstitutionError} />

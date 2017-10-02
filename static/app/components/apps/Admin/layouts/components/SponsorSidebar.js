@@ -91,7 +91,7 @@ class SponsorSidebar extends React.Component {
         let filter = filters[filterName];
         return (<Filter key={i}
           enabled={filter.enabled} name={filter.displayName}
-          options={filter.options}
+          options={filter.options} editable={filter.editable}
           availableOptions={filterOptions[filterName]}
           onOptionChange={this.handleToggleFilterOption(filterName)}
           onEnableChange={this.handleToggleFilter(filterName)}
