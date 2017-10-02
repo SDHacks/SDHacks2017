@@ -58,7 +58,7 @@ class User extends React.Component {
    */
   routes() {
     return (
-      <div className="h-100">
+      <div className="max-height">
         <NavHeader />
         <Switch>
           <Route exact path="/user/login" component={LoginPage} />
