@@ -111,6 +111,9 @@ class PersonalSection extends React.Component {
       {fields.createRow(
         fields.createColumn('col-12 text-center',
           <p>
+            Applications are now closed for non-UCSD students.
+          </p>,
+          <p>
             Already applied?&nbsp;
             <Link className="sd-link__underline" to="/login">Login here</Link>!
           </p>
