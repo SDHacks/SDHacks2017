@@ -15,6 +15,10 @@
     max-width: none;
   }
 
+  small {
+    font-size: 0.8rem;
+  }
+
   &:hover, &:focus {
     color: $white;
     background-color: darken($primary-color, 3%);
