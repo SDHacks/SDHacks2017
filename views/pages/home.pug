@@ -7,6 +7,7 @@ include ../mixins/get-updates
 block content
   - volunteerUrl = 'https://tesc.typeform.com/to/PYPjRK'
   - sponsorUrl = 'mailto:sponsor@tesc.ucsd.edu'
+  - announcementText = 'Applications close October 1st for non-UCSD students';
 
     nav.sd-nav
       .sd-nav__background
@@ -56,6 +57,7 @@ block content
               h1.hexagon-hero__title Build your dreams.
               .hexagon-hero__subtitle Rimac Arena, UC San Diego
               .hexagon-hero__subtitle October 20-22, 2017
+              p #{announcementText}
               .hexagon-hero__nav
                 //- +get-updates
                 a.btn.rounded-button.hexagon-hero__nav-button(href='/apply') Apply
@@ -69,6 +71,7 @@ block content
         h1.hexagon-hero__title Build your dreams.
         .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile RIMAC Arena, UCSD
         .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile October 20-22, 2017
+        p #{announcementText}
         .hexagon-hero__nav.hexagon-hero__nav--mobile
           //- +get-updates
           a.btn.rounded-button.hexagon-hero__nav-button(href='/apply') Apply
@@ -202,6 +205,9 @@ block content
         .sd-sponsors__img
           a.sd-link__img(target='_blank' href='https://www.qualcomm.com/')
             img.sd-sponsors__sponsor.sd-sponsors__sponsor-qualcomm(src='/assets/img/sponsors/qualcomm.png')
+        .sd-sponsors__img
+          a.sd-link__img(target='_blank' href='http://www.northropgrumman.com/')
+            img.sd-sponsors__sponsor.sd-sponsors__sponsor-northrop(src='/assets/img/sponsors/northrop-grumman.svg')
 
   .sd-footer#sd-footer
     .container.w-100

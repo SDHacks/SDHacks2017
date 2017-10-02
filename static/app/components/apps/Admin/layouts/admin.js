@@ -65,7 +65,7 @@ class AdminLayout extends React.Component {
     return (
       <div className="admin-body d-flex flex-column">
 
-        <div className="container-fluid p-0 w-100 h-100">
+        <div className="container-fluid p-0 w-100 max-height">
           <div className="d-flex flex-column flex-md-row h-100">
             <div className={`admin-sidebar__container ${containerState}`}>
               <Sidebar isEditing={isEditing} isAuthenticated={isAuthenticated}
