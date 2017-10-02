@@ -36,6 +36,9 @@
         max-width: 210px;
         width: 100%;
       }
+      &-divr {
+        max-width: 80px;
+      }
     }
   }
   &__silver {
@@ -48,7 +51,7 @@
   }
   &__platinum {
     .sd-sponsors__sponsor {
-      max-width: 280px;
+      max-width: 300px;
     }
   }
 }
