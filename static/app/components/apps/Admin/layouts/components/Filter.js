@@ -16,6 +16,7 @@ export default class Filter extends React.Component {
     availableOptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     options: PropTypes.object.isRequired,
     onOptionChange: PropTypes.func.isRequired,
+    addFilterOption: PropTypes.func.isRequired,
 
     selectAllOptions: PropTypes.func.isRequired,
     selectNoneOptions: PropTypes.func.isRequired
@@ -79,12 +80,14 @@ export default class Filter extends React.Component {
       onChange: this.updateNewOption
     };
 
+    let {addFilterOption} = this.props;
+
     return (
       <div className="sidebar-filter__autosuggest">
         <AutoSuggest
           getSuggestions={this.getOptionSuggestions}
           inputProps={inputProps}
-          onSuggestionSelected={console.log}
+          onSuggestionSelected={addFilterOption}
         />
       </div>
     );

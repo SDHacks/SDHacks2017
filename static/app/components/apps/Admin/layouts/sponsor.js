@@ -11,7 +11,7 @@ import {applyResumeFilter} from '~/static/ResumeFilter';
 import {downloadResumes, pollDownload} from '~/data/Api';
 
 import {toggleFilter, toggleFilterOption, selectAllOptions,
-  selectNoneOptions} from '../actions';
+  selectNoneOptions, addFilterOption} from '../actions';
 
 import Sidebar from './components/SponsorSidebar';
 
@@ -115,7 +115,8 @@ class SponsorLayout extends React.Component {
                 selectNoneOptions={this.props.selectNoneOptions}
                 filters={filters}
                 filterOptions={filterOptions}
-                onDownloadResumes={this.downloadResumes} />
+                onDownloadResumes={this.downloadResumes}
+                addFilterOption={this.props.addFilterOption} />
             </div>
 
             <main className={'admin-body__content'}>
@@ -143,6 +144,7 @@ function mapDispatchToProps(dispatch) {
     toggleFilterOption: bindActionCreators(toggleFilterOption, dispatch),
     selectAllOptions: bindActionCreators(selectAllOptions, dispatch),
     selectNoneOptions: bindActionCreators(selectNoneOptions, dispatch),
+    addFilterOption: bindActionCreators(addFilterOption, dispatch),
     showLoading: bindActionCreators(showLoading, dispatch),
     hideLoading: bindActionCreators(hideLoading, dispatch)
   };

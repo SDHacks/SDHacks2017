@@ -1,0 +1,14 @@
+.rsvp-modal {
+  &__bussing {
+    padding: 1rem 0;
+    background-color: $admin-background-blue;
+  }
+
+  &__bus-name {
+    margin-top: 1rem;
+  }
+
+  &__bus {
+    font-size: 6.0rem;
+  }
+}

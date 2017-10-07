@@ -100,18 +100,28 @@ class UserPage extends React.Component {
 
     switch (status) {
     case ('Unconfirmed'):
-    case ('Confirmed'):
       button = (<button type="button" className={`btn rounded-button
         rounded-button--small rounded-button--short user-page__rsvp`}>
         RSVP
       </button>);
     };
 
+    let statusText = status;
+    switch (status) {
+    case ('Unconfirmed'):
+    case ('Declined'):
+      statusText = 'Not Attending';
+    case ('Confirmed'):
+      statusText = 'Attending';
+    case ('Waitlisted'):
+      statusText = 'On Waitlist';
+    }
+
     return (<span>
       Status:&nbsp;
       <span className={`user-page__status
         user-page__status--${status.toLowerCase()}`}>
-        {status}
+        {statusText}
       </span>
       {button}
     </span>);

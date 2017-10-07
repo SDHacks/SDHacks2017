@@ -1,0 +1,17 @@
+.rsvp-confirm {
+  margin-top: 1rem;
+  font-size: 1.15rem;
+
+  &__checked {
+    color: $default-green;
+  }
+
+  &__close {
+    color: $dark-gray;
+    margin-left: 1rem;
+
+    &:hover {
+      color: $default-red;
+    }
+  }
+}
