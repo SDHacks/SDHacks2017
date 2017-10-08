@@ -7,7 +7,8 @@ const editableFields = [
   'shareResume', 'gender'
 ];
 const readOnlyFields = [
-  'status', 'firstName', 'lastName', 'university', 'email', 'phone', 'resume'
+  'status', 'firstName', 'lastName', 'university', 'email', 'phone', 'resume',
+  'availableBus', 'bussing'
 ];
 
 module.exports = function(routes, config) {
@@ -62,6 +63,28 @@ module.exports = function(routes, config) {
       }
 
       return res.json(outputCurrentUser(user));
+    });
+  });
+
+  routes.post('/rsvp', requireAuth, function(req, res) {
+    const user = req.user;
+
+    if (req.body.status === undefined) {
+      return res.json({error: 'No status was sent'});
+    }
+
+    if (req.user.status !== 'Unconfirmed') {
+      return res.json({error: 'You do not have the permission to RSVP'});
+    }
+
+    const {status, bussing} = req.body;
+    user.status = status ? 'Confirmed' : 'Declined';
+    user.bussing = user.availableBus && bussing;
+    user.save(function(err, newUser) {
+      if (err) {
+        return res.json({error: 'There was an error while updating'});
+      }
+      return res.json(outputCurrentUser(newUser));
     });
   });
 

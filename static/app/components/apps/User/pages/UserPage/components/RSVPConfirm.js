@@ -1,48 +1,64 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import RSVPModal from './RSVPModal';
+import BussingModal from './BussingModal';
+
 export default class RSVPConfirm extends React.Component {
   static propTypes = {
-    isConfirmed: PropTypes.bool,
-
-    onStateChange: PropTypes.func.isRequired,
-    uncheckedMessage: PropTypes.string.isRequired,
-    checkedMessage: PropTypes.string.isRequired
+    availableBus: PropTypes.string,
+    onUpdate: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      checked: props.isConfirmed ? props.isConfirmed : false
+      page: 0,
+      status: undefined
     };
   }
 
-  onStateChange = () => {
-    this.setState({
-      checked: !this.state.checked
-    });
-    this.props.onStateChange(this.state.checked);
+  nextPage = () => this.setState({page: this.state.page + 1});
+
+  onChooseStatus = (status) => {
+    let {availableBus, onUpdate, onClose} = this.props;
+
+    // If they decline
+    if (!status) {
+      onUpdate(status, null);
+      return onClose();
+    }
+
+    if (availableBus) {
+      this.setState({status: status});
+      return this.nextPage();
+    }
+
+    onUpdate(status, null);
+    onClose();
+  }
+
+  onChooseBus = (bussing) => {
+    let {onUpdate, onClose} = this.props;
+
+    onUpdate(this.state.status, bussing);
+    onClose();
   }
 
   render() {
-    let {checked} = this.state;
-    let {uncheckedMessage, checkedMessage} = this.props;
+    let {page} = this.state;
+    let {availableBus, onClose} = this.props;
 
-    return (
-      <div className="rsvp-confirm">
-        {!checked ?
-          <button className={`rounded-button rounded-button--small
-            rounded-button--success rounded-button--short rsvp-confirm__button`}
-            onClick={this.onStateChange}>
-            {uncheckedMessage}
-          </button> :
-          <div className="rsvp-confirm__checked">
-            <i className="fa fa-check" aria-hidden="true"></i>{' '}
-            {checkedMessage}{' '}
-            <i className="rsvp-confirm__close fa fa-window-close"
-              aria-hidden="true" onClick={this.onStateChange}></i>
-          </div>}
-      </div>
-    );
+    switch (page) {
+    case (0):
+      return (<RSVPModal isOpen toggle={onClose}
+        onChooseStatus={this.onChooseStatus} />);
+    case (1):
+      return (<BussingModal isOpen availableBus={availableBus}
+        onChooseBus={this.onChooseBus} />);
+    default:
+      return <span></span>;
+    }
   }
 }
