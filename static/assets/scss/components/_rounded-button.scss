@@ -10,6 +10,7 @@
   padding: 0.6rem 0rem;
   box-shadow: $default-shadow;
   cursor: pointer;
+  border: none;
 
   @include media-breakpoint-down(sm) {
     max-width: none;
@@ -22,6 +23,7 @@
   &:hover, &:focus {
     color: $white;
     background-color: darken($primary-color, 3%);
+    border: none;
   }
 
   &--small {

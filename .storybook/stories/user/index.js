@@ -12,6 +12,12 @@ import Store from '../redux-middleware';
 import Login from '~/components/apps/User/pages/auth/Login';
 import UserProfile from
   '~/components/apps/User/pages/UserPage/components/UserProfile';
+import RSVPModal from
+  '~/components/apps/User/pages/UserPage/components/RSVPModal';
+import BussingModal from
+  '~/components/apps/User/pages/UserPage/components/BussingModal';
+import RSVPConfirm from
+  '~/components/apps/User/pages/UserPage/components/RSVPConfirm';
 
 const exampleUser = {
   "_id": "598348934f0f5afe6a8371b9",
@@ -108,5 +114,14 @@ storiesOf('User Panel', module)
   ))
   .add('Page', () => (
     <UserProfile user={object('User', exampleUser)} />
+  ))
+  .add('RSVP Modal', () => (
+    <RSVPModal toggle={action('Modal Toggled')} isOpen availableBus="UCLA Bus"
+      onChooseBus={action('Bus chosen')}
+      onChooseStatus={action('Status chosen')} />
+  ))
+  .add('Bussing Modal', () => (
+    <BussingModal toggle={action('Modal Toggled')} isOpen availableBus="UCLA Bus"
+      onChooseBus={action('Bus chosen')} />
   ))
 ;

@@ -20,6 +20,7 @@ class SponsorSidebar extends React.Component {
     selectAllOptions: PropTypes.func.isRequired,
     selectNoneOptions: PropTypes.func.isRequired,
     onDownloadResumes: PropTypes.func.isRequired,
+    addFilterOption: PropTypes.func.isRequired,
 
     isHidden: PropTypes.bool
   };
@@ -79,6 +80,9 @@ class SponsorSidebar extends React.Component {
   handleSelectNone = (name) =>
     () => this.props.selectNoneOptions(name);
 
+  addFilterOption = (name) =>
+    (option) => this.props.addFilterOption(name, option);
+
   /**
    * Renders the all filters
    */
@@ -96,7 +100,8 @@ class SponsorSidebar extends React.Component {
           onOptionChange={this.handleToggleFilterOption(filterName)}
           onEnableChange={this.handleToggleFilter(filterName)}
           selectAllOptions={this.handleSelectAll(filterName)}
-          selectNoneOptions={this.handleSelectNone(filterName)} />);
+          selectNoneOptions={this.handleSelectNone(filterName)}
+          addFilterOption={this.addFilterOption(filterName)} />);
       })}
     </div>);
   }
@@ -132,11 +137,6 @@ class SponsorSidebar extends React.Component {
 
         <Section name='Filters'>
           {this.renderFilters()}
-        </Section>
-
-        <Section name='General'>
-          <Link dest='/settings'>Settings</Link>
-          <Link dest='/logout'>Logout</Link>
         </Section>
       </div>
     </div>);

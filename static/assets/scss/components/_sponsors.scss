@@ -17,44 +17,76 @@
   }
   &__img {
     display: inline-block;
-    margin: 12px 18px;
+    margin: 18px 20px;
   }
   &__bronze {
-    .sd-sponsors__sponsor {
-      max-width: 140px;
+    margin-top: 40px;
 
-      &-att {
-        max-width: 100px;
-      }
-      &-qualcomm {
-        max-width: 170px;
-      }
-      &-northrop {
-        max-width: 210px;
-      }
-      &-jsoe {
-        max-width: 210px;
-        width: 100%;
-      }
-      &-divr {
+    .sd-sponsors__img {
+      width: 200px;
+    }
+    .sd-sponsors__sponsor {
+      max-width: 145px;
+      max-height: 69px;
+
+      &-square {
+        max-height: 80px;
         max-width: 80px;
       }
-      &-webroot {
-        max-width: 150px;
+      &-school {
+        max-width: 170px;
       }
+
+      // &-att {
+      //   max-width: 100px;
+      // }
+      // &-qualcomm {
+      //   max-width: 170px;
+      // }
+      // &-northrop {
+      //   max-width: 210px;
+      // }
+      // &-jsoe {
+      //   max-width: 210px;
+      //   width: 100%;
+      // }
+      // &-divr {
+      //   max-width: 80px;
+      // }
+      // &-webroot {
+      //   max-width: 150px;
+      // }
+      // &-cse {
+      //   max-width: 200px;
+      // }
+      // &-tech {
+      //   max-width: 120px;
+      // }
     }
   }
   &__silver {
     .sd-sponsors__img {
-      margin: 15px 24px;
+      margin: 30px 36px;
     }
     .sd-sponsors__sponsor {
       max-width: 225px;
     }
   }
+  &__gold {
+    margin-bottom: 40px;
+
+    .sd-sponsors__sponsor {
+      max-width: 180px;
+    }
+  }
   &__platinum {
     .sd-sponsors__sponsor {
-      max-width: 300px;
+      margin: 25px 15px;
+      max-width: 220px;
+
+      &-viasat {
+        max-width: 360px;
+      }
     }
   }
 }
