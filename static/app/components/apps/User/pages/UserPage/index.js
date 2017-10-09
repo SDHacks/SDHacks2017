@@ -8,9 +8,10 @@ import {showLoading, hideLoading} from 'react-redux-loading-bar';
 import diff from 'object-diff';
 
 import UserProfile from './components/UserProfile';
+import RSVPConfirm from './components/RSVPConfirm';
 import {getCurrentUser, updateCurrentUser} from './actions';
 
-import {updateUserField} from '~/data/User';
+import {updateUserField, rsvpUser} from '~/data/User';
 
 class UserPage extends React.Component {
   static propTypes = {
@@ -26,7 +27,8 @@ class UserPage extends React.Component {
     super(props);
 
     this.state = {
-      alerts: []
+      alerts: [],
+      showRSVP: false
     };
   }
 
@@ -101,20 +103,23 @@ class UserPage extends React.Component {
     switch (status) {
     case ('Unconfirmed'):
       button = (<button type="button" className={`btn rounded-button
-        rounded-button--small rounded-button--short user-page__rsvp`}>
+        rounded-button--small rounded-button--short user-page__rsvp`}
+        onClick={this.toggleRSVP}>
         RSVP
       </button>);
     };
 
     let statusText = status;
     switch (status) {
-    case ('Unconfirmed'):
     case ('Declined'):
       statusText = 'Not Attending';
+      break;
     case ('Confirmed'):
       statusText = 'Attending';
+      break;
     case ('Waitlisted'):
       statusText = 'On Waitlist';
+      break;
     }
 
     return (<span>
@@ -124,6 +129,33 @@ class UserPage extends React.Component {
         {statusText}
       </span>
       {button}
+    </span>);
+  }
+
+  /**
+   * Renders the bussing status for the current user.
+   * @param {Object} user The current user to render for.
+   * @returns {Component}
+   */
+  renderUserBussing = (user) => {
+    if (user.status !== 'Confirmed') {
+      return <span></span>;
+    }
+
+    let statusClass = 'user-page__bussing user-page__bussing--';
+
+    if (!user.availableBus) {
+      return (<span>Bussing:&nbsp;
+        <span className={statusClass + 'unavailable'}>
+          Not Available
+        </span>
+      </span>);
+    }
+
+    return (<span>Bussing:&nbsp;
+      <span className={statusClass + (user.bussing ? 'confirmed' : 'declined')}>
+        {user.bussing ? user.availableBus : 'Declined'}
+      </span>
     </span>);
   }
 
@@ -148,12 +180,40 @@ class UserPage extends React.Component {
     });
   }
 
+  toggleRSVP = () => this.setState({showRSVP: !this.state.showRSVP});
+
+  /**
+   * Requests that the server RSVP the current user with the given values.
+   * @param {Boolean} status True if the user has chosen to accept.
+   * @param {Boolean} bussing True if the user will take the bus, null if no bus
+   * option exists.
+   */
+  userRSVP = (status, bussing) => {
+    let {user, updateCurrentUser} = this.props;
+    if (user.status !== 'Unconfirmed') {
+      return;
+    }
+
+    rsvpUser(status, bussing)
+    .then((newUser) => {
+      updateCurrentUser(newUser);
+      this.createAlert('You have successfully RSVPed to SD Hacks 2017',
+        'success');
+    })
+    .catch((err) => {
+      this.createAlert(err.message, 'danger', 'Something went wrong!');
+      console.error(err);
+    });
+  }
+
   render() {
-    let {alerts} = this.state;
+    let {alerts, showRSVP} = this.state;
     let {user} = this.props;
 
     return (
       <div className="user-page">
+        {showRSVP && <RSVPConfirm availableBus={user.availableBus}
+          onUpdate={this.userRSVP} onClose={this.toggleRSVP} />}
         <div className="hexagon-hero__background user-page__background">
           <div className="hexagon-hero__water"></div>
           <div className="hexagon-hero__beach"></div>
@@ -172,6 +232,7 @@ class UserPage extends React.Component {
               Your Application
             </span>
             <div className="user-page__nav container">
+              {this.renderUserBussing(user)}
               {this.renderUserStatus(user.status)}
               <Link to="/logout"
                 className="sd-link__underline user-page__logout">Logout</Link>

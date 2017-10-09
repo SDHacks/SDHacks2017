@@ -82,3 +82,20 @@ export const updateUserField = (user) => {
       .use(prefix)
       .use(nocache));
 };
+
+/**
+ * RSVPs the current user..
+ * @param {Boolean} status True if the user is confirming their spot.
+ * @param {Boolean} bussing True if the user is taking the bus, null if the user
+ * wasn't offered a seat.
+ * @returns {Promise} A promise of the request.
+ */
+export const rsvpUser = (status, bussing) => {
+  return promisify(request
+      .post('/api/rsvp')
+      .set('Content-Type', 'application/json')
+      .set('Authorization', cookies.get(CookieTypes.user.token, {path: '/'}))
+      .send({status, bussing})
+      .use(prefix)
+      .use(nocache));
+};

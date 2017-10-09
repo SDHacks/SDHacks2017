@@ -59,7 +59,7 @@
   }
 
   &__status {
-    &--accepted {
+    &--confirmed {
       color: $default-green;
     }
 
@@ -77,6 +77,22 @@
 
     &--applied {
       color: $default-purple;
+    }
+  }
+
+  &__bussing {
+    margin-right: 1rem;
+
+    &--confirmed {
+      color: $default-purple;
+    }
+
+    &--declined {
+      color: $default-red;
+    }
+
+    &--unavailable {
+      color: $default-red;
     }
   }
 

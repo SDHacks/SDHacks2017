@@ -7,7 +7,7 @@ include ../mixins/get-updates
 block content
   - volunteerUrl = 'https://tesc.typeform.com/to/PYPjRK'
   - sponsorUrl = 'mailto:sponsor@tesc.ucsd.edu'
-  - announcementText = 'Applications close October 8th for UCSD students';
+  - announcementText = 'Hacker applications are closed for this year';
 
     nav.sd-nav
       .sd-nav__background
@@ -17,8 +17,6 @@ block content
             img.sd-nav__logo(src="/assets/img/vectors/logo.svg")
         .sd-nav__right.hidden-sm-down
           ul.sd-inline-list.sd-nav__links
-            a(href="/apply")
-              li Apply
             a(href="/user/login")
               li Login
             a(href=volunteerUrl)
@@ -58,11 +56,6 @@ block content
               .hexagon-hero__subtitle Rimac Arena, UC San Diego
               .hexagon-hero__subtitle October 20-22, 2017
               p #{announcementText}
-              .hexagon-hero__nav
-                //- +get-updates
-                a.btn.rounded-button.hexagon-hero__nav-button(href='/apply') Apply
-                  small  (UCSD Only)
-                a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
           .col-md-4
             img.hexagon-hero__featurette(src='/assets/img/site/featurette-hero.svg')
 
@@ -72,11 +65,6 @@ block content
         .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile RIMAC Arena, UCSD
         .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile October 20-22, 2017
         p #{announcementText}
-        .hexagon-hero__nav.hexagon-hero__nav--mobile
-          //- +get-updates
-          a.btn.rounded-button.hexagon-hero__nav-button(href='/apply') Apply
-            small  (UCSD Only)
-          a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
 
   .sd-section.sd-about#sd-about
     .sd-about__background
@@ -177,7 +165,7 @@ block content
       .sd-sponsors__platinum
         .sd-sponsors__img
           a.sd-link__img(target='_blank' href='https://viasat.com')
-            img.sd-sponsors__sponsor.sd-sponsors__sponsor-viasat(src='/assets/img/sponsors/viasat.png')
+            img.sd-sponsors__sponsor.sd-sponsors__sponsor-viasat(src='/assets/img/sponsors/viasat.svg')
         .sd-sponsors__img
           a.sd-link__img(target='_blank' href='http://www.public.navy.mil/spawar/Pacific/Pages/default.aspx')
             img.sd-sponsors__sponsor.sd-sponsors__sponsor-qi(src='/assets/img/sponsors/spawar.png')
@@ -227,20 +215,8 @@ block content
           a.sd-link__img(target='_blank' href='https://www.webroot.com/')
             img.sd-sponsors__sponsor.sd-sponsors__sponsor-webroot(src='/assets/img/sponsors/webroot.png')
         .sd-sponsors__img
-          a.sd-link__img(target='_blank' href='http://www.ece.ucsd.edu/')
-            img.sd-sponsors__sponsor.sd-sponsors__sponsor-school(src='/assets/img/sponsors/UCSDLogo_JSOE-ElectricalComputerEng_BlueGold.png')
-        .sd-sponsors__img
-          a.sd-link__img(target='_blank' href='https://get.tech/')
-            img.sd-sponsors__sponsor.sd-sponsors__sponsor-square(src='/assets/img/sponsors/techdomains.png')
-        .sd-sponsors__img
-          a.sd-link__img(target='_blank' href='https://amazon.com/')
-            img.sd-sponsors__sponsor.sd-sponsors__sponsor-amazon(src='/assets/img/sponsors/amazon.png')
-        .sd-sponsors__img
-          a.sd-link__img(target='_blank' href='https://jumpstart.me/')
-            img.sd-sponsors__sponsor.sd-sponsors__sponsor-jumpstart(src='/assets/img/sponsors/jumpstart.jpg')
-        .sd-sponsors__img
-          a.sd-link__img(target='_blank' href='https://cse.ucsd.edu/')
-            img.sd-sponsors__sponsor.sd-sponsors__sponsor-school(src='/assets/img/sponsors/ucsd_cse_logo.png')
+          a.sd-link__img(target='_blank' href='http://www.ece.ucsd.edu//')
+            img.sd-sponsors__sponsor.sd-sponsors__sponsor-jsoe(src='/assets/img/sponsors/jsoe-ee.png')
 
   .sd-footer#sd-footer
     .container.w-100

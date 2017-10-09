@@ -10,6 +10,8 @@ export default class RSVPModal extends React.Component {
     onChooseStatus: PropTypes.func.isRequired
   };
 
+  onChooseStatus = (status) => () => this.props.onChooseStatus(status);
+
   render() {
     let {toggle, isOpen} = this.props;
 
@@ -21,10 +23,11 @@ export default class RSVPModal extends React.Component {
           Please confirm your spot below.</p>
         </ModalBody>
         <ModalFooter>
-          <Button className="rounded-button" onClick={toggle}>Accept
+          <Button className="rounded-button"
+            onClick={this.onChooseStatus(true)}>Accept
           </Button>{' '}
           <Button className="rounded-button rounded-button--secondary"
-            onClick={toggle}>Decline</Button>
+            onClick={this.onChooseStatus(false)}>Decline</Button>
         </ModalFooter>
       </Modal>
     );
