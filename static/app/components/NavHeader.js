@@ -53,7 +53,7 @@ export default class NavHeader extends React.Component {
         </div>
         <div className="sd-nav__right hidden-sm-down">
           <ul className="sd-inline-list sd-nav__links">
-            <Link to="/apply"><li>Apply</li></Link>
+            {/* <Link to="/apply"><li>Apply</li></Link> */}
             <Link to="/user/login"><li>Login</li></Link>
             <a href="https://tesc.typeform.com/to/PYPjRK"><li>Volunteer</li></a>
             <a href="mailto://tesc.ucsd.edu"><li>Sponsor</li></a>
@@ -67,8 +67,8 @@ export default class NavHeader extends React.Component {
         <div className="navigation nav-right sd-nav__mobile">
           <ul>
             <li><a className="sd-nav__mobile-link" href="/">Home</a></li>
-            <li><Link className="sd-nav__mobile-link"
-              to="/apply">Apply</Link></li>
+            {/* <li><Link className="sd-nav__mobile-link"
+              to="/apply">Apply</Link></li> */}
             <li><Link className="sd-nav__mobile-link"
               to="/user/login">Login</Link></li>
             <li><a className="sd-nav__mobile-link"
