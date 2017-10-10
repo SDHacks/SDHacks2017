@@ -128,6 +128,7 @@ class User extends React.Component {
                     {this.renderFormCheckbox('Bussing', 'bussing', 'col-sm-4')}
                     {this.renderFormCheckbox('Sanitized', 'sanitized',
                       'col-sm-4')}
+                    {this.renderFormField('Status', 'status', 'col-sm-4')}
                   </div>
                 </span>
               }
