@@ -112,6 +112,7 @@ class UserPage extends React.Component {
     let statusText = status;
     switch (status) {
     case ('Declined'):
+    case ('Rejected'):
       statusText = 'Not Attending';
       break;
     case ('Confirmed'):
