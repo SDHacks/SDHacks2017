@@ -35,9 +35,9 @@ function(username, password, done) {
       return done(null, false, {error: returnMessages.INCORRECT_LOGIN});
     }
 
-    if (!user.confirmed) {
-      return done(null, false, {error: returnMessages.NOT_CONFIRMED});
-    }
+    /*if (!user.confirmed) {
+     return done(null, false, {error: returnMessages.NOT_CONFIRMED});
+    }*/
 
     user.comparePassword(password, function(err, isMatch) {
       if (err) {
