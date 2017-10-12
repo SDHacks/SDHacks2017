@@ -36,32 +36,6 @@
       &-school {
         max-width: 170px;
       }
-
-      // &-att {
-      //   max-width: 100px;
-      // }
-      // &-qualcomm {
-      //   max-width: 170px;
-      // }
-      // &-northrop {
-      //   max-width: 210px;
-      // }
-      // &-jsoe {
-      //   max-width: 210px;
-      //   width: 100%;
-      // }
-      // &-divr {
-      //   max-width: 80px;
-      // }
-      // &-webroot {
-      //   max-width: 150px;
-      // }
-      // &-cse {
-      //   max-width: 200px;
-      // }
-      // &-tech {
-      //   max-width: 120px;
-      // }
     }
   }
   &__silver {
@@ -70,6 +44,10 @@
     }
     .sd-sponsors__sponsor {
       max-width: 225px;
+
+      &-school {
+        width: 100%;
+      }
     }
   }
   &__gold {
