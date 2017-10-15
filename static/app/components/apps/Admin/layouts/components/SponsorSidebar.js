@@ -4,7 +4,6 @@ import {NavbarToggler} from 'reactstrap';
 import {Link as RouteLink} from 'react-router-dom';
 
 import Filter from './Filter';
-import Link from './Link';
 import Section from './Section';
 
 class SponsorSidebar extends React.Component {
