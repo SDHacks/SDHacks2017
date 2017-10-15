@@ -3,7 +3,7 @@ var csv = require('fast-csv');
 
 var User = require('./entities/users/model');
 
-var stream = fs.createReadStream('acceptances/rejections.csv');
+var stream = fs.createReadStream('acceptances/reimbursed - accepted3.csv');
 
 var total = 0;
 
@@ -15,8 +15,8 @@ var csvStream = csv()
         return;
       }
 
-      user.status = 'Rejected';
-      //user.availableBus = 'UCI Bus';
+      user.status = 'Unconfirmed';
+      //user.availableBus = 'UCLA Bus';
       //user.bussing = false;
 
       user.save(function() {

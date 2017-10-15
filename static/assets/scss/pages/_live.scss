@@ -1,17 +1,8 @@
-.bordered-live {
-  border-image: url(/assets/img/hexagon_border-live.svg) 250 0 215 repeat;
-  border-style: solid;
-  
-  background-color: #EEEEEE;
-  background-clip: padding-box;
-  margin-top: -50px;
-  position: relative;
-}
+.live-body {
+  min-height: 100vh;
 
-.live-background {
-  background-color: #eee;
-}
-
-.fixed-border-width {
-  border-width: 90px 0 0 0;
+  &__content {
+    flex: 1;
+    transition: flex 0.15s linear;
+  }
 }

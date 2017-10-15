@@ -93,6 +93,9 @@ class SponsorLayout extends React.Component {
     .then((res) => {
       if (res.url) {
         hideLoading();
+        this.setState({
+          isDownloading: false
+        });
         return window.open(res.url);
       }
 
@@ -101,10 +104,7 @@ class SponsorLayout extends React.Component {
     .catch((err) => {
       console.error(err);
       hideLoading();
-    })
-    .finally(() => this.setState({
-      isDownloading: false
-    }));
+    });
   };
 
   render() {

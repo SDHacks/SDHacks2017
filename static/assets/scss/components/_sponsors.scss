@@ -19,6 +19,19 @@
     display: inline-block;
     margin: 18px 20px;
   }
+  &__partner {
+    .sd-sponsors__img {
+      width: 200px;
+    }
+    .sd-sponsors__sponsor {
+      max-width: 180px;
+      max-height: 69px;
+      margin-top: 0.5rem;
+    }  
+  }
+  &__partners {
+    margin-top: 4rem;
+  }
   &__bronze {
     margin-top: 40px;
 

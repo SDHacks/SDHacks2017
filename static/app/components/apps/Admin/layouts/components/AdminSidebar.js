@@ -39,6 +39,7 @@ class AdminSidebar extends React.Component {
   developerTools = () =>
     <Section name='Developer Tools'>
       <Link dest='/admins'>Admins</Link>
+      <Link dest='/checkin'>Checkin</Link>
     </Section>;
 
   administratorTools = () =>
