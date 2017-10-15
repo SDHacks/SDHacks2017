@@ -68,6 +68,13 @@ export default class Filter extends React.Component {
     });
   }
 
+  addFilterOption = (args) => {
+    this.props.addFilterOption(args);
+    this.setState({
+      newOption: ''
+    });
+  }
+
   /**
    * Renders the new filter option field with autosuggestion.
    * @returns {Component} The new filter option field.
@@ -80,14 +87,12 @@ export default class Filter extends React.Component {
       onChange: this.updateNewOption
     };
 
-    let {addFilterOption} = this.props;
-
     return (
       <div className="sidebar-filter__autosuggest">
         <AutoSuggest
           getSuggestions={this.getOptionSuggestions}
           inputProps={inputProps}
-          onSuggestionSelected={addFilterOption}
+          onSuggestionSelected={this.addFilterOption}
         />
       </div>
     );

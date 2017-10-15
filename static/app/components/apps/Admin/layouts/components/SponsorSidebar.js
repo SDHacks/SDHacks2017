@@ -20,6 +20,7 @@ class SponsorSidebar extends React.Component {
     selectAllOptions: PropTypes.func.isRequired,
     selectNoneOptions: PropTypes.func.isRequired,
     onDownloadResumes: PropTypes.func.isRequired,
+    isDownloading: PropTypes.bool.isRequired,
     addFilterOption: PropTypes.func.isRequired,
 
     isHidden: PropTypes.bool
@@ -46,7 +47,7 @@ class SponsorSidebar extends React.Component {
    * Creates the user menu for the authenticated user.
    */
   renderUser() {
-    let {user, selected, onDownloadResumes} = this.props;
+    let {user, selected, isDownloading, onDownloadResumes} = this.props;
 
     return (
       <div className="admin-sidebar__user-box admin-sidebar__dark">
@@ -60,8 +61,9 @@ class SponsorSidebar extends React.Component {
         </div>
         <div className="admin-sidebar__download">
           <button className="btn rounded-button rounded-button--small"
-            onClick={onDownloadResumes} disabled={selected === 0}>
-            Download ({selected})
+            onClick={onDownloadResumes} disabled={selected === 0 ||
+              isDownloading}>
+            {isDownloading ? 'Downloading' : 'Download ('+selected+')' }
           </button>
         </div>
       </div>
