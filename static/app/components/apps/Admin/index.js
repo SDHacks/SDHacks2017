@@ -15,6 +15,7 @@ import UsersPage from './pages/UsersPage';
 import AdminsPage from './pages/AdminsPage';
 import ResumesPage from './pages/ResumesPage';
 import UserPage from './pages/UserPage';
+import CheckinPage from './pages/CheckinPage';
 import AdminLayout from './layouts/admin';
 import SponsorLayout from './layouts/sponsor';
 
@@ -86,6 +87,9 @@ class Admin extends React.Component {
           component={this.renderAdmin(UserPage)} />
         <PrivateRoute path="/admin/users"
           component={this.renderAdmin(UsersPage)} />
+
+        <PrivateRoute path="/admin/checkin"
+          component={CheckinPage} />
 
         <Route component={NotFoundPage} />
       </Switch>
