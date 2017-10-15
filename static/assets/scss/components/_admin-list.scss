@@ -16,12 +16,14 @@ $left-padding: 2rem;
       background-color: $white;
     }
 
-    &--small {
-      width: 6rem;
-    }
+    @include media-breakpoint-up(lg) {
+      &--small {
+        width: 6rem;
+      }
 
-    &--medium {
-      width: 10rem;
+      &--medium {
+        width: 10rem;
+      }
     }
   }
   

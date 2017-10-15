@@ -34,6 +34,10 @@ class SponsorLayout extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      isDownloading: false
+    };
   }
 
   /**
@@ -61,7 +65,7 @@ class SponsorLayout extends React.Component {
    * Gives the request to download the resumes that are currently selected.
    */
   downloadResumes = () => {
-    let {showLoading, hideLoading, filters, resumes} = this.props;
+    let {showLoading, filters, resumes} = this.props;
     showLoading();
 
     const filtered = applyResumeFilter(filters, resumes.applicants)
@@ -69,6 +73,9 @@ class SponsorLayout extends React.Component {
 
     downloadResumes(filtered)
     .then((res) => {
+      this.setState({
+        isDownloading: true
+      });
       this.startPolling(res.downloadId);
     })
     .catch(console.error);
@@ -80,6 +87,7 @@ class SponsorLayout extends React.Component {
    */
   startPolling = (downloadId) => {
     const pollingInterval = 1000;
+    let {hideLoading} = this.props;
 
     pollDownload(downloadId)
     .then((res) => {
@@ -93,7 +101,10 @@ class SponsorLayout extends React.Component {
     .catch((err) => {
       console.error(err);
       hideLoading();
-    });
+    })
+    .finally(() => this.setState({
+      isDownloading: false
+    }));
   };
 
   render() {
@@ -116,6 +127,7 @@ class SponsorLayout extends React.Component {
                 filters={filters}
                 filterOptions={filterOptions}
                 onDownloadResumes={this.downloadResumes}
+                isDownloading={this.state.isDownloading}
                 addFilterOption={this.props.addFilterOption} />
             </div>
 
