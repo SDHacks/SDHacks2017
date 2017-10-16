@@ -24,10 +24,15 @@
       width: 200px;
     }
     .sd-sponsors__sponsor {
-      max-width: 180px;
-      max-height: 69px;
       margin-top: 0.5rem;
-    }  
+      max-width: 120px;
+      max-height: 50px;
+
+      &-vr {
+        max-width: 190px;
+        max-height: 69px;
+      }
+    }
   }
   &__partners {
     margin-top: 4rem;
