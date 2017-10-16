@@ -19,6 +19,8 @@ block content
           ul.sd-inline-list.sd-nav__links
             a(href="/user/login")
               li Login
+            a(href="#sd-schedule")
+              li Schedule
             a(href=volunteerUrl)
               li Volunteer
             a(href=sponsorUrl)
@@ -32,7 +34,7 @@ block content
               li
                 a.sd-nav__mobile-link(href="/") Home
               li
-                a.sd-nav__mobile-link(href="/apply") Apply
+                a.sd-nav__mobile-link.sd-link-close-nav(href="/#sd-schedule") Schedule
               li
                 a.sd-nav__mobile-link(href="/user/login") Login
               li
@@ -187,12 +189,12 @@ block content
                     span.sd-schedule__time 10pm
                   li.sd-schedule__list-elem
                     span.sd-schedule__event Team Mixer
-                    span.sd-schedule__time 10pm-10:30pm
+                    span.sd-schedule__time 10-10:30pm
                   li.sd-schedule__list-elem
                     span.sd-schedule__event Marines Innovation Challenge Info Session
                     span.sd-schedule__time 10:30-11:15pm
                   li.sd-schedule__list-elem
-                    span.sd-schedule__event VR/Gaming Workshop
+                    span.sd-schedule__event Virtual Reality and Gaming Workshop
                     span.sd-schedule__time 11:30pm-2:30am
                   li.sd-schedule__list-elem
                     span.sd-schedule__event Nodeschool Workshop
@@ -234,7 +236,7 @@ block content
                     span.sd-schedule__time 11am-1pm
                   li.sd-schedule__list-elem
                     span.sd-schedule__event Closing Ceremony
-                    span.sd-schedule__time 1pm-2pm
+                    span.sd-schedule__time 1-2pm
 
   .sd-section.sd-sponsors#sd-sponsors
     .sd-sponsors__background
