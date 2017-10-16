@@ -35,4 +35,8 @@ $(document).ready(function() {
       $('.sd-nav__logo-wrap').addClass('sd-nav__logo-up');
     }
   });
+
+  $('.sd-link-close-nav').click(function() {
+    $('.sd-nav').removeClass('nav-open');
+  });
 });
