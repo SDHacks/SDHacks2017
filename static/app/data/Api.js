@@ -89,6 +89,18 @@ export const updateUser = (id, user) =>
       .use(adminPrefix));
 
 /**
+ * Request a user marked as checked in.
+ * @param  {String} email The email of the user.
+ * @returns {Promise} A promise of the request.
+ */
+export const checkinUser = (email) =>
+promisify(request
+    .post('/users/checkin')
+    .send({email})
+    .set('Authorization', cookies.get(CookieTypes.admin.token, {path: '/'}))
+    .use(adminPrefix));
+
+/**
  * Request to register a new user.
  * @param  {Object} user The user fields to register.
  * @returns {Promise} A promise of the request.
