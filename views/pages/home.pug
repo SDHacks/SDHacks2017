@@ -5,7 +5,7 @@ extends ../layouts/home
 include ../mixins/get-updates
 
 block content
-  - volunteerUrl = 'https://tesc.typeform.com/to/PYPjRK'
+  - volunteerUrl = 'https://tesc.typeform.com/to/dcajQc'
   - sponsorUrl = 'mailto:sponsor@tesc.ucsd.edu'
   - announcementText = 'Hacker applications are closed for this year';
 
@@ -21,8 +21,6 @@ block content
               li Login
             a(href="#sd-schedule")
               li Schedule
-            a(href=volunteerUrl)
-              li Volunteer
             a(href=sponsorUrl)
               li Sponsor
             a(href="http://2016.sdhacks.io")
@@ -37,8 +35,6 @@ block content
                 a.sd-nav__mobile-link.sd-link-close-nav(href="/#sd-schedule") Schedule
               li
                 a.sd-nav__mobile-link(href="/user/login") Login
-              li
-                a.sd-nav__mobile-link(href=volunteerUrl) Volunteer
               li
                 a.sd-nav__mobile-link(href=sponsorUrl) Sponsor
               li
@@ -71,9 +67,95 @@ block content
         p #{announcementText}
         .hexagon-hero__nav.hexagon-hero__nav--mobile
           a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
+  .sd-section.sd-schedule#sd-schedule
+    .sd-about__background
+    h2.sd-faq__title.sd-section__title Schedule
+    .container
+      .row
+        .col-lg-4
+          .sd-card__wrapper
+            .card.sd-card.sd-card__schedule
+              .card-body.sd-card__block
+                .text-center
+                  h4.card-title.sd-card__title Friday, October 20
+                ul.sd-schedule__list.list-unstyled
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Check In
+                    span.sd-schedule__time 7pm
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Dinner
+                    span.sd-schedule__time 7pm
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Opening Ceremony
+                    span.sd-schedule__time 9pm
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Hacking Begins
+                    span.sd-schedule__time 10pm
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Team Mixer
+                    span.sd-schedule__time 10-10:30pm
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Marines Innovation Challenge Info Session
+                    span.sd-schedule__time 10:30-11:15pm
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Qualcomm DragonBoard Workshop
+                    span.sd-schedule__time 10:30-11:15pm
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Virtual Reality and Gaming Workshop
+                    span.sd-schedule__time 11:30pm-2:30am
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Nodeschool Workshop
+                    span.sd-schedule__time 11:30pm-1:30am
+        .col-lg-4
+          .sd-card__wrapper
+            .card.sd-card.sd-card__schedule
+              .card-body.sd-card__block
+                .text-center
+                  h4.card-title.sd-card__title Saturday, October 21
+                ul.sd-schedule__list.list-unstyled
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event iOS Workshop
+                    span.sd-schedule__time 2-4am
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Breakfast
+                    span.sd-schedule__time 8:30am
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Lunch
+                    span.sd-schedule__time 1pm
+                  //- li.sd-schedule__list-elem
+                    span.sd-schedule__event UI/UX Workshop
+                    span.sd-schedule__time 2-2:45pm
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Getting Into Game Development
+                    span.sd-schedule__time 3-3:45pm
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Dinner
+                    span.sd-schedule__time 7:30pm
+        .col-lg-4
+          .sd-card__wrapper
+            .card.sd-card.sd-card__schedule
+              .card-body.sd-card__block
+                .text-center
+                  h4.card-title.sd-card__title Sunday, October 22
+                ul.sd-schedule__list.list-unstyled
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Breakfast
+                    span.sd-schedule__time 7am
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Lunch
+                    span.sd-schedule__time 10am
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Hacking Ends
+                    span.sd-schedule__time 10am
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Demos and Judging
+                    span.sd-schedule__time 11am-1pm
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event Closing Ceremony
+                    span.sd-schedule__time 1-2pm
 
   .sd-section.sd-about#sd-about
-    .sd-about__background
+    .sd-faq__background
     h2.sd-about__title.sd-section__title SD Hacks is About
     .container
       .row.row-eq-height
@@ -100,7 +182,7 @@ block content
               .card-text.sd-card__text-featurette.sd-card__text We strive to make each SD Hacks a memorable learning experience for all.
 
   .sd-section.sd-faq#sd-faq
-    .sd-faq__background
+    .sd-schedule__background
     h2.sd-faq__title.sd-section__title FAQ
     .container
       .row
@@ -162,81 +244,6 @@ block content
               .card-body.sd-card__block
                 h4.card-title.sd-card__title Do I have to pay for parking?
                 .card-text.sd-card__text Yes, parking permits are $2 per hr on Friday evening up to 11pm. After 11pm on Friday, parking is free for the weekend. The closest parking to RIMAC Arena is the #[a.sd-link__underline(href='https://www.google.com/maps/place/Hopkins+Parking+Structure/@32.8836008,-117.2419505,17z/data=!3m1!4b1!4m5!3m4!1s0x80dc06c1e6156103:0xc6690b999c002d97!8m2!3d32.8835963!4d-117.2397618' target='_blank') Hopkins Parking Structure].
-    
-  .sd-section.sd-schedule#sd-schedule
-    .sd-schedule__background
-    h2.sd-faq__title.sd-section__title Schedule
-    .container
-      .row
-        .col-lg-4
-          .sd-card__wrapper
-            .card.sd-card.sd-card__schedule
-              .card-body.sd-card__block
-                .text-center
-                  h4.card-title.sd-card__title Friday, October 20
-                ul.sd-schedule__list.list-unstyled
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Check In
-                    span.sd-schedule__time 7pm
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Dinner
-                    span.sd-schedule__time 7pm
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Opening Ceremony
-                    span.sd-schedule__time 9pm
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Hacking Begins
-                    span.sd-schedule__time 10pm
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Team Mixer
-                    span.sd-schedule__time 10-10:30pm
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Marines Innovation Challenge Info Session
-                    span.sd-schedule__time 10:30-11:15pm
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Virtual Reality and Gaming Workshop
-                    span.sd-schedule__time 11:30pm-2:30am
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Nodeschool Workshop
-                    span.sd-schedule__time 11:30pm-1:30am
-        .col-lg-4
-          .sd-card__wrapper
-            .card.sd-card.sd-card__schedule
-              .card-body.sd-card__block
-                .text-center
-                  h4.card-title.sd-card__title Saturday, October 21
-                ul.sd-schedule__list.list-unstyled
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Breakfast
-                    span.sd-schedule__time 8:30am
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Lunch
-                    span.sd-schedule__time 1pm
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Dinner
-                    span.sd-schedule__time 7:30pm
-        .col-lg-4
-          .sd-card__wrapper
-            .card.sd-card.sd-card__schedule
-              .card-body.sd-card__block
-                .text-center
-                  h4.card-title.sd-card__title Sunday, October 22
-                ul.sd-schedule__list.list-unstyled
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Breakfast
-                    span.sd-schedule__time 7am
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Lunch
-                    span.sd-schedule__time 10am
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Hacking Ends
-                    span.sd-schedule__time 10am
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Demos and Judging
-                    span.sd-schedule__time 11am-1pm
-                  li.sd-schedule__list-elem
-                    span.sd-schedule__event Closing Ceremony
-                    span.sd-schedule__time 1-2pm
 
   .sd-section.sd-sponsors#sd-sponsors
     .sd-sponsors__background
@@ -318,10 +325,13 @@ block content
             img.sd-sponsors__sponsor.sd-sponsors__sponsor-md5(src='/assets/img/sponsors/md5.svg')
         .sd-sponsors__img
           a.sd-link__img(target='_blank' href='https://www.illumina.com/')
-            img.sd-sponsors__sponsor.sd-sponsors__sponsor-md5(src='/assets/img/sponsors/illumina.png')
+            img.sd-sponsors__sponsor.sd-sponsors__sponsor-illumina(src='/assets/img/sponsors/illumina.png')
         .sd-sponsors__img
           a.sd-link__img(target='_blank' href='http://www.awakens.tokyo/')
             img.sd-sponsors__sponsor.sd-sponsors__sponsor-md5(src='/assets/img/sponsors/awaken.png')
+        .sd-sponsors__img
+          a.sd-link__img(target='_blank' href='http://www.nanome.ai/')
+            img.sd-sponsors__sponsor.sd-sponsors__sponsor-nanome(src='/assets/img/sponsors/nanome.png')
     .container.text-center.sd-sponsors__partners
       h3.sd-faq__subtitle.sd-section__subtitle Partners
       .sd-sponsors__partner
