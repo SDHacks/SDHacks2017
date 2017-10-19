@@ -69,7 +69,6 @@ export default class NavHeader extends React.Component {
         <div className="navigation nav-right sd-nav__mobile">
           <ul>
             <li><a className="sd-nav__mobile-link" href="/">Home</a></li>
-            <li><a className="sd-nav__mobile-link" href="/">Home</a></li>
             {/* <li><Link className="sd-nav__mobile-link"
               to="/apply">Apply</Link></li> */}
             <li><Link className="sd-nav__mobile-link"
