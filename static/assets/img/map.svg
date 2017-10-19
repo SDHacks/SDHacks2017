@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="3291px" height="2326px" viewBox="0 0 3291 2326" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Map" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard">
+            <g id="eventmap" transform="translate(0.000000, -71.000000)">
+                <polygon id="Shape" stroke="#303030" stroke-width="0.463" points="763.6 799.2 2394.6 799.2 2394.6 2294.7 763.6 2294.7"></polygon>
+                <text id="Laboratory-for" fill="#7723D7" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="41.6663" font-weight="normal">
+                    <tspan x="2425.4639" y="1933.1953">Laboratory for</tspan>
+                </text>
+                <text id="Telecommunications-Sciences" fill="#7723D7" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="41.6663" font-weight="normal">
+                    <tspan x="2425.4639" y="1983.1953">Telecommunications Sciences</tspan>
+                </text>
+                <text id="Northrop_Grumman" fill="#7723D7" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="41.6663" font-weight="normal">
+                    <tspan x="2428.4395" y="2050.3711">Northrop Grumman</tspan>
+                </text>
+                <text id="Snack_Table" fill="#6E6D70" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="41.6663" font-weight="normal">
+                    <tspan x="2426.457" y="1637.2803">Snack Table</tspan>
+                </text>
+                <text id="Ilumina_AWAKENS" fill="#7723D7" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="41.6663" font-weight="normal">
+                    <tspan x="2426.457" y="1758.4287">Ilumina &amp; AWAKENS</tspan>
+                </text>
+                <text id="Qualcomm_Institute" fill="#7723D7" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="41.6663" font-weight="normal">
+                    <tspan x="2426.457" y="1851.7686">Qualcomm Institute</tspan>
+                </text>
+                <g id="middle" opacity="0.37"></g>
+                <g id="VR_Space" transform="translate(1121.000000, 878.000000)" fill-rule="nonzero" fill="#D15D5D">
+                    <polygon id="Rectangle_2_copy_7" points="73.4 0.6 874 0.6 874 78 73.4 78"></polygon>
+                    <path d="M102.2,85 L122,85 L122,141.6 L102.2,141.6 L102.2,85 Z M185.6,85 L205.4,85 L205.4,141.6 L185.6,141.6 L185.6,85 Z M266,85 L285.8,85 L285.8,141.6 L266,141.6 L266,85 Z M349.3,85 L369.1,85 L369.1,141.6 L349.3,141.6 L349.3,85 Z M421.7,85 L441.5,85 L441.5,141.6 L421.7,141.6 L421.7,85 Z M505,85 L524.8,85 L524.8,141.6 L505,141.6 L505,85 Z M585.4,85 L605.2,85 L605.2,141.6 L585.4,141.6 L585.4,85 Z M745.1,85 L764.9,85 L764.9,141.6 L745.1,141.6 L745.1,85 Z M825.5,85 L845.3,85 L845.3,141.6 L825.6,141.6 L825.5,85 L825.5,85 Z M668.8,85 L688.6,85 L688.6,141.6 L668.8,141.6 L668.8,85 Z" id="Rectangle_2_copy_18"></path>
+                    <polygon id="Rectangle_2_copy_15" points="0.1 36.1 48.7 36.1 48.7 61.9 0.1 61.9"></polygon>
+                </g>
+                <g id="Plat_Sponsors" transform="translate(808.000000, 1045.000000)" fill-rule="nonzero" fill="#FFA15C">
+                    <polygon id="Rectangle_3_copy_8" points="16.8 59 34 76.4 17.5 92.8 0.3 75.5"></polygon>
+                    <polygon id="Rectangle_3_copy_9" points="16.8 5.4 34 22.8 17.5 39.2 0.3 21.9"></polygon>
+                    <polygon id="Rectangle_3_copy_8-2" points="76.8 0.3 96.6 0.3 96.6 95.7 76.8 95.7"></polygon>
+                </g>
+                <g id="Plat_Sponsors_copy" transform="translate(797.000000, 1046.000000)" fill-rule="nonzero" fill="#FFA15C">
+                    <polygon id="Rectangle_3_copy_8-3" points="1540.5 37.2 1523.3 19.8 1539.8 3.4 1557 20.7"></polygon>
+                    <circle id="Oval" cx="1553.5" cy="48.5" r="13.5"></circle>
+                    <circle id="Ellipse_1_copy" cx="13.5" cy="48.5" r="13.5"></circle>
+                    <polygon id="Rectangle_3_copy_9-2" points="1540.5 90.8 1523.3 73.4 1539.8 57 1557 74.4"></polygon>
+                    <polygon id="Rectangle_3_copy_8-4" points="1460.7 0.3 1480.8 0.3 1480.8 95.8 1460.7 95.8"></polygon>
+                </g>
+                <g id="Bottom_Half_Items" transform="translate(137.000000, 561.000000)" fill-rule="nonzero">
+                    <g id="Lab_and_Photobooth" fill="#3FC0B0">
+                        <rect id="Rectangle_2_copy_3" x="1801.2" y="1521.3" width="51.6" height="18.8"></rect>
+                        <polygon id="Rectangle_2_copy_5" points="954.1 1512.2 972.9 1512.2 972.9 1604.6 954.1 1604.6"></polygon>
+                        <polygon id="Rectangle_2_copy_6" points="1182.1 1514.2 1201.2 1514.2 1201.2 1606.6 1182.1 1606.6"></polygon>
+                        <polygon id="Rectangle_2_copy_8" points="982.9 1607.7 1172.4 1607.7 1172.4 1626.5 982.9 1626.5"></polygon>
+                        <polygon id="Rectangle_2_copy_4" points="1931.1 1521.3 1983 1521.3 1983 1570.9 1931.1 1570.9"></polygon>
+                        <polygon id="Rectangle_2_copy_23" points="0.8 0.7 376.8 0.7 376.8 367.4 0.8 367.4"></polygon>
+                    </g>
+                    <polygon id="Shape" fill="#2B6177" points="1369.6 1489.5 1530.3 1489.5 1530.3 1617.4 1369.6 1617.4"></polygon>
+                </g>
+                <g id="Snacks" transform="translate(1551.000000, 1352.000000)" font-size="29.1664" font-family="SourceSansPro-Regular, Source Sans Pro" fill="#000000" font-weight="normal">
+                    <text id="Help">
+                        <tspan x="2.2793" y="29.2227">Help</tspan>
+                    </text>
+                    <text id="Desk">
+                        <tspan x="0.9248" y="64.2227">Desk</tspan>
+                    </text>
+                </g>
+                <g id="Snacks_copy"></g>
+                <g id="Hacker_tables" transform="translate(1041.000000, 1173.000000)">
+                    <polygon id="this" fill="#2B6177" fill-rule="nonzero" points="39 553.6 68.8 553.6 68.8 742.5 39 742.5"></polygon>
+                    <polygon id="this_copy" fill="#2B6177" fill-rule="nonzero" points="110.7 553.6 140.5 553.6 140.5 742.5 110.7 742.5"></polygon>
+                    <polygon id="this_copy_2" fill="#2B6177" fill-rule="nonzero" points="177 553.6 206.8 553.6 206.8 742.5 177 742.5"></polygon>
+                    <polygon id="this-2" fill="#2B6177" fill-rule="nonzero" points="246.6 554.6 276.4 554.6 276.4 743.2 246.6 743.2"></polygon>
+                    <polygon id="this_copy-2" fill="#2B6177" fill-rule="nonzero" points="317.9 554.6 347.7 554.6 347.7 743.2 317.9 743.2"></polygon>
+                    <polygon id="this_copy_2-2" fill="#2B6177" fill-rule="nonzero" points="384.2 554.6 414 554.6 414 743.2 384.2 743.2"></polygon>
+                    <polygon id="this-3" fill="#2B6177" fill-rule="nonzero" points="459.9 554.6 489.7 554.6 489.7 743.2 459.9 743.2"></polygon>
+                    <polygon id="this_copy-3" fill="#2B6177" fill-rule="nonzero" points="531.2 554.6 561 554.6 561 743.2 531.2 743.2"></polygon>
+                    <polygon id="this_copy_2-3" fill="#2B6177" fill-rule="nonzero" points="597.9 554.6 627.4 554.6 627.4 743.2 597.9 743.2"></polygon>
+                    <polygon id="this-4" fill="#2B6177" fill-rule="nonzero" points="671.2 553.6 701 553.6 701 742.5 671.2 742.5"></polygon>
+                    <polygon id="this_copy-4" fill="#2B6177" fill-rule="nonzero" points="742.5 553.6 772.3 553.6 772.3 742.5 742.5 742.5"></polygon>
+                    <polygon id="this_copy_2-4" fill="#2B6177" fill-rule="nonzero" points="809.2 553.6 839 553.6 839 742.5 809.2 742.5"></polygon>
+                    <polygon id="this-5" fill="#2B6177" fill-rule="nonzero" points="885.5 553.6 915.3 553.6 915.3 742.5 885.5 742.5"></polygon>
+                    <polygon id="this_copy-5" fill="#2B6177" fill-rule="nonzero" points="956.8 553.6 986.6 553.6 986.6 742.5 956.8 742.5"></polygon>
+                    <polygon id="this_copy_2-5" fill="#2B6177" fill-rule="nonzero" points="1023.4 553.6 1053.2 553.6 1053.2 742.5 1023.4 742.5"></polygon>
+                    <polygon id="this-6" fill="#2B6177" fill-rule="nonzero" points="36 268.6 65.8 268.6 65.8 457.5 36 457.5"></polygon>
+                    <polygon id="this_copy-6" fill="#2B6177" fill-rule="nonzero" points="107.7 268.6 137.5 268.6 137.5 457.5 107.7 457.5"></polygon>
+                    <polygon id="this_copy_2-6" fill="#2B6177" fill-rule="nonzero" points="173.9 268.6 203.7 268.6 203.7 457.5 173.9 457.5"></polygon>
+                    <polygon id="this-7" fill="#2B6177" fill-rule="nonzero" points="243.6 269.6 273.4 269.6 273.4 458.5 243.6 458.5"></polygon>
+                    <polygon id="this_copy-7" fill="#2B6177" fill-rule="nonzero" points="314.9 269.6 344.7 269.6 344.7 458.5 314.9 458.5"></polygon>
+                    <polygon id="this_copy_2-7" fill="#2B6177" fill-rule="nonzero" points="381.6 269.6 411.1 269.6 411.1 458.5 381.6 458.5"></polygon>
+                    <polygon id="this-8" fill="#2B6177" fill-rule="nonzero" points="456.9 269.6 486.7 269.6 486.7 458.5 456.9 458.5"></polygon>
+                    <polygon id="this_copy-8" fill="#2B6177" fill-rule="nonzero" points="528.2 269.6 558 269.6 558 458.5 528.2 458.5"></polygon>
+                    <polygon id="this_copy_2-8" fill="#2B6177" fill-rule="nonzero" points="594.8 269.6 624.6 269.6 624.6 458.5 594.8 458.5"></polygon>
+                    <polygon id="this-9" fill="#2B6177" fill-rule="nonzero" points="668.2 268.6 698 268.6 698 457.5 668.2 457.5"></polygon>
+                    <polygon id="this_copy-9" fill="#2B6177" fill-rule="nonzero" points="739.5 268.6 769.3 268.6 769.3 457.5 739.5 457.5"></polygon>
+                    <polygon id="this_copy_2-9" fill="#2B6177" fill-rule="nonzero" points="806.1 268.6 835.9 268.6 835.9 457.5 806.1 457.5"></polygon>
+                    <polygon id="this-10" fill="#2B6177" fill-rule="nonzero" points="882.5 268.6 912.3 268.6 912.3 457.5 882.5 457.5"></polygon>
+                    <polygon id="this_copy-10" fill="#2B6177" fill-rule="nonzero" points="953.8 268.6 983.6 268.6 983.6 457.5 953.8 457.5"></polygon>
+                    <polygon id="this_copy_2-10" fill="#2B6177" fill-rule="nonzero" points="1020.4 268.6 1050.2 268.6 1050.2 457.5 1020.4 457.5"></polygon>
+                    <polygon id="this-11" fill="#2B6177" fill-rule="nonzero" points="39 0.6 68.8 0.6 68.8 189.2 39 189.2"></polygon>
+                    <polygon id="this_copy-11" fill="#2B6177" fill-rule="nonzero" points="110.7 0.6 140.5 0.6 140.5 189.2 110.7 189.2"></polygon>
+                    <polygon id="this_copy_2-11" fill="#2B6177" fill-rule="nonzero" points="177 0.6 206.8 0.6 206.8 189.2 177 189.2"></polygon>
+                    <polygon id="this-12" fill="#2B6177" fill-rule="nonzero" points="246.6 1.6 276.4 1.6 276.4 190.2 246.6 190.2"></polygon>
+                    <polygon id="this_copy-12" fill="#2B6177" fill-rule="nonzero" points="317.9 1.6 347.7 1.6 347.7 190.2 317.9 190.2"></polygon>
+                    <polygon id="this_copy_2-12" fill="#2B6177" fill-rule="nonzero" points="384.2 1.6 414 1.6 414 190.2 384.2 190.2"></polygon>
+                    <polygon id="this-13" fill="#2B6177" fill-rule="nonzero" points="459.9 1.6 489.7 1.6 489.7 190.2 459.9 190.2"></polygon>
+                    <polygon id="this_copy-13" fill="#2B6177" fill-rule="nonzero" points="531.2 1.6 561 1.6 561 95.7 531.2 95.7"></polygon>
+                    <polygon id="this_copy_3" fill="#2B6177" fill-rule="nonzero" points="517.5 134.6 569.1 134.6 569.1 164.4 517.5 164.4"></polygon>
+                    <polygon id="this_copy_2-13" fill="#2B6177" fill-rule="nonzero" points="597.9 1.6 627.4 1.6 627.4 190.2 597.9 190.2"></polygon>
+                    <polygon id="this-14" fill="#2B6177" fill-rule="nonzero" points="671.2 0.6 701 0.6 701 189.2 671.2 189.2"></polygon>
+                    <polygon id="this_copy-14" fill="#2B6177" fill-rule="nonzero" points="742.5 0.6 772.3 0.6 772.3 189.2 742.5 189.2"></polygon>
+                    <polygon id="this_copy_2-14" fill="#2B6177" fill-rule="nonzero" points="809.2 0.6 839 0.6 839 189.2 809.2 189.2"></polygon>
+                    <polygon id="this-15" fill="#2B6177" fill-rule="nonzero" points="885.5 0.6 915.3 0.6 915.3 189.2 885.5 189.2"></polygon>
+                    <polygon id="this_copy-15" fill="#2B6177" fill-rule="nonzero" points="956.8 0.6 986.6 0.6 986.6 189.2 956.8 189.2"></polygon>
+                    <polygon id="this_copy_2-15" fill="#2B6177" fill-rule="nonzero" points="1023.4 0.6 1053.2 0.6 1053.2 189.2 1023.4 189.2"></polygon>
+                    <g id="NUmbers" transform="translate(0.000000, 7.000000)" font-size="24" font-family="SourceSansPro-Regular, Source Sans Pro" fill="#303030" font-weight="normal">
+                        <text id="1">
+                            <tspan x="8.2021" y="24.2207">1</tspan>
+                        </text>
+                        <text id="2">
+                            <tspan x="6.6475" y="71.1221">2</tspan>
+                        </text>
+                        <text id="3">
+                            <tspan x="7.1484" y="118.0234">3</tspan>
+                        </text>
+                        <text id="4">
+                            <tspan x="6.751" y="164.9248">4</tspan>
+                        </text>
+                        <text id="5">
+                            <tspan x="8.2021" y="294.2207">5</tspan>
+                        </text>
+                        <text id="6">
+                            <tspan x="6.6475" y="341.1221">6</tspan>
+                        </text>
+                        <text id="7">
+                            <tspan x="7.1484" y="388.0234">7</tspan>
+                        </text>
+                        <text id="8">
+                            <tspan x="6.751" y="434.9248">8</tspan>
+                        </text>
+                        <text id="9">
+                            <tspan x="8.2021" y="578.4287">9</tspan>
+                        </text>
+                        <text id="10">
+                            <tspan x="0.498" y="625.3301">10</tspan>
+                        </text>
+                        <text id="11">
+                            <tspan x="0.999" y="672.2314">11</tspan>
+                        </text>
+                        <text id="12">
+                            <tspan x="0.6016" y="719.1328">12</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="LEGEND" transform="translate(209.000000, 181.000000)" font-family="SourceSansPro-Regular, Source Sans Pro" font-weight="normal">
+                    <text id="Qualcomm" fill="#7723D7" font-size="41.6663">
+                        <tspan x="2216.4639" y="1142.4951">Qualcomm</tspan>
+                    </text>
+                    <text id="Webroot" fill="#7723D7" font-size="41.6663">
+                        <tspan x="2216.4639" y="1241.7949">Webroot</tspan>
+                    </text>
+                    <text id="USMC_Nexlog" fill="#7723D7" font-size="41.6663">
+                        <tspan x="2216.4639" y="1337.1211">USMC Nexlog</tspan>
+                    </text>
+                    <text id="DIVR_Edu" fill="#7723D7" font-size="41.6663">
+                        <tspan x="2215.4697" y="1042.2012">DIVR Edu</tspan>
+                    </text>
+                    <text id="SPAWAR" fill="#FFA15C" font-size="41.6663">
+                        <tspan x="2219.4395" y="927.0127">SPAWAR</tspan>
+                    </text>
+                    <text id="ViaSat" fill="#FFA15C" font-size="41.6663">
+                        <tspan x="297.8574" y="926.0205">ViaSat</tspan>
+                    </text>
+                    <text id="Green-Room" fill="#FFFFFF" font-size="41.6663">
+                        <tspan x="0" y="575">Green Room</tspan>
+                    </text>
+                    <text id="Hacking_Space" fill="#303030" font-size="41.6663">
+                        <tspan x="821.4707" y="936.9141">Hacking Space</tspan>
+                    </text>
+                    <text id="Maker_Space" fill="#303030" font-size="41.6663">
+                        <tspan x="891.4351" y="2056.0537">Maker Space</tspan>
+                    </text>
+                    <text id="Stage" fill="#303030" font-size="41.6663">
+                        <tspan x="1330.1084" y="2055.8057">Stage</tspan>
+                    </text>
+                    <text id="Hardware-Lab" fill="#303030" font-size="41.6663">
+                        <tspan x="1689.2715" y="2020.0605">Hardware Lab</tspan>
+                    </text>
+                    <text id="and-Photobooth" fill="#303030" font-size="41.6663">
+                        <tspan x="1670.124" y="2070.0605">and Photobooth</tspan>
+                    </text>
+                    <text id="VR_Space-2" fill="#303030" font-size="41.6663">
+                        <tspan x="887.1582" y="669.666">VR Space</tspan>
+                    </text>
+                    <text id="Lobby" fill="#303030" font-size="41.6663">
+                        <tspan x="426.1709" y="554.5244">Lobby</tspan>
+                    </text>
+                    <text id="Dugout_Conference_Room" fill="#303030" font-size="66.667">
+                        <tspan x="67.1709" y="66.5254">Dugout Conference Room</tspan>
+                    </text>
+                    <text id="E8_Security" fill="#7723D7" font-size="41.6663">
+                        <tspan x="299.8398" y="1053.125">E8 Security</tspan>
+                    </text>
+                    <text id="AT_T" fill="#7723D7" font-size="41.6663">
+                        <tspan x="297.8574" y="1144.4795">AT&amp;T</tspan>
+                    </text>
+                    <text id="a16z" fill="#7723D7" font-size="41.6663">
+                        <tspan x="299.8398" y="1249.7383">a16z</tspan>
+                    </text>
+                    <text id="DocuSign" fill="#7723D7" font-size="41.6663">
+                        <tspan x="297.8574" y="1345.0645">DocuSign</tspan>
+                    </text>
+                    <text id="Snack_Table-2" fill="#525054" font-size="41.6663">
+                        <tspan x="297.8574" y="1464.2266">Snack Table</tspan>
+                    </text>
+                    <text id="UCSD_Alumni" fill="#7723D7" font-size="41.6663">
+                        <tspan x="297.8574" y="1585.3711">UCSD Alumni</tspan>
+                    </text>
+                    <text id="Twilio" fill="#7723D7" font-size="41.6663">
+                        <tspan x="297.8574" y="1678.7148">Twilio</tspan>
+                    </text>
+                    <text id="Amazon" fill="#7723D7" font-size="41.6663">
+                        <tspan x="297.8574" y="1776.0273">Amazon</tspan>
+                    </text>
+                    <text id="Leidos" fill="#7723D7" font-size="41.6663">
+                        <tspan x="297.8574" y="1873.3408">Leidos</tspan>
+                    </text>
+                </g>
+                <rect id="Rectangle-path" fill="#FFFFFF" fill-rule="nonzero" x="762.6" y="798" width="136" height="130"></rect>
+                <text id="RIMAC-Arena" fill="#303030" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="75.0003" font-weight="normal">
+                    <tspan x="1981.416" y="508.6455">RIMAC Arena</tspan>
+                </text>
+                <polygon id="Shape" stroke="#000000" fill="#FFFFFF" fill-rule="nonzero" points="2405 538 2405 539.5 140 541 140 539.5"></polygon>
+                <text id="To_Hopkins_Parking_Structure" fill="#303030" transform="translate(3145.309600, 1631.607800) rotate(90.000000) translate(-3145.309600, -1631.607800) " font-family="SourceSansPro-Regular, Source Sans Pro" font-size="66.6574" font-weight="normal">
+                    <tspan x="2712.8776" y="1655.6078">To Hopkins Parking Structure</tspan>
+                </text>
+                <text id="N" fill="#303030" font-family="ReemKufi-Regular, Reem Kufi" font-size="71.352" font-weight="normal">
+                    <tspan x="224.9161" y="1524.8965">N</tspan>
+                </text>
+                <rect id="Rectangle-path" fill="#303030" fill-rule="nonzero" x="589" y="490" width="211" height="96"></rect>
+                <text id="Check-In" fill="#FFFFFF" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="41.6663" font-weight="normal">
+                    <tspan x="612.1699" y="549.5244">Check-In</tspan>
+                </text>
+                <path d="M258.1,1563.6 L291.4,1660.9 C292,1662.7 291.7,1664.2 290.3,1665.6 C290.1,1665.8 289.8,1666 289.4,1666.3 C288.5,1666.9 287.5,1667.1 286.5,1667 C285.5,1666.9 284.5,1666.4 283.8,1665.7 L254.3,1636.7 L225.3,1666.2 C224.6,1667 223.7,1667.4 222.6,1667.5 C221.6,1667.6 220.6,1667.4 219.6,1666.9 C218.7,1666.3 218,1665.6 217.7,1664.6 C217.3,1663.6 217.3,1662.6 217.6,1661.6 L249.3,1563.8 C249.5,1563.1 249.9,1562.5 250.4,1562 C251.3,1561.1 252.4,1560.6 253.6,1560.7 C254.6,1560.7 255.5,1560.9 256.3,1561.5 C257.2,1561.9 257.8,1562.6 258.1,1563.6 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M224.6,266.5 L166.3,208.2 L194.4,208.2 C196.8,208.2 198.8,207.3 200.4,205.8 C203.4,202.8 204,197.3 200.4,193.6 C198.8,192 196.8,191.2 194.4,191.2 L146,191.2 C144,191.2 141.8,191.4 139.5,193.6 C137.2,195.8 137.1,197.7 137.1,200 L137.1,248.4 C137.1,250.7 137.9,252.7 139.5,254.4 C143.1,258 148.7,257.4 151.7,254.4 C153.3,252.8 154.1,250.8 154.1,248.4 L154.1,220.3 L212.4,278.6 C215.8,282 221.2,282 224.6,278.6 C228,275.3 228,269.8 224.6,266.5 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M3129.1,2120.6 L3129.1,2200.9 L3109.8,2181.6 C3108.2,2180 3106.2,2179.2 3104,2179.2 C3099.9,2179.2 3095.6,2182.6 3095.6,2187.6 C3095.6,2189.8 3096.4,2191.8 3098,2193.4 L3131.3,2226.7 C3132.7,2228.1 3134.4,2229.5 3137.4,2229.5 C3140.4,2229.5 3141.9,2228.3 3143.4,2226.8 L3176.7,2193.5 C3178.3,2191.9 3179.1,2190 3179.1,2187.7 C3179.1,2182.7 3174.9,2179.3 3170.7,2179.3 C3168.5,2179.3 3166.6,2180.1 3164.9,2181.7 L3145.6,2201 L3145.6,2120.7 C3145.6,2116.1 3141.9,2112.3 3137.2,2112.3 C3132.5,2112.3 3129.1,2116 3129.1,2120.6 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M762.6,928 L898.6,798" id="Shape" stroke="#000000" stroke-width="2" stroke-dasharray="5,5"></path>
+                <g id="VR_Numbers_1_" transform="translate(1226.000000, 1021.000000)" font-size="24" font-family="SourceSansPro-Regular, Source Sans Pro" fill="#000000" font-weight="normal">
+                    <text id="1">
+                        <tspan x="0.1699" y="24.4141">1</tspan>
+                    </text>
+                    <text id="2">
+                        <tspan x="85.2543" y="24.4141">2</tspan>
+                    </text>
+                    <text id="4">
+                        <tspan x="248.2739" y="24.4141">4</tspan>
+                    </text>
+                    <text id="3">
+                        <tspan x="165.4359" y="24.4141">3</tspan>
+                    </text>
+                    <text id="5">
+                        <tspan x="319.769" y="24.4139">5</tspan>
+                    </text>
+                    <text id="6">
+                        <tspan x="403.6353" y="24.4139">6</tspan>
+                    </text>
+                    <text id="7">
+                        <tspan x="483.3613" y="24.4139">7</tspan>
+                    </text>
+                    <text id="8">
+                        <tspan x="567.7213" y="24.4138">8</tspan>
+                    </text>
+                    <text id="9">
+                        <tspan x="643.5659" y="24.4138">9</tspan>
+                    </text>
+                    <text id="10">
+                        <tspan x="718.2705" y="24.4139">10</tspan>
+                    </text>
+                </g>
+                <g id="Grid_Letters" transform="translate(1088.000000, 1144.000000)" font-size="24" font-family="SourceSansPro-Regular, Source Sans Pro" fill="#000000" font-weight="normal">
+                    <text id="A">
+                        <tspan x="0.2159" y="25.3918">A</tspan>
+                    </text>
+                    <text id="B">
+                        <tspan x="71.4065" y="25.3921">B</tspan>
+                    </text>
+                    <text id="D">
+                        <tspan x="204.0001" y="25.3922">D</tspan>
+                    </text>
+                    <text id="C">
+                        <tspan x="134.938" y="25.3918">C</tspan>
+                    </text>
+                    <text id="E">
+                        <tspan x="276.3641" y="25.3918">E</tspan>
+                    </text>
+                    <text id="F">
+                        <tspan x="346.0151" y="25.3923">F</tspan>
+                    </text>
+                    <text id="G">
+                        <tspan x="420.2742" y="25.3925">G</tspan>
+                    </text>
+                    <text id="H">
+                        <tspan x="491.1743" y="25.3926">H</tspan>
+                    </text>
+                    <text id="I">
+                        <tspan x="562.2113" y="25.3925">I</tspan>
+                    </text>
+                    <text id="J">
+                        <tspan x="633.1726" y="25.3927">J</tspan>
+                    </text>
+                    <text id="K">
+                        <tspan x="704.7128" y="24.5">K</tspan>
+                    </text>
+                    <text id="L">
+                        <tspan x="771.0261" y="25.3928">L</tspan>
+                    </text>
+                    <text id="M">
+                        <tspan x="844.4602" y="25.3927">M</tspan>
+                    </text>
+                    <text id="N">
+                        <tspan x="916.8481" y="25.3926">N</tspan>
+                    </text>
+                </g>
+                <text id="O" fill="#000000" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="24" font-weight="normal">
+                    <tspan x="2071.2617" y="1169.3928">O</tspan>
+                </text>
+                <g id="Group" transform="translate(2918.000000, 191.000000)" fill-rule="nonzero">
+                    <path d="M261.2,143.1 C261.2,158.5 261.4,174 261.2,189.4 C260.9,207.4 253.3,221.9 238.1,231.4 C221.1,242 203.5,251.6 186.2,261.7 C176.1,267.5 166.1,273.5 155.9,279.2 C140,288 123.6,288.4 107.6,279.7 C90.4,270.3 73.5,260.2 56.5,250.3 C46.1,244.3 35.6,238.5 25.4,232.3 C9.7,222.7 1.3,208.3 1.1,190 C0.7,159.3 0.9,128.6 1,97.9 C1.1,78.6 9.4,63.5 26.1,53.6 C53.1,37.7 80.2,22 107.4,6.6 C122.3,-1.8 138,-1.7 153.1,5.8 C164.2,11.3 174.6,18 185.3,24.2 C202.5,34.1 219.8,43.8 236.7,53.9 C252.5,63.4 260.5,77.8 261,96.2 C261.5,111.8 261.2,127.4 261.2,143.1 Z M135.9,92.5 C135.9,99 135.9,105.5 135.9,111.9 C135.9,113.4 136.3,114 137.9,113.9 C143.7,113.8 149.6,113.8 155.4,113.9 C157.3,113.9 157.6,113.2 157.6,111.6 C157.5,106.6 157.6,101.7 157.5,96.7 C157.5,95.2 157.8,94.6 159.4,94.6 C164.3,94.7 169.2,94.6 174,94.6 C181.5,94.6 187.2,98 191.1,104.3 C197.1,114 198.3,124.4 195.6,135.4 C193.3,144.8 187.5,150.6 178,152.5 C174.4,153.2 170.7,153.5 167.1,153.5 C157.5,153.6 147.9,153.6 138.3,153.5 C136.4,153.5 135.9,154.1 135.9,155.9 C136,162.2 136,168.5 135.9,174.9 C135.9,176.5 136.2,177.1 138,177.1 C146.1,177 154.2,177.3 162.2,177.1 C169.4,176.9 176.6,176.8 183.7,175.6 C201.7,172.6 213.9,162.2 219.5,144.6 C222.8,134.2 223.1,123.6 221.9,112.9 C219.8,94.7 204.1,71.6 176.7,71.1 C163.8,70.8 151,70.9 138.1,70.8 C136.4,70.8 135.9,71.3 135.9,73 C136,79.5 135.9,86 135.9,92.5 Z M128.6,71.3 C114.1,71.3 100.3,71.3 86.6,71.3 C86,71.3 85.5,71.3 84.9,71.3 C83.9,71.4 82.8,71.5 81.8,71.8 C74.7,73.9 68.1,76.9 62.4,81.8 C49,93.3 49.8,113.9 64.2,123.8 C67.7,126.2 71.6,127.9 75.4,129.7 C81.6,132.7 88,135.5 94.2,138.7 C95.8,139.6 97.4,141.5 97.9,143.3 C99.5,149 95.7,154.1 89.8,154.3 C82.9,154.6 75.9,154.5 68.9,154.4 C67,154.4 65.6,155 64.3,156.5 C59,162.9 53.7,169.3 48.4,175.7 C48.1,176.1 47.9,176.6 47.5,177.2 C61.6,177.2 75.3,177.2 89.1,177.2 C91.2,177.2 93.2,177 95.3,176.8 C110.5,175.4 121.4,166 124.1,151.4 C126.2,139.6 123.4,129.5 113,122.4 C109.8,120.2 106.4,118.1 103,116.3 C96.4,112.8 89.5,109.7 82.9,106.2 C79,104.2 78.2,101 80.4,97.2 C82.2,94.2 84.8,92.3 88.4,92.3 C94.6,92.2 100.7,92.2 106.9,92.2 C108.8,92.2 110.2,91.6 111.5,90.2 C114,87.4 116.6,84.7 119.1,81.9 C122.1,78.5 125.1,75.1 128.6,71.3 Z M55.2,202.9 C55.2,202.9 55.2,202.9 55.2,202.9 C55.2,207.1 55.1,211.2 55.2,215.4 C55.3,218.9 57.7,221.7 60.8,222.3 C62.1,222.6 62.9,222.3 62.8,220.7 C62.7,217.6 62.8,214.5 62.7,211.4 C62.7,210.1 63.1,209.7 64.4,209.8 C67.6,209.9 70.8,209.9 74,209.8 C75.5,209.8 76,210.2 75.9,211.7 C75.8,214.7 76,217.6 75.8,220.6 C75.7,222.7 76.6,222.9 78.2,222.3 C81.5,221.2 83.2,218.7 83.3,215.4 C83.5,207.1 83.4,198.8 83.4,190.5 C83.4,189.2 82.8,188.9 81.6,189.2 C78.6,189.9 76.2,192.6 75.9,195.8 C75.7,197.9 76.3,200.9 75.1,201.8 C73.8,202.9 71,202.1 68.8,202.1 C68.6,202.1 68.5,202.1 68.3,202.1 C66.5,202 64.2,202.5 63,201.6 C62.1,200.8 62.6,198.3 62.6,196.6 C62.4,192.8 60.5,190.2 57.2,189.3 C55.6,188.8 55.1,189.2 55.1,190.9 C55.3,194.8 55.2,198.9 55.2,202.9 Z M190.7,215.2 C188.2,215.2 185.7,215.3 183.3,215.2 C182.1,215.2 181.8,215.6 182,216.8 C182.6,219.7 184.9,222.3 188,222.5 C192.1,222.8 196.3,222.8 200.4,222.5 C205.3,222.1 209,217.5 209,212.5 C209,207.4 205.3,202.9 200.3,202.3 C198,202 195.7,202.1 193.4,202.1 C190.5,202 189.3,201.2 189.3,199.2 C189.3,197.3 190.5,196.5 193.2,196.4 C195.1,196.4 197,196.5 199,196.4 C202.2,196.3 205.3,193.7 205.8,191 C206,189.8 206,188.9 204.2,188.9 C200,189 195.7,188.8 191.5,189 C185.6,189.3 181.5,193.9 181.7,199.8 C181.9,205.3 186.3,209.5 192.1,209.5 C194,209.5 195.9,209.5 197.9,209.5 C199.8,209.5 201.2,210.2 201.4,212.3 C201.6,214.1 200.2,215.2 197.8,215.3 C195.5,215.2 193.1,215.2 190.7,215.2 Z M151,201.4 C151.1,201.4 151,201.4 151,201.4 C151,206.1 151.1,210.8 151.1,215.5 C151.1,219 153.5,221.8 156.7,222.4 C158.1,222.6 158.8,222.4 158.7,220.7 C158.6,218.1 158.7,215.4 158.7,212.8 C158.7,212.4 158.9,211.9 159,211.5 C159.5,211.7 160,211.8 160.4,212.2 C163.2,214.9 165.9,217.8 168.7,220.5 C171.4,223.1 174.7,223.4 177.7,221.7 C179.1,220.8 179.4,220.2 178,218.9 C173.5,214.6 169.2,210.1 164.7,205.7 C163.7,204.8 163.7,204.2 164.7,203.3 C168.5,199.6 172.2,195.9 176,192.2 C177.3,191 176.8,190.5 175.6,189.8 C172.8,188.2 169.5,188.6 167,190.9 C164.9,192.9 162.8,195.1 160.7,197.2 C160.2,197.7 159.6,198 159,198.4 C158.8,197.8 158.5,197.1 158.4,196.5 C157.8,192.3 155.9,189.8 152.9,189.1 C151.4,188.7 150.8,189.1 150.9,190.7 C151,194.2 151,197.8 151,201.4 Z M135,188.8 C127,188.8 120.4,193.7 118.2,200.9 C116.1,207.6 118.8,215.6 124.4,219.4 C130.9,223.9 138.8,223.8 144.7,219.1 C145.8,218.2 146.6,216.9 147.5,215.8 C145.9,215 144.5,213.9 142.8,213.4 C141.8,213.1 140.5,213.6 139.3,213.9 C138.5,214.1 137.8,214.5 137.1,214.8 C132.1,216.3 126.7,213.4 125.4,208.5 C124,203.3 126.9,197.9 132.1,196.9 C134.3,196.5 136.8,197 139,197.7 C141.7,198.5 144.1,198.6 146.5,196.8 C147.6,196 147.8,195.2 146.7,194.1 C143.3,190.5 139.2,189 135,188.8 Z M101.5,205.7 C103.6,209.9 105.7,213.6 107.4,217.5 C109.1,221.4 111.9,222.7 115.9,222.7 C117.9,222.7 118.5,222.5 117.4,220.4 C112.3,210.5 107.4,200.6 102.5,190.6 C102.2,190.1 101.9,189.6 101.5,188.9 C98.7,194.4 96.1,199.7 93.5,205 C90.9,210.3 88.2,215.6 85.6,220.9 C85.3,221.5 84.3,222.7 86.1,222.7 C90,222.7 93.9,222.7 97.8,222.4 C100.3,222.2 102.7,219.4 103.1,216.8 C103.3,215.7 103.1,215.1 101.8,215.2 C100.3,215.3 98.8,215.2 97,215.2 C98.5,212 99.9,209.1 101.5,205.7 Z" id="Shape" fill="#19A2C4"></path>
+                    <path d="M135.9,92.5 C135.9,86 136,79.5 135.9,73.1 C135.9,71.4 136.4,70.9 138.1,70.9 C151,71 163.8,70.9 176.7,71.2 C204.2,71.8 219.8,94.8 221.9,113 C223.1,123.8 222.9,134.4 219.5,144.7 C213.8,162.3 201.7,172.6 183.7,175.7 C176.7,176.9 169.4,177 162.2,177.2 C154.1,177.4 146,177.2 138,177.2 C136.2,177.2 135.9,176.5 135.9,175 C136,168.7 136,162.4 135.9,156 C135.9,154.1 136.3,153.6 138.3,153.6 C147.9,153.7 157.5,153.7 167.1,153.6 C170.8,153.5 174.5,153.2 178,152.6 C187.5,150.8 193.3,144.9 195.6,135.5 C198.3,124.5 197.1,114.1 191.1,104.4 C187.2,98.1 181.6,94.7 174,94.7 C169.1,94.7 164.2,94.8 159.4,94.7 C157.7,94.7 157.4,95.3 157.5,96.8 C157.6,101.8 157.5,106.7 157.6,111.7 C157.6,113.4 157.4,114.1 155.4,114 C149.6,113.9 143.7,113.9 137.9,114 C136.3,114 135.9,113.5 135.9,112 C136,105.4 135.9,98.9 135.9,92.5 Z" id="Shape" fill="#FEFEFE"></path>
+                    <path d="M128.6,71.3 C125.1,75.1 122.1,78.5 119.1,81.8 C116.6,84.6 113.9,87.3 111.5,90.1 C110.2,91.6 108.8,92.1 106.9,92.1 C100.7,92.1 94.6,92.1 88.4,92.2 C84.8,92.2 82.2,94.1 80.4,97.1 C78.2,100.9 78.9,104.1 82.9,106.1 C89.5,109.6 96.4,112.7 103,116.2 C106.5,118 109.8,120.1 113,122.3 C123.4,129.4 126.2,139.5 124.1,151.3 C121.5,165.9 110.5,175.3 95.3,176.7 C93.2,176.9 91.2,177.1 89.1,177.1 C75.4,177.1 61.6,177.1 47.5,177.1 C47.9,176.4 48.1,176 48.4,175.6 C53.7,169.2 59.1,162.8 64.3,156.4 C65.5,154.9 67,154.3 68.9,154.3 C75.9,154.3 82.8,154.4 89.8,154.2 C95.7,154 99.5,148.9 97.9,143.2 C97.4,141.4 95.8,139.4 94.2,138.6 C88.1,135.4 81.7,132.7 75.4,129.6 C71.6,127.8 67.6,126.1 64.2,123.7 C49.8,113.8 49,93.2 62.4,81.7 C68.1,76.8 74.7,73.8 81.8,71.7 C82.8,71.4 83.8,71.3 84.9,71.2 C85.5,71.1 86,71.2 86.6,71.2 C100.3,71.3 114.1,71.3 128.6,71.3 Z" id="Shape" fill="#FEFEFE"></path>
+                    <path d="M55.2,202.9 C55.2,198.8 55.3,194.7 55.2,190.7 C55.2,189 55.7,188.6 57.3,189.1 C60.6,190.1 62.5,192.6 62.7,196.4 C62.8,198.1 62.2,200.6 63.1,201.4 C64.2,202.3 66.6,201.8 68.4,201.9 C68.6,201.9 68.7,201.9 68.9,201.9 C71.1,201.9 73.8,202.6 75.2,201.6 C76.3,200.7 75.8,197.7 76,195.6 C76.3,192.4 78.7,189.7 81.7,189 C82.9,188.7 83.5,189 83.5,190.3 C83.5,198.6 83.6,206.9 83.4,215.2 C83.3,218.5 81.6,220.9 78.3,222.1 C76.6,222.7 75.8,222.5 75.9,220.4 C76,217.5 75.9,214.5 76,211.5 C76,210 75.5,209.6 74.1,209.6 C70.9,209.7 67.7,209.7 64.5,209.6 C63.3,209.6 62.8,210 62.8,211.2 C62.9,214.3 62.7,217.4 62.9,220.5 C63,222.2 62.2,222.4 60.9,222.1 C57.8,221.5 55.4,218.7 55.3,215.2 C55.2,211.2 55.2,207.1 55.2,202.9 C55.2,202.9 55.2,202.9 55.2,202.9 Z" id="Shape" fill="#FEFEFE"></path>
+                    <path d="M190.7,215.2 C193.1,215.2 195.5,215.2 197.9,215.2 C200.2,215.2 201.6,214 201.5,212.2 C201.3,210.1 199.9,209.4 198,209.4 C196.1,209.4 194.2,209.4 192.2,209.4 C186.4,209.3 182,205.2 181.8,199.7 C181.6,193.8 185.7,189.2 191.6,188.9 C195.8,188.7 200.1,188.9 204.3,188.8 C206.1,188.7 206.1,189.6 205.9,190.9 C205.4,193.7 202.3,196.2 199.1,196.4 C197.2,196.5 195.3,196.4 193.3,196.4 C190.6,196.4 189.4,197.3 189.4,199.2 C189.4,201.2 190.6,202 193.5,202.1 C195.8,202.1 198.1,202.1 200.4,202.3 C205.4,202.9 209.1,207.4 209.1,212.5 C209.1,217.5 205.4,222.1 200.5,222.5 C196.4,222.9 192.2,222.8 188.1,222.5 C185,222.3 182.7,219.8 182.1,216.8 C181.9,215.7 182.1,215.2 183.4,215.3 C185.8,215.2 188.3,215.2 190.7,215.2 Z" id="Shape" fill="#FEFEFE"></path>
+                    <path d="M151,201.4 C151,197.8 150.9,194.2 150.9,190.6 C150.9,189 151.5,188.7 152.9,189 C155.9,189.7 157.8,192.2 158.4,196.4 C158.5,197.1 158.8,197.7 159,198.3 C159.6,197.9 160.2,197.5 160.7,197.1 C162.8,195 164.9,192.9 167,190.8 C169.5,188.4 172.8,188.1 175.6,189.7 C176.8,190.4 177.3,190.9 176,192.1 C172.2,195.7 168.5,199.5 164.7,203.2 C163.7,204.2 163.8,204.7 164.7,205.6 C169.2,210 173.5,214.4 178,218.8 C179.4,220.1 179.1,220.7 177.7,221.6 C174.7,223.4 171.5,223.1 168.7,220.4 C165.9,217.7 163.2,214.9 160.4,212.1 C160.1,211.8 159.5,211.6 159,211.4 C158.9,211.8 158.7,212.3 158.7,212.7 C158.7,215.3 158.6,218 158.7,220.6 C158.8,222.2 158.1,222.5 156.7,222.3 C153.6,221.8 151.2,218.9 151.1,215.4 C151.1,210.8 151,206.1 151,201.4 C151,201.4 151.1,201.4 151,201.4 Z" id="Shape" fill="#FEFEFE"></path>
+                    <path d="M135,188.8 C139.2,189 143.3,190.6 146.7,194 C147.8,195.1 147.6,195.8 146.5,196.7 C144.2,198.4 141.8,198.4 139,197.6 C136.8,196.9 134.3,196.4 132.1,196.8 C126.9,197.8 123.9,203.2 125.4,208.4 C126.8,213.3 132.1,216.3 137.1,214.7 C137.9,214.5 138.6,214 139.3,213.8 C140.5,213.5 141.8,213 142.8,213.3 C144.5,213.8 145.9,214.9 147.5,215.7 C146.6,216.8 145.8,218.1 144.7,219 C138.8,223.7 130.9,223.8 124.4,219.3 C118.8,215.4 116.2,207.4 118.2,200.8 C120.4,193.7 127,188.8 135,188.8 Z" id="Shape" fill="#FEFEFE"></path>
+                    <path d="M101.5,205.7 C99.9,209.1 98.5,212 97,215.2 C98.8,215.2 100.3,215.3 101.8,215.2 C103.1,215.1 103.3,215.7 103.1,216.8 C102.7,219.3 100.3,222.2 97.8,222.4 C93.9,222.7 90,222.7 86.1,222.7 C84.3,222.7 85.3,221.6 85.6,220.9 C88.2,215.6 90.9,210.3 93.5,205 C96.1,199.7 98.8,194.4 101.5,188.9 C101.9,189.6 102.2,190.1 102.5,190.6 C107.5,200.5 112.4,210.5 117.4,220.4 C118.5,222.5 117.8,222.7 115.9,222.7 C111.9,222.7 109.1,221.4 107.4,217.5 C105.7,213.6 103.6,209.9 101.5,205.7 Z" id="Shape" fill="#FEFEFE"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
