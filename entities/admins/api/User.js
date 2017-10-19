@@ -4,7 +4,7 @@ const roles = require('../helper').roles;
 module.exports = function(routes, config, requireAuth) {
   var User = require('../../users/model');
 
-  routes.get('/', requireAuth, roleAuth(roles.ROLE_ADMIN), (req, res) =>
+  routes.get('/', requireAuth, roleAuth(roles.ROLE_MEMBER), (req, res) =>
     User.find({deleted: {$ne: true}})
     .sort({createdAt: -1})
     .lean()
@@ -13,26 +13,8 @@ module.exports = function(routes, config, requireAuth) {
     })
   );
 
-  routes.post('/:id', requireAuth, roleAuth(roles.ROLE_ADMIN),
-    (req, res) => {
-      if (req.body._id !== req.params.id) {
-        return res.json({error: 'Parameter id does not match object _id'});
-      }
-      User.findOneAndUpdate({_id: req.params.id}, req.body, function(err, user){
-        if (err) {
-          return res.status(501).json({error: true});
-        }
-
-        User.findById(req.params.id).lean().exec(function(err, user) {
-          // Diff the output
-          console.log(`Admin '${req.user.username}' edited the user `+
-            `'${user._id}'`);
-        });
-        return res.status(200).json({success: true});
-      });
-    });
-
-  routes.post('/checkin', (req, res) =>
+  routes.post('/checkin', requireAuth, roleAuth(roles.ROLE_MEMBER),
+    (req, res) =>
     User.update({email: req.body.email}, {$set: {'checkedIn': true}})
     .exec(function(err) {
       if (err) {
@@ -71,4 +53,23 @@ module.exports = function(routes, config, requireAuth) {
       return res.json({'success': true});
     })
   );
+
+  routes.post('/:id', requireAuth, roleAuth(roles.ROLE_ADMIN),
+  (req, res) => {
+    if (req.body._id !== req.params.id) {
+      return res.json({error: 'Parameter id does not match object _id'});
+    }
+    User.findOneAndUpdate({_id: req.params.id}, req.body, function(err, user){
+      if (err) {
+        return res.status(501).json({error: true});
+      }
+
+      User.findById(req.params.id).lean().exec(function(err, user) {
+        // Diff the output
+        console.log(`Admin '${req.user.username}' edited the user `+
+          `'${user._id}'`);
+      });
+      return res.status(200).json({success: true});
+    });
+  });
 };

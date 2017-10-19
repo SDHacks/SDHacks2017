@@ -1,5 +1,28 @@
 .checkin {
   min-height: 100vh;
   justify-content: center;
-  flex-direction: column;
+
+  &__list {
+    margin-top: 1rem;
+    list-style: none;
+
+    &-user {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__error {
+    color: $accent-red;
+    font-size: 1.5rem;
+  }
+
+  &__success {
+    color: $accent-purple;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  &__name {
+    border-bottom: 2px solid $accent-purple;
+  }
 }
