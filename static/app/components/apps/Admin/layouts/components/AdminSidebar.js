@@ -52,6 +52,11 @@ class AdminSidebar extends React.Component {
       <Link dest='/resumes'>Resumes</Link>
     </Section>;
 
+  memberTools = () =>
+    <Section name='Member Tools'>
+      <Link dest='/checkin'>Checkin</Link>
+    </Section>;
+
   /**
    * Creates the menu based off user role and authentication
    */
@@ -68,6 +73,8 @@ class AdminSidebar extends React.Component {
       {auth && role >= getRole(Roles.ROLE_ADMIN) && this.administratorTools()}
 
       {auth && role >= getRole(Roles.ROLE_SPONSOR) && this.sponsorTools()}
+
+      {auth && role == getRole(Roles.ROLE_MEMBER) && this.memberTools()}
 
       {auth && <Section name='General'>
         <Link dest='/' exact>Dashboard</Link>

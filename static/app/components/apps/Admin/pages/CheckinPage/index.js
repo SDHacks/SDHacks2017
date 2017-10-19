@@ -33,7 +33,8 @@ class CheckinPage extends React.Component {
       wasSuccessful: false,
       errorMessage: '',
       lastUser: '',
-      lastName: ''
+      lastName: '',
+      nameApplicants: []
     };
   }
 
@@ -137,13 +138,37 @@ class CheckinPage extends React.Component {
     }));
   }
 
+  nameApplicants = (event) => {
+    let {users} = this.props;
+
+    const name = event.target.value;
+    if (name.length < 3) {
+      return;
+    }
+
+    // Filter by given name
+    let eligibleUsers = users.filter((user) =>
+      (user.firstName + ' ' + user.lastName).indexOf(name) !== -1);
+    this.setState({
+      nameApplicants: eligibleUsers
+    });
+  }
+
+  selectApplicant = (id) => {
+    this.onScan(id);
+
+    this.setState({
+      nameApplicants: []
+    });
+  }
+
   render() {
     let {users} = this.props;
-    let {errorMessage, wasSuccessful, lastName, lastUser} = this.state;
+    let {errorMessage, wasSuccessful, lastName, nameApplicants} = this.state;
 
     const previewStyle = {
-      height: '75%',
-      width: '100%',
+      maxWidth: '100%',
+      maxHeight: '50vh',
       display: 'inline'
     };
 
@@ -156,10 +181,11 @@ class CheckinPage extends React.Component {
     }
 
     return (
-      <div className="checkin container d-flex">
+      <div className="checkin container">
         <div className="row">
           <div className="col-12 text-center">
             <h1>SDHacks 2017 Checkin</h1>
+            <h2>Scan QR</h2>
             {errorMessage && <h2 className="checkin__error">{errorMessage}</h2>}
             {wasSuccessful &&
               <h2 className="checkin__success">Checked In&nbsp;
@@ -171,8 +197,26 @@ class CheckinPage extends React.Component {
               style={previewStyle}
               onError={console.error}
               onScan={this.onScan}
+              playsinline="true"
               />
-            {lastUser}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12 text-center">
+            <h2>Manual Checkin</h2>
+            <input type="text" placeholder="Name" className="rounded-input"
+              onChange={this.nameApplicants} />
+            <ul className="checkin__list">
+              {nameApplicants.map((app) =>
+                <li className="checkin__list-user" key={app._id}>
+                  <button className="rounded-button rounded-button--small"
+                    onClick={() => this.selectApplicant(app._id)}>
+                    {app.firstName} {app.lastName}<br/>
+                    <small>{app.email}</small>
+                  </button>
+                </li>)
+              }
+            </ul>
           </div>
         </div>
       </div>

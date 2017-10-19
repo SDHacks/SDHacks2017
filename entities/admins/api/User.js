@@ -4,7 +4,7 @@ const roles = require('../helper').roles;
 module.exports = function(routes, config, requireAuth) {
   var User = require('../../users/model');
 
-  routes.get('/', requireAuth, roleAuth(roles.ROLE_ADMIN), (req, res) =>
+  routes.get('/', requireAuth, roleAuth(roles.ROLE_MEMBER), (req, res) =>
     User.find({deleted: {$ne: true}})
     .sort({createdAt: -1})
     .lean()
@@ -13,7 +13,8 @@ module.exports = function(routes, config, requireAuth) {
     })
   );
 
-  routes.post('/checkin', (req, res) =>
+  routes.post('/checkin', requireAuth, roleAuth(roles.ROLE_MEMBER),
+    (req, res) =>
     User.update({email: req.body.email}, {$set: {'checkedIn': true}})
     .exec(function(err) {
       if (err) {
