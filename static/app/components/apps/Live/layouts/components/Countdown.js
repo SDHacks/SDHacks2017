@@ -26,15 +26,15 @@ const Countdown = ({currTime, startTime, endTime}) => {
     <ul className="sd-countdown list-unstyled">
       <li className="sd-countdown__time sd-countdown__hours">
         <span className="sd-countdown__number">{hourDiff}</span>
-        <div className="sd-countdown__label">Hour</div>
+        <div className="sd-countdown__label">Hour{hourDiff !== 1 && 's'}</div>
       </li>
       <li className="sd-countdown__time sd-countdown__minutes">
         <div className="sd-countdown__number">{minuteDiff}</div>
-        <div className="sd-countdown__label">Minutes</div>
+        <div className="sd-countdown__label">Minute{minuteDiff !== 1 && 's'}</div>
       </li>
       <li className="sd-countdown__time sd-countdown__seconds">
         <div className="sd-countdown__number">{secondsDiff}</div>
-        <div className="sd-countdown__label">Seconds</div>
+        <div className="sd-countdown__label">Second{secondsDiff !== 1 && 's'}</div>
       </li>
     </ul>
   );
