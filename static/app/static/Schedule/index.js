@@ -9,9 +9,11 @@ export default class ScheduleManager {
    * @returns {string} - A string representing date ie '9:00 AM'
    */
   static getNonMilitaryStartTime(dateString) {
+    const date = new Date(dateString);
     const militaryHour = date.getHours();
     const meridiem = (militaryHour >= 12) ? 'AM' : 'PM';
-    return `${militaryHour % 12}:${date.getMinutes()} ${meridiem}`;
+    const minute = date.getMinutes();
+    return `${militaryHour % 12}:${(minute < 10) ? '0' + minute : minute} ${meridiem}`;
   }
 
   /**

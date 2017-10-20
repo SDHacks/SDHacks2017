@@ -3,7 +3,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
+import WelcomePage from './pages/WelcomePage';
 import ApiPage from './pages/ApiPage';
+import PrizePage from './pages/PrizePage';
 import SchedulePage from './pages/SchedulePage';
 import MapPage from './pages/MapPage';
 import LiveLayout from './layouts/live';
@@ -29,7 +31,17 @@ class Live extends React.Component {
         <Route
           exact
           path="/live/"
+          component={this.renderLive(WelcomePage)}
+        />
+        <Route
+          exact
+          path="/live/apis"
           component={this.renderLive(ApiPage)}
+        />
+        <Route
+          exact
+          path="/live/prizes"
+          component={this.renderLive(PrizePage)}
         />
         <Route
           exact

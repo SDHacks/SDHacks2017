@@ -28,8 +28,10 @@ $left-padding: 1.25rem;
 
     @include media-breakpoint-up(md) {
       flex: 1;
-      min-height: 100vh;
+      height: 100vh;
       max-width: 17rem;
+      overflow-y: scroll;
+      background-color: $admin-blue;
     }
   }
 
@@ -105,18 +107,13 @@ $left-padding: 1.25rem;
 }
 
 .sd-countdown {
-  padding: 5px 10px;
+  padding: 10px;
   display: flex;
   justify-content: space-around;
+  background-color: $admin-dark-blue;
   text-align: center;
 
-  &__time {
-
-  }
   &__number {
     font-size: 2rem;
-  }
-  &__label {
-
   }
 }

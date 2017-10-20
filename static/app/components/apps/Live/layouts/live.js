@@ -19,6 +19,10 @@ export default class AdminLayout extends React.Component {
             </div>
 
             <main className='live-body__content'>
+              {/* <div className="hexagon-hero__background user-login__background">
+                <div className="hexagon-hero__water" />
+                <div className="hexagon-hero__beach" />
+              </div> */}
               {this.props.children}
             </main>
           </div>

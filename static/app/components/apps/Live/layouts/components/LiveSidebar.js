@@ -5,6 +5,9 @@ import FontAwesome from 'react-fontawesome';
 import Link from './Link';
 import Section from './Section';
 import Countdown from './Countdown';
+import SchedulePreview from './SchedulePreview';
+
+import scheduleData from '~/static/Schedule/data';
 
 const hackingStartTime = new Date('Fri, 20 Oct 2017 22:00:00 -0700');
 const hackingEndTime = new Date('Sun, 22 Oct 2017 10:00:00 -0700');
@@ -15,8 +18,11 @@ export default class LiveSidebar extends React.Component {
     this.state = {
       date: new Date(),
     };
+
+    // Set consts to this component
     this.hackingStartTime = hackingStartTime;
     this.hackingEndTime = hackingEndTime;
+    this.scheduleData = scheduleData;
   }
 
   componentDidMount() {
@@ -48,8 +54,10 @@ export default class LiveSidebar extends React.Component {
         />
       </Section>
       <Section name='General'>
+        <Link dest='/' exact>Live Site Home</Link>
         <Link dest='/map'>Map</Link>
-        <Link dest='/' exact>APIs</Link>
+        <Link dest='/apis'>APIs</Link>
+        <Link dest='/prizes'>Prizes</Link>
         <a
           className="live-sidebar__section-link"
           href='https://mentor.sdhacks.io'
@@ -68,7 +76,7 @@ export default class LiveSidebar extends React.Component {
         </a>
         <a
           className="live-sidebar__section-link"
-          href='https://devpost.com/sdhacks2017'
+          href='https://sdhacks2017.devpost.com'
           target='_blank'
         >
           Devpost
@@ -79,8 +87,19 @@ export default class LiveSidebar extends React.Component {
         <Link dest='/schedule'>Full Schedule</Link>
       </Section>
       <Section name="Current Events">
+        <SchedulePreview
+          current={true}
+          currTime={this.state.date}
+          events={this.scheduleData}
+        />
       </Section>
       <Section name="Upcoming">
+        <SchedulePreview
+          current={false}
+          numEventsShown={2}
+          currTime={this.state.date}
+          events={this.scheduleData}
+        />
       </Section>
     </div>);
   }
