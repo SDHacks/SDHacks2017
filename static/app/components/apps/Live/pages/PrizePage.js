@@ -21,7 +21,7 @@ const apiPrizeData = [
   },
   {
     id: 'divr',
-    sponsoredBy: 'DIVR Edu',
+    sponsoredBy: 'CurioPets',
     name: 'Best AR/VR/ Mobile App',
     description: 'Sponsored prize for "Best AR/VR Mobile App" (To be provided by DIVR Edu)',
   },
@@ -66,9 +66,9 @@ export default class PrizePage extends React.Component {
                   <div className="text-center">
                     <h4 className="card-title sd-card__title">{prize.name}</h4>
                   </div>
-                  <div>Sponsored by: {prize.sponsoredBy}</div>
-                  <div>{prize.description}</div>
+                  <div className="text-center">{prize.sponsoredBy}</div>
                   <br />
+                  <p>{prize.description}</p>
                 </div>
               </div>
             </div>

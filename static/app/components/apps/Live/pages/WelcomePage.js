@@ -28,16 +28,16 @@ export default class WelcomePage extends React.Component {
                 </div>
                 <ul className="sd-schedule__list list-unstyled">
                   <li className="sd-schedule__list-elem">
-                    <span className="sd-schedule__event">Blue</span>
-                    <span className="sd-schedule__time">Hacker</span>
+                    <span className="sd-schedule__event">Hacker</span>
+                    <span className="sd-schedule__time sd-schedule__blue">Blue</span>
                   </li>
                   <li className="sd-schedule__list-elem">
-                    <span className="sd-schedule__event">Blue</span>
-                    <span className="sd-schedule__time">Hacker</span>
+                    <span className="sd-schedule__event">Mentor</span>
+                    <span className="sd-schedule__red">Red</span>
                   </li>
                   <li className="sd-schedule__list-elem">
-                    <span className="sd-schedule__event">Blue</span>
-                    <span className="sd-schedule__time">Hacker</span>
+                    <span className="sd-schedule__event">Volunteer</span>
+                    <span className="sd-schedule__time">Purple</span>
                   </li>
                 </ul>
               </div>
