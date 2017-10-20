@@ -1,6 +1,11 @@
 .checkin {
   min-height: 100vh;
+  margin-top: 1rem;
   justify-content: center;
+
+  &__background {
+    position: fixed;
+  }
 
   &__list {
     margin-top: 1rem;
