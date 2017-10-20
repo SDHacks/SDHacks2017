@@ -17,9 +17,11 @@ block content
             img.sd-nav__logo(src="/assets/img/vectors/logo.svg")
         .sd-nav__right.hidden-sm-down
           ul.sd-inline-list.sd-nav__links
+            a(href="/live")
+              li Live
             a(href="/user/login")
               li Login
-            a(href="#sd-schedule")
+            a(href="/live/schedule")
               li Schedule
             a(href=sponsorUrl)
               li Sponsor
@@ -32,7 +34,9 @@ block content
               li
                 a.sd-nav__mobile-link(href="/") Home
               li
-                a.sd-nav__mobile-link.sd-link-close-nav(href="/#sd-schedule") Schedule
+                a.sd-nav__mobile-link(href="/live") Live
+              li
+                a.sd-nav__mobile-link.sd-link-close-nav(href="/live/schedule") Schedule
               li
                 a.sd-nav__mobile-link(href="/user/login") Login
               li
@@ -55,7 +59,7 @@ block content
               .hexagon-hero__subtitle October 20-22, 2017
               p #{announcementText}
               .hexagon-hero__nav
-                a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
+                a.btn.rounded-button.rounded-button--default.hexagon-hero__nav-button(href='/live') Live
           .col-md-4
             img.hexagon-hero__featurette(src='/assets/img/site/featurette-hero.svg')
 
@@ -66,10 +70,12 @@ block content
         .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile October 20-22, 2017
         p #{announcementText}
         .hexagon-hero__nav.hexagon-hero__nav--mobile
-          a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
+          a.btn.rounded-button.rounded-button--default.hexagon-hero__nav-button(href='/live') Live
   .sd-section.sd-schedule#sd-schedule
     .sd-about__background
     h2.sd-faq__title.sd-section__title Schedule
+    .container.text-center
+      .sd-section__subtitle.sd-sponsors__subtitle See the full schedule on the #[a.sd-link__underline(href='/live/schedule') live site]
     .container
       .row
         .col-lg-4
@@ -119,6 +125,9 @@ block content
                   li.sd-schedule__list-elem
                     span.sd-schedule__event Breakfast
                     span.sd-schedule__time 8:30am
+                  li.sd-schedule__list-elem
+                    span.sd-schedule__event SPAWAR Tech Talk
+                    span.sd-schedule__time 11am-1pm
                   li.sd-schedule__list-elem
                     span.sd-schedule__event Lunch
                     span.sd-schedule__time 1pm
@@ -300,8 +309,8 @@ block content
           a.sd-link__img(target='_blank' href='http://www.htc.com/us/')
             img.sd-sponsors__sponsor.sd-sponsors__sponsor-square(src='/assets/img/sponsors/htc.png')
         .sd-sponsors__img
-          a.sd-link__img(target='_blank' href='https://www.divredu.com/')
-            img.sd-sponsors__sponsor.sd-sponsors__sponsor-square(src='/assets/img/sponsors/DIVREduLogo.png')
+          a.sd-link__img(target='_blank' href='https://www.curiopets.com/')
+            img.sd-sponsors__sponsor.sd-sponsors__sponsor-square(src='/assets/img/sponsors/CurioPetsLogo.png')
         .sd-sponsors__img
           a.sd-link__img(target='_blank' href='https://www.webroot.com/')
             img.sd-sponsors__sponsor.sd-sponsors__sponsor-webroot(src='/assets/img/sponsors/webroot.png')
@@ -332,6 +341,10 @@ block content
         .sd-sponsors__img
           a.sd-link__img(target='_blank' href='http://www.nanome.ai/')
             img.sd-sponsors__sponsor.sd-sponsors__sponsor-nanome(src='/assets/img/sponsors/nanome.png')
+        .sd-sponsors__img
+          a.sd-link__img(target='_blank' href='http://qi.ucsd.edu/')
+            img.sd-sponsors__sponsor.sd-sponsors__sponsor-nanome(src='/assets/img/sponsors/PoNG4.png')
+
     .container.text-center.sd-sponsors__partners
       h3.sd-faq__subtitle.sd-section__subtitle Partners
       .sd-sponsors__partner
@@ -341,7 +354,6 @@ block content
         .sd-sponsors__img
           a.sd-link__img(target='_blank' href='http://cses.ucsd.edu/')
             img.sd-sponsors__sponsor.sd-sponsors__sponsor-cses(src='/assets/img/sponsors/CSES.png')
-
 
   .sd-footer#sd-footer
     .container.w-100

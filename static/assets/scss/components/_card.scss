@@ -13,6 +13,9 @@
   @include media-breakpoint-up(lg) {
     height: 100%;
 
+    &__auto {
+      height: auto;
+    }
     &__text-featurette {
       min-height: 72px;
     }

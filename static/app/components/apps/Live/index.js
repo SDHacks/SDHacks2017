@@ -3,11 +3,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
+import WelcomePage from './pages/WelcomePage';
 import ApiPage from './pages/ApiPage';
+import PrizePage from './pages/PrizePage';
 import SchedulePage from './pages/SchedulePage';
+import MapPage from './pages/MapPage';
 import LiveLayout from './layouts/live';
 
-class Admin extends React.Component {
+class Live extends React.Component {
   /**
    * Render a route with the LIve layout.
    * @param {Component} Component The child component to render within the
@@ -25,10 +28,31 @@ class Admin extends React.Component {
   routes() {
     return (
       <Switch>
-        <Route exact path="/live/"
-          component={this.renderLive(ApiPage)} />
-        <Route exact path="/live/schedule"
-          component={this.renderLive(SchedulePage)} />
+        <Route
+          exact
+          path="/live/"
+          component={this.renderLive(WelcomePage)}
+        />
+        <Route
+          exact
+          path="/live/apis"
+          component={this.renderLive(ApiPage)}
+        />
+        <Route
+          exact
+          path="/live/prizes"
+          component={this.renderLive(PrizePage)}
+        />
+        <Route
+          exact
+          path="/live/schedule"
+          component={this.renderLive(SchedulePage)}
+        />
+        <Route
+          exact
+          path="/live/map"
+          component={this.renderLive(MapPage)}
+        />
       </Switch>
     );
   }
@@ -38,4 +62,4 @@ class Admin extends React.Component {
   }
 }
 
-export default withRouter(connect()(Admin));
+export default withRouter(connect()(Live));
