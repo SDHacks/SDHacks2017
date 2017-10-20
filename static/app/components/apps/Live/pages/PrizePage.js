@@ -27,7 +27,8 @@ const apiPrizeData = [
   },
   {
     id: 'amazon',
-    sponsoredBy: 'Amazon Prize',
+    sponsoredBy: 'Amazon',
+    name: 'Amazon Prize',
     description: 'AWS Credits'
   },
   {
@@ -54,16 +55,25 @@ export default class PrizePage extends React.Component {
           <h1>Prizes</h1>
           <br />
         </div>
-        <ul className="list-unstyled">
+        <div className="list-unstyled row">
           {apiPrizeData.map((prize) =>
-            <li>
-              <div>{prize.name}</div>
-              <div>Sponsored by: {prize.sponsoredBy}</div>
-              <div>{prize.description}</div>
-              <br />
-            </li>
+            <div
+              className="col-lg-6 sd-card__wrapper"
+              key={prize.name}
+            >
+              <div className="card sd-card sd-card__auto">
+                <div className="card-body sd-card__block">
+                  <div className="text-center">
+                    <h4 className="card-title sd-card__title">{prize.name}</h4>
+                  </div>
+                  <div>Sponsored by: {prize.sponsoredBy}</div>
+                  <div>{prize.description}</div>
+                  <br />
+                </div>
+              </div>
+            </div>
           )}
-        </ul>
+        </div>
       </div>
     );
   }

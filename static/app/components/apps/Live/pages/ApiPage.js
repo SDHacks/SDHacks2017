@@ -33,6 +33,8 @@ const apis = [
   },
 ];
 
+// TODO: name api page something general and then section it off into different sections
+
 export default class ApiPage extends React.Component {
   render() {
     return (
@@ -42,16 +44,21 @@ export default class ApiPage extends React.Component {
           <h1>APIs</h1>
           <br />
         </div>
-        <ul className="list-unstyled">
+        <div className="sd-list row row-eq-height">
           {apis.map((api) =>
-            <li>
-              <div>{api.company}</div>
-              <a href={api.link} target="_blank">Visit</a>
-              <br />
-              <br />
-            </li>
+            <div
+              className="col-lg-6 sd-card__wrapper"
+              key={api.company}
+            >
+              <div className="card sd-card sd-card__auto">
+                <div className="card-body sd-card__block">
+                  <h4 className="card-title sd-card__title">{api.company}</h4>
+                  <a href={api.link} target="_blank">Visit</a>
+                </div>
+              </div>
+            </div>
           )}
-        </ul>
+        </div>
       </div>
     );
   }

@@ -68,6 +68,12 @@ const scheduleData = [
     showEnd: false,
   },
   {
+    start: 'Sat, 21 Oct 2017 11:00:00 -0700',
+    end: 'Sat, 21 Oct 2017 13:00:00 -0700',
+    name: 'SPAWAR Tech Talk',
+    showEnd: false,
+  },
+  {
     start: 'Sat, 21 Oct 2017 13:00:00 -0700',
     end: 'Sat, 21 Oct 2017 15:00:00 -0700',
     name: 'Lunch',

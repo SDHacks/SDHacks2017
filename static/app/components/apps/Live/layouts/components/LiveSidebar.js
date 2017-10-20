@@ -56,7 +56,7 @@ export default class LiveSidebar extends React.Component {
       <Section name='General'>
         <Link dest='/' exact>Live Site Home</Link>
         <Link dest='/map'>Map</Link>
-        <Link dest='/apis'>APIs</Link>
+        <Link dest='/apis'>Software & APIs</Link>
         <Link dest='/prizes'>Prizes</Link>
         <a
           className="live-sidebar__section-link"
@@ -72,6 +72,14 @@ export default class LiveSidebar extends React.Component {
           target='_blank'
         >
           Slack
+          <FontAwesome className="float-right" name="external-link" />
+        </a>
+        <a
+          className="live-sidebar__section-link"
+          href='https://hardware.mlh.io'
+          target='_blank'
+        >
+          Hardware
           <FontAwesome className="float-right" name="external-link" />
         </a>
         <a

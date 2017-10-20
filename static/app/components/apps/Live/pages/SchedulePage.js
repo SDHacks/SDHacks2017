@@ -79,6 +79,10 @@ export default class SchedulePage extends React.Component {
                         <span className="sd-schedule__time">8:30am</span>
                       </li>
                       <li className="sd-schedule__list-elem">
+                        <span className="sd-schedule__event">SPAWAR Tech Talk</span>
+                        <span className="sd-schedule__time">11am-1pm</span>
+                      </li>
+                      <li className="sd-schedule__list-elem">
                         <span className="sd-schedule__event">Lunch</span>
                         <span className="sd-schedule__time">1pm</span>
                       </li>
