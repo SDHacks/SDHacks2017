@@ -4,8 +4,11 @@ export default class ApiPage extends React.Component {
   render() {
     return (
       <div className="container api-page">
-        <h1>API Page</h1>
-        <p>This is the API Page!</p>
+        <div className="text-center">
+          <br />
+          <h1>APIs</h1>
+          <br />
+        </div>
       </div>
     );
   }

@@ -93,6 +93,7 @@
     "react-cookie": "^2.0.7",
     "react-dom": "^15.6.1",
     "react-dropzone": "^3.13.3",
+    "react-fontawesome": "^1.6.1",
     "react-ga": "^2.2.0",
     "react-progress": "0.0.12",
     "react-qr-reader": "^1.2.1",

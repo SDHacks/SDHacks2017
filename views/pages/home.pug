@@ -17,9 +17,11 @@ block content
             img.sd-nav__logo(src="/assets/img/vectors/logo.svg")
         .sd-nav__right.hidden-sm-down
           ul.sd-inline-list.sd-nav__links
+            a(href="/live")
+              li Live
             a(href="/user/login")
               li Login
-            a(href="#sd-schedule")
+            a(href="/live/schedule")
               li Schedule
             a(href=sponsorUrl)
               li Sponsor
@@ -32,7 +34,9 @@ block content
               li
                 a.sd-nav__mobile-link(href="/") Home
               li
-                a.sd-nav__mobile-link.sd-link-close-nav(href="/#sd-schedule") Schedule
+                a.sd-nav__mobile-link(href="/live") Live
+              li
+                a.sd-nav__mobile-link.sd-link-close-nav(href="/live/schedule") Schedule
               li
                 a.sd-nav__mobile-link(href="/user/login") Login
               li
@@ -55,7 +59,7 @@ block content
               .hexagon-hero__subtitle October 20-22, 2017
               p #{announcementText}
               .hexagon-hero__nav
-                a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
+                a.btn.rounded-button.rounded-button--default.hexagon-hero__nav-button(href='/live') Live
           .col-md-4
             img.hexagon-hero__featurette(src='/assets/img/site/featurette-hero.svg')
 
@@ -66,7 +70,7 @@ block content
         .hexagon-hero__subtitle.hexagon-hero__subtitle--mobile October 20-22, 2017
         p #{announcementText}
         .hexagon-hero__nav.hexagon-hero__nav--mobile
-          a.btn.rounded-button.rounded-button--alternate.hexagon-hero__nav-button(href=volunteerUrl) Volunteer
+          a.btn.rounded-button.rounded-button--default.hexagon-hero__nav-button(href='/live') Live
   .sd-section.sd-schedule#sd-schedule
     .sd-about__background
     h2.sd-faq__title.sd-section__title Schedule

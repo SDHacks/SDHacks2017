@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FontAwesome from 'react-fontawesome';
 
 import Link from './Link';
 import Section from './Section';
@@ -16,13 +17,38 @@ export default class LiveSidebar extends React.Component {
       </Section>
       <Section name='General'>
         <Link dest='/map'>Map</Link>
-        <a dest='https://mentor.sdhacks.io' target='_blank'>Mentors</a>
-        <a dest='https://slack.sdhacks.io' target='_blank'>Slack</a>
-        <a dest='https://devpost.com/sdhacks2017' target='_blank'>Devpost</a>
         <Link dest='/' exact>APIs</Link>
+        <a
+          className="live-sidebar__section-link"
+          href='https://mentor.sdhacks.io'
+          target='_blank'
+        >
+          Mentors
+          <FontAwesome className="float-right" name="external-link" />
+        </a>
+        <a
+          className="live-sidebar__section-link"
+          href='https://slack.sdhacks.io'
+          target='_blank'
+        >
+          Slack
+          <FontAwesome className="float-right" name="external-link" />
+        </a>
+        <a
+          className="live-sidebar__section-link"
+          href='https://devpost.com/sdhacks2017'
+          target='_blank'
+        >
+          Devpost
+          <FontAwesome className="float-right" name="external-link" />
+        </a>
       </Section>
       <Section name='Schedule'>
         <Link dest='/schedule'>Full Schedule</Link>
+      </Section>
+      <Section name="Current Events">
+      </Section>
+      <Section name="Upcoming">
       </Section>
     </div>);
   }
@@ -31,11 +57,13 @@ export default class LiveSidebar extends React.Component {
     return (<div className="live-sidebar">
       <div className={`live-sidebar__header navbar-expand-md
         navbar-inverse`}>
-        <img className="live-sidebar__logo"
-          src="/assets/img/vectors/logo.svg"/>
-        <span className="live-sidebar__header-text">
-          SDHacks 2017 Live
-        </span>
+        <a href="/">
+          <img className="live-sidebar__logo"
+            src="/assets/img/vectors/logo.svg"/>
+          <span className="live-sidebar__header-text">
+            SDHacks 2017 Live
+          </span>
+        </a>
       </div>
 
       <div className='d-none d-md-block'>
