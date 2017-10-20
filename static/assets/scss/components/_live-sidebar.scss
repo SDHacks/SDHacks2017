@@ -103,3 +103,20 @@ $left-padding: 1.25rem;
     }
   }
 }
+
+.sd-countdown {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+
+  &__time {
+
+  }
+  &__number {
+    font-size: 2rem;
+  }
+  &__label {
+
+  }
+}

@@ -6,14 +6,46 @@ import Link from './Link';
 import Section from './Section';
 import Countdown from './Countdown';
 
+const hackingStartTime = new Date('Fri, 20 Oct 2017 22:00:00 -0700');
+const hackingEndTime = new Date('Sun, 22 Oct 2017 10:00:00 -0700');
+
 export default class LiveSidebar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+    };
+    this.hackingStartTime = hackingStartTime;
+    this.hackingEndTime = hackingEndTime;
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(), 1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date(),
+    });
+  }
+
   /**
    * Creates the static menu
    */
   renderMenu() {
     return (<div>
       <Section name='Countdown'>
-        <Countdown endTime={'Fri Oct 20 10:00:00 2017 PDT'} />  
+        <Countdown
+          currTime={this.state.date}
+          startTime={this.hackingStartTime}
+          endTime={this.hackingEndTime}
+        />
       </Section>
       <Section name='General'>
         <Link dest='/map'>Map</Link>
