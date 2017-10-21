@@ -73,7 +73,7 @@ export default class ApiPage extends React.Component {
                 <p>The AT&T developer program has various APIs for SMS, voice, and IoT development. There is a
                   <a target="_blank" href="https://join.slack.com/t/ghostredevents/shared_invite/enQtMjU4OTEzMjgzMjMzLWU4ZjYwNzRmZWNlYzYzODYxNDZjZjRkODlhMTY1OTcwMDlkOTU2OTNmOTUzMjVjOWQyZjhhMWZjODNmYzgwMTU"> slack </a>
                   with more information about the APIs. <a target="_blank" href="https://drive.google.com/open?id=0B7lIoZYO6JItN1lMQVg1bVF4YWs">Here</a> is a folder with more information about their APIs.
-                </p>get
+                </p>
                 <a className="btn btn-default rounded-button rounded-button--default" href="https://developer.currentbyge.com/cityiq" target="_blank">Link</a>
               </div>
             </div>
