@@ -11,7 +11,7 @@ export default class ScheduleManager {
   static getNonMilitaryStartTime(dateString) {
     const date = new Date(dateString);
     const militaryHour = date.getHours();
-    const meridiem = (militaryHour >= 12) ? 'AM' : 'PM';
+    const meridiem = (militaryHour >= 12) ? 'PM' : 'AM';
     const minute = date.getMinutes();
     return `${militaryHour % 12}:${(minute < 10) ? '0' + minute : minute} ${meridiem}`;
   }
