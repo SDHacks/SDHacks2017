@@ -97,10 +97,7 @@ class CheckinPage extends React.Component {
       // Get the particular user
       const user = eligibleUsers[0];
 
-      Q.all([
-        this.validateUser(user),
-        checkinUser(user.email)
-      ])
+      checkinUser(user.email)
       .then(() => resolve(user))
       .catch(reject);
     });
