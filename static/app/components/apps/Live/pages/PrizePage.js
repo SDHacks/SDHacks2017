@@ -20,10 +20,10 @@ const apiPrizeData = [
     description: 'Sponsored prize for the best use of Twilio API (to be provided by Twilio)',
   },
   {
-    id: 'divr',
+    id: 'curiopets',
     sponsoredBy: 'CurioPets',
     name: 'Best AR/VR/ Mobile App',
-    description: 'Sponsored prize for "Best AR/VR Mobile App" (To be provided by DIVR Edu)',
+    description: 'Sponsored prize for "Best AR/VR Mobile App" (To be provided by CurioPets)',
   },
   {
     id: 'amazon',

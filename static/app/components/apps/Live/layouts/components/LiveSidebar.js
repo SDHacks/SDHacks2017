@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
+import {NavbarToggler} from 'reactstrap';
 
 import Link from './Link';
 import Section from './Section';
@@ -33,6 +34,15 @@ export default class LiveSidebar extends React.Component {
 
   componentWillUnmount() {
     clearInterval(this.timerID);
+  }
+
+  /**
+   * Toggles whether the menu is hidden on small devices
+   */
+  toggleHidden() {
+    this.setState({
+      isHidden: !this.state.isHidden
+    });
   }
 
   tick() {
@@ -113,21 +123,40 @@ export default class LiveSidebar extends React.Component {
   }
 
   render() {
-    return (<div className="live-sidebar">
-      <div className={`live-sidebar__header navbar-expand-md
-        navbar-inverse`}>
-        <a href="/">
-          <img className="live-sidebar__logo"
-            src="/assets/img/vectors/logo.svg"/>
-          <span className="live-sidebar__header-text">
-            SDHacks 2017 Live
-          </span>
-        </a>
-      </div>
+    return (
+      <div className="live-sidebar">
+        <div className={`live-sidebar__header navbar-expand-md
+          navbar-inverse`}>
+          <a href="/">
+            <img className="live-sidebar__logo"
+              src="/assets/img/vectors/logo.svg"/>
+            <span className="live-sidebar__header-text">
+              SDHacks 2017 Live
+            </span>
+          </a>
+          <div
+            className="admin-sidebar__user-toggle"
+            style={{
+              position: 'absolute',
+              right: '16px',
+            }}
+          >
+            <NavbarToggler
+              right
+              className="admin-sidebar__toggler navbar-dark float-right"
+              onClick={this.toggleHidden.bind(this)}
+            />
+          </div>
+        </div>
 
-      <div className='d-none d-md-block'>
-        {this.renderMenu()}
+        <div className={this.state.isHidden ? 'd-none d-md-block' : ''}>
+          {this.renderMenu()}
+        </div>
+
+        <div className='d-none d-md-block'>
+          {this.renderMenu()}
+        </div>
       </div>
-    </div>);
+    );
   };
 };
