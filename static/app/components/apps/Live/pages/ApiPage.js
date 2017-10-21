@@ -4,7 +4,7 @@ const apis = [
   {
     company: 'AT&T',
     description: 'The AT&T developer program has various APIs for SMS, voice, and IoT development',
-    link: 'https://developer.att.com/',
+    link: 'https://developer.currentbyge.com/cityiq',
   },
   {
     company: 'Qualcomm',
