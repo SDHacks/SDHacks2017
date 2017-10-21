@@ -2,9 +2,29 @@ import React from 'react';
 
 const apiPrizeData = [
   {
+    id: 'grandprize',
+    sponsoredBy: 'SD Hacks',
+    name: 'Grand Prize',
+    description: `The team with the best hack overall will win a PS4 Pro, DJI Spark, Oculus Rift + Touch and an Apple Watch 3.
+    Each member will also get a job interview from one of our sponsors, SPAWAR.`,
+  },
+  {
+    id: 'second',
+    sponsoredBy: 'SD Hacks',
+    name: 'Second Prize',
+    description: 'The team with the second best hack overall will win an Amazon Echo Show, a pair of Beats Solo Wireless 3, a QHD monitor, and a Muse Headband'
+  },
+  {
+    id: 'third',
+    sponsoredBy: 'SD Hacks',
+    name: 'Third Prize',
+    description: `The team with the third best hack overall will win a Samsung Gear VR, Holy Stone Drone, 
+    BeatsX, and an HD monitor.`,
+  },
+  {
     id: 'att',
     sponsoredBy: 'AT&T',
-    name: 'Smart Cities',
+    name: 'Best Smart Cities Hack presented by AT&T',
     description: 'Echo Dot for the best hack utilizing the Smart Cities datasets and APIs to be provided by AT&T.',
   },
   {
@@ -16,26 +36,57 @@ const apiPrizeData = [
   {
     id: 'twilio',
     sponsoredBy: 'Twilio',
-    name: 'Twilio API Prize',
-    description: 'Sponsored prize for the best use of Twilio API (to be provided by Twilio)',
+    name: 'Best Use of Twilio API',
+    description: 'Merge VR/AR Goggles for each team member.',
   },
   {
     id: 'curiopets',
-    sponsoredBy: 'CurioPets',
-    name: 'Best AR/VR/ Mobile App',
-    description: 'Sponsored prize for "Best AR/VR Mobile App" (To be provided by CurioPets)',
+    sponsoredBy: 'CurioPets & High Moon',
+    name: 'Best AR/VR Hack',
+    description: 'First Place: Corsair K63 Mechanical Keyboards, Razer DeathAdder Gaming Mouses and a tour of High Moon Studios for each team member. Second Place: Gift cards for team members.',
   },
   {
     id: 'amazon',
     sponsoredBy: 'Amazon',
-    name: 'Amazon Prize',
-    description: 'AWS Credits'
+    name: ' Amazon Web Services - Best Use of AWS',
+    description: '$250 Amazon Web Services Credit',
   },
   {
     id: 'illumina',
     sponsoredBy: 'Illumina Accelerator',
     name: 'Best use of Genome Link API',
     description: 'Best use of Genome Link API ($3,000 in prize money)',
+    link: 'https://genomelink.io/developers/',
+  },
+  {
+    id: 'docusign',
+    sponsoredBy: 'Docusign',
+    name: 'Best Hack using the DocuSign eSignature API',
+    description: 'First Place: $2000 Cash Prize, Second Place: $1000 Cash Prize',
+  },
+  {
+    id: 'beginner',
+    sponsoredBy: 'SD Hacks',
+    name: 'Best Beginner Hack',
+    description: 'Raspberry Pi Kits for each team member in a team of all first-time hackers.',
+  },
+  {
+    id: 'domain',
+    sponsoredBy: 'Domain.com',
+    name: 'Best Domain Name from Domain.com',
+    description: 'Raspberry Pi & PiHut Essential Kit',
+  },
+  {
+    id: 'marines',
+    sponsoredBy: 'Marines',
+    name: 'Marines Innovation Challenge',
+    description: 'Winning team(s) each receive up to $5K funding from MD5 plus mentorship/space from EvoNexus to advance their concept with USMC.',
+  },
+  {
+    id: 'qualcomm',
+    sponsoredBy: 'Qualcomm',
+    name: ' Best IoT Hack Using a Qualcomm Device',
+    description: '410C Dragonboard for each team member',
   },
   {
     id: 'nanome',
