@@ -43,6 +43,36 @@ export default class WelcomePage extends React.Component {
               </div>
             </div>
           </div>
+          <div className="col-lg-6 sd-card__wrapper">
+            <div className="card sd-card sd-card__auto">
+              <div className="card-body sd-card__block text-center">
+                <h4 className="card-title sd-card__title">Slack</h4>
+                <div className="card-text sd-card__text text-center">
+                  <p>Get on the <a href="https://slack.sdhacks.io" target="_blank">SD Hacks Slack</a> to keep up with information for announcements and workshops</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 sd-card__wrapper">
+            <div className="card sd-card sd-card__auto">
+              <div className="card-body sd-card__block text-center">
+                <h4 className="card-title sd-card__title">Hardware</h4>
+                <div className="card-text sd-card__text text-center">
+                  <p>Access hardware through this <a href="https://hardware.mlh.io/" target="_blank">MLH Hardware Portal</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 sd-card__wrapper">
+            <div className="card sd-card sd-card__auto">
+              <div className="card-body sd-card__block text-center">
+                <h4 className="card-title sd-card__title">Devpost</h4>
+                <div className="card-text sd-card__text text-center">
+                  <p>We are using <a href="https://sdhacks2017.devpost.com/" target="_blank">Devpost</a> to submit hacks. Make sure to submit your hack by 10:00 AM on Sunday 10/22</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
