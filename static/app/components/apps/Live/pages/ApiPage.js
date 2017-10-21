@@ -70,9 +70,9 @@ export default class ApiPage extends React.Component {
             <div className="card sd-card sd-card__auto">
               <div className="card-body sd-card__block">
                 <h4 className="card-title sd-card__title">AT&T</h4>
-                <p>The AT&T developer program has various APIs for SMS, voice, and IoT development. There is a
-                  <a target="_blank" href="https://join.slack.com/t/ghostredevents/shared_invite/enQtMjU4OTEzMjgzMjMzLWU4ZjYwNzRmZWNlYzYzODYxNDZjZjRkODlhMTY1OTcwMDlkOTU2OTNmOTUzMjVjOWQyZjhhMWZjODNmYzgwMTU"> slack </a>
-                  with more information about the APIs. <a target="_blank" href="https://drive.google.com/open?id=0B7lIoZYO6JItN1lMQVg1bVF4YWs">Here</a> is a folder with more information about their APIs.
+                <p>Join General Electric and AT&T during SD Hacks to explore how an application using real-time data from the thousands of CityIQ nodes throughout the city of San Diego will help solve problems with traffic, parking, public safety, urban planning, and environmental challenges. Check out our
+                  <a target="_blank" href="https://join.slack.com/t/ghostredevents/shared_invite/enQtMjU4OTEzMjgzMjMzLWU4ZjYwNzRmZWNlYzYzODYxNDZjZjRkODlhMTY1OTcwMDlkOTU2OTNmOTUzMjVjOWQyZjhhMWZjODNmYzgwMTU"> slack </a>channel, and
+                  <a target="_blank" href="https://drive.google.com/open?id=0B7lIoZYO6JItN1lMQVg1bVF4YWs"> folder</a> for more information!
                 </p>
                 <a className="btn btn-default rounded-button rounded-button--default" href="https://developer.currentbyge.com/cityiq" target="_blank">Link</a>
               </div>
