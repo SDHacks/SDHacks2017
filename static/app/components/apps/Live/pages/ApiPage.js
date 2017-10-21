@@ -32,6 +32,11 @@ const apis = [
     link: 'https://community.webroot.com/t5/Developers/ct-p/UnityAPI',
   },
   {
+    company: 'Awakens',
+    description: '',
+    link: 'https://genomelink.io/developers/',
+  },
+  {
     company: 'Viasat',
     description: '',
     link: 'https://github.com/ViaSat',
