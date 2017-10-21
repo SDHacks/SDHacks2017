@@ -34,12 +34,20 @@
   }
   &__event {
     max-width: 60%;
+    flex: 1;
+    font-weight: bold;
   }
   &__time {
     color: $default-purple;
   }
+  .schedule-page &__time {
+    width: 113px;
+  }
   &__red {
     color: $default-red;
+  }
+  &__location {
+    width: 92px;
   }
   &__blue {
     color: $dark-blue;
