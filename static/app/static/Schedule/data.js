@@ -79,12 +79,12 @@ const scheduleData = [
     name: 'Lunch',
     showEnd: false,
   },
-  // {
-  //   start: 'Sat, 21 Oct 2017 14:00:00 -0700',
-  //   end: 'Sat, 21 Oct 2017 14:45:00 -0700',
-  //   name: 'UI/UX Design Workshop',
-  //   showEnd: true,
-  // },
+  {
+    start: 'Sat, 21 Oct 2017 14:00:00 -0700',
+    end: 'Sat, 21 Oct 2017 14:45:00 -0700',
+    name: 'UI/UX Design Workshop',
+    showEnd: true,
+  },
   {
     start: 'Sat, 21 Oct 2017 15:00:00 -0700',
     end: 'Sat, 21 Oct 2017 15:45:00 -0700',
