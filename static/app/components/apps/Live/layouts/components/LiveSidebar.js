@@ -18,6 +18,7 @@ export default class LiveSidebar extends React.Component {
     super(props);
     this.state = {
       date: new Date(),
+      ishidden: false,
     };
 
     // Set consts to this component
@@ -150,10 +151,6 @@ export default class LiveSidebar extends React.Component {
         </div>
 
         <div className={this.state.isHidden ? 'd-none d-md-block' : ''}>
-          {this.renderMenu()}
-        </div>
-
-        <div className='d-none d-md-block'>
           {this.renderMenu()}
         </div>
       </div>
