@@ -25,7 +25,7 @@ const apiPrizeData = [
     id: 'att',
     sponsoredBy: 'AT&T',
     name: 'Best Smart Cities Hack presented by AT&T',
-    description: 'Echo Dot for the best hack utilizing the Smart Cities datasets and APIs to be provided by AT&T.',
+    description: 'Echo Dot for the best hack utilizing the Smart Cities datasets and APIs to provided by AT&T.',
   },
   {
     id: 'tech',
@@ -94,7 +94,19 @@ const apiPrizeData = [
     name: 'Blockchain Hackathonception',
     description: `The Ethereum Blockchain, IPFS and other distributed-computing technologies have forever changed the landscape of software development. For this category, use the Ethereum Virtual Machine and other distributed technologies to develop a hackathon tournament system on the Ethereum blockchain! Winner will receive an Oculus Rift headset and 2328 MTX tokens (equivalent to about 2 Ether)! 
     Hint: Storage on the blockchain is expensive. Use off-chain distributed storage where you can!`,
-  }
+  },
+  {
+    id: 'qi',
+    sponsoredBy: 'Qualcomm Institute',
+    name: 'Best use of Tech to Combat Human Trafficking',
+    description: '$1000 donation to a organization that combats human trafficking',
+  },
+  {
+    id: 'neurogaming',
+    sponsoredBy: 'Power of NeuroGaming Center',
+    name: 'Best Game that Incorporates Movement for Good',
+    description: 'Make a game that incorporates movement for good. Tobii eye trackers for each member of the team, and two tickets to fleet science center.',
+  },
 ];
 
 export default class PrizePage extends React.Component {
