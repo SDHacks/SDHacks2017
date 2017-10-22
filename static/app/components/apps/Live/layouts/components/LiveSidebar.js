@@ -101,6 +101,14 @@ export default class LiveSidebar extends React.Component {
           Devpost
           <FontAwesome className="float-right" name="external-link" />
         </a>
+        <a
+          className="live-sidebar__section-link"
+          href='https://expo.sdhacks.io'
+          target='_blank'
+        >
+          Expo
+          <FontAwesome className="float-right" name="external-link" />
+        </a>
       </Section>
       <Section name='Schedule'>
         <Link dest='/schedule'>Full Schedule</Link>

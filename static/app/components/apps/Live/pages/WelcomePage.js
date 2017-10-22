@@ -22,6 +22,16 @@ export default class WelcomePage extends React.Component {
           </div>
           <div className="col-lg-6 sd-card__wrapper">
             <div className="card sd-card sd-card__auto">
+              <div className="card-body sd-card__block text-center">
+                <h4 className="card-title sd-card__title">Expo Site & Table Assignments</h4>
+                <div className="card-text sd-card__text text-center">
+                  <a className="btn btn-default rounded-button rounded-button--default" href="http://expo.sdhacks.io" target="_blank">Expo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 sd-card__wrapper">
+            <div className="card sd-card sd-card__auto">
               <div className="card-body sd-card__block">
                 <div className="text-center">
                   <h4 className="card-title sd-card__title">Shirt Colors</h4>
