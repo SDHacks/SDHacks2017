@@ -79,7 +79,7 @@ export default class LiveSidebar extends React.Component {
         </a>
         <a
           className="live-sidebar__section-link"
-          href='https://sdhacks2017.slack.com'
+          href='https://sdhacks-2017.slack.com'
           target='_blank'
         >
           Slack
@@ -95,7 +95,7 @@ export default class LiveSidebar extends React.Component {
         </a>
         <a
           className="live-sidebar__section-link"
-          href='https://sdhackers2017.devpost.com'
+          href='https://sdhacks2017.devpost.com'
           target='_blank'
         >
           Devpost

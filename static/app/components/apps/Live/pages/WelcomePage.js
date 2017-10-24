@@ -58,7 +58,7 @@ export default class WelcomePage extends React.Component {
               <div className="card-body sd-card__block text-center">
                 <h4 className="card-title sd-card__title">Slack</h4>
                 <div className="card-text sd-card__text text-center">
-                  <p>Get on the <a href="https://sdhackers2017.slack.com" target="_blank">SD Hacks Slack</a> to keep up with information for announcements and workshops. Use the link below to join.</p>
+                  <p>Get on the <a href="https://sdhacks-2017.slack.com" target="_blank">SD Hacks Slack</a> to keep up with information for announcements and workshops. Use the link below to join.</p>
                   <a className="btn btn-default rounded-button rounded-button--default" href="https://slack.sdhacks.io" target="_blank">Join SD Hackers 2017</a>
                 </div>
               </div>
