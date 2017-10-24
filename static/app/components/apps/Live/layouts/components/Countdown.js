@@ -10,17 +10,26 @@ const propTypes = {
 const defaultProps = {
   // Minimum ever date
   startTime: new Date(0),
+
+  // Stops the timer at zero
+  minZero: true,
 };
 
 /**
  * Countdown component
  */
-const Countdown = ({currTime, startTime, endTime}) => {
+const Countdown = ({currTime, startTime, endTime, minZero}) => {
   const diff = endTime - Math.max(currTime, startTime);
 
-  const hourDiff = Math.floor(diff / 36e5);
-  const minuteDiff = Math.floor(diff % 36e5 / 60000);
-  const secondsDiff = Math.floor(diff % 60000 / 1000);
+  let hourDiff = Math.floor(diff / 36e5);
+  let minuteDiff = Math.floor(diff % 36e5 / 60000);
+  let secondsDiff = Math.floor(diff % 60000 / 1000);
+
+  if (minZero) {
+    hourDiff = Math.max(hourDiff, 0);
+    minuteDiff = Math.max(minuteDiff, 0);
+    secondsDiff = Math.max(secondsDiff, 0);
+  }
 
   return (
     <ul className="sd-countdown list-unstyled">
